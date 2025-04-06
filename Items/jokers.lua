@@ -1,5 +1,5 @@
 SMODS.Rarity({
-	key = "primordial",
+	key = "pri",
 	badge_colour = G.C.ORANGE,
 	pools = {},
 })

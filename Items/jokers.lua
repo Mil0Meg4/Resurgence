@@ -3,5 +3,3 @@ SMODS.Rarity({
 	badge_colour = G.C.ORANGE,
 	pools = {},
 })
-
---push test

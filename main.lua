@@ -12,12 +12,12 @@ SMODS.Atlas{
     py = 95
 }
 --
+
 --Mod icon
 SMODS.Atlas({
     key = 'modicon',
     path = 'modicon.png',
-    px = '34',
-    py = '34'
+    px = 34,
+    py = 34
 })
-
 --

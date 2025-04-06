@@ -1,0 +1,15 @@
+{
+	"id": "AnVa",
+	"name": "Anyeh Vampirica",
+	"display_name": "Anyeh Vampirica",
+	"author": ["Mil0Meg4, railgun"],
+	"website_url": "https://github.com/Mil0Meg4/Aneyh-Vampirica",
+	"description": "jen's almanac if it was good.",
+	"prefix": "anva",
+	"main_file": "main.lua",
+	"priority": 0,
+	"badge_colour": "3D3446",
+	"badge_text_colour": "880808",
+	"version": "0.1a",
+	"dependencies": ["Steamodded (>=1.0.0~ALPHA-1428c)"]
+}

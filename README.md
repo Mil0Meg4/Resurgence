@@ -7,3 +7,8 @@ Primordials - Powerful Jokers that require you to drastically increase your run'
 Paint - A new edition-like modifier, hard to obtain but doesn't override editions and works on jokers and playing cards.
 
 Augments - New consumables that can drastically alter jokers with sticker-like effects.
+
+# Requirements
+- [Steamodded](https://github.com/Steamopollys/Steamodded)
+- [Lovely](https://github.com/ethangreen-dev/lovely-injector)
+- [Talisman](https://github.com/MathIsFun0/Talisman)

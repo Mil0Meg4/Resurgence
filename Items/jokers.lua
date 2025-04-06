@@ -60,7 +60,11 @@ SMODS.Joker({
 		elseif context.using_consumeable and context.consumeable.config.center.key== "c_judgement" then 
 			print("12")
 		elseif context.using_consumeable and context.consumeable.config.center.key== "c_hermit" then 
-			print("13")
+			card:start_dissolve({ HEX("57ecab") }, nil, 0.1)  --Removes self
+			SMODS.add_card{
+				key = "j_anva_charon",       --adds charon
+				set = "Joker"
+			}
 		elseif context.using_consumeable and context.consumeable.config.center.key== "c_temperance" then 
 			print("14")
 		elseif context.using_consumeable and context.consumeable.config.center.key== "c_strength" then 
@@ -84,6 +88,40 @@ end,
 	set_badges = function(self, card, badges)
 		badges[#badges-1] = create_badge("Primer", G.C.ORANGE, G.C.WHITE,1)  --This adds the primer badge ABOVE the rarity. if this was +1 it would add below
 	end
+})
+
+SMODS.Joker({
+	key = "charon",  
+	atlas = "wip",  
+	rarity = "anva_prim",
+	cost = 10,
+	unlocked = true,
+	discovered = false,
+	blueprint_compat = true, 
+	pos = {
+		x = 0,
+		y = 0, 	
+	},
+	config = {
+		extra = {
+			max = 2000   --maximum value as variable
+		},   
+	},
+	loc_vars = function(self, info_queue, card)
+		local anv = card.ability.extra  
+		return {
+			vars = {anv.max},   
+		}
+	end,
+	calculate = function(self, card, context)
+		local anv = card.ability.extra 
+		if context.ending_shop and not context.blueprint then 
+			ease_dollars(to_number(math.max(0, math.min(G.GAME.dollars*5, anv.max)), true))  ---ease_dollars is used to manipulate the ammount of cash you have, to_number is for talisman compatiblity and math.max is used to set the max value for the added cash
+		end
+	end,
+	in_pool = function(self, wawa, wawa2)
+		return true  
+	end,
 })
 
 SMODS.Joker({
@@ -125,7 +163,7 @@ SMODS.Joker({
 					break
 				end
 			end
-			if G.jokers.cards[rr-1] ~= nil and G.jokers.cards[rr-1].edition and G.jokers.cards[rr-1].edition.anva_divine then  --In order, checks if there is a joker on the left (rr = our position and -1 being one left), checks if the joker on the left has an edition and checks if its polyhcrome
+			if G.jokers.cards[rr-1] ~= nil and G.jokers.cards[rr-1].edition and G.jokers.cards[rr-1].edition.anva_divine then  --In order, checks if there is a joker on the left (rr = our position and -1 being one left), checks if the joker on the left has an edition and checks if its divine
 				G.jokers.cards[rr-1]:set_edition() --removes the edition
 				anv.xxmult = anv.xxmult + anv.xxmultg --upgrades xxmult by adding xxmultg
 			end

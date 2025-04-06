@@ -16,8 +16,8 @@ SMODS.Atlas{
 
 --Mod icon
 SMODS.Atlas({
-    key = 'modicon',
-    path = 'modicon.png',
+    key = "modicon",
+    path = "modicon.png",
     px = 34,
     py = 34
 })

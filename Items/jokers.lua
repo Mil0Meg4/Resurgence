@@ -9,6 +9,13 @@ SMODS.Rarity({
 	default_weight = 0.01,
 })
 
+SMODS.Rarity({
+	key = "unb",
+	badge_colour = G.C.PURPLE,
+	pools = {},
+
+})
+
 SMODS.Joker({
 	key = "sigma",  
 	atlas = "wip",  --the atlas obv
@@ -16,7 +23,7 @@ SMODS.Joker({
 	cost = 10,
 	unlocked = true,
 	discovered = false,
-	blueprint_compat = false,
+	blueprint_compat = false, --If this is true, blueprint will say "Compatible"
 	pos = {
 		x = 0,
 		y = 0,  --the position in the atlas. x + 1 would be 71 pixels to the right (cause the atlas is set to 71px) and y + 1 would be 95 pixels down (cause the atlas is set to 95px)
@@ -25,6 +32,7 @@ SMODS.Joker({
 		extra = {},   
 	},
 	calculate = function(self, card, context)
+	if not context.blueprint then
 		if context.using_consumeable and context.consumeable.config.center.key== "c_hanged_man" then --checks if the used card is hanged man
 			print("1")
 		elseif context.using_consumeable and context.consumeable.config.center.key== "c_high_priestess" then 
@@ -68,11 +76,62 @@ SMODS.Joker({
 		elseif context.using_consumeable and context.consumeable.ability.set == "Tarot" then --this will activate if the all the above returns false
 			print("Tarot Used")
 		end
-	end,
+	end
+end,
 	in_pool = function(self, wawa, wawa2)
 		return true   --if this was false this joker wouldnt spawn naturally.
 	end,
 	set_badges = function(self, card, badges)
 		badges[#badges-1] = create_badge("Primer", G.C.ORANGE, G.C.WHITE,1)  --This adds the primer badge ABOVE the rarity. if this was +1 it would add below
 	end
+})
+
+SMODS.Joker({
+	key = "gaba",  
+	atlas = "wip",  
+	rarity = "anva_unb",
+	cost = 10,
+	unlocked = true,
+	discovered = false,
+	blueprint_compat = true, 
+	pos = {
+		x = 0,
+		y = 0, 	
+	},
+	config = {
+		extra = {
+			xxmult = 1.25,  --mult value to return
+			xxmultg = 0.75  --to increase
+		},   
+	},
+	loc_vars = function(self, info_queue, card)
+		local anv = card.ability.extra   --to avoid typing card.ability.extra each time. Not needed but very handy
+		return {
+			vars = { anv.xxmult, anv.xxmultg},   --for example in here anv = card.ability.extra. Also this is needed to display the values in the desc of the card
+		}
+	end,
+	calculate = function(self, card, context)
+		local anv = card.ability.extra 
+		if context.joker_main then   --checks the usual triggering time for jokers.
+			return{
+				emult = anv.xxmult  --returns ^anv.xxmult
+			}
+		end
+		if context.ending_shop and not context.blueprint then --Checks for when the shop ends and if its going to be triggered by blueprint or not
+			local rr = nil
+			for i = 1, #G.jokers.cards do	
+				if G.jokers.cards[i] == card then     --for checking the position of other jokers
+					rr = i
+					break
+				end
+			end
+			if G.jokers.cards[rr-1] ~= nil and G.jokers.cards[rr-1].edition and G.jokers.cards[rr-1].edition.anva_divine then  --In order, checks if there is a joker on the left (rr = our position and -1 being one left), checks if the joker on the left has an edition and checks if its polyhcrome
+				G.jokers.cards[rr-1]:set_edition() --removes the edition
+				anv.xxmult = anv.xxmult + anv.xxmultg --upgrades xxmult by adding xxmultg
+			end
+		end
+	end,
+	in_pool = function(self, wawa, wawa2)
+		return true  
+	end,
 })

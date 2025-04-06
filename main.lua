@@ -1,5 +1,6 @@
 ANVA = {}
 
+<<<<<<< HEAD
 SMODS.load_file("Items/jokers.lua")()
 
 
@@ -13,3 +14,11 @@ SMODS.Atlas{
 }
 
 --
+=======
+SMODS.Atlas({
+    key = 'modicon',
+    path = 'modicon.png',
+    px = '34',
+    py = '34'
+})
+>>>>>>> 26eea078e83d492b9f446f930ec531829b1cc0db

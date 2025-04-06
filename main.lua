@@ -1,6 +1,7 @@
 ANVA = {}
 
 SMODS.load_file("Items/jokers.lua")()
+SMODS.load_file("Items/editions.lua")()
 
 
 --PLACEHOLDER ATLAS

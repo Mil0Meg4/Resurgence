@@ -1,9 +1,5 @@
 SMODS.Rarity({
-<<<<<<< HEAD
 	key = "prim",
-=======
-	key = "pri",
->>>>>>> 26eea078e83d492b9f446f930ec531829b1cc0db
 	badge_colour = G.C.ORANGE,
 	pools = {
 		["Joker"] = {

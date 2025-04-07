@@ -193,7 +193,7 @@ SMODS.Joker({
 		y = 0,
 	},
 	calculate = function(self, card, context)
-		if context.individual and context.other_card:is_suit("Diamonds") then
+		if context.individual and context.other_card:is_suit("Diamonds") and context.cardarea == G.play then
 			if #G.consumeables.cards < G.consumeables.config.card_limit or self.area == G.consumeables then
 				local new_card = SMODS.add_card({
 					key = "c_star",

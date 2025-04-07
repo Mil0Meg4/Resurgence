@@ -1,6 +1,10 @@
 {
     "Lua.diagnostics.globals": [
         "SMODS",
-        "G"
+        "G",
+        "HEX",
+        "create_badge",
+        "to_number",
+        "ease_dollars"
     ]
 }

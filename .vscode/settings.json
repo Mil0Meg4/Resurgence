@@ -10,6 +10,7 @@
         "level_up_hand",
         "j",
         "calc_dollar_bonus",
-        "cardarea"
+        "cardarea",
+        "is_number"
     ]
 }

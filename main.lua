@@ -1,6 +1,7 @@
 ANVA = {}
 ANVA.C = {}
 ANVA.C.AUGMENT = HEX("b59262")
+SMODS.load_file("Items/funcs.lua")()
 SMODS.load_file("Items/jokers.lua")()
 SMODS.load_file("Items/editions.lua")()
 SMODS.load_file("Items/augments.lua")()

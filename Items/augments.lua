@@ -20,44 +20,22 @@ SMODS.Consumable({
     atlas = 'wip',
     pos = {x=0, y=0},
     discovered = true,
-    config = {max_highlighted = 2},
+    config = {max_highlighted = 2, left_val = 1,right_val = 0},
     can_use = function(self, card)--determins when you can use the consumable
         --checks that at least one joker is selected but not more than the maximum allowed
 		return #G.jokers.highlighted > 0 and #G.jokers.highlighted <= self.config.max_highlighted
 	end,
     use = function(self, card, area, copier)
         G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.4,func = function()
-            play_sound('tarot1')
-            card:juice_up(0.3, 0.5)
-            for i=1, #G.jokers.highlighted do
-                ANVA.motherboardize(G.jokers.highlighted[i])
+            play_sound('tarot1')--normal consumable shenanigans
+            card:juice_up(0.3, 0.5)--normal consumable shenanigans
+            for i=1, #G.jokers.highlighted do--apply to all selected jokers
+                local joker = G.jokers.highlighted[i]
+                local pos_val = G.jokers.cards[1] == joker and self.config.left_val or self.config.right_val--checks if selected joker is leftmost
+                --set all values to 1, the second argument is nil since we re not using any reference table
+                --the last one too since we aare want to affect all values
+                ANVA.mod_table_values(joker.ability,nil,{set = pos_val},nil)
             end
         return true end }))
     end
 })
-
-function ANVA.motherboardize(joker)
-    --[[ for k, v in pairs(joker.ability) do
-        if type(v) == "table" then
-            ANVA.motherboardize(v)
-        elseif is_number(v) 
-        and not (k == "perish_tally")
-        and not (k == "id")
-        and not (k == "colour")
-        and not (k == "suit_nominal")
-        and not (k == "base_nominal")
-        and not (k == "face_nominal")
-        and not (k == "qty")
-        and not (k == "x_mult" and v == 1)
-        and not (k == "x_chips" and v == 1)
-        and not (k == "h_x_chips")
-        and not (k == "selected_d6_face") then
-            print(v)
-            v = 19
-            print(v)
-        end
-    end ]]
-    print("doesn't work rn :(")
-end
-
-

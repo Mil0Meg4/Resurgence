@@ -5,11 +5,11 @@ return {
         Edition={},
         Enhanced={},
         Joker={
-            sinclair = {
+                j.anva.sinclair == {
                 name = "Sinclair",
-                text = {"Earns $10 at end of round.",
-                        "When Shop is entered, if you have $100 or more debuffs all",
-                        " other Jokers until you have $0 or less when exiting.",
+                text = {"Earns {C:money}$#1#{} at end of round.",
+                        "When Shop is entered, if you have {C:money}$#1#{} or more debuffs all",
+                        "other Jokers until you have $0 or less when exiting.",
                     },
                  }
         },

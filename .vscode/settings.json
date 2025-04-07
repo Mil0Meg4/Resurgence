@@ -6,6 +6,7 @@
         "create_badge",
         "to_number",
         "ease_dollars",
-        "shop_final_pass"
+        "shop_final_pass",
+        "j"
     ]
 }

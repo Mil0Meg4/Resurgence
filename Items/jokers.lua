@@ -265,20 +265,20 @@ SMODS.Joker{
 	discovered = false,
 	blueprint_compat = true,
 	loc_vars = function(self, info_queue, card)
-	local anv = card.ability.extra
-	return {
-		vars = { anv.mult, anv.mult_mod },
-	}
+		local anv = card.ability.extra
+		return {
+			vars = { anv.mult, anv.mult_mod },
+		}
 	end,
 	calculate = function(self, card, context)
 		local anv = card.ability.extra
 		if context.joker_main then
 			return {
-				mult = anv.mult, 
+				mult = anv.mult
 			}
 		end
-	if context.end_of_round then
-	anv.mult = anv.mult + anv.extra.mult_mod
-	end
-end
+		if context.end_of_round then
+			anv.mult = anv.mult + anv.mult_mod
+		end
+	end										
 }

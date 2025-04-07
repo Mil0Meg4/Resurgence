@@ -4,7 +4,15 @@ return {
         Blind={},
         Edition={},
         Enhanced={},
-        Joker={},
+        Joker={
+            sinclair = {
+                name = "Sinclair",
+                text = {"Earns $10 at end of round.",
+                        "When Shop is entered, if you have $100 or more debuffs all",
+                        " other Jokers until you have $0 or less when exiting.",
+                    },
+                 }
+        },
         Other={},
         Planet={},
         Spectral={},

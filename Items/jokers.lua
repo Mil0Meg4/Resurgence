@@ -48,7 +48,11 @@ SMODS.Joker({
 		elseif context.using_consumeable and context.consumeable.config.center.key== "c_world" then 
 			print("6")
 		elseif context.using_consumeable and context.consumeable.config.center.key== "c_star" then 
-			print("7")
+			card:start_dissolve({ HEX("57ecab") }, nil, 0.1)  --Removes self
+			SMODS.add_card{
+				key = "j_anva_andromeda",       --adds andromeda
+				set = "Joker"
+			}
 		elseif context.using_consumeable and context.consumeable.config.center.key== "c_sun" then 
 			print("8")
 		elseif context.using_consumeable and context.consumeable.config.center.key== "c_lovers" then 

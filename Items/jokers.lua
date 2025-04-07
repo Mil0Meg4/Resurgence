@@ -195,8 +195,43 @@ SMODS.Joker({
 					end
 				end
 			end,
-	
 	in_pool = function(self, wawa, wawa2)
 		return true  
 	end
 })
+
+SMODS.Joker {
+	key = 'sinclair',
+	atlas = 'wip',
+	pos = { x = 0, y = 0 },
+	rarity = 3,
+	cost = 10,
+	loc_txt = {
+		name = 'Frederick Sinclair',
+		text = {
+			"Earn {C:money}$#1#{} at",
+			"end of round",
+			"debuff all jokers if it exceeds 100 when entering the shop"
+		}
+	},
+	config = {
+		extra = {
+			money = 10,
+			max = 100 
+		},   
+	},
+	unlocked = true,
+	discovered = false,
+	blueprint_compat = true, 
+	loc_vars = function(self, info_queue, card)
+		local anv = card.ability.extra 
+		return { vars = { anv.money } }
+	end,
+		calculate = function(self, card, context)
+		local anv = card.ability.extra
+		if context == shop_final_pass and ease_dollars>anv.max then,
+			-- anv.debuff 
+			-- CARD.debuff = false
+		end,
+	end,
+}

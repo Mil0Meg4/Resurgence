@@ -227,7 +227,7 @@ SMODS.Joker({
 	blueprint_compat = true,
 	loc_vars = function(self, info_queue, card)
 		local anv = card.ability.extra
-		return { vars = { anv.money } }
+		return { vars = { anv.money,anv.max } }
 	end,
 	calculate = function(self, card, context)
 		local anv = card.ability.extra

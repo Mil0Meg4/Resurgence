@@ -173,3 +173,30 @@ SMODS.Joker({
 		return true  
 	end,
 })
+SMODS.Joker({
+	key = "andromeda",  
+	atlas = "wip",  
+	rarity = "anva_prim",
+	cost = 50,
+	unlocked = true,
+	discovered = false,
+	blueprint_compat = true, 
+	pos = {
+		x = 0,
+		y = 0,
+	},
+	calculate = function(self, card, context)
+		if context.individual and context.other_card:is_suit("Diamonds") then
+			if #G.consumeables.cards < G.consumeables.config.card_limit or self.area == G.consumeables then
+				local new_card =
+						create_card("The Star", G.consumeables, nil, nil, nil, nil, "c_star")
+					new_card:add_to_deck()
+					G.consumeables:emplace(new_card)
+					end
+				end
+			end,
+	
+	in_pool = function(self, wawa, wawa2)
+		return true  
+	end
+})

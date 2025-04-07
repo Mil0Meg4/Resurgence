@@ -20,17 +20,17 @@ SMODS.Edition{
 SMODS.Edition{
     key = "faust",
 	order = 5,
-	shader = "faust",
+	shader = false,
 	weight = 7,
 	extra_cost = 10,
     in_shop = true,
 	config = { dollars = 6 },
     calculate = function(self, card, context)
-        if context.main_scoring and context.cardarea == G.play then
+        if (context.main_scoring and context.cardarea  == G.play) or (context.end_of_round and context.cardarea == G.jokers) then
             return { p_dollars = self.config.dollars }end    
         end,
     calc_dollar_bonus = function(self, card)
-        return self.config.dollars
+        return 6
     end
 }
 

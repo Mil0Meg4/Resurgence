@@ -8,6 +8,8 @@
         "ease_dollars",
         "shop_final_pass",
         "level_up_hand",
-        "j"
+        "j",
+        "calc_dollar_bonus",
+        "cardarea"
     ]
 }

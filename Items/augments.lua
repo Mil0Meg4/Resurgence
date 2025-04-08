@@ -20,7 +20,7 @@ SMODS.Consumable({
     atlas = 'wip',
     pos = {x=0, y=0},
     discovered = true,
-    config = {max_highlighted = 2, left_val = 1,right_val = 0},
+    config = {max_highlighted = 1, left_val = 1,right_val = 0},
     can_use = function(self, card)--determins when you can use the consumable
         --checks that at least one joker is selected but not more than the maximum allowed
 		return #G.jokers.highlighted > 0 and #G.jokers.highlighted <= self.config.max_highlighted
@@ -34,7 +34,9 @@ SMODS.Consumable({
                 local pos_val = G.jokers.cards[1] == joker and self.config.left_val or self.config.right_val--checks if selected joker is leftmost
                 --set all values to 1 or 0, the second argument is nil since we re not using any reference table
                 --the last one is nil too since we want to affect all values
-                ANVA.mod_table_values(joker.ability,nil,{set = pos_val},nil)
+                if  not joker.config.center.immutable then --does not apply the effect on immutable jokers
+                    ANVA.mod_table_values(joker.ability,nil,{set = pos_val},nil)
+                end
             end
         return true end }))
     end

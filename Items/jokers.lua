@@ -314,3 +314,40 @@ SMODS.Joker{
 		end
 	end								
 }
+SMODS.Joker{
+	key = "pugnala",
+	atlas = "wip",
+	pos = { x = 0, y = 0 },
+	rarity = 1,
+	cost = 3,
+	config = { extra = { xmult = 3 } },
+	unlocked = true,
+	discovered = false,
+	blueprint_compat = true,			
+	calculate = function(self, card, context)
+	local anv = card.ability.extra
+	if context.joker_main then
+		local suits = {
+			['Diamonds'] = 0,
+			['Clubs'] = 0,
+			["handsize"] = 0,
+			}
+			for i = 1, #context.scoring_hand do
+				if context.scoring_hand[i].ability.name ~= 'Wild Card' then
+					if context.scoring_hand[i]:is_suit('Diamonds') then suits["Diamonds"] = suits["Diamonds"] + 1 end
+					if context.scoring_hand[i]:is_suit('Clubs') then suits["Clubs"] = suits["Clubs"] + 1 end
+				end
+			end
+			for i = 1, #context.scoring_hand do
+				if context.scoring_hand[i].ability.name == 'Wild Card' then
+					if context.scoring_hand[i]:is_suit('Clubs') and suits["Clubs"] == 0 then suits["Clubs"] = suits["Clubs"] + 1
+					elseif context.scoring_hand[i]:is_suit('Diamonds') and suits["Diamonds"] == 0  then suits["Diamonds"] = suits["Diamonds"] + 1
+				end
+			end
+			if suits["Diamonds"] + suits["Clubs"] >= #g.play.cards then
+				return { xmult = anv.extra(xmult)}
+			end
+		end
+	end
+end
+}

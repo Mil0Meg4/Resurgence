@@ -314,3 +314,15 @@ SMODS.Joker{
 		end
 	end								
 }
+return {
+	name = "Jokers",
+	init = function()
+		local oldfunc = Card.start_dissolve
+		function Card:start_dissolve(dissolve_colours, silent, dissolve_time_fac, no_juice)
+			if G and G.jokers and G.jokers.cards then
+				SMODS.calculate_context({ anva_destroyed = true, card = self })
+			end
+			return oldfunc(self, dissolve_colours, silent, dissolve_time_fac, no_juice)
+		end
+	end,
+}

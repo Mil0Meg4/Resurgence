@@ -38,4 +38,33 @@ function ANVA.is_tweak(str)
         end
     end
     return false
-  end
+end
+
+--Returns a table with all the suit in hand and the number of cards of each
+function ANVA.get_suits(scoring_hand, bypass_debuff)
+    local suits = {}
+    for k, _ in pairs(SMODS.Suits) do
+        suits[k] = 0
+    end
+    for _, card in ipairs(scoring_hand) do
+        if not SMODS.has_any_suit(card) then
+            for suit, count in pairs(suits) do
+                if card:is_suit(suit, bypass_debuff) and count == 0 then
+                    suits[suit] = count + 1
+                    break
+                end
+            end
+        end
+    end
+    for _, card in ipairs(scoring_hand) do
+        if SMODS.has_any_suit(card) then
+            for suit, count in pairs(suits) do
+                if card:is_suit(suit, bypass_debuff) and count == 0 then
+                    suits[suit] = count + 1
+                    break
+                end
+            end
+        end
+    end
+    return suits
+end

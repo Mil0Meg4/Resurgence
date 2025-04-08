@@ -280,8 +280,8 @@ SMODS.Joker{
 		if context.end_of_round and not context.blueprint then
 			anv.mult = anv.mult + anv.mult_mod
 		end
-	end	
-	
+	end
+}
 SMODS.Joker{
 	key = "frisk",
 	atlas = "wip",
@@ -305,12 +305,12 @@ SMODS.Joker{
 			local rarities = {}
 			for i = 1, #G.jokers.cards do
 				if G.jokers.cards[i].ability.set == 'Joker' and not rarities[G.jokers.cards[i].config.center.rarity] then friends = friends+1
-				rarities[G.jokers.cards[i].config.center.rarity] = true	end
-				 end
+				rarities[G.jokers.cards[i].config.center.rarity] = true	
+				end
+			end
 			return {
 				chips = anv.chips*friends
 			}
 		end
-	end										
-
+	end								
 }

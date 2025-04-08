@@ -11,6 +11,7 @@
         "j",
         "calc_dollar_bonus",
         "cardarea",
-        "is_number"
+        "is_number",
+        "play_sound"
     ]
 }

@@ -277,8 +277,8 @@ SMODS.Joker{
 				mult = anv.mult
 			}
 		end
-		if context.end_of_round then
+		if context.end_of_round and not context.blueprint then
 			anv.mult = anv.mult + anv.mult_mod
 		end
-	end										
+	end								
 }

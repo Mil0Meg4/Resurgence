@@ -32,7 +32,13 @@ return {
                         "When Shop is entered, if you have {C:money}$#2#{} or more debuffs all",
                         "other Jokers until you have {C:money}$0{} or less when exiting.",
                 },
-            }
+            },
+            j_anva_pugnala = {
+                name = 'Pugnala',
+                text = { "if scored hand contains only diamonds and clubs, X3 mult",
+                         "{C:inactive}(Max of {C:money}$2000{C:inactive}){}"
+                }
+            },
         },
 
         Other={},

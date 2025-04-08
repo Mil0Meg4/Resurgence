@@ -26,3 +26,16 @@ ANVA.mod_table_values = function(table, ref, config,banned_keywords)
     end
     modify_values(table, ref)--call the previously declared function
 end
+
+--Returns true if imputed Sticker is a Tweak
+function ANVA.is_tweak(str)
+    local tweaks = {
+        "lever"
+    }
+    for _, v in ipairs(tweaks) do
+        if 'anva_' .. v == str then
+            return true
+        end
+    end
+    return false
+  end

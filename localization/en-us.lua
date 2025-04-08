@@ -53,10 +53,11 @@ return {
             k_anva_prim = "Primordial",
             k_augment = "Augment Card",
             b_augment_cards = "Augment Cards",
+            anva_tweak_ui = "Tweaks"
         },
         high_scores={},
         labels={
-            anva_prim = "Primordial"
+            anva_prim = "Primordial",
         },
         poker_hand_descriptions={},
         poker_hands={},

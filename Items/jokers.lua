@@ -359,3 +359,31 @@ SMODS.Joker({
 		end
 	end,
 })
+
+SMODS.Joker{
+	key = "pugnala",
+	atlas = "wip",
+	pos = { x = 0, y = 0 },
+	rarity = 2,
+	cost = 3,
+	config = { extra = { xmult = 3 } },
+	unlocked = true,
+	discovered = false,
+	blueprint_compat = true,			
+	calculate = function(self, card, context)
+	local anv = card.ability.extra
+		if context.joker_main then
+			local suits = ANVA.get_suits(G.play.cards)
+			local other_suits = false
+			for k,v in pairs(suits) do
+				if k ~= "Clubs" and k ~= "Diamonds" and v > 0 then
+					other_suits = true 
+
+				end
+			end
+			if not other_suits then
+				return { xmult = anv.xmult}
+			end
+		end
+	end
+}

@@ -40,6 +40,26 @@ return {
                 text = { ""
                 }
             },
+            j_anva_frisk = {
+                name = 'Frisk',
+                text = { ""
+                }
+            },
+            j_anva_andromeda = {
+                name = 'Andromeda',
+                text = { ""
+                }
+            },
+            j_anva_tree = {
+                name = 'Tree',
+                text = { ""
+                }
+            },
+            j_anva_poe = {
+                name = 'Poe',
+                text = { ""
+                }
+            },
         },
         Augment={
             c_anva_aug_mother = {

@@ -38,7 +38,7 @@ SMODS.Consumable({
                 --set all values to 1 or 0, the second argument is nil since we re not using any reference table
                 --the last one is nil too since we want to affect all values
                 if  not v.config.center.immutable then --does not apply the effect on immutable jokers
-                    ANVA.mod_table_values(v.ability,nil,{set = pos_val},nil,nil)
+                    ANVA.mod_table_values(v.ability,nil,{set = pos_val},nil,nil,nil)
                 end
             end
         return true end }))

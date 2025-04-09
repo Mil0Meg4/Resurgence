@@ -1,7 +1,8 @@
 --Does math on all values inside a table, with the option of using another table as reference.
---Operation contains the values for the math, which can be set, add or mult
---Insert values in target_keywords if you want to affect only them, or into banned_keywords if you want to affect anything but them
-ANVA.mod_table_values = function(table, ref, operation,target_keywords,banned_keywords)
+--Operation contains the values for the math, which can be set, add or mult.
+--Insert values in target_keywords if you want to affect only them, or into banned_keywords if you want to affect anything but them.
+--If linear is off, the ref table replaces the main one, otherwise the function uses the main table as a base and the ref table for the modification
+ANVA.mod_table_values = function(table, ref, operation,target_keywords,banned_keywords,linear)
     if not operation then operation = {} end
     if target_keywords and not next(target_keywords) then target_keywords = nil end--if target_keywords exists but is empty, it becomes nil
     if not banned_keywords then banned_keywords = {} end
@@ -17,7 +18,13 @@ ANVA.mod_table_values = function(table, ref, operation,target_keywords,banned_ke
                 if ref and ref[k]--checks if the key is in the ref table
                 and (not target_keywords or target_keywords and target_keywords[k])--checks if tagert_keyword is not false and if the key is none of the targeted ones
                 and not banned_keywords[k] then--checks if the key is not banned
-                    table[k] = ((set or ref[k]) + add) * mult--solves the math in order
+                    if not linear then--checks if linear chanage should be used
+                        table[k] = ((set or ref[k]) + add) * mult--solves the math in order
+                    else
+                        local temp = (set or table[k]) + add--creates a temporary value
+                        local temp_ref = (set or ref[k]) + add--creates a temporary value
+                        table[k] = temp + (temp_ref * mult) - temp_ref--solves the math in order
+                    end
                 end
             elseif type(v) == "table" and ref and k then--if the value is a table do math on all the values inside of it
                 modify_values(v, ref[k])

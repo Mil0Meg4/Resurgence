@@ -15,7 +15,8 @@ return {
             },
             j_anva_charon = {
                 name = 'Charon',
-                text = { "At end of shop, quintuple money",
+                text = { "Quintuples money",
+                        "at the end of Shop",
                          "{C:inactive}(Max of {C:money}$2000{C:inactive}){}"
                 }
             },
@@ -27,15 +28,48 @@ return {
                 }
             },  
             j_anva_sinclair = {
-                name = "Sinclair",
+                name = 'Sinclair',
                 text = {"Earns {C:money}$#1#{} at end of round.",
-                        "When Shop is entered, if you have {C:money}$#2#{} or more debuffs all",
-                        "other Jokers until you have {C:money}$0{} or less when exiting.",
+                        "When Shop is entered, if you have {C:money}$#2#{}",
+                        "or more {C:red}debuffs{} all other {C:attention}Jokers{} until",
+                        "you have {C:money}$0{} or less when exiting."
                 },
-            }
+            },
+            j_anva_pugnala = {
+                name = 'Pugnala',
+                text = { ""
+                }
+            },
         },
-
-        Other={},
+        Augment={
+            c_anva_aug_mother = {
+                name = 'Motherboard',
+                text = { ""
+                }
+            },
+            c_anva_aug_lever = {
+                name = 'Lever',
+                text = { ""
+                }
+            },
+            c_anva_aug_rubber = {
+                name = 'Rubber',
+                text = { ""
+                }
+            },
+        },
+        Other={
+            anva_lever = {
+                name = 'Lever',
+                text = { ""
+                }
+            },
+            anva_rubber = {
+                name = 'Rubber',
+                text = { ""
+                }
+            },
+        },
         Planet={},
         Spectral={},
         Stake={},
@@ -53,10 +87,11 @@ return {
             k_anva_prim = "Primordial",
             k_augment = "Augment Card",
             b_augment_cards = "Augment Cards",
+            anva_tweak_ui = "Tweaks"
         },
         high_scores={},
         labels={
-            anva_prim = "Primordial"
+            anva_prim = "Primordial",
         },
         poker_hand_descriptions={},
         poker_hands={},

@@ -315,8 +315,9 @@ SMODS.Joker({
 				chips = anv.chips * friends,
 			}
 		end
-	end,
+	end								
 })
+
 
 SMODS.Joker({
 	key = "poe",

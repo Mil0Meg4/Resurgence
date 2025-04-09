@@ -1,3 +1,4 @@
+--tweaks are just stickers with a different name code wise
 ANVA.Tweak = SMODS.Sticker:extend {
     prefix_config = { key = true },
     should_apply = false,
@@ -18,6 +19,38 @@ ANVA.Tweak = SMODS.Sticker:extend {
     end
 }
 
+--table with all the tweaks' keys, needed for distinguishing them from stickers
+--when creating a new tweak always add it here
+ANVA.Tweaks_keys = {
+    "lever",
+    "rubber",
+}
+
+ANVA.Tweak {
+    key = 'lever',
+    atlas = 'wip',
+    pos = { x = 0, y = 0 },
+    badge_colour = G.C.CHIPS,
+}
+ANVA.Tweak {
+    key = 'rubber',
+    atlas = 'wip',
+    pos = { x = 0, y = 0 },
+    badge_colour = G.C.CHIPS,
+    calculate = function(self,card,context)
+        if context.selling_self then--checks if the joker is being sold
+			card.ability.extra.selling = true
+		end
+        if context.anva_destroyed and context.card == card and not card.ability.extra.selling then--checks if the jokers is destroyed but not sold
+            --creates a copy of the joker
+            local copy = copy_card(card, nil, nil, nil, nil)
+            copy:start_materialize()
+            copy:add_to_deck()
+            G.jokers:emplace(copy)
+            return nil,true
+        end
+    end
+}
 
 SMODS.current_mod.custom_collection_tabs = function()
     return {
@@ -31,6 +64,9 @@ SMODS.current_mod.custom_collection_tabs = function()
     }
 end
 
+-------------------------------------------------------------
+----stuff for making tweaks have their own collection tab----
+-------------------------------------------------------------
 local function tweak_ui()
     local tweaks = {}
 
@@ -88,11 +124,3 @@ local other_objects_ref = create_UIBox_Other_GameObjects
 create_UIBox_Other_GameObjects = function()
     return wrap_without_tweaks(other_objects_ref)
 end
-
-
-ANVA.Tweak {
-    key = 'lever',
-    atlas = 'wip',
-    pos = { x = 0, y = 0 },
-    badge_colour = G.C.CHIPS,
-}

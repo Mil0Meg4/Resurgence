@@ -27,7 +27,7 @@ return {
                 }
             },  
             j_anva_sinclair = {
-                name = "Sinclair",
+                name = 'Sinclair',
                 text = {"Earns {C:money}$#1#{} at end of round.",
                         "When Shop is entered, if you have {C:money}$#2#{} or more debuffs all",
                         "other Jokers until you have {C:money}$0{} or less when exiting.",
@@ -35,13 +35,29 @@ return {
             },
             j_anva_pugnala = {
                 name = 'Pugnala',
-                text = { "if scored hand contains only diamonds and clubs, X3 mult",
-                         "{C:inactive}(Max of {C:money}$2000{C:inactive}){}"
+                text = { ""
                 }
             },
         },
-
-        Other={},
+        Augment={
+            c_anva_aug_mother = {
+                name = 'Motherboard',
+                text = { ""
+                }
+            }
+        },
+        Other={
+            anva_lever = {
+                name = 'Lever',
+                text = { ""
+                }
+            },
+            anva_rubber = {
+                name = 'Rubber',
+                text = { ""
+                }
+            }
+        },
         Planet={},
         Spectral={},
         Stake={},

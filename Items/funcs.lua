@@ -29,9 +29,7 @@ end
 
 --Returns true if imputed Sticker is a Tweak
 function ANVA.is_tweak(str)
-    local tweaks = {
-        "lever"
-    }
+    local tweaks = ANVA.Tweaks_keys
     for _, v in ipairs(tweaks) do
         if 'anva_' .. v == str then
             return true
@@ -39,6 +37,26 @@ function ANVA.is_tweak(str)
     end
     return false
 end
+
+--Removes a joker's tweak
+function ANVA.remove_tweak(card)
+        for k, _ in pairs(card and card.ability or {}) do
+            if ANVA.is_tweak(k) then
+                card.ability[k] = nil
+            end
+        end
+    end
+  
+--Sets a joker's tweak, repleacing previous one
+  function ANVA.set_tweak(card, type)
+    local key = 'anva_' .. type
+  
+    if card and ANVA.is_tweak(key) then
+        ANVA.remove_tweak(card)
+      SMODS.Stickers[key]:apply(card, true)
+    end
+end
+
 
 --Returns a table with all the suit in hand and the number of cards of each
 function ANVA.get_suits(scoring_hand, bypass_debuff)

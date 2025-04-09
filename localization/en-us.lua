@@ -44,7 +44,17 @@ return {
                 name = 'Motherboard',
                 text = { ""
                 }
-            }
+            },
+            c_anva_aug_lever = {
+                name = 'Lever',
+                text = { ""
+                }
+            },
+            c_anva_aug_rubber = {
+                name = 'Rubber',
+                text = { ""
+                }
+            },
         },
         Other={
             anva_lever = {
@@ -56,7 +66,7 @@ return {
                 name = 'Rubber',
                 text = { ""
                 }
-            }
+            },
         },
         Planet={},
         Spectral={},

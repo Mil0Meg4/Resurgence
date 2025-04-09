@@ -27,12 +27,6 @@ ANVA.Tweaks_keys = {
 }
 
 ANVA.Tweak {
-    key = 'lever',
-    atlas = 'wip',
-    pos = { x = 0, y = 0 },
-    badge_colour = G.C.CHIPS,
-}
-ANVA.Tweak {
     key = 'rubber',
     atlas = 'wip',
     pos = { x = 0, y = 0 },
@@ -49,6 +43,37 @@ ANVA.Tweak {
             G.jokers:emplace(copy)
             return nil,true
         end
+    end
+}
+ANVA.Tweak {
+    key = 'lever',
+    atlas = 'wip',
+    pos = { x = 0, y = 0 },
+    badge_colour = G.C.CHIPS,
+    config = {increase = 1.02, reset_rate = 1, threshold_rate = 2,threshold = {}},
+    calculate = function(self,card,context)
+        if context.reroll_shop then--checks if rerolling
+            ANVA.mod_table_values(card.ability,nil,{mult = self.config.increase},nil)--modifies all values
+        end
+        if context.end_of_round and G.GAME.blind.boss and not context.other_card then
+            --I'm not explaining all of this, just know that this resets the values after they surpass the threshold
+            local function reset_values(table,thr)
+                for k, v in pairs(table) do
+                    if type(v) == "number" then
+                        if thr and thr[k] and type(thr[k]) == "number" and v >= thr[k] * self.config.threshold_rate then
+                            table[k] = thr[k] * self.config.threshold_rate
+                        end 
+                    elseif type(v) == "table" and k then
+                        reset_values(v,thr[k])
+                    end
+                end
+            end
+            reset_values(card.ability,self.config.threshold)
+        end
+    end,
+    apply = function(self, card, val)--called when applying the tweak or sticker
+        card.ability[self.key] = val--applies the sticker manually since `apply` overwrites the original function
+        self.config.threshold = copy_table(card.ability)--saves the values to know when to reset them
     end
 }
 

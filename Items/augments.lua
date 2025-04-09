@@ -21,6 +21,10 @@ SMODS.Consumable({
     pos = {x=0, y=0},
     discovered = true,
     config = {max_highlighted = 1, left_val = 1,right_val = 0},
+    loc_vars = function(self, info_queue)
+        local anv = self.config
+		return { vars = {anv.max_highlighted,anv.left_val,anv.right_val} }
+	end,
     can_use = function(self, card)--determins when you can use the consumable
         --checks that at least one joker is selected but not more than the maximum allowed
 		return #G.jokers.highlighted > 0 and #G.jokers.highlighted <= self.config.max_highlighted
@@ -48,6 +52,11 @@ SMODS.Consumable({
     pos = {x=0, y=0},
     discovered = true,
     config = {max_highlighted = 1, tweak = "rubber"},
+    loc_vars = function(self, info_queue)
+        local anv = self.config
+		info_queue[#info_queue + 1] = { key = "anva_"..anv.tweak, set = "Other", vars = {} }
+		return { vars = {anv.max_highlighted} }
+	end,
     can_use = function(self, card)--determins when you can use the consumable
         --checks that at least one joker is selected but not more than the maximum allowed
 		return #G.jokers.highlighted > 0 and #G.jokers.highlighted <= self.config.max_highlighted
@@ -70,6 +79,11 @@ SMODS.Consumable({
     pos = {x=0, y=0},
     discovered = true,
     config = {max_highlighted = 1, tweak = "lever"},
+    loc_vars = function(self, info_queue)
+        local anv = self.config
+		info_queue[#info_queue + 1] = { key = "anva_"..anv.tweak, set = "Other", vars = {} }
+		return { vars = {anv.max_highlighted} }
+	end,
     can_use = function(self, card)--determins when you can use the consumable
         --checks that at least one joker is selected but not more than the maximum allowed
 		return #G.jokers.highlighted > 0 and #G.jokers.highlighted <= self.config.max_highlighted

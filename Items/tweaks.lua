@@ -51,6 +51,12 @@ ANVA.Tweak {
     pos = { x = 0, y = 0 },
     badge_colour = G.C.CHIPS,
     config = {increase = 1.1, reset_rate = 0.5, threshold_rate = 2,threshold = {}},
+    loc_vars = function(self, info_queue, card)
+		local anv = self.config
+		return {
+			vars = { anv.increase, anv.threshold_rate, anv.reset_rate, },
+		}
+	end,
     calculate = function(self,card,context)
         if context.reroll_shop then--checks if rerolling
             ANVA.mod_table_values(card.ability,nil,{mult = self.config.increase},nil)--modifies all values

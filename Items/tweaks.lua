@@ -29,7 +29,7 @@ ANVA.Tweaks_keys = {
 ANVA.Tweak {
     key = 'rubber',
     atlas = 'wip',
-    pos = { x = 0, y = 0 },
+    pos = { x = 1, y = 0 },
     badge_colour = G.C.CHIPS,
     calculate = function(self,card,context)
         if context.selling_self then--checks if the joker is being sold
@@ -48,7 +48,7 @@ ANVA.Tweak {
 ANVA.Tweak {
     key = 'lever',
     atlas = 'wip',
-    pos = { x = 0, y = 0 },
+    pos = { x = 1, y = 0 },
     badge_colour = G.C.CHIPS,
     config = {increase = 1.1, reset_rate = 0.5, threshold_rate = 2,},
     loc_vars = function(self, info_queue, card)

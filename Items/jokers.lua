@@ -24,7 +24,7 @@ SMODS.Joker({
 	discovered = false,
 	blueprint_compat = false, --If this is true, blueprint will say "Compatible"
 	pos = {
-		x = 0,
+		x = 2,
 		y = 0, --the position in the atlas. x + 1 would be 71 pixels to the right (cause the atlas is set to 71px) and y + 1 would be 95 pixels down (cause the atlas is set to 95px)
 	},
 	config = {
@@ -102,7 +102,7 @@ SMODS.Joker({
 	discovered = false,
 	blueprint_compat = true,
 	pos = {
-		x = 0,
+		x = 2,
 		y = 0,
 	},
 	config = {
@@ -136,7 +136,7 @@ SMODS.Joker({
 	discovered = false,
 	blueprint_compat = true,
 	pos = {
-		x = 0,
+		x = 2,
 		y = 0,
 	},
 	config = {
@@ -189,7 +189,7 @@ SMODS.Joker({
 	discovered = false,
 	blueprint_compat = true,
 	pos = {
-		x = 0,
+		x = 2,
 		y = 0,
 	},
 	calculate = function(self, card, context)
@@ -212,7 +212,7 @@ SMODS.Joker({
 SMODS.Joker({
 	key = "sinclair",
 	atlas = "wip",
-	pos = { x = 0, y = 0 },
+	pos = { x = 2, y = 0 },
 	rarity = 3,
 	cost = 10,
 	config = {
@@ -257,7 +257,7 @@ SMODS.Joker({
 SMODS.Joker({
 	key = "tree",
 	atlas = "wip",
-	pos = { x = 0, y = 0 },
+	pos = { x = 2, y = 0 },
 	rarity = 1,
 	cost = 4,
 	config = { extra = { mult = 3, mult_mod = 2 } },
@@ -285,7 +285,7 @@ SMODS.Joker({
 SMODS.Joker({
 	key = "frisk",
 	atlas = "wip",
-	pos = { x = 0, y = 0 },
+	pos = { x = 2, y = 0 },
 	rarity = 1,
 	cost = 3,
 	config = { extra = { chips = 20 } },
@@ -322,7 +322,7 @@ SMODS.Joker({
 SMODS.Joker({
 	key = "poe",
 	atlas = "wip",
-	pos = { x = 0, y = 0 },
+	pos = { x = 2, y = 0 },
 	rarity = 2,
 	cost = 10,
 	config = { extra = { mult = 4, timer = 0 } },
@@ -363,7 +363,7 @@ SMODS.Joker({
 SMODS.Joker{
 	key = "pugnala",
 	atlas = "wip",
-	pos = { x = 0, y = 0 },
+	pos = { x = 2, y = 0 },
 	rarity = 2,
 	cost = 3,
 	config = { extra = { xmult = 3 } },

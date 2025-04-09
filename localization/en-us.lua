@@ -17,14 +17,14 @@ return {
                 name = 'Charon',
                 text = { "Quintuples money",
                         "at the end of Shop",
-                         "{C:inactive}(Max of {C:money}$2000{C:inactive}){}"
+                         "{C:inactive}(Max of {C:money}$#1#{C:inactive}){}"
                 }
             },
             j_anva_gaba = {
                 name = 'Gabriel, Apostate of Hate',
-                text = { "{X:mult,C:white}^1.25{} Mult",
+                text = { "{X:mult,C:white}^#1#{} Mult",
                          "At end of shop, removes {C:planet}Divine{} from",
-                         "Joker to the left to gain {X:mult,C:white}+^0.75{} Mult"
+                         "Joker to the left to gain {X:mult,C:white}+^#2#{} Mult"
                 }
             },  
             j_anva_sinclair = {
@@ -52,7 +52,8 @@ return {
             },
             j_anva_tree = {
                 name = 'Tree',
-                text = { ""
+                text = { "{C:mult}+#1#{} Mult",
+                         "{C:mult}+#2#{} Mult at end of round"
                 }
             },
             j_anva_poe = {
@@ -60,6 +61,7 @@ return {
                 text = { ""
                 }
             },
+            
         },
         Augment={
             c_anva_aug_mother = {

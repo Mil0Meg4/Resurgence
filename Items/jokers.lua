@@ -199,7 +199,7 @@ SMODS.Joker({
 					key = "c_star",
 					area = G.consumeables,
 				})
-				new_card.ability.extra_value = (new_card.sell_cost * 25)-new_card.sell_cost
+				new_card.ability.extra_value = (new_card.sell_cost * 25) - new_card.sell_cost
 				new_card:set_cost()
 			end
 		end
@@ -219,7 +219,7 @@ SMODS.Joker({
 		extra = {
 			money = 10,
 			max = 100,
-			active = false
+			active = false,
 		},
 	},
 	unlocked = true,
@@ -227,34 +227,34 @@ SMODS.Joker({
 	blueprint_compat = true,
 	loc_vars = function(self, info_queue, card)
 		local anv = card.ability.extra
-		return { vars = { anv.money,anv.max } }
+		return { vars = { anv.money, anv.max } }
 	end,
 	calculate = function(self, card, context)
 		local anv = card.ability.extra
-		local c = context         --i got lazy. This is the same thing as anv, just used for "context"
+		local c = context --i got lazy. This is the same thing as anv, just used for "context"
 		if c.end_of_round and context.main_eval and not context.blueprint then
-			ease_dollars(anv.money)              --add money
+			ease_dollars(anv.money) --add money
 		end
-		if c.starting_shop and to_number(G.GAME.dollars) > anv.max then   --checks entering the shop and compares the ammount of dollars player has with anv.max, in this case 100. to_number() is for talisman compatiblity.
+		if c.starting_shop and to_number(G.GAME.dollars) > anv.max then --checks entering the shop and compares the ammount of dollars player has with anv.max, in this case 100. to_number() is for talisman compatiblity.
 			for i = 1, #G.jokers.cards do
-				if G.jokers.cards[i] ~= card and G.jokers.cards[i].debuff == false then     --checks for any card which is NOT THIS CARD and if the cards are debuffed.
-					SMODS.debuff_card(G.jokers.cards[i], true, card.config.center.key)   --debuffs the cards
-					anv.active = true  --sets active to true. I added this to avoid the cards being undebuffed for no reason when the shop is left with 0 cash or less.
+				if G.jokers.cards[i] ~= card and G.jokers.cards[i].debuff == false then --checks for any card which is NOT THIS CARD and if the cards are debuffed.
+					SMODS.debuff_card(G.jokers.cards[i], true, card.config.center.key) --debuffs the cards
+					anv.active = true --sets active to true. I added this to avoid the cards being undebuffed for no reason when the shop is left with 0 cash or less.
 				end
 			end
 		end
-		if c.ending_shop and to_number(G.GAME.dollars) <= 0 and anv.active then  --checks if the player has left the shop, compares the ammount of dollars player has to 0, and checks if active is true
+		if c.ending_shop and to_number(G.GAME.dollars) <= 0 and anv.active then --checks if the player has left the shop, compares the ammount of dollars player has to 0, and checks if active is true
 			for i = 1, #G.jokers.cards do
-				if G.jokers.cards[i] ~= card and G.jokers.cards[i].debuff == true then     --same thing as the one above, but this time checks for debuffed cards
+				if G.jokers.cards[i] ~= card and G.jokers.cards[i].debuff == true then --same thing as the one above, but this time checks for debuffed cards
 					SMODS.debuff_card(G.jokers.cards[i], false, card.config.center.key) --removes the debuff from debuffed cards
-					anv.active = false  --sets the check as false since it reverted
+					anv.active = false --sets the check as false since it reverted
 				end
 			end
 		end
 	end,
 })
 
-SMODS.Joker{
+SMODS.Joker({
 	key = "tree",
 	atlas = "wip",
 	pos = { x = 0, y = 0 },
@@ -274,15 +274,15 @@ SMODS.Joker{
 		local anv = card.ability.extra
 		if context.joker_main then
 			return {
-				mult = anv.mult
+				mult = anv.mult,
 			}
 		end
 		if context.end_of_round and not context.blueprint then
 			anv.mult = anv.mult + anv.mult_mod
 		end
-	end
-}
-SMODS.Joker{
+	end,
+})
+SMODS.Joker({
 	key = "frisk",
 	atlas = "wip",
 	pos = { x = 0, y = 0 },
@@ -304,13 +304,57 @@ SMODS.Joker{
 			local friends = 0
 			local rarities = {}
 			for i = 1, #G.jokers.cards do
-				if G.jokers.cards[i].ability.set == 'Joker' and not rarities[G.jokers.cards[i].config.center.rarity] then friends = friends+1
-				rarities[G.jokers.cards[i].config.center.rarity] = true	
+				if
+					G.jokers.cards[i].ability.set == "Joker" and not rarities[G.jokers.cards[i].config.center.rarity]
+				then
+					friends = friends + 1
+					rarities[G.jokers.cards[i].config.center.rarity] = true
 				end
 			end
 			return {
-				chips = anv.chips*friends
+				chips = anv.chips * friends,
 			}
 		end
-	end								
-}
+	end,
+})
+
+SMODS.Joker({
+	key = "poe",
+	atlas = "wip",
+	pos = { x = 0, y = 0 },
+	rarity = 2,
+	cost = 10,
+	config = { extra = { mult = 4, timer = 0 } },
+	unlocked = true,
+	discovered = false,
+	blueprint_compat = true,
+	loc_vars = function(self, info_queue, card)
+		local anv = card.ability.extra
+		return {
+			vars = { anv.mult, anv.timer },
+		}
+	end,
+	calculate = function(self, card, context)
+		local anv = card.ability.extra
+		if context.individual and context.cardarea == G.play then
+			if context.other_card:is_suit("Hearts") and not context.blueprint then
+				if anv.timer >= 2 then
+					anv.mult = anv.mult * 2
+					anv.timer = 1
+				else
+					anv.timer = anv.timer + 1
+				end
+				return {
+					mult = card.ability.extra.mult,
+				}
+			else
+				anv.timer = 0
+				anv.mult = 4
+			end
+		end
+		if context.after then
+			anv.mult = 4
+			anv.timer = 0
+		end
+	end,
+})

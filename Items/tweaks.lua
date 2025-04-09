@@ -58,10 +58,10 @@ ANVA.Tweak {
 		}
 	end,
     calculate = function(self,card,context)
-        if context.reroll_shop then--checks if rerolling
+        if context.reroll_shop and not card.config.center.immutable then--checks if rerolling
             ANVA.mod_table_values(card.ability,card.ability.anva_lever,{mult = self.config.increase},nil,{anva_lever = true},true)--modifies all values
         end
-        if context.end_of_round and G.GAME.blind.boss and not context.other_card then
+        if context.end_of_round and G.GAME.blind.boss and not context.other_card and not card.config.center.immutable then
             --I'm not explaining all of this, just know that this resets the values after they surpass the threshold
             local function reset_values(table,thr)
                 for k, v in pairs(table) do

@@ -26,7 +26,7 @@ ANVA.mod_table_values = function(table, ref, operation,target_keywords,banned_ke
                         table[k] = temp + (temp_ref * mult) - temp_ref--solves the math in order
                     end
                 end
-            elseif type(v) == "table" and ref and k then--if the value is a table do math on all the values inside of it
+            elseif type(v) == "table" and ref and k and not banned_keywords[k] then--if the value is a table do math on all the values inside of it
                 modify_values(v, ref[k])
             end
         end

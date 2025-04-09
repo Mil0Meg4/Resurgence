@@ -318,6 +318,47 @@ SMODS.Joker({
 	end								
 })
 
+SMODS.Joker({
+	key = "bartender",
+	atlas = "wip",
+	pos = { x = 2, y = 0 },
+	rarity = 2,
+	cost = 6,
+	config = { extra = { mult = 5, con_slot = 1 } },
+	unlocked = true,
+	discovered = false,
+	blueprint_compat = true,
+	loc_vars = function(self, info_queue, card)
+		local anv = card.ability.extra
+		return {
+			vars = { anv.mult, anv.con_slot },
+		}
+	end,
+	calculate = function(self, card, context)
+		if context.joker_main then
+			local anv = card.ability.extra
+			local drinks = 0
+			for i = 1, #G.consumeables.cards do
+				drinks = drinks + 1
+			end
+			return {
+				mult = anv.mult * drinks,
+			}
+		end
+	end,
+
+	add_to_deck = function(self, card, from_debuff)
+			local anv = card.ability.extra
+			G.consumeables.config.card_limit = G.consumeables.config.card_limit + anv.con_slot					
+	end,
+
+	remove_from_deck = function(self, card, from_debuff)
+		local anv = card.ability.extra
+		G.consumeables.config.card_limit = G.consumeables.config.card_limit - anv.con_slot					
+	end,
+
+
+})
 
 SMODS.Joker({
 	key = "poe",

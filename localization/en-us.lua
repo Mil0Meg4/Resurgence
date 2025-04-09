@@ -15,7 +15,8 @@ return {
             },
             j_anva_charon = {
                 name = 'Charon',
-                text = { "At end of shop, quintuple money",
+                text = { "Quintuples money",
+                        "at the end of Shop",
                          "{C:inactive}(Max of {C:money}$2000{C:inactive}){}"
                 }
             },
@@ -29,8 +30,9 @@ return {
             j_anva_sinclair = {
                 name = 'Sinclair',
                 text = {"Earns {C:money}$#1#{} at end of round.",
-                        "When Shop is entered, if you have {C:money}$#2#{} or more debuffs all",
-                        "other Jokers until you have {C:money}$0{} or less when exiting.",
+                        "When Shop is entered, if you have {C:money}$#2#{}",
+                        "or more {C:red}debuffs{} all other {C:attention}Jokers{} until",
+                        "you have {C:money}$0{} or less when exiting."
                 },
             },
             j_anva_pugnala = {

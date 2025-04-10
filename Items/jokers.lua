@@ -277,11 +277,41 @@ SMODS.Joker({
 				mult = anv.mult,
 			}
 		end
-		if context.end_of_round and not context.blueprint then
+		if (context.end_of_round and context.cardarea == G.jokers) and not context.blueprint then
 			anv.mult = anv.mult + anv.mult_mod
 		end
 	end,
 })
+
+SMODS.Joker({
+	key = "tree3",
+	atlas = "wip",
+	pos = { x = 2, y = 0 },
+	rarity = "anva_unb",
+	cost = 400,
+	config = { extra = { eeemult = 3, eeemult_mod = 2 } },
+	unlocked = true,
+	discovered = false,
+	blueprint_compat = true,
+	loc_vars = function(self, info_queue, card)
+		local anv = card.ability.extra
+		return {
+			vars = { anv.eeemult, anv.eeemult_mod },
+		}
+	end,
+	calculate = function(self, card, context)
+		local anv = card.ability.extra
+		if context.joker_main then
+			return {
+				eeemult = anv.eeemult,
+			}
+		end
+		if (context.end_of_round and context.cardarea == G.jokers) and not context.blueprint then
+			anv.eeemult = anv.eeemult + anv.eeemult_mod
+		end
+	end,
+})
+
 SMODS.Joker({
 	key = "frisk",
 	atlas = "wip",
@@ -315,9 +345,48 @@ SMODS.Joker({
 				chips = anv.chips * friends,
 			}
 		end
-	end								
+	end,
 })
 
+SMODS.Joker({
+	key = "bartender",
+	atlas = "wip",
+	pos = { x = 2, y = 0 },
+	rarity = 2,
+	cost = 6,
+	config = { extra = { mult = 5, con_slot = 1 } },
+	unlocked = true,
+	discovered = false,
+	blueprint_compat = true,
+	loc_vars = function(self, info_queue, card)
+		local anv = card.ability.extra
+		return {
+			vars = { anv.mult, anv.con_slot },
+		}
+	end,
+	calculate = function(self, card, context)
+		if context.joker_main then
+			local anv = card.ability.extra
+			local drinks = 0
+			for i = 1, #G.consumeables.cards do
+				drinks = drinks + 1
+			end
+			return {
+				mult = anv.mult * drinks,
+			}
+		end
+	end,
+
+	add_to_deck = function(self, card, from_debuff)
+		local anv = card.ability.extra
+		G.consumeables.config.card_limit = G.consumeables.config.card_limit + anv.con_slot
+	end,
+
+	remove_from_deck = function(self, card, from_debuff)
+		local anv = card.ability.extra
+		G.consumeables.config.card_limit = G.consumeables.config.card_limit - anv.con_slot
+	end,
+})
 
 SMODS.Joker({
 	key = "poe",
@@ -360,7 +429,7 @@ SMODS.Joker({
 	end,
 })
 
-SMODS.Joker{
+SMODS.Joker({
 	key = "pugnala",
 	atlas = "wip",
 	pos = { x = 2, y = 0 },
@@ -369,21 +438,141 @@ SMODS.Joker{
 	config = { extra = { xmult = 3 } },
 	unlocked = true,
 	discovered = false,
-	blueprint_compat = true,			
+	blueprint_compat = true,
 	calculate = function(self, card, context)
-	local anv = card.ability.extra
+		local anv = card.ability.extra
 		if context.joker_main then
 			local suits = ANVA.get_suits(G.play.cards)
 			local other_suits = false
-			for k,v in pairs(suits) do
+			for k, v in pairs(suits) do
 				if k ~= "Clubs" and k ~= "Diamonds" and v > 0 then
-					other_suits = true 
-
+					other_suits = true
 				end
 			end
 			if not other_suits then
-				return { xmult = anv.xmult}
+				return { xmult = anv.xmult }
 			end
 		end
+	end,
+})
+
+SMODS.Joker({
+	key = "jandc",
+	atlas = "wip",
+	pos = { x = 0, y = 0 },
+	rarity = 3,
+	cost = 10,
+	config = { extra = { chips = 50, con_slot = 8 } },
+	unlocked = true,
+	discovered = false,
+	blueprint_compat = true,
+	loc_vars = function(self, info_queue, card)
+		local anv = card.ability.extra
+		return {
+			vars = { anv.chips, anv.con_slot },
+		}
+	end,
+	calculate = function(self, card, context)
+		if context.joker_main then
+			local anv = card.ability.extra
+			local stuff = 0
+			local stuff_minus = 0
+			stuff_minus = stuff - 4
+			for i = 1, #G.consumeables.cards do
+				stuff = stuff + 1
+			end
+			if stuff_minus > 0 then
+				return {
+					chips = -stuff_minus * anv.chips,
+				}
+			end
+		end
+	end,
+
+	add_to_deck = function(self, card, from_debuff)
+		local anv = card.ability.extra
+		G.consumeables.config.card_limit = G.consumeables.config.card_limit + anv.con_slot
+	end,
+
+	remove_from_deck = function(self, card, from_debuff)
+		local anv = card.ability.extra
+		G.consumeables.config.card_limit = G.consumeables.config.card_limit - anv.con_slot
+	end,
+})
+
+function nonstone()
+	local bb = #G.playing_cards
+	if G.playing_cards then
+		for _, v in pairs(G.playing_cards) do
+			if SMODS.has_enhancement(v, "m_stone") then
+				bb = bb - 1
+			end
+		end
+		return bb
 	end
-}
+	return #G.playing_cards
+end
+
+SMODS.Joker({
+	key = "doom",
+	atlas = "wip",
+	rarity = "anva_prim",
+	cost = 10,
+	unlocked = true,
+	discovered = false,
+	blueprint_compat = true,
+	pos = {
+		x = 2,
+		y = 0,
+	},
+	config = {
+		extra = {
+			chips = 125000,
+			chips2 = 2500000
+		},
+	},
+	loc_vars = function(self, info_queue, card)
+		local anv = card.ability.extra
+		return {
+			vars = { anv.max },
+		}
+	end,
+	calculate = function(self, card, context)
+		local anv = card.ability.extra
+		if context.joker_main then
+	if nonstone() > 0 then
+			return{
+				chips = anv.chips,
+			}
+	else
+			return{
+				chips = anv.chips2,
+			}
+		end
+	end
+	if context.individual and context.cardarea == G.play then
+		if context.other_card.ability.effect == "Stone Card" then
+			local cards = {}
+			for i = 1, #G.playing_cards do
+				if G.playing_cards[i].ability.effect ~= "Stone Card" then
+					cards[#cards + 1] = G.playing_cards[i]
+				end
+			end
+			print(#cards)
+			G.E_MANAGER:add_event(Event({
+				func = function()
+					if #cards > 0 then
+					local card2 = pseudorandom_element(cards, pseudoseed("doom"))
+					card2:start_dissolve({ HEX("57ecab") }, nil, 0.1) 
+					card2 = nil
+					end
+					return true
+				end,
+			}))
+		end
+	end
+end,
+	in_pool = function(self, wawa, wawa2)
+		return false
+	end,
+})

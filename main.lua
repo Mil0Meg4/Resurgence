@@ -33,7 +33,6 @@ function Card:start_dissolve(dissolve_colours, silent, dissolve_time_fac, no_jui
 		SMODS.calculate_context({ anva_destroyed = true, card = self })
 	end
 	return oldfunc(self, dissolve_colours, silent, dissolve_time_fac, no_juice)
-<<<<<<< HEAD
 end
 
 -------------------------------------------------------------
@@ -84,6 +83,4 @@ end
 local other_objects_ref = create_UIBox_Other_GameObjects
 create_UIBox_Other_GameObjects = function()
     return wrap_without_paints_and_tweaks(other_objects_ref)
-=======
->>>>>>> 2987931fdccf91018f295359cf54c7140247b9be
 end

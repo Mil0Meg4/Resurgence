@@ -56,6 +56,12 @@ return {
                          "{C:mult}+#2#{} Mult at end of round"
                 }
             },
+            j_anva_tree3 = {
+                name = 'Tree(3)',
+                text = { "{X:mult,C:white}^^^#1#{} Mult",
+                         "{X:mult,C:white}^^^#2#{} Mult at end of round"
+                }
+            },
             j_anva_poe = {
                 name = 'Poe',
                 text = { ""

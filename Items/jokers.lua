@@ -364,7 +364,7 @@ SMODS.Joker({
 	end,
 	calculate = function(self, card, context)
 		if context.before and #G.play.cards == 1 then
-			ANVA.set_paint(card, "blue")
+			ANVA.set_paint(G.play.cards[1], "blue")
 			
 		end
 	end,

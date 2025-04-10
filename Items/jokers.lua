@@ -459,7 +459,7 @@ SMODS.Joker({
 SMODS.Joker({
 	key = "jandc",
 	atlas = "wip",
-	pos = { x = 0, y = 0 },
+	pos = { x = 2, y = 0 },
 	rarity = 3,
 	cost = 10,
 	config = { extra = { chips = 50, con_slot = 8 } },

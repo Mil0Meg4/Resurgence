@@ -349,42 +349,6 @@ SMODS.Joker({
 })
 
 SMODS.Joker({
-	key = "frisk",
-	atlas = "wip",
-	pos = { x = 2, y = 0 },
-	rarity = 1,
-	cost = 3,
-	config = { extra = { chips = 20 } },
-	unlocked = true,
-	discovered = false,
-	blueprint_compat = true,
-	loc_vars = function(self, info_queue, card)
-		local anv = card.ability.extra
-		return {
-			vars = { anv.chips },
-		}
-	end,
-	calculate = function(self, card, context)
-		if context.joker_main then
-			local anv = card.ability.extra
-			local friends = 0
-			local rarities = {}
-			for i = 1, #G.jokers.cards do
-				if
-					G.jokers.cards[i].ability.set == "Joker" and not rarities[G.jokers.cards[i].config.center.rarity]
-				then
-					friends = friends + 1
-					rarities[G.jokers.cards[i].config.center.rarity] = true
-				end
-			end
-			return {
-				chips = anv.chips * friends,
-			}
-		end
-	end								
-})
-
-SMODS.Joker({
 	key = "bartender",
 	atlas = "wip",
 	pos = { x = 2, y = 0 },

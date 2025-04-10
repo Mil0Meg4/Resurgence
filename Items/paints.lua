@@ -25,10 +25,19 @@ ANVA.Paint_keys = {
     "blue",
 }
 
+SMODS.Shader {
+    key = 'red',
+    path = 'red.fs'
+}
+SMODS.Shader {
+    key = 'blue',
+    path = 'blue.fs'
+}
+
 ANVA.Paint {
     key = 'paint_red',
     badge_colour = G.C.RED,
-    shader = 'divine',
+    shader = 'red',
     config = {mult = 8},
     loc_vars = function(self, info_queue, card)
         return { vars = { card.paint.mult } }
@@ -44,7 +53,7 @@ ANVA.Paint {
 ANVA.Paint {
     key = 'paint_blue',
     badge_colour = G.C.CHIPS,
-    shader = 'divine',
+    shader = 'blue',
     config = {chips = 40},
     loc_vars = function(self, info_queue, card)
         return { vars = { card.paint.chips } }

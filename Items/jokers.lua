@@ -349,6 +349,29 @@ SMODS.Joker({
 })
 
 SMODS.Joker({
+	key = "papyrus",
+	atlas = "wip",
+	pos = { x = 2, y = 0 },
+	rarity = 1,
+	cost = 2,
+	config = {},
+	unlocked = true,
+	discovered = false,
+	blueprint_compat = true,
+	loc_vars = function(self, info_queue, card)
+		local anv = card.ability.extra
+		return {}
+	end,
+	calculate = function(self, card, context)
+		if context.before and #G.play.cards == 1 then
+			ANVA.set_paint(card, "blue")
+			
+		end
+	end,
+})
+
+
+SMODS.Joker({
 	key = "bartender",
 	atlas = "wip",
 	pos = { x = 2, y = 0 },

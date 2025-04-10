@@ -48,7 +48,7 @@ function ANVA.is_tweak(str)
     return false
 end
 
---Removes a joker's tweak
+--Removes a joker's Tweak
 function ANVA.remove_tweak(card)
         for k, _ in pairs(card and card.ability or {}) do
             if ANVA.is_tweak(k) then
@@ -57,7 +57,7 @@ function ANVA.remove_tweak(card)
         end
     end
   
---Sets a joker's tweak, repleacing previous one
+--Sets a joker's Tweak, repleacing previous one
   function ANVA.set_tweak(card, type)
     local key = 'anva_' .. type
   
@@ -67,6 +67,35 @@ function ANVA.remove_tweak(card)
     end
 end
 
+--Returns true if imputed Sticker is a Paint
+function ANVA.is_paint(str)
+    local paints = ANVA.Paint_keys
+    for _, v in ipairs(paints) do
+        if 'anva_paint_' .. v == str then
+            return true
+        end
+    end
+    return false
+end
+
+--Removes a joker's Paint
+function ANVA.remove_paint(card)
+        for k, _ in pairs(card and card.ability or {}) do
+            if ANVA.is_paint(k) then
+                card.ability[k] = nil
+            end
+        end
+    end
+
+--Sets a joker's Paint, repleacing previous one
+  function ANVA.set_paint(card, type)
+    local key = 'anva_paint_' .. type
+  
+    if card and ANVA.is_paint(key) then
+        ANVA.remove_paint(card)
+      SMODS.Stickers[key]:apply(card, true)
+    end
+end
 
 --Returns a table with all the suit in hand and the number of cards of each
 function ANVA.get_suits(scoring_hand, bypass_debuff)

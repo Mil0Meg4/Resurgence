@@ -78,22 +78,10 @@ ANVA.Tweak {
         end
     end,
     apply = function(self, card, val)--called when applying the tweak or sticker
-        card.ability[self.key] = val--applies the sticker manually since `apply` overwrites the original function
+        card.ability[self.key] = val and copy_table(self.config) or nil--applies the sticker manually since `apply` overwrites the original function
         card.ability.anva_lever = copy_table(card.ability)--saves the values to know when to reset them
     end
 }
-
-SMODS.current_mod.custom_collection_tabs = function()
-    return {
-        UIBox_button({
-        button = 'your_collection_anva_tweaks',
-        id = 'your_collection_anva_tweaks',
-        label = { localize('anva_tweak_ui') },
-        minw = 5,
-        minh = 1
-        })
-    }
-end
 
 -------------------------------------------------------------
 ----stuff for making tweaks have their own collection tab----
@@ -128,30 +116,3 @@ G.FUNCS.your_collection_anva_tweaks = function()
     }
 end
 
-local function wrap_without_tweaks(func)
-    local removed = {}
-    for k, v in pairs(SMODS.Stickers) do
-        if ANVA.is_tweak(k) then
-        removed[k] = v
-        SMODS.Stickers[k] = nil
-        end
-    end
-
-    local ret = func()
-
-    for k, v in pairs(removed) do
-        SMODS.Stickers[k] = v
-    end
-
-    return ret
-end
-
-local stickers_ui_ref = create_UIBox_your_collection_stickers
-create_UIBox_your_collection_stickers = function()
-    return wrap_without_tweaks(stickers_ui_ref)
-end
-
-local other_objects_ref = create_UIBox_Other_GameObjects
-create_UIBox_Other_GameObjects = function()
-    return wrap_without_tweaks(other_objects_ref)
-end

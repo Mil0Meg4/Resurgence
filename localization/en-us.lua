@@ -89,6 +89,16 @@ return {
                 text = { ""
                 }
             },
+            anva_paint_red = {
+                name = 'Red Paint',
+                text = { "{C:red}+#1#{} Mult"
+                }
+            },
+            anva_paint_blue = {
+                name = 'Red Paint',
+                text = { "{C:chips}+#1#{} Chips"
+                }
+            },
         },
         Planet={},
         Spectral={},
@@ -108,12 +118,15 @@ return {
             k_anva_unb = "Unbound",
             k_augment = "Augment Card",
             b_augment_cards = "Augment Cards",
-            anva_tweak_ui = "Tweaks"
+            anva_tweak_ui = "Tweaks",
+            anva_paint_ui = "Paints"
         },
         high_scores={},
         labels={
             anva_prim = "Primordial",
             anva_unb = "Unbound",
+            anva_paint_red = "Red Paint",
+            anva_paint_blue = "Blue Paint",
         },
         poker_hand_descriptions={},
         poker_hands={},

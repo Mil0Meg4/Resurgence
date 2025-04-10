@@ -277,11 +277,77 @@ SMODS.Joker({
 				mult = anv.mult,
 			}
 		end
-		if context.end_of_round and not context.blueprint then
+		if (context.end_of_round and context.cardarea == G.jokers) and not context.blueprint then
 			anv.mult = anv.mult + anv.mult_mod
 		end
 	end,
 })
+
+SMODS.Joker({
+	key = "tree3",
+	atlas = "wip",
+	pos = { x = 2, y = 0 },
+	rarity = "anva_unb",
+	cost = 400,
+	config = { extra = { eeemult = 3, eeemult_mod = 2 } },
+	unlocked = true,
+	discovered = false,
+	blueprint_compat = true,
+	loc_vars = function(self, info_queue, card)
+		local anv = card.ability.extra
+		return {
+			vars = { anv.eeemult, anv.eeemult_mod },
+		}
+	end,
+	calculate = function(self, card, context)
+		local anv = card.ability.extra
+		if context.joker_main then
+			return {
+				eeemult = anv.eeemult,
+			}
+		end
+		if (context.end_of_round and context.cardarea == G.jokers) and not context.blueprint then
+			anv.eeemult = anv.eeemult + anv.eeemult_mod
+		end
+	end,
+})
+
+SMODS.Joker({
+	key = "frisk",
+	atlas = "wip",
+	pos = { x = 2, y = 0 },
+	rarity = 1,
+	cost = 3,
+	config = { extra = { chips = 20 } },
+	unlocked = true,
+	discovered = false,
+	blueprint_compat = true,
+	loc_vars = function(self, info_queue, card)
+		local anv = card.ability.extra
+		return {
+			vars = { anv.chips },
+		}
+	end,
+	calculate = function(self, card, context)
+		if context.joker_main then
+			local anv = card.ability.extra
+			local friends = 0
+			local rarities = {}
+			for i = 1, #G.jokers.cards do
+				if
+					G.jokers.cards[i].ability.set == "Joker" and not rarities[G.jokers.cards[i].config.center.rarity]
+				then
+					friends = friends + 1
+					rarities[G.jokers.cards[i].config.center.rarity] = true
+				end
+			end
+			return {
+				chips = anv.chips * friends,
+			}
+		end
+	end								
+})
+
 SMODS.Joker({
 	key = "frisk",
 	atlas = "wip",

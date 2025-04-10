@@ -67,6 +67,12 @@ return {
                 text = { ""
                 }
             },
+            j_anva_jandc = {
+                name = 'Johnathon & Charlotte',
+                text = { "+8 Consumable Slots",
+                         "-50 Chips for every held non-negative consumable after the 4th"
+                }
+            },
             
         },
         Augment={

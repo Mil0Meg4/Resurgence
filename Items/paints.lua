@@ -40,12 +40,12 @@ ANVA.Paint {
     shader = 'red',
     config = {mult = 8},
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.paint.mult } }
+        return { vars = { self.config.mult } }
     end,
     calculate = function(self, card, context)
         if context.pre_joker or (context.main_scoring and context.cardarea == G.play) then
             return {
-                mult = card.paint.mult
+                mult = self.config.mult
             }
         end
     end
@@ -56,12 +56,12 @@ ANVA.Paint {
     shader = 'blue',
     config = {chips = 40},
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.paint.chips } }
+        return { vars = { self.config.chips } }
     end,
     calculate = function(self, card, context)
         if context.pre_joker or (context.main_scoring and context.cardarea == G.play) then
             return {
-                chips = card.paint.chips
+                chips = self.config.chips
             }
         end
     end

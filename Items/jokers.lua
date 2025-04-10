@@ -358,14 +358,12 @@ SMODS.Joker({
 	unlocked = true,
 	discovered = false,
 	blueprint_compat = true,
-	loc_vars = function(self, info_queue, card)
-		local anv = card.ability.extra
-		return {}
+	loc_vars = function(self, info_queue)
+		info_queue[#info_queue + 1] = { key = "anva_paint_blue", set = "Other", vars = {} }
 	end,
 	calculate = function(self, card, context)
 		if context.before and #G.play.cards == 1 then
 			ANVA.set_paint(G.play.cards[1], "blue")
-			
 		end
 	end,
 })

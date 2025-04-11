@@ -7,7 +7,7 @@
 	"description": "Enter the Primordial.",
 	"prefix": "anva",
 	"main_file": "main.lua",
-	"priority": 0,
+	"priority": 115,
 	"badge_colour": "3D3446",
 	"badge_text_colour": "880808",
 	"version": "0.1a",

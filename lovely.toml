@@ -11,3 +11,4 @@ pattern = "{card_limit = self.GAME.starting_params.joker_slots, type = 'joker', 
 position = "at"
 payload = "{card_limit = self.GAME.starting_params.joker_slots, type = 'joker', highlight_limit = 100})"
 match_indent = true
+

@@ -63,7 +63,7 @@ function ANVA.remove_tweak(card)
   
     if card and ANVA.is_tweak(key) then
         ANVA.remove_tweak(card)
-      SMODS.Stickers[key]:apply(card, true)
+        SMODS.Stickers[key]:apply(card, true)
     end
 end
 
@@ -93,7 +93,7 @@ function ANVA.remove_paint(card)
   
     if card and ANVA.is_paint(key) then
         ANVA.remove_paint(card)
-      SMODS.Stickers[key]:apply(card, true)
+        SMODS.Stickers[key]:apply(card, true)
     end
 end
 
@@ -124,4 +124,46 @@ function ANVA.get_suits(scoring_hand, bypass_debuff)
         end
     end
     return suits
+end
+
+--Polls a random paint, based on their weights.
+--Key is the seed, should be unique. Mod changes the chance of the paint being applied.
+--If Guaranteed is true, a paint will alwais be applied. Options is the list of the possible paints, includes all if left empty
+function poll_paint(_key, _mod, _guaranteed, _options)
+	local _modifier = 1
+	local paint_poll = pseudorandom(pseudoseed(_key or 'paint_generic')) 
+	local available_paints = {}                                         
+
+	if not _options then
+		_options = {}
+        for k, v in pairs(SMODS.Stickers) do
+            local is_paint = ANVA.is_paint(k)
+            local in_pool = (v.in_pool and type(v.in_pool) == "function") and v:in_pool({source = _key})
+            if is_paint and (in_pool or v.in_shop) then
+                _options[k] = v
+                table.insert(available_paints, v)
+            end
+        end
+	end
+
+	local total_weight = 0
+	for _, v in ipairs(available_paints) do
+		total_weight = total_weight + (v.weight) 
+	end
+
+	if not _guaranteed then
+		_modifier = _mod or 1
+		total_weight = total_weight + (total_weight / 4 * 94) -- Find total weight with base_card_rate as 96%
+	end
+	
+	local weight_i = 0
+	for _, v in ipairs(available_paints) do
+		weight_i = weight_i + v.weight * _modifier
+
+		if paint_poll > 1 - (weight_i) / total_weight then
+			return string.sub(v.key,12)
+		end
+	end
+
+	return nil
 end

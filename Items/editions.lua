@@ -27,7 +27,8 @@ SMODS.Edition{
 	config = { dollars = 6 },
     calculate = function(self, card, context)
         if (context.main_scoring and context.cardarea  == G.play) or (context.end_of_round and context.cardarea == G.jokers) then -- checks cards in main scoring phase and jokers in joker area
-            return { p_dollars = self.config.dollars }end    
-        end
+            return { p_dollars = self.config.dollars }
+        end    
+    end
 }
 

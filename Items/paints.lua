@@ -4,10 +4,14 @@ ANVA.Paint = SMODS.Sticker:extend {
     should_apply = false,
     config = {},
     rate = 0,
+    in_shop = true,
     sets = {
         Default = true
     },
-
+    in_pool = function(self,source)
+		return true
+	end,
+    weight = 0,
     draw = function(self, card)
         card.children.center:draw_shader(self.shader or 'foil', nil, card.ARGS.send_to_shader)
         if card.children.front and not SMODS.has_no_rank(card) then
@@ -57,6 +61,7 @@ ANVA.Paint {
     key = 'paint_blue',
     badge_colour = G.C.CHIPS,
     shader = 'blue',
+    weight = 26,
     config = {chips = 40},
     loc_vars = function(self, info_queue, card)
         local anv = self.config or card.paint
@@ -74,6 +79,7 @@ ANVA.Paint {
     key = 'paint_red',
     badge_colour = G.C.RED,
     shader = 'red',
+    weight = 26,
     config = {mult = 8},
     loc_vars = function(self, info_queue, card)
         local anv = self.config or card.paint
@@ -92,6 +98,7 @@ ANVA.Paint {
     key = 'paint_green',
     badge_colour = G.C.GREEN,
     shader = 'green',
+    weight = 24,
     config = {dis = 1},
     loc_vars = function(self, info_queue, card)
         local anv = self.config or card.paint
@@ -111,6 +118,7 @@ ANVA.Paint {
     key = 'paint_yellow',
     badge_colour = G.C.MONEY,
     shader = 'yellow',
+    weight = 24,
     config = {dollars = 4},
     loc_vars = function(self, info_queue, card)
         local anv = self.config or card.paint
@@ -126,6 +134,7 @@ ANVA.Paint {
     key = 'paint_orange',
     badge_colour = G.C.FILTER,
     shader = 'orange',
+    weight = 21,
     config = {ret = 1},
     loc_vars = function(self, info_queue, card)
         local anv = self.config or card.paint
@@ -143,6 +152,21 @@ ANVA.Paint {
     end
 }
 
+--gives cards a random chance of being painted
+local orig_create_card = create_card
+function create_card(_type, area, legendary, _rarity, skip_materialize, soulable, forced_key, key_append)
+    print("ok")
+    local _card = orig_create_card(_type, area, legendary, _rarity, skip_materialize, soulable, forced_key, key_append)
+    local paint = nil
+    if (_type=='Base' or _type == 'Enhanced') then
+        paint = poll_paint('paint'..(key_append or '')..G.GAME.round_resets.ante,2)
+    end
+    if (_type=='Joker') then
+        paint = poll_paint('paint'..(key_append or '')..G.GAME.round_resets.ante)
+    end
+    if paint then ANVA.set_paint(_card,paint) end
+    return _card
+end
 -------------------------------------------------------------
 ----stuff for making paints have their own collection tab----
 -------------------------------------------------------------

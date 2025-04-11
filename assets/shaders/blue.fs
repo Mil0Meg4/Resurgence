@@ -97,8 +97,7 @@ vec4 HSL(vec4 c)
 extern PRECISION float lines_offset;
 
 
-vec4 paint_color = vec4(0., 0., 250., 0.) / 255.;
-
+vec4 paint_color = vec4(0., 0., 255., 0.) / 255.;
 vec4 dissolve_mask(vec4 final_pixel, vec2 texture_coords, vec2 uv);
 
 
@@ -108,12 +107,12 @@ vec4 effect( vec4 colour, Image texture, vec2 texture_coords, vec2 screen_coords
     vec4 pixel = Texel(texture, texture_coords);
     vec4 tex = Texel( texture, texture_coords);
 
-    vec2 adjusted_uv = uv - vec2(1.2, -0.1);
+    vec2 adjusted_uv = uv - vec2(0.5, 0.5);
     adjusted_uv.x = adjusted_uv.x*texture_details.b/texture_details.a;
 
     number low = min(tex.r, min(tex.g, tex.b));
     number high = max(tex.r, max(tex.g, tex.b));
-	number delta = min(high, max(0.6, 1. - low));
+	number delta = min(high, max(0.5, 1. - low));
 
     number fac = 0.8 + 0.9*sin(11.*uv.x+4.32*uv.y + blue.r*12. + cos(blue.r*5.3 + uv.y*4.2 - uv.x*4.));
     number fac2 = 0.5 + 0.5*sin(8.*uv.x+2.32*uv.y + blue.r*5. - cos(blue.r*2.3 + uv.x*8.2));
@@ -124,19 +123,16 @@ vec4 effect( vec4 colour, Image texture, vec2 texture_coords, vec2 screen_coords
     vec4 hsl = HSL(tex);
     
     hsl.y = 0.02;
-    hsl.z *= (0.7 - adjusted_uv.x*(cos(blue.r*0.5)));
-    hsl.z *= (1.0 - adjusted_uv.y*(cos(blue.r*0.5)));
+    hsl.z *= (0.5 - adjusted_uv.x*(cos(blue.r*0.5)));
+    hsl.z *= (0.5 - adjusted_uv.y*(cos(blue.r*0.5)));
     tex = RGB(hsl)+paint_color;
 
-    number maxfac = 0.05*max(max(fac, max(fac2, max(fac3,0.8))) + (fac+fac2+fac3*fac4), 0.);
-    tex.b = tex.b-delta + delta*maxfac*(0.6 - fac5*0.3) - 0.2;
-    tex.r = tex.r-delta + delta*maxfac*(0.6 - fac5*0.1) - 0.2;
-    tex.g = tex.g-delta + delta*maxfac*(0.6 - fac5*0.1) - 0.2;
+    //tex.b = tex.b-delta + delta;
+    //tex.r = tex.r-delta + delta*-2;
+    //tex.g = tex.g-delta + delta*-2;
 
-
-    if (uv.x > 2. * uv.x) {
-        uv = blue;
-    }
+    tex.a = 0.8*min(tex.a, 0.3*tex.a + 0.9*min(0.5, 0.5));
+    
 
     return dissolve_mask(tex, texture_coords, uv);
 }

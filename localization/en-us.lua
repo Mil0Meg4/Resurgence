@@ -109,7 +109,7 @@ return {
                 }
             },
             anva_paint_blue = {
-                name = 'Red Paint',
+                name = 'Blue Paint',
                 text = { "{C:chips}+#1#{} Chips"
                 }
             },

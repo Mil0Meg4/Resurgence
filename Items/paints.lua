@@ -13,6 +13,7 @@ ANVA.Paint = SMODS.Sticker:extend {
         if card.children.front and not SMODS.has_no_rank(card) then
             card.children.front:draw_shader(self.shader or 'foil', nil, card.ARGS.send_to_shader)
         end
+        --if card.edition then card.children.center:draw_shader("polychrome", nil, card.ARGS.send_to_shader) end
     end,
 
     apply = function(self, card, val)
@@ -43,7 +44,8 @@ ANVA.Paint {
     shader = 'red',
     config = {mult = 8},
     loc_vars = function(self, info_queue, card)
-        return { vars = { self.config.mult } }
+        local anv = self.config or card.paint
+        return { vars = { anv.mult } }
     end,
     calculate = function(self, card, context)
         if context.pre_joker or (context.main_scoring and context.cardarea == G.play) then
@@ -59,7 +61,8 @@ ANVA.Paint {
     shader = 'blue',
     config = {chips = 40},
     loc_vars = function(self, info_queue, card)
-        return { vars = { self.config.chips } }
+        local anv = self.config or card.paint
+        return { vars = { anv.chips } }
     end,
     calculate = function(self, card, context)
         if context.pre_joker or (context.main_scoring and context.cardarea == G.play) then

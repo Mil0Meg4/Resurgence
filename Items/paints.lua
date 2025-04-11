@@ -10,11 +10,14 @@ ANVA.Paint = SMODS.Sticker:extend {
 
     draw = function(self, card)
         card.children.center:draw_shader(self.shader or 'foil', nil, card.ARGS.send_to_shader)
+        if card.children.front and not SMODS.has_no_rank(card) then
+            card.children.front:draw_shader(self.shader or 'foil', nil, card.ARGS.send_to_shader)
+        end
     end,
 
     apply = function(self, card, val)
         card.ability[self.key] = val and copy_table(self.config) or nil
-        card.paint = val and copy_table(self.config) or nil
+        card.paint = val and copy_table(self.config) or nil 
     end
 }
 

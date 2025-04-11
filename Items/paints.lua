@@ -25,36 +25,34 @@ ANVA.Paint = SMODS.Sticker:extend {
 --table with all the paints' keys, needed for distinguishing them from stickers
 --when creating a new paint always add it here
 ANVA.Paint_keys = {
-    "red",
     "blue",
+    "red",
+    "green",
+    "yellow",
+    "orange",
 }
 
+SMODS.Shader {
+    key = 'blue',
+    path = 'blue.fs'
+}
 SMODS.Shader {
     key = 'red',
     path = 'red.fs'
 }
 SMODS.Shader {
-    key = 'blue',
-    path = 'blue.fs'
+    key = 'green',
+    path = 'green.fs'
+}
+SMODS.Shader {
+    key = 'yellow',
+    path = 'yellow.fs'
+}
+SMODS.Shader {
+    key = 'orange',
+    path = 'orange.fs'
 }
 
-ANVA.Paint {
-    key = 'paint_red',
-    badge_colour = G.C.RED,
-    shader = 'red',
-    config = {mult = 8},
-    loc_vars = function(self, info_queue, card)
-        local anv = self.config or card.paint
-        return { vars = { anv.mult } }
-    end,
-    calculate = function(self, card, context)
-        if context.pre_joker or (context.main_scoring and context.cardarea == G.play) then
-            return {
-                mult = self.config.mult
-            }
-        end
-    end
-}
 ANVA.Paint {
     key = 'paint_blue',
     badge_colour = G.C.CHIPS,
@@ -65,13 +63,86 @@ ANVA.Paint {
         return { vars = { anv.chips } }
     end,
     calculate = function(self, card, context)
-        if context.pre_joker or (context.main_scoring and context.cardarea == G.play) then
+        if context.joker_main or (context.main_scoring and context.cardarea == G.play) then
             return {
                 chips = self.config.chips
             }
         end
     end
 }
+ANVA.Paint {
+    key = 'paint_red',
+    badge_colour = G.C.RED,
+    shader = 'red',
+    config = {mult = 8},
+    loc_vars = function(self, info_queue, card)
+        local anv = self.config or card.paint
+        return { vars = { anv.mult } }
+    end,
+    calculate = function(self, card, context)
+        if context.joker_main or (context.main_scoring and context.cardarea == G.play) then
+            return {
+                mult = self.config.mult
+            }
+        end
+    end
+}
+
+ANVA.Paint {
+    key = 'paint_green',
+    badge_colour = G.C.GREEN,
+    shader = 'green',
+    config = {dis = 1},
+    loc_vars = function(self, info_queue, card)
+        local anv = self.config or card.paint
+        return { vars = { anv.dis } }
+    end,
+    calculate = function(self, card, context)
+        if (context.main_scoring and context.cardarea == G.play) or (context.setting_blind and not card.getting_sliced and context.cardarea == G.jokers) then -- checks cards in main scoring phase and jokers in joker area
+            ease_discard(self.config.dis)
+            return {
+                message = localize('k_discards'),
+                color = G.C.RED,
+            }
+        end
+    end
+}
+ANVA.Paint {
+    key = 'paint_yellow',
+    badge_colour = G.C.MONEY,
+    shader = 'yellow',
+    config = {dollars = 4},
+    loc_vars = function(self, info_queue, card)
+        local anv = self.config or card.paint
+        return { vars = { anv.dollars } }
+    end,
+    calculate = function(self, card, context)
+        if (context.main_scoring and context.cardarea  == G.play) or (context.end_of_round and context.cardarea == G.jokers) then -- checks cards in main scoring phase and jokers in joker area
+            return { dollars = self.config.dollars }
+        end
+    end
+}
+ANVA.Paint {
+    key = 'paint_orange',
+    badge_colour = G.C.FILTER,
+    shader = 'orange',
+    config = {ret = 1},
+    loc_vars = function(self, info_queue, card)
+        local anv = self.config or card.paint
+        return { vars = { anv.ret } }
+    end,
+    calculate = function(self, card, context)
+        if context.other_card == card and ((context.repetition and context.cardarea == G.play)
+        or (context.retrigger_joker_check and not context.retrigger_joker))
+		then
+			return {
+				message = localize('k_again_ex'),
+				repetitions = self.config.ret,
+			}
+		end
+    end
+}
+
 -------------------------------------------------------------
 ----stuff for making paints have their own collection tab----
 -------------------------------------------------------------

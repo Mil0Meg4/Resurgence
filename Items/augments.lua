@@ -98,3 +98,151 @@ SMODS.Consumable({
         return true end }))
     end
 })
+
+
+----debug stuff----
+--[[ SMODS.Consumable({
+    key = 'aug_red',
+    set = 'Augment',
+    atlas = 'wip',
+    pos = {x=0, y=0},
+    discovered = true,
+    config = {max_highlighted = 1, paint = "red"},
+    loc_vars = function(self, info_queue)
+        local anv = self.config
+		info_queue[#info_queue + 1] = { key = "anva_paint_"..anv.paint, set = "Other", vars = {} }
+		return { vars = {anv.max_highlighted} }
+	end,
+    can_use = function(self, card)--determins when you can use the consumable
+        --checks that at least one joker is selected but not more than the maximum allowed
+		return true
+	end,
+    use = function(self, card, area, copier)
+        G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.4,func = function()--short delay before the effect
+            play_sound('tarot1')--normal consumable shenanigans
+            card:juice_up(0.3, 0.5)--normal consumable shenanigans
+            for _, v in ipairs(G.jokers.highlighted) do--apply to all selected jokers
+                ANVA.set_paint(v, card.ability.paint)--set the tweak
+            end
+            for _, v in ipairs(G.hand.highlighted) do--apply to all selected jokers
+                ANVA.set_paint(v, card.ability.paint)--set the tweak
+            end
+        return true end }))
+    end
+})
+SMODS.Consumable({
+    key = 'aug_blue',
+    set = 'Augment',
+    atlas = 'wip',
+    pos = {x=0, y=0},
+    discovered = true,
+    config = {max_highlighted = 1, paint = "blue"},
+    loc_vars = function(self, info_queue)
+        local anv = self.config
+		info_queue[#info_queue + 1] = { key = "anva_paint_"..anv.paint, set = "Other", vars = {} }
+		return { vars = {anv.max_highlighted} }
+	end,
+    can_use = function(self, card)--determins when you can use the consumable
+        --checks that at least one joker is selected but not more than the maximum allowed
+		return true
+	end,
+    use = function(self, card, area, copier)
+        G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.4,func = function()--short delay before the effect
+            play_sound('tarot1')--normal consumable shenanigans
+            card:juice_up(0.3, 0.5)--normal consumable shenanigans
+            for _, v in ipairs(G.jokers.highlighted) do--apply to all selected jokers
+                ANVA.set_paint(v, card.ability.paint)--set the tweak
+            end
+            for _, v in ipairs(G.hand.highlighted) do--apply to all selected jokers
+                ANVA.set_paint(v, card.ability.paint)--set the tweak
+            end
+        return true end }))
+    end
+})
+SMODS.Consumable({
+    key = 'aug_green',
+    set = 'Augment',
+    atlas = 'wip',
+    pos = {x=0, y=0},
+    discovered = true,
+    config = {max_highlighted = 1, paint = "green"},
+    loc_vars = function(self, info_queue)
+        local anv = self.config
+		info_queue[#info_queue + 1] = { key = "anva_paint_"..anv.paint, set = "Other", vars = {} }
+		return { vars = {anv.max_highlighted} }
+	end,
+    can_use = function(self, card)--determins when you can use the consumable
+        --checks that at least one joker is selected but not more than the maximum allowed
+		return true
+	end,
+    use = function(self, card, area, copier)
+        G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.4,func = function()--short delay before the effect
+            play_sound('tarot1')--normal consumable shenanigans
+            card:juice_up(0.3, 0.5)--normal consumable shenanigans
+            for _, v in ipairs(G.jokers.highlighted) do--apply to all selected jokers
+                ANVA.set_paint(v, card.ability.paint)--set the tweak
+            end
+            for _, v in ipairs(G.hand.highlighted) do--apply to all selected jokers
+                ANVA.set_paint(v, card.ability.paint)--set the tweak
+            end
+        return true end }))
+    end
+})
+SMODS.Consumable({
+    key = 'aug_yellow',
+    set = 'Augment',
+    atlas = 'wip',
+    pos = {x=0, y=0},
+    discovered = true,
+    config = {max_highlighted = 1, paint = "yellow"},
+    loc_vars = function(self, info_queue)
+        local anv = self.config
+		info_queue[#info_queue + 1] = { key = "anva_paint_"..anv.paint, set = "Other", vars = {} }
+		return { vars = {anv.max_highlighted} }
+	end,
+    can_use = function(self, card)--determins when you can use the consumable
+        --checks that at least one joker is selected but not more than the maximum allowed
+		return true
+	end,
+    use = function(self, card, area, copier)
+        G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.4,func = function()--short delay before the effect
+            play_sound('tarot1')--normal consumable shenanigans
+            card:juice_up(0.3, 0.5)--normal consumable shenanigans
+            for _, v in ipairs(G.jokers.highlighted) do--apply to all selected jokers
+                ANVA.set_paint(v, card.ability.paint)--set the tweak
+            end
+            for _, v in ipairs(G.hand.highlighted) do--apply to all selected jokers
+                ANVA.set_paint(v, card.ability.paint)--set the tweak
+            end
+        return true end }))
+    end
+})
+SMODS.Consumable({
+    key = 'aug_orange',
+    set = 'Augment',
+    atlas = 'wip',
+    pos = {x=0, y=0},
+    discovered = true,
+    config = {max_highlighted = 1, paint = "orange"},
+    loc_vars = function(self, info_queue)
+        local anv = self.config
+		info_queue[#info_queue + 1] = { key = "anva_paint_"..anv.paint, set = "Other", vars = {} }
+		return { vars = {anv.max_highlighted} }
+	end,
+    can_use = function(self, card)--determins when you can use the consumable
+        --checks that at least one joker is selected but not more than the maximum allowed
+		return true
+	end,
+    use = function(self, card, area, copier)
+        G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.4,func = function()--short delay before the effect
+            play_sound('tarot1')--normal consumable shenanigans
+            card:juice_up(0.3, 0.5)--normal consumable shenanigans
+            for _, v in ipairs(G.jokers.highlighted) do--apply to all selected jokers
+                ANVA.set_paint(v, card.ability.paint)--set the tweak
+            end
+            for _, v in ipairs(G.hand.highlighted) do--apply to all selected jokers
+                ANVA.set_paint(v, card.ability.paint)--set the tweak
+            end
+        return true end }))
+    end
+}) ]]

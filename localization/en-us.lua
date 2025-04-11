@@ -113,6 +113,22 @@ return {
                 text = { "{C:chips}+#1#{} Chips"
                 }
             },
+            anva_paint_green = {
+                name = 'Green Paint',
+                text = { "{C:red}+#1#{} Discards"
+                }
+            },
+            anva_paint_yellow = {
+                name = 'Yellow Paint',
+                text = { "Earn {C:money}$#1#{}"
+                }
+            },
+            anva_paint_orange = {
+                name = 'Orange Paint',
+                text = { "Retriggers {C:attention}#1#{} time"
+                }
+            },
+            
         },
         Planet={},
         Spectral={},
@@ -141,6 +157,9 @@ return {
             anva_unb = "Unbound",
             anva_paint_red = "Red Paint",
             anva_paint_blue = "Blue Paint",
+            anva_paint_green = "Green Paint",
+            anva_paint_yellow = "Yellow Paint",
+            anva_paint_orange = "Orange Paint",
         },
         poker_hand_descriptions={},
         poker_hands={},

@@ -22,7 +22,6 @@ SMODS.Rarity({
 		["Planet"] = {
 			rate = 0.00066, --added which pool its in so it can naturally spawn. mess arround with it
 		},
-		{
 		["Joker"] = {
 			rate = 0.00006, --added which pool its in so it can naturally spawn. mess arround with it
 		},

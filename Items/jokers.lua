@@ -15,6 +15,21 @@ SMODS.Rarity({
 	pools = {},
 })
 
+SMODS.Rarity({
+	key = "gast_err",
+	badge_colour = G.C.WHITE,
+	pools = {
+		["Planet"] = {
+			rate = 0.00066, --added which pool its in so it can naturally spawn. mess arround with it
+		},
+		{
+		["Joker"] = {
+			rate = 0.00006, --added which pool its in so it can naturally spawn. mess arround with it
+		},
+	},
+	default_weight = 0.00066,
+})
+
 SMODS.Joker({
 	key = "sigma",
 	atlas = "wip", --the atlas obv

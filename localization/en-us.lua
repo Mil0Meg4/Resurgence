@@ -73,6 +73,11 @@ return {
                          "-50 Chips for every held non-negative consumable after the 4th"
                 }
             },
+            j_anva_pride_rainbow = {
+                name = 'Pride Flag',
+                text = { ""
+                }
+            },
             
         },
         Augment={

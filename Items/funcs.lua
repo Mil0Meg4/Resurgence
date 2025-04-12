@@ -133,19 +133,21 @@ function poll_paint(_key, _mod, _guaranteed, _options)
 	local _modifier = 1
 	local paint_poll = pseudorandom(pseudoseed(_key or 'paint_generic')) 
 	local available_paints = {}                                         
-
-	if not _options then
-		_options = {}
+    if _options then 
+        for k, v in pairs(SMODS.Stickers) do
+            if _options[string.sub(v.key,12)] then
+                table.insert(available_paints, v)
+            end
+        end
+	else
         for k, v in pairs(SMODS.Stickers) do
             local is_paint = ANVA.is_paint(k)
             local in_pool = (v.in_pool and type(v.in_pool) == "function") and v:in_pool({source = _key})
             if is_paint and (in_pool or v.in_shop) then
-                _options[k] = v
                 table.insert(available_paints, v)
             end
         end
 	end
-
 	local total_weight = 0
 	for _, v in ipairs(available_paints) do
 		total_weight = total_weight + (v.weight) 

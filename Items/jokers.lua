@@ -597,3 +597,25 @@ end,
 		return false
 	end,
 })
+
+SMODS.Joker {
+	key = 'plantain',
+	config = { 
+	  extra = {chips = 10, mult = 2} },
+	rarity = 1,
+	atlas = 'wip',
+	blueprint_compat = true,
+	eternal_compat = false,
+	perishable_compat = true,
+	pos = { x = 0, y = 0 },
+	cost = 5,
+	discovered = true,
+	calculate = function(self, card, context)
+		if context.joker_main then 
+			return{
+				chips = anv.chips,
+				mult = anv.mult
+			}
+		end
+	end
+  }

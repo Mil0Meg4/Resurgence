@@ -604,7 +604,7 @@ SMODS.Joker({
 	cost = 10,
 	unlocked = true,
 	discovered = false,
-	blueprint_compat = true,
+	blueprint_compat = false,
 	pos = {
 		x = 2,
 		y = 0,s
@@ -639,7 +639,7 @@ SMODS.Joker {
 	rarity = 1,
 	atlas = 'wip',
 	blueprint_compat = true,
-	eternal_compat = false,
+	eternal_compat = true,
 	perishable_compat = true,
 	pos = { x = 2, y = 0 },
 	cost = 5,

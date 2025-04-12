@@ -33,9 +33,9 @@ ANVA.Tweak {
     badge_colour = G.C.CHIPS,
     calculate = function(self,card,context)
         if context.selling_self then--checks if the joker is being sold
-			card.ability.extra.selling = true
+			card.ability.selling = true
 		end
-        if context.anva_destroyed and context.card == card and not card.ability.extra.selling then--checks if the jokers is destroyed but not sold
+        if context.anva_destroyed and context.card == card and not card.ability.selling then--checks if the jokers is destroyed but not sold
             --creates a copy of the joker
             local copy = copy_card(card, nil, nil, nil, nil)
             copy:start_materialize()

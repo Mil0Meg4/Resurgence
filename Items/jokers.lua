@@ -633,7 +633,7 @@ SMODS.Joker({
 
 
 SMODS.Joker {
-	key = 'plantain',
+	key = 'filth',
 	config = { 
 	  extra = {chips = 10, mult = 2} },
 	rarity = 1,
@@ -641,7 +641,7 @@ SMODS.Joker {
 	blueprint_compat = true,
 	eternal_compat = false,
 	perishable_compat = true,
-	pos = { x = 0, y = 0 },
+	pos = { x = 2, y = 0 },
 	cost = 5,
 	discovered = true,
 	calculate = function(self, card, context)

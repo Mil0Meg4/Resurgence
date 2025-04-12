@@ -152,14 +152,14 @@ ANVA.Paint {
     end
 }
 
---gives cards a random chance of being painted
+--gives cards a random chance of being painted, also handles pride flag
 local orig_create_card = create_card
 function create_card(_type, area, legendary, _rarity, skip_materialize, soulable, forced_key, key_append)
     local paints = nil
     local flag = false
     local pride_flag_paints = nil
     for i = 1, #G.jokers.cards do
-        pride_flag_paints = G.jokers.cards[i].config.center.pride_flag_paints or nil
+        pride_flag_paints = G.jokers.cards[i].config.center.pride_flag_paints or pride_flag_paints
     end
     if area == G.pack_cards and pride_flag_paints then
         paints = not pride_flag_paints["any"] and pride_flag_paints or nil

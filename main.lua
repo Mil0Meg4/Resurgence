@@ -35,6 +35,11 @@ function Card:start_dissolve(dissolve_colours, silent, dissolve_time_fac, no_jui
 	return oldfunc(self, dissolve_colours, silent, dissolve_time_fac, no_juice)
 end
 
+function SMODS.current_mod.reset_game_globals(run_start)
+	if run_start then
+    end
+end
+
 -------------------------------------------------------------
 ----stuff for making tweaks and paints have their own collection tabs----
 -------------------------------------------------------------

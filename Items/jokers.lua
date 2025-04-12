@@ -561,39 +561,73 @@ SMODS.Joker({
 	calculate = function(self, card, context)
 		local anv = card.ability.extra
 		if context.joker_main then
-	if nonstone() > 0 then
-			return{
-				chips = anv.chips,
-			}
-	else
-			return{
-				chips = anv.chips2,
-			}
-		end
-	end
-	if context.individual and context.cardarea == G.play then
-		if context.other_card.ability.effect == "Stone Card" then
-			local cards = {}
-			for i = 1, #G.playing_cards do
-				if G.playing_cards[i].ability.effect ~= "Stone Card" then
-					cards[#cards + 1] = G.playing_cards[i]
-				end
+			if nonstone() > 0 then
+				return{
+					chips = anv.chips,
+				}
+			else
+				return{
+					chips = anv.chips2,
+				}
 			end
-			print(#cards)
-			G.E_MANAGER:add_event(Event({
-				func = function()
-					if #cards > 0 then
-					local card2 = pseudorandom_element(cards, pseudoseed("doom"))
-					card2:start_dissolve({ HEX("57ecab") }, nil, 0.1) 
-					card2 = nil
-					end
-					return true
-				end,
-			}))
 		end
-	end
-end,
+		if context.individual and context.cardarea == G.play then
+			if context.other_card.ability.effect == "Stone Card" then
+				local cards = {}
+				for i = 1, #G.playing_cards do
+					if G.playing_cards[i].ability.effect ~= "Stone Card" then
+						cards[#cards + 1] = G.playing_cards[i]
+					end
+				end
+				print(#cards)
+				G.E_MANAGER:add_event(Event({
+					func = function()
+						if #cards > 0 then
+						local card2 = pseudorandom_element(cards, pseudoseed("doom"))
+						card2:start_dissolve({ HEX("57ecab") }, nil, 0.1) 
+						card2 = nil
+						end
+						return true
+					end,
+				}))
+			end
+		end
+	end,
 	in_pool = function(self, wawa, wawa2)
 		return false
 	end,
 })
+SMODS.Joker({
+	key = "pride_rainbow",
+	atlas = "wip",
+	rarity = 3,
+	cost = 10,
+	unlocked = true,
+	discovered = false,
+	blueprint_compat = true,
+	pos = {
+		x = 2,
+		y = 0,s
+	},
+	pride_flag_paints = {any=true}
+})
+--[[ SMODS.Joker({
+	key = "pride_test",
+	atlas = "wip",
+	rarity = 3,
+	cost = 10,
+	unlocked = true,
+	discovered = false,
+	blueprint_compat = true,
+	pos = {
+		x = 2,
+		y = 0,
+	},
+	pride_flag_paints = {red=true,blue=true,green=true},
+	loc_vars = function(self, info_queue, card)
+		for k,v in pairs(self.pride_flag_paints) do
+			info_queue[#info_queue + 1] = { key = "anva_paint_"..k, set = "Other", vars = {} }
+		end
+	end,
+}) ]]
+

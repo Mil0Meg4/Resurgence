@@ -705,7 +705,7 @@ SMODS.Joker {
 			local anv = card.ability.extra
 			local monsters = -1
 			for k,v in pairs(G.jokers.cards) do
-				if v.config.center.pools.underale then
+				if v.config.center.pools.undertale then
 				monsters = monsters + 1
 				end
 			end

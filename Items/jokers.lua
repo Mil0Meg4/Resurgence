@@ -703,15 +703,16 @@ SMODS.Joker {
 			local monsters = -1
 			for k,v in pairs(G.jokers.cards) do
 				if v.config.center.pools.undertale then
-				monsters = monsters + 1
+					monsters = monsters + 1
 				end
 			end
-			anv.chips = anv.chips+(anv.chipsadd*monsters)
+			anv.chips = anv.chips+(anv.chipsadd*monsters) 
+		end
 		if context.joker_main then
 			return{
 				chips = anv.chips
 			}
 		end
 	end
-end
+
   }

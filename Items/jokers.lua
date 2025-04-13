@@ -17,11 +17,8 @@ SMODS.Rarity({
 
 SMODS.Rarity({
 	key = "gast_err",
-	badge_colour = G.C.WHITE,
+	badge_colour = G.C.CHIPS,
 	pools = {
-		["Planet"] = {
-			rate = 0.00066, --added which pool its in so it can naturally spawn. mess arround with it
-		},
 		["Joker"] = {
 			rate = 0.00006, --added which pool its in so it can naturally spawn. mess arround with it
 		},

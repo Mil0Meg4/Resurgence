@@ -89,3 +89,39 @@ local other_objects_ref = create_UIBox_Other_GameObjects
 create_UIBox_Other_GameObjects = function()
     return wrap_without_paints_and_tweaks(other_objects_ref)
 end
+
+SMODS.ObjectType({
+	key = "undertale",
+	default = "j_anva_frisk",
+	cards = {},
+	inject = function(self)
+		SMODS.ObjectType.inject(self)
+	end,
+})
+
+SMODS.ObjectType({
+	key = "ultrakill",
+	default = "j_anva_filth",
+	cards = {},
+	inject = function(self)
+		SMODS.ObjectType.inject(self)
+	end,
+})
+
+SMODS.ObjectType({
+	key = "planar",
+	default = "j_anva_filth",
+	cards = {},
+	inject = function(self)
+		SMODS.ObjectType.inject(self)
+	end,
+})
+
+SMODS.ObjectType({
+	key = "vampire",
+	default = "j_anva_poe",
+	cards = {},
+	inject = function(self)
+		SMODS.ObjectType.inject(self)
+	end,
+})

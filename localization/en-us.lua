@@ -43,7 +43,15 @@ return {
             },
             j_anva_frisk = {
                 name = 'Frisk',
-                text = { ""
+                text = { "{C:chips}+20{} Chips for each",
+                         "{C:attention}unique rarity{} among your Jokers"
+                }
+            },
+            j_anva_papyrus = {
+                name = 'Papyrus',
+                text = { "If played hand contains",
+                         "{C:attention}exactly{} 1 card, paint played",
+                         "cards {C:blue}Blue{} before scoring"
                 }
             },
             j_anva_andromeda = {

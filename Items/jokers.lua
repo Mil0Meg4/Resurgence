@@ -660,9 +660,10 @@ SMODS.Joker {
 	discovered = true,
 	calculate = function(self, card, context)
 		if context.joker_main then 
+			local anv = card.ability.extra
 			return{
-				chips = anv.chips,
-				mult = anv.mult
+				mult = anv.mult,
+				chips = anv.chips
 			}
 		end
 	end

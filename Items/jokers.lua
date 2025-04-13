@@ -156,6 +156,7 @@ SMODS.Joker({
 			xxmultg = 0.75, --to increase
 		},
 	},
+	pools = {planar = true, ultrakill = true},
 	loc_vars = function(self, info_queue, card)
 		local anv = card.ability.extra --to avoid typing card.ability.extra each time. Not needed but very handy
 		return {
@@ -330,6 +331,7 @@ SMODS.Joker({
 	rarity = 1,
 	cost = 3,
 	config = { extra = { chips = 20 } },
+	pools = {planar = true, undertale = true},
 	unlocked = true,
 	discovered = false,
 	blueprint_compat = true,
@@ -363,6 +365,7 @@ SMODS.Joker({
 	key = "papyrus",
 	atlas = "wip",
 	pos = { x = 2, y = 0 },
+	pools = {planar = true, undertale = true},
 	rarity = 1,
 	cost = 2,
 	config = {},
@@ -427,6 +430,7 @@ SMODS.Joker({
 	rarity = 2,
 	cost = 10,
 	config = { extra = { mult = 4, timer = 0 } },
+	pools = {planar = true, vampire = true},
 	unlocked = true,
 	discovered = false,
 	blueprint_compat = true,
@@ -468,6 +472,7 @@ SMODS.Joker({
 	rarity = 2,
 	cost = 3,
 	config = { extra = { xmult = 3 } },
+	pools = {planar = true, vampire = true},
 	unlocked = true,
 	discovered = false,
 	blueprint_compat = true,
@@ -495,6 +500,7 @@ SMODS.Joker({
 	rarity = 3,
 	cost = 10,
 	config = { extra = { chips = 50, con_slot = 8 } },
+	pools = {planar = true, vampire = true},
 	unlocked = true,
 	discovered = false,
 	blueprint_compat = true,
@@ -647,6 +653,7 @@ SMODS.Joker {
 	key = 'filth',
 	config = { 
 	  extra = {chips = 10, mult = 2} },
+	pools = {planar = true, ultrakill = true},
 	rarity = 1,
 	atlas = 'wip',
 	blueprint_compat = true,
@@ -670,22 +677,42 @@ SMODS.Joker {
 	rarity = 2,
 	atlas = 'wip',
 	config = { 
-		extra = {chips = 5} },
+		extra = {chips = 5, chipsadd = 20} },
+	pools = {planar = true, undertale = true},
 	blueprint_compat = true,
 	eternal_compat = true,
 	pos = { x = 0, y = 0 },
 	cost = 7,
 	discovered = true,
+	loc_vars = function(self, info_queue, card)
+		local anv = card.ability.extra
+		return {
+			vars = { anv.chips, anv.chipsadd },
+		}
+	end,
 	calculate = function(self, card, context)
-	if context.setting_blind and G.GAME.blind:get_type() ~= 'Boss' and not context.blueprint then
-		local _tag = G.GAME.skip_tag
+		if context.setting_blind and G.GAME.blind:get_type() ~= 'Boss' and not context.blueprint then
+			local _tag = G.GAME.skip_tag
 			if _tag and _tag.config then
 				add_tag(_tag.config.ref_table)
 				G.GAME.skip_tag = ''
-			return {
-				chips = anv.chips
-			}
 			end
 		end
+		if context.skip_blind then
+			local anv = card.ability.extra
+			local monsters = -1
+			for k,v in pairs(G.jokers.cards) do
+				if v.config.center.pools.underale then
+				monsters = monsters + 1
+				end
+			end
+			anv.chips = anv.chips+(anv.chipsadd*monsters)
+		if context.joker_main then 
+			local anv = card.ability.extra
+			return{
+				chips = anv.chips
+			}
+		end
 	end
+end
   }

@@ -654,8 +654,7 @@ SMODS.Joker {
 	atlas = 'wip',
 	blueprint_compat = true,
 	eternal_compat = true,
-	perishable_compat = true,
-	pos = { x = 2, y = 0 },
+	pos = { x = 0, y = 0 },
 	cost = 5,
 	discovered = true,
 	calculate = function(self, card, context)
@@ -665,6 +664,31 @@ SMODS.Joker {
 				mult = anv.mult,
 				chips = anv.chips
 			}
+		end
+	end
+  }
+
+  SMODS.Joker {
+	key = 'sans',
+	rarity = 2,
+	atlas = 'wip',
+	config = { 
+		extra = {chips = 5} },
+	blueprint_compat = true,
+	eternal_compat = true,
+	pos = { x = 0, y = 0 },
+	cost = 7,
+	discovered = true,
+	calculate = function(self, card, context)
+	if context.setting_blind and G.GAME.blind:get_type() ~= 'Boss' and not context.blueprint then
+		local _tag = G.GAME.skip_tag
+			if _tag and _tag.config then
+				add_tag(_tag.config.ref_table)
+				G.GAME.skip_tag = ''
+			return {
+				chips = anv.chips
+			}
+			end
 		end
 	end
   }

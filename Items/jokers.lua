@@ -685,9 +685,6 @@ SMODS.Joker {
 			if _tag and _tag.config then
 				add_tag(_tag.config.ref_table)
 				G.GAME.skip_tag = ''
-			return {
-				chips = anv.chips
-			}
 			end
 		end
 	end

@@ -15,6 +15,20 @@ SMODS.Rarity({
 	pools = {},
 })
 
+SMODS.Rarity({
+	key = "gast_err",
+	badge_colour = G.C.WHITE,
+	pools = {
+		["Planet"] = {
+			rate = 0.00066, --added which pool its in so it can naturally spawn. mess arround with it
+		},
+		["Joker"] = {
+			rate = 0.00006, --added which pool its in so it can naturally spawn. mess arround with it
+		},
+	},
+	default_weight = 0.00066,
+})
+
 SMODS.Joker({
 	key = "sigma",
 	atlas = "wip", --the atlas obv
@@ -604,7 +618,7 @@ SMODS.Joker({
 	cost = 10,
 	unlocked = true,
 	discovered = false,
-	blueprint_compat = true,
+	blueprint_compat = false,
 	pos = {
 		x = 2,
 		y = 0,s
@@ -639,17 +653,42 @@ SMODS.Joker {
 	rarity = 1,
 	atlas = 'wip',
 	blueprint_compat = true,
-	eternal_compat = false,
-	perishable_compat = true,
-	pos = { x = 2, y = 0 },
+	eternal_compat = true,
+	pos = { x = 0, y = 0 },
 	cost = 5,
 	discovered = true,
 	calculate = function(self, card, context)
 		if context.joker_main then 
+			local anv = card.ability.extra
 			return{
-				chips = anv.chips,
-				mult = anv.mult
+				mult = anv.mult,
+				chips = anv.chips
 			}
+		end
+	end
+  }
+
+  SMODS.Joker {
+	key = 'sans',
+	rarity = 2,
+	atlas = 'wip',
+	config = { 
+		extra = {chips = 5} },
+	blueprint_compat = true,
+	eternal_compat = true,
+	pos = { x = 0, y = 0 },
+	cost = 7,
+	discovered = true,
+	calculate = function(self, card, context)
+	if context.setting_blind and G.GAME.blind:get_type() ~= 'Boss' and not context.blueprint then
+		local _tag = G.GAME.skip_tag
+			if _tag and _tag.config then
+				add_tag(_tag.config.ref_table)
+				G.GAME.skip_tag = ''
+			return {
+				chips = anv.chips
+			}
+			end
 		end
 	end
   }

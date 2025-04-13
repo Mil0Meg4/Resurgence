@@ -37,12 +37,21 @@ return {
             },
             j_anva_pugnala = {
                 name = 'Pugnala',
-                text = { ""
+                text = { "{X:mult,C:white}X3{} Mult if played hand contains",
+                         "only {C:clubs}Clubs{} and {C:diamonds}Diamonds{}"
                 }
             },
             j_anva_frisk = {
                 name = 'Frisk',
-                text = { ""
+                text = { "{C:chips}+20{} Chips for each",
+                         "{C:attention}unique rarity{} among your Jokers"
+                }
+            },
+            j_anva_papyrus = {
+                name = 'Papyrus',
+                text = { "If played hand contains",
+                         "{C:attention}exactly{} 1 card, paint played",
+                         "cards {C:blue}Blue{} before scoring"
                 }
             },
             j_anva_andromeda = {
@@ -64,18 +73,26 @@ return {
             },
             j_anva_poe = {
                 name = 'Poe',
-                text = { ""
+                text = { "Scored Hearts give {C:mult}+#1#{} Mult",
+                         "Every other Hearts card scored consecutively, starting at the 3rd,",
+                         "Doubles this gain until end of blind",
+                         "{C:inactive}(eg. +4, +4, +8, +8, +16){}"
                 }
             },
             j_anva_jandc = {
                 name = 'Johnathon & Charlotte',
-                text = { "+8 Consumable Slots",
-                         "-50 Chips for every held non-negative consumable after the 4th"
+                text = { "{C:attention}+#2#{} Consumable Slots",
+                         "{C:chips}-#1#{} Chips for every held non-negative consumable after the 4th"
                 }
             },
             j_anva_pride_rainbow = {
                 name = 'Pride Flag',
                 text = { ""
+                }
+            },
+            j_anva_filth = {
+                name = 'Filth',
+                text = { "{C:mult}+2{} Mult and {C:chips}+10{} Chips"
                 }
             },
             

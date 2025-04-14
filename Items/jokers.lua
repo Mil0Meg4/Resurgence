@@ -382,7 +382,6 @@ SMODS.Joker({
 	end,
 })
 
-
 SMODS.Joker({
 	key = "bartender",
 	atlas = "wip",
@@ -658,7 +657,7 @@ SMODS.Joker {
 	atlas = 'wip',
 	blueprint_compat = true,
 	eternal_compat = true,
-	pos = { x = 0, y = 0 },
+	pos = { x = 2, y = 0 },
 	cost = 5,
 	discovered = true,
 	calculate = function(self, card, context)
@@ -681,7 +680,7 @@ SMODS.Joker {
 	pools = {planar = true, undertale = true},
 	blueprint_compat = true,
 	eternal_compat = true,
-	pos = { x = 0, y = 0 },
+	pos = { x = 2, y = 0 },
 	cost = 7,
 	discovered = true,
 	loc_vars = function(self, info_queue, card)

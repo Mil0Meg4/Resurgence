@@ -676,7 +676,7 @@ SMODS.Joker {
 	rarity = 2,
 	atlas = 'wip',
 	config = { 
-		extra = {chips = 5, chipsadd = 20} },
+		extra = {chips = 5, chipsadd = 10} },
 	pools = {planar = true, undertale = true},
 	blueprint_compat = true,
 	eternal_compat = true,
@@ -701,17 +701,17 @@ SMODS.Joker {
 			local anv = card.ability.extra
 			local monsters = -1
 			for k,v in pairs(G.jokers.cards) do
-				if v.config.center.pools.underale then
-				monsters = monsters + 1
+				if v.config.center.pools.undertale then
+					monsters = monsters + 1
 				end
 			end
-			anv.chips = anv.chips+(anv.chipsadd*monsters)
-		if context.joker_main then 
-			local anv = card.ability.extra
+			anv.chips = anv.chips+(anv.chipsadd*monsters) 
+		end
+		if context.joker_main then
 			return{
 				chips = anv.chips
 			}
 		end
 	end
-end
+
   }

@@ -191,6 +191,9 @@ SMODS.Joker({
 	in_pool = function(self, wawa, wawa2)
 		return true
 	end,
+	set_badges = function(self, card, badges)
+		badges[#badges - 1] = create_badge("Ultrakill", ANVA.C.ULTRA, G.C.WHITE, 1) --This adds the primer badge ABOVE the rarity. if this was +1 it would add below
+	end,
 })
 SMODS.Joker({
 	key = "andromeda",
@@ -359,6 +362,9 @@ SMODS.Joker({
 			}
 		end
 	end,
+	set_badges = function(self, card, badges)
+		badges[#badges - 1] = create_badge("Undertale", ANVA.C.UNDER, G.C.WHITE, 1) --This adds the primer badge ABOVE the rarity. if this was +1 it would add below
+	end,
 })
 
 SMODS.Joker({
@@ -379,6 +385,9 @@ SMODS.Joker({
 		if context.before and #G.play.cards == 1 then
 			ANVA.set_paint(G.play.cards[1], "blue")
 		end
+	end,
+	set_badges = function(self, card, badges)
+		badges[#badges - 1] = create_badge("Undertale", ANVA.C.UNDER, G.C.WHITE, 1) --This adds the primer badge ABOVE the rarity. if this was +1 it would add below
 	end,
 })
 
@@ -462,6 +471,9 @@ SMODS.Joker({
 			anv.timer = 0
 		end
 	end,
+	set_badges = function(self, card, badges)
+		badges[#badges - 1] = create_badge("Vampire Survivors", ANVA.C.VAMP, G.C.WHITE, 1) --This adds the primer badge ABOVE the rarity. if this was +1 it would add below
+	end,
 })
 
 SMODS.Joker({
@@ -489,6 +501,9 @@ SMODS.Joker({
 				return { xmult = anv.xmult }
 			end
 		end
+	end,
+	set_badges = function(self, card, badges)
+		badges[#badges - 1] = create_badge("Vampire Survivors", ANVA.C.VAMP, G.C.WHITE, 1) --This adds the primer badge ABOVE the rarity. if this was +1 it would add below
 	end,
 })
 
@@ -534,6 +549,9 @@ SMODS.Joker({
 	remove_from_deck = function(self, card, from_debuff)
 		local anv = card.ability.extra
 		G.consumeables.config.card_limit = G.consumeables.config.card_limit - anv.con_slot
+	end,
+	set_badges = function(self, card, badges)
+		badges[#badges - 1] = create_badge("Vampire Survivors", ANVA.C.VAMP, G.C.WHITE, 1) --This adds the primer badge ABOVE the rarity. if this was +1 it would add below
 	end,
 })
 
@@ -668,8 +686,11 @@ SMODS.Joker {
 				chips = anv.chips
 			}
 		end
-	end
-  }
+	end,
+	set_badges = function(self, card, badges)
+		badges[#badges - 1] = create_badge("Ultrakill", ANVA.C.ULTRA, G.C.WHITE, 1) --This adds the primer badge ABOVE the rarity. if this was +1 it would add below
+	end,
+}
 
   SMODS.Joker {
 	key = 'sans',
@@ -712,11 +733,13 @@ SMODS.Joker {
 				chips = anv.chips
 			}
 		end
-	end
-
+	end,
+	set_badges = function(self, card, badges)
+		badges[#badges - 1] = create_badge("Undertale", ANVA.C.UNDER, G.C.WHITE, 1) --This adds the primer badge ABOVE the rarity. if this was +1 it would add below
+	end,
   }
 
-  SMODS.Joker({
+SMODS.Joker({
 	key = "gaster",
 	atlas = "wip",
 	pos = { x = 2, y = 0 },
@@ -752,4 +775,7 @@ SMODS.Joker {
 	G.jokers.config.card_limit = G.jokers.config.card_limit - 6
 	change_shop_size(-6)
 	end,
-	})
+	set_badges = function(self, card, badges)
+		badges[#badges - 1] = create_badge("Undertale", ANVA.C.UNDER, G.C.WHITE, 1) --This adds the primer badge ABOVE the rarity. if this was +1 it would add below
+	end,
+})

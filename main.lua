@@ -1,6 +1,13 @@
 ANVA = {}
-ANVA.C = {}
-ANVA.C.AUGMENT = HEX("b59262")
+ANVA.C = {
+    AUGMENT = HEX("b59262"),
+}
+ANVA.GRADIENTS = {
+    UNDER = {G.C.RED,G.C.PURPLE},
+    ULTRA = {HEX("880808"),G.C.BLACK},
+    VAMP = {HEX("880808"),G.C.MONEY}
+
+}
 SMODS.load_file("Items/funcs.lua")()
 SMODS.load_file("Items/jokers.lua")()
 SMODS.load_file("Items/editions.lua")()
@@ -9,7 +16,7 @@ SMODS.load_file("Items/tweaks.lua")()
 SMODS.load_file("Items/paints.lua")()
 
 --PLACEHOLDER ATLAS
-
+print(G.C.CRY_EXOTIC)
 SMODS.Atlas{
     key = "wip",
     path = "placeholder.png",
@@ -26,6 +33,20 @@ SMODS.Atlas({
     py = 34
 })
 
+local orig_update = Game.update
+function Game:update(dt)
+    orig_update(self,dt)
+	local anim_timer = self.TIMERS.REAL * 1.5
+	local p = 0.5 * (math.sin(anim_timer) + 1)
+	for k, c in pairs(ANVA.GRADIENTS) do
+		if not ANVA.C[k] then
+			ANVA.C[k] = { 0, 0, 0, 0 }
+		end
+		for i = 1, 4 do
+			ANVA.C[k][i] = c[1][i] * p + c[2][i] * (1 - p)
+		end
+	end
+end
 --new context that trigger whenever a card is destroyed or sold
 local oldfunc = Card.start_dissolve
 function Card:start_dissolve(dissolve_colours, silent, dissolve_time_fac, no_juice)

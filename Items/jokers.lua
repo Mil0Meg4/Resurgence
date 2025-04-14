@@ -715,3 +715,41 @@ SMODS.Joker {
 	end
 
   }
+
+  SMODS.Joker({
+	key = "gaster",
+	atlas = "wip",
+	pos = { x = 2, y = 0 },
+	pools = {planar = true, undertale = true},
+	rarity = "anva_gast_err",
+	cost = 66,
+	immutable = true,
+	config = {h_size = 6},
+	effect = "Hand Size",
+	unlocked = true,
+	discovered = false,
+	blueprint_compat = true,
+	calculate = function(self, card, context)
+		if context.cardarea == G.play and context.individual then
+			if context.other_card:get_id() == 6 then
+			return{
+				dollars = 6,
+				chips = 66,
+				mult = 6
+			}
+			end
+		end
+	end,
+	add_to_deck = function(self, card, from_debuff)
+	local anv = card.ability.extra
+	G.consumeables.config.card_limit = G.consumeables.config.card_limit + 6
+	G.jokers.config.card_limit = G.jokers.config.card_limit + 6
+	change_shop_size(6)
+	end,
+	remove_from_deck = function(self, card, from_debuff)
+	local anv = card.ability.extra
+	G.consumeables.config.card_limit = G.consumeables.config.card_limit - 6
+	G.jokers.config.card_limit = G.jokers.config.card_limit - 6
+	change_shop_size(-6)
+	end,
+	})

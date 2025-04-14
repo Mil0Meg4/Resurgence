@@ -95,6 +95,12 @@ return {
                 text = { "{C:mult}+2{} Mult and {C:chips}+10{} Chips"
                 }
             },
+            j_anva_alphys = {
+                name = 'Alphys, Royal Scientist',
+                text = { "Create a {C:attention}Blueprint",
+                    "after defeating {C:attention}Boss Blind"
+                }
+            },
             
         },
         Augment={

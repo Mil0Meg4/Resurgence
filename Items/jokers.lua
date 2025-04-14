@@ -392,6 +392,34 @@ SMODS.Joker({
 })
 
 SMODS.Joker({
+	key = "alphys",
+	atlas = "wip",
+	pos = { x = 2, y = 0 },
+	pools = {planar = true, undertale = true},
+	rarity = 4,
+	cost = 20,
+	config = {},
+	unlocked = true,
+	discovered = false,
+	blueprint_compat = true,
+	loc_vars = function(self, info_queue)
+		info_queue[#info_queue + 1] = G.P_CENTERS.j_blueprint
+	end,
+	calculate = function(self, card, context)
+		if context.end_of_round and G.GAME.blind.boss and not context.other_card then
+			if #G.jokers.cards < G.jokers.config.card_limit or self.area == G.jokers then
+				local new_card = create_card("Blueprint", G.jokers, nil, nil, nil, nil, "j_blueprint")
+				new_card:add_to_deck()
+				G.jokers:emplace(new_card)
+			end
+		end
+	end,
+	set_badges = function(self, card, badges)
+		badges[#badges - 1] = create_badge("Undertale", ANVA.C.UNDER, G.C.WHITE, 1) --This adds the primer badge ABOVE the rarity. if this was +1 it would add below
+	end,
+})
+
+SMODS.Joker({
 	key = "bartender",
 	atlas = "wip",
 	pos = { x = 2, y = 0 },

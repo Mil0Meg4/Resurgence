@@ -3,7 +3,6 @@ return {
         Back={},
         Blind={},
         Edition={},
-        Enhanced={},
         Joker={
             j_anva_sigma = {
                 name = 'SIGMA',
@@ -118,6 +117,16 @@ return {
                 name = 'Rubber',
                 text = { ""
                 }
+            },
+        },
+        Enhanced = {
+            m_anva_omega = {
+                name = "Omega Card",
+                text = {"{X:chips,C:white}^#1#{} Chips"}
+            },
+            m_anva_alpha = {
+                name = "Alpha Card",
+                text = {"{X:mult,C:white}^#1#{} Mult"}
             },
         },
         Other={

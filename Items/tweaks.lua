@@ -28,7 +28,7 @@ ANVA.Tweaks_keys = {
 
 ANVA.Tweak {
     key = 'rubber',
-    atlas = 'wip',
+    atlas = 'aug',
     pos = { x = 1, y = 0 },
     badge_colour = G.C.CHIPS,
     calculate = function(self,card,context)
@@ -47,7 +47,7 @@ ANVA.Tweak {
 }
 ANVA.Tweak {
     key = 'lever',
-    atlas = 'wip',
+    atlas = 'aug',
     pos = { x = 1, y = 0 },
     badge_colour = G.C.CHIPS,
     config = {increase = 1.1, reset_rate = 0.5, threshold_rate = 2,},

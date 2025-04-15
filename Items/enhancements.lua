@@ -1,9 +1,15 @@
 SMODS.Enhancement {
     key = 'alpha',
-    atlas = 'wip',
+    atlas = 'enha',
     pos = { x = 0, y = 0 },
     replace_base_card = true,
     config = {extra = {e_mult = 2}},
+    loc_vars = function(self, info_queue, card)
+		local anv = card and card.ability.extra or self.config.extra
+		return {
+			vars = {anv.e_mult},
+		}
+	end,
     calculate = function(self, card, context)
         if context.cardarea == G.play and context.main_scoring then
             return {
@@ -19,10 +25,16 @@ SMODS.Enhancement {
 }
 SMODS.Enhancement {
     key = 'omega',
-    atlas = 'wip',
-    pos = { x = 0, y = 0 },
+    atlas = 'enha',
+    pos = { x = 1, y = 0 },
     replace_base_card = true,
     config = {extra = {e_chips = 2}},
+    loc_vars = function(self, info_queue, card)
+		local anv = card and card.ability.extra or self.config.extra
+		return {
+			vars = {anv.e_chips},
+		}
+	end,
     calculate = function(self, card, context)
         if context.cardarea == G.play and context.main_scoring then
             return {

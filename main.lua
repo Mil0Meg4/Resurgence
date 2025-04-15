@@ -24,7 +24,12 @@ SMODS.Atlas{
     px = 71,
     py = 95
 }
-
+SMODS.Atlas{
+    key = "enha",
+    path = "enhancement.png",
+    px = 71,
+    py = 95
+}
 --augment ATLAS
 SMODS.Atlas{
     key = "aug",
@@ -169,9 +174,9 @@ SMODS.Rank {
     key = 'alpha_rank',
     card_key = 'ALPHA',
 
-    hc_atlas = 'wip',
-    lc_atlas = 'wip',
-    pos = { x = 0 },
+    --hc_atlas = 'aug',
+    --lc_atlas = 'aug',
+    pos = { x = 1 },
 
     next = { 'anva_omega_rank' },
 	prev = { 'anva_omega_rank' },
@@ -189,9 +194,9 @@ SMODS.Rank {
     key = 'omega_rank',
     card_key = 'OMEGA',
 
-    hc_atlas = 'wip',
-    lc_atlas = 'wip',
-    pos = { x = 0 },
+    --hc_atlas = 'aug',
+    --lc_atlas = 'aug',
+    pos = { x = 1 },
 
     next = { 'anva_alpha_rank' },
 	prev = { 'anva_alpha_rank' },
@@ -209,12 +214,12 @@ SMODS.Suit {
     key = 'al_om',
     card_key = 'ALPHA_OMEGA',
 
-    lc_atlas = 'wip',
-    lc_ui_atlas = 'wip',
+    --lc_atlas = 'aug',
+    --lc_ui_atlas = 'aug',
     lc_colour = ANVA.C.VAMPIRICA,
 
-    hc_atlas = 'wip',
-    hc_ui_atlas = 'wip',
+    --hc_atlas = 'aug',
+    --hc_ui_atlas = 'aug',
     hc_colour = ANVA.C.VAMPIRICA,
 
     pos = { y = 0 },

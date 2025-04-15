@@ -147,7 +147,7 @@ SMODS.Joker({
 	discovered = false,
 	blueprint_compat = true,
 	pos = {
-		x = 2,
+		x = 0,
 		y = 0,
 	},
 	config = {
@@ -538,7 +538,7 @@ SMODS.Joker({
 SMODS.Joker({
 	key = "jandc",
 	atlas = "joke",
-	pos = { x = 2, y = 0 },
+	pos = { x = 0, y = 0 },
 	rarity = 3,
 	cost = 10,
 	config = { extra = { chips = 50, con_slot = 8 } },
@@ -605,7 +605,7 @@ SMODS.Joker({
 	discovered = false,
 	blueprint_compat = true,
 	pos = {
-		x = 2,
+		x = 0,
 		y = 0,
 	},
 	config = {

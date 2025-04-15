@@ -34,6 +34,10 @@ ANVA.Paint_keys = {
     "green",
     "yellow",
     "orange",
+    "purple",
+    "pink",
+    "cyan",
+    "brown",
 }
 
 SMODS.Shader {
@@ -55,6 +59,22 @@ SMODS.Shader {
 SMODS.Shader {
     key = 'orange',
     path = 'orange.fs'
+}
+SMODS.Shader {
+    key = 'pink',
+    path = 'pink.fs'
+}
+SMODS.Shader {
+    key = 'purple',
+    path = 'purple.fs'
+}
+SMODS.Shader {
+    key = 'cyan',
+    path = 'cyan.fs'
+}
+SMODS.Shader {
+    key = 'brown',
+    path = 'brown.fs'
 }
 
 ANVA.Paint {
@@ -151,6 +171,54 @@ ANVA.Paint {
 		end
     end
 }
+--[[ ANVA.Paint {
+    key = 'paint_pink',
+    badge_colour = G.C.MONEY,
+    shader = 'pink',
+    weight = 19,
+    config = {},
+    loc_vars = function(self, info_queue, card)
+        local anv = self.config or card.paint
+    end,
+    calculate = function(self, card, context)
+    end
+}
+ANVA.Paint {
+    key = 'paint_cyan',
+    badge_colour = G.C.CHIPS,
+    shader = 'cyan',
+    weight = 18,
+    config = {},
+    loc_vars = function(self, info_queue, card)
+        local anv = self.config or card.paint
+    end,
+    calculate = function(self, card, context)
+    end
+}
+ANVA.Paint {
+    key = 'paint_purple',
+    badge_colour = G.C.PURPLE,
+    shader = 'purple',
+    weight = 15,
+    config = {},
+    loc_vars = function(self, info_queue, card)
+        local anv = self.config or card.paint
+    end,
+    calculate = function(self, card, context)
+    end
+}
+ANVA.Paint {
+    key = 'paint_brown',
+    badge_colour = ANVA.C.AUGMENT,
+    shader = 'brown',
+    weight = 7,
+    config = {},
+    loc_vars = function(self, info_queue, card)
+        local anv = self.config or card.paint
+    end,
+    calculate = function(self, card, context)
+    end
+} ]]
 
 --gives cards a random chance of being painted, also handles pride flag
 local orig_create_card = create_card

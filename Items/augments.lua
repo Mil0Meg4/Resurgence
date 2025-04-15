@@ -9,7 +9,7 @@ SMODS.ConsumableType({
 
 SMODS.UndiscoveredSprite({
     key = "Augment",
-    atlas = "wip",
+    atlas = "aug",
     pos = { x = 0, y = 0 },
     no_overlay = true
 })
@@ -17,7 +17,7 @@ SMODS.UndiscoveredSprite({
 SMODS.Consumable({
     key = 'aug_mother',
     set = 'Augment',
-    atlas = 'wip',
+    atlas = 'aug',
     pos = {x=0, y=0},
     discovered = true,
     config = {max_highlighted = 1, left_val = 1,right_val = 0},
@@ -48,7 +48,7 @@ SMODS.Consumable({
 SMODS.Consumable({
     key = 'aug_rubber',
     set = 'Augment',
-    atlas = 'wip',
+    atlas = 'aug',
     pos = {x=0, y=0},
     discovered = true,
     config = {max_highlighted = 1, tweak = "rubber"},
@@ -75,7 +75,7 @@ SMODS.Consumable({
 SMODS.Consumable({
     key = 'aug_lever',
     set = 'Augment',
-    atlas = 'wip',
+    atlas = 'aug',
     pos = {x=0, y=0},
     discovered = true,
     config = {max_highlighted = 1, tweak = "lever"},

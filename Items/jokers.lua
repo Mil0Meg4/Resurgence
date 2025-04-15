@@ -28,14 +28,14 @@ SMODS.Rarity({
 
 SMODS.Joker({
 	key = "sigma",
-	atlas = "wip", --the atlas obv
+	atlas = "joke", --the atlas obv
 	rarity = "anva_prim",
 	cost = 10,
 	unlocked = true,
 	discovered = false,
 	blueprint_compat = false, --If this is true, blueprint will say "Compatible"
 	pos = {
-		x = 2,
+		x = 0,
 		y = 0, --the position in the atlas. x + 1 would be 71 pixels to the right (cause the atlas is set to 71px) and y + 1 would be 95 pixels down (cause the atlas is set to 95px)
 	},
 	config = {
@@ -106,14 +106,14 @@ SMODS.Joker({
 
 SMODS.Joker({
 	key = "charon",
-	atlas = "wip",
+	atlas = "joke",
 	rarity = "anva_prim",
 	cost = 10,
 	unlocked = true,
 	discovered = false,
 	blueprint_compat = true,
 	pos = {
-		x = 2,
+		x = 0,
 		y = 0,
 	},
 	config = {
@@ -197,14 +197,14 @@ SMODS.Joker({
 })
 SMODS.Joker({
 	key = "andromeda",
-	atlas = "wip",
+	atlas = "joke",
 	rarity = "anva_prim",
 	cost = 50,
 	unlocked = true,
 	discovered = false,
 	blueprint_compat = true,
 	pos = {
-		x = 2,
+		x = 0,
 		y = 0,
 	},
 	calculate = function(self, card, context)
@@ -226,8 +226,8 @@ SMODS.Joker({
 
 SMODS.Joker({
 	key = "sinclair",
-	atlas = "wip",
-	pos = { x = 2, y = 0 },
+	atlas = "joke",
+	pos = { x = 0, y = 0 },
 	rarity = 3,
 	cost = 10,
 	config = {
@@ -271,8 +271,8 @@ SMODS.Joker({
 
 SMODS.Joker({
 	key = "tree",
-	atlas = "wip",
-	pos = { x = 2, y = 0 },
+	atlas = "joke",
+	pos = { x = 0, y = 0 },
 	rarity = 1,
 	cost = 4,
 	config = { extra = { mult = 3, mult_mod = 2 } },
@@ -300,8 +300,8 @@ SMODS.Joker({
 
 SMODS.Joker({
 	key = "tree3",
-	atlas = "wip",
-	pos = { x = 2, y = 0 },
+	atlas = "joke",
+	pos = { x = 0, y = 0 },
 	rarity = "anva_unb",
 	cost = 400,
 	config = { extra = { eeemult = 3, eeemult_mod = 2 } },
@@ -329,7 +329,7 @@ SMODS.Joker({
 
 SMODS.Joker({
 	key = "frisk",
-	atlas = "wip",
+	atlas = "joke",
 	pos = { x = 2, y = 0 },
 	rarity = 1,
 	cost = 3,
@@ -369,8 +369,8 @@ SMODS.Joker({
 
 SMODS.Joker({
 	key = "papyrus",
-	atlas = "wip",
-	pos = { x = 2, y = 0 },
+	atlas = "joke",
+	pos = { x = 2, y = 1 },
 	pools = {planar = true, undertale = true},
 	rarity = 1,
 	cost = 2,
@@ -393,7 +393,7 @@ SMODS.Joker({
 
 SMODS.Joker({
 	key = "alphys",
-	atlas = "wip",
+	atlas = "joke",
 	pos = { x = 2, y = 0 },
 	pools = {planar = true, undertale = true},
 	rarity = 4,
@@ -421,8 +421,8 @@ SMODS.Joker({
 
 SMODS.Joker({
 	key = "bartender",
-	atlas = "wip",
-	pos = { x = 2, y = 0 },
+	atlas = "joke",
+	pos = { x = 0, y = 0 },
 	rarity = 2,
 	cost = 6,
 	config = { extra = { mult = 5, con_slot = 1 } },
@@ -461,8 +461,8 @@ SMODS.Joker({
 
 SMODS.Joker({
 	key = "poe",
-	atlas = "wip",
-	pos = { x = 2, y = 0 },
+	atlas = "joke",
+	pos = { x = 0, y = 0 },
 	rarity = 2,
 	cost = 10,
 	config = { extra = { mult = 4, timer = 0 } },
@@ -506,8 +506,8 @@ SMODS.Joker({
 
 SMODS.Joker({
 	key = "pugnala",
-	atlas = "wip",
-	pos = { x = 2, y = 0 },
+	atlas = "joke",
+	pos = { x = 0, y = 0 },
 	rarity = 2,
 	cost = 3,
 	config = { extra = { xmult = 3 } },
@@ -537,7 +537,7 @@ SMODS.Joker({
 
 SMODS.Joker({
 	key = "jandc",
-	atlas = "wip",
+	atlas = "joke",
 	pos = { x = 2, y = 0 },
 	rarity = 3,
 	cost = 10,
@@ -598,7 +598,7 @@ end
 
 SMODS.Joker({
 	key = "doom",
-	atlas = "wip",
+	atlas = "joke",
 	rarity = "anva_prim",
 	cost = 10,
 	unlocked = true,
@@ -661,15 +661,15 @@ SMODS.Joker({
 })
 SMODS.Joker({
 	key = "pride_rainbow",
-	atlas = "wip",
+	atlas = "joke",
 	rarity = 3,
 	cost = 10,
 	unlocked = true,
 	discovered = false,
 	blueprint_compat = false,
 	pos = {
-		x = 2,
-		y = 0,s
+		x = 1,
+		y = 0,
 	},
 	pride_flag_paints = {any=true}
 })
@@ -700,10 +700,10 @@ SMODS.Joker {
 	  extra = {chips = 10, mult = 2} },
 	pools = {planar = true, ultrakill = true},
 	rarity = 1,
-	atlas = 'wip',
+	atlas = 'joke',
 	blueprint_compat = true,
 	eternal_compat = true,
-	pos = { x = 2, y = 0 },
+	pos = { x = 0, y = 1 },
 	cost = 5,
 	discovered = true,
 	calculate = function(self, card, context)
@@ -723,7 +723,7 @@ SMODS.Joker {
   SMODS.Joker {
 	key = 'sans',
 	rarity = 2,
-	atlas = 'wip',
+	atlas = 'joke',
 	config = { 
 		extra = {chips = 5, chipsadd = 10} },
 	pools = {planar = true, undertale = true},
@@ -770,7 +770,7 @@ SMODS.Joker {
 
 SMODS.Joker({
 	key = "gaster",
-	atlas = "wip",
+	atlas = "joke",
 	pos = { x = 2, y = 0 },
 	pools = {planar = true, undertale = true},
 	rarity = "anva_gast_err",

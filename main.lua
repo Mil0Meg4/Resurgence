@@ -15,15 +15,21 @@ SMODS.load_file("Items/augments.lua")()
 SMODS.load_file("Items/tweaks.lua")()
 SMODS.load_file("Items/paints.lua")()
 
---PLACEHOLDER ATLAS
-print(G.C.CRY_EXOTIC)
+--joker ATLAS
 SMODS.Atlas{
-    key = "wip",
-    path = "placeholder.png",
+    key = "joke",
+    path = "joker.png",
     px = 71,
     py = 95
 }
---
+
+--augment ATLAS
+SMODS.Atlas{
+    key = "aug",
+    path = "augment.png",
+    px = 71,
+    py = 95
+}
 
 --Mod icon
 SMODS.Atlas({

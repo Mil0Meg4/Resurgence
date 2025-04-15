@@ -48,6 +48,8 @@ SMODS.Joker({
 	cost = 10,
 	unlocked = true,
 	discovered = false,
+	eternal_compat = false,
+	perishible_compat = false,
 	blueprint_compat = false, --If this is true, blueprint will say "Compatible"
 	pos = {
 		x = 0,
@@ -126,7 +128,7 @@ SMODS.Joker({
 	cost = 10,
 	unlocked = true,
 	discovered = false,
-	blueprint_compat = true,
+	blueprint_compat = false,
 	pos = {
 		x = 0,
 		y = 0,
@@ -160,7 +162,8 @@ SMODS.Joker({
 	cost = 10,
 	unlocked = true,
 	discovered = false,
-	blueprint_compat = true,
+	perishible_compat = false,
+	blueprint_compat = false,
 	pos = {
 		x = 0,
 		y = 0,
@@ -254,7 +257,8 @@ SMODS.Joker({
 	},
 	unlocked = true,
 	discovered = false,
-	blueprint_compat = true,
+	eternal_compat = false,
+	blueprint_compat = false,
 	loc_vars = function(self, info_queue, card)
 		local anv = card.ability.extra
 		return { vars = { anv.money, anv.max } }
@@ -293,6 +297,7 @@ SMODS.Joker({
 	config = { extra = { mult = 3, mult_mod = 2 } },
 	unlocked = true,
 	discovered = false,
+	perishible_compat = false,
 	blueprint_compat = true,
 	unbound = {evo = "tree3",tarots = 0,cards=0,discards=0},
 	loc_vars = function(self, info_queue, card)
@@ -312,13 +317,13 @@ SMODS.Joker({
 			anv.mult = anv.mult + anv.mult_mod
 		end
 		--------unbound--------
-		if context.after then
+		if context.after and not context.blueprint then
 			card.unbound.cards = card.unbound.cards + #G.play.cards
 		end
-		if context.discard then
+		if context.discard and not context.blueprint then
 			card.unbound.discards = card.unbound.discards + 1
 		end
-		if context.using_consumeable and context.consumeable.ability.set == "Tarot" then
+		if context.using_consumeable and context.consumeable.ability.set == "Tarot" and not context.blueprint then
 			card.unbound.tarots = card.unbound.tarots + 1
 		end
 		if context.after or context.discard or context.using_consumeable then
@@ -408,7 +413,7 @@ SMODS.Joker({
 	config = {},
 	unlocked = true,
 	discovered = false,
-	blueprint_compat = true,
+	blueprint_compat = false,
 	loc_vars = function(self, info_queue)
 		info_queue[#info_queue + 1] = { key = "anva_paint_blue", set = "Other", vars = {} }
 	end,
@@ -432,6 +437,7 @@ SMODS.Joker({
 	config = {},
 	unlocked = true,
 	discovered = false,
+	perishible_compat = false,
 	blueprint_compat = true,
 	loc_vars = function(self, info_queue)
 		info_queue[#info_queue + 1] = G.P_CENTERS.j_blueprint
@@ -760,6 +766,7 @@ SMODS.Joker {
 	pools = {planar = true, undertale = true},
 	blueprint_compat = true,
 	eternal_compat = true,
+	perishible_compat = false,
 	pos = { x = 2, y = 0 },
 	cost = 7,
 	discovered = true,
@@ -811,6 +818,7 @@ SMODS.Joker({
 	effect = "Hand Size",
 	unlocked = true,
 	discovered = false,
+	perishible_compat = false,
 	blueprint_compat = true,
 	calculate = function(self, card, context)
 		if context.cardarea == G.play and context.individual then

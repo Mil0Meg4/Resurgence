@@ -1,5 +1,6 @@
 ANVA = {}
 ANVA.C = {
+    VAMPIRICA = HEX("880808"),
     AUGMENT = HEX("b59262"),
 }
 ANVA.GRADIENTS = {
@@ -14,6 +15,7 @@ SMODS.load_file("Items/editions.lua")()
 SMODS.load_file("Items/augments.lua")()
 SMODS.load_file("Items/tweaks.lua")()
 SMODS.load_file("Items/paints.lua")()
+SMODS.load_file("Items/enhancements.lua")()
 
 --joker ATLAS
 SMODS.Atlas{
@@ -54,12 +56,18 @@ function Game:update(dt)
 	end
 end
 --new context that trigger whenever a card is destroyed or sold
-local oldfunc = Card.start_dissolve
+local orig_start_dissolve = Card.start_dissolve
 function Card:start_dissolve(dissolve_colours, silent, dissolve_time_fac, no_juice)
-	if G and G.jokers and G.jokers.cards then
+	--[[ if G and G.jokers and G.jokers.cards then
 		SMODS.calculate_context({ anva_destroyed = true, card = self })
-	end
-	return oldfunc(self, dissolve_colours, silent, dissolve_time_fac, no_juice)
+	end ]]
+    if self.ability and self.ability.anva_rubber and not self.ability.selling then
+        local copy = copy_card(self, nil, nil, nil, nil)
+        copy:start_materialize()
+        copy:add_to_deck()
+        G.jokers:emplace(copy)
+    end
+	return orig_start_dissolve(self, dissolve_colours, silent, dissolve_time_fac, no_juice)
 end
 
 function SMODS.current_mod.reset_game_globals(run_start)
@@ -152,3 +160,67 @@ SMODS.ObjectType({
 		SMODS.ObjectType.inject(self)
 	end,
 })
+
+------------------------------------------------------
+-----------------Alpha and Omega----------------------
+------------------------------------------------------
+SMODS.Rank {
+
+    key = 'alpha_rank',
+    card_key = 'ALPHA',
+
+    hc_atlas = 'wip',
+    lc_atlas = 'wip',
+    pos = { x = 0 },
+
+    next = { 'anva_omega_rank' },
+	prev = { 'anva_omega_rank' },
+
+    nominal = 0,
+    shorthand = 'a',
+    hidden = true,
+
+	in_pool = function(self, args)
+        return false
+    end
+}
+SMODS.Rank {
+
+    key = 'omega_rank',
+    card_key = 'OMEGA',
+
+    hc_atlas = 'wip',
+    lc_atlas = 'wip',
+    pos = { x = 0 },
+
+    next = { 'anva_alpha_rank' },
+	prev = { 'anva_alpha_rank' },
+
+    nominal = 0,
+    shorthand = 'o',
+    hidden = true,
+
+	in_pool = function(self, args)
+        return false
+    end
+}
+SMODS.Suit {
+
+    key = 'al_om',
+    card_key = 'ALPHA_OMEGA',
+
+    lc_atlas = 'wip',
+    lc_ui_atlas = 'wip',
+    lc_colour = ANVA.C.VAMPIRICA,
+
+    hc_atlas = 'wip',
+    hc_ui_atlas = 'wip',
+    hc_colour = ANVA.C.VAMPIRICA,
+
+    pos = { y = 0 },
+    ui_pos = { x = 0, y = 0 },
+
+    in_pool = function(self, args)
+        return false
+    end
+}

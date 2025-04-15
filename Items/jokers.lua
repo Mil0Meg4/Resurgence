@@ -807,7 +807,7 @@ SMODS.Joker({
 	rarity = "anva_gast_err",
 	cost = 66,
 	immutable = true,
-	config = {h_size = 6, scored_sixes = 0},
+	config = {h_size = 6, scored_sixes = 66},
 	effect = "Hand Size",
 	unlocked = true,
 	discovered = false,
@@ -817,8 +817,8 @@ SMODS.Joker({
 			if context.other_card:get_id() == 6 then
 				local anv = card.ability
 				anv.scored_sixes = anv.scored_sixes+1
-				if anv.scored_sixes >= 66 then
-					anv.scored_sixes = 0
+				if anv.scored_sixes <= 0 then
+					anv.scored_sixes = 66
 					G.E_MANAGER:add_event(Event({
 						func = (function()
 							add_tag(Tag('tag_negative'))

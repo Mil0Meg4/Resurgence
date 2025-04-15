@@ -53,6 +53,21 @@ return {
                          "cards {C:blue}Blue{} before scoring"
                 }
             },
+            j_anva_sans = {
+                name = 'Sans',
+                text = { ""
+                }
+            },
+            j_anva_doom = {
+                name = 'Doom Itself',
+                text = { ""
+                }
+            },
+            j_anva_bartender = {
+                name = 'Bartender',
+                text = { ""
+                }
+            },
             j_anva_andromeda = {
                 name = 'Andromeda',
                 text = { ""
@@ -100,6 +115,13 @@ return {
                     "after defeating {C:attention}Boss Blind"
                 }
             },
+            j_anva_gaster = {
+                name = 'Gaster, Royal Scientist',
+                text = { "{C:attention}+6{} Joker Slots, Consumable Slots, Handsize, and Shop Slots",
+                    "Scored {C:attention}6s{} give {C:chips}+66{} Chips and {C:mult}+6{} Mult",
+                    "After {C:attention}66{} {C:inactive}[66]{} {C:attention}6s{} are scored, get {C:attention}6 Negative Tags{}"
+                }
+            },
             
         },
         Augment={
@@ -115,7 +137,7 @@ return {
             },
             c_anva_aug_rubber = {
                 name = 'Rubber',
-                text = { ""
+                text = { "1 Selected Joker is made Rubber"
                 }
             },
         },
@@ -137,7 +159,7 @@ return {
             },
             anva_rubber = {
                 name = 'Rubber',
-                text = { ""
+                text = { "When destroyed, creates a copy of self"
                 }
             },
             anva_paint_red = {

@@ -168,14 +168,14 @@ SMODS.Joker({
 	loc_vars = function(self, info_queue, card)
 		local anv = card.ability
 		return {
-			vars = { anv.scored_sixes},
+			vars = { anv.scored_sixes },
 		}
 	end,
 	calculate = function(self, card, context)
 		if context.cardarea == G.play and context.individual then
 			if context.other_card:get_id() == 6 then
 				local anv = card.ability
-				anv.scored_sixes = anv.scored_sixes+1
+				anv.scored_sixes = anv.scored_sixes-1
 				if anv.scored_sixes <= 0 then
 					anv.scored_sixes = 66
 					G.E_MANAGER:add_event(Event({

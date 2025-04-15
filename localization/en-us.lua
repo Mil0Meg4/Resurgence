@@ -119,7 +119,7 @@ return {
                 name = 'Gaster, Royal Scientist',
                 text = { "{C:attention}+6{} Joker Slots, Consumable Slots, Handsize, and Shop Slots",
                     "Scored {C:attention}6s{} give {C:chips}+66{} Chips and {C:mult}+6{} Mult",
-                    "After {C:attention}66{} {C:inactive}[66]{} {C:attention}6s{} are scored, get {C:attention}6 Negative Tags{}"
+                    "After {C:attention}66{} {C:inactive}[#1#]{} {C:attention}6s{} are scored, get {C:attention}6 Negative Tags{}"
                 }
             },
             

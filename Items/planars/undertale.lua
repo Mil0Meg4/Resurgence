@@ -12,7 +12,7 @@ SMODS.Rarity({
 SMODS.Joker({
 	key = "frisk",
 	atlas = "joke",
-	pos = { x = 2, y = 0 },
+	pos = { x = 2, y = 2 },
 	rarity = 1,
 	cost = 3,
 	config = { extra = { chips = 20 } },
@@ -159,12 +159,18 @@ SMODS.Joker({
 	rarity = "anva_gast_err",
 	cost = 66,
 	immutable = true,
-	config = {h_size = 6, scored_sixes = 66},
+	config = {h_size = 6, scored_sixes = 0},
 	effect = "Hand Size",
 	unlocked = true,
 	discovered = false,
 	perishable_compat = false,
 	blueprint_compat = true,
+	loc_vars = function(self, info_queue, card)
+		local anv = card.ability
+		return {
+			vars = { anv.scored_sixes},
+		}
+	end,
 	calculate = function(self, card, context)
 		if context.cardarea == G.play and context.individual then
 			if context.other_card:get_id() == 6 then
@@ -174,12 +180,9 @@ SMODS.Joker({
 					anv.scored_sixes = 66
 					G.E_MANAGER:add_event(Event({
 						func = (function()
-							add_tag(Tag('tag_negative'))
-							add_tag(Tag('tag_negative'))
-							add_tag(Tag('tag_negative'))
-							add_tag(Tag('tag_negative'))
-							add_tag(Tag('tag_negative'))
-							add_tag(Tag('tag_negative'))
+							for i=1,6 do
+								add_tag(Tag('tag_negative'))
+							end
 							play_sound('generic1', 0.4 + math.random()*0.6, 0.35)
 							play_sound('negative', 0.4 + math.random()*0.6, 0.45)
 						   return true

@@ -35,7 +35,7 @@ SMODS.Joker({
 	blueprint_compat = false,
 	pos = {
 		x = 0,
-		y = 0,
+		y = 1,
 	},
 	config = {
 		extra = {

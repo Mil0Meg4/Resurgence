@@ -8,7 +8,7 @@ return {
                 name = 'SIGMA',
                 text = { "the next {C:purple}Tarot{} card used",
                          "{C:attention}transforms{} this Joker into",
-                          "a {C:attention}unique{} Joker based off",
+                          "a {C:dark_edition}unique{} {C:attention}Joker{} based off",
                           "the used card"
                 }
             },
@@ -21,11 +21,13 @@ return {
             },
             j_anva_gaba = {
                 name = 'Gabriel, Apostate of Hate',
-                text = { "{X:mult,C:white}^#1#{} Mult",
-                         "At end of shop, removes {C:planet}Divine{} from",
-                         "Joker to the left to gain {X:mult,C:white}+^#2#{} Mult"
+                text = {"{X:mult,C:white}^#1#{} Mult",
+                        "At end of {C:money}shop{},",
+                        "{C:red}removes{} {C:dark_edition}Divine{} from",
+                        "Joker to the left",
+                        "to gain {X:mult,C:white}^#2#{} Mult"
                 }
-            },  
+            },
             j_anva_sinclair = {
                 name = 'Sinclair',
                 text = {"Earns {C:money}$#1#{} at end of round.",
@@ -36,21 +38,24 @@ return {
             },
             j_anva_pugnala = {
                 name = 'Pugnala',
-                text = { "{X:mult,C:white}X3{} Mult if played hand contains",
-                         "only {C:clubs}Clubs{} and {C:diamonds}Diamonds{}"
+                text = { "{X:mult,C:white}X3{} Mult if played",
+                         "hand contains only",
+                         "{C:clubs}Clubs{} and {C:diamonds}Diamonds{}"
                 }
             },
             j_anva_frisk = {
                 name = 'Frisk',
-                text = { "{C:chips}+20{} Chips for each",
-                         "{C:attention}unique rarity{} among your Jokers"
+                text = { "{C:chips}+20{} Chips for",
+                         "each {C:attention}unique rarity",
+                         "among your {C:attention}Jokers"
                 }
             },
             j_anva_papyrus = {
                 name = 'Papyrus',
-                text = { "If played hand contains",
-                         "{C:attention}exactly{} 1 card, paint played",
-                         "cards {C:blue}Blue{} before scoring"
+                text = {"If played hand has",
+                        "only {C:attention}1{} card, {C:attention}paint{} ",
+                        "played cards {C:chips}Blue{}",
+                        "before scoring"
                 }
             },
             j_anva_sans = {
@@ -87,16 +92,19 @@ return {
             },
             j_anva_poe = {
                 name = 'Poe',
-                text = { "Scored Hearts give {C:mult}+#1#{} Mult",
-                         "Every other Hearts card scored consecutively, starting at the 3rd,",
-                         "Doubles this gain until end of blind",
-                         "{C:inactive}(eg. +4, +4, +8, +8, +16){}"
+                text = {"Scored {C:hearts}Hearts{} give {C:mult}+#1#{} Mult",
+                        "Every other {C:hearts}Hearts{} card scored",
+                        "consecutively, starting at the {C:attention}3rd{},",
+                        "{C:attention}Doubles{} this gain until end of {C:attention}blind",
+                        "{C:inactive}(eg. +4, +4, +8, +8, +16){}"
                 }
             },
             j_anva_jandc = {
                 name = 'Johnathon & Charlotte',
-                text = { "{C:attention}+#2#{} Consumable Slots",
-                         "{C:chips}-#1#{} Chips for every held non-negative consumable after the 4th"
+                text = {"{C:attention}+#2#{} Consumable Slots",
+                        "{C:chips}-#1#{} Chips for every",
+                        "held non-{C:dark_edition}negative{}",
+                        "consumable over {C:attention}4"
                 }
             },
             j_anva_pride_rainbow = {
@@ -117,9 +125,13 @@ return {
             },
             j_anva_gaster = {
                 name = 'Gaster, Royal Scientist',
-                text = { "{C:attention}+6{} Joker Slots, Consumable Slots, Handsize, and Shop Slots",
-                    "Scored {C:attention}6s{} give {C:chips}+66{} Chips and {C:mult}+6{} Mult",
-                    "After {C:attention}66{} {C:inactive}[66]{} {C:attention}6s{} are scored, get {C:attention}6 Negative Tags{}"
+                text = { "{C:attention}+6{} Joker Slots, Consumable Slots,",
+                    "Handsize, and Shop Slots",
+                    "Scored {C:attention}6s{} give {C:chips}+66{}",
+                    "Chips and {C:mult}+6{} Mult",
+                    "After {C:attention}66{} {C:attention}6s{} are scored,",
+                    "get {C:attention}6 Negative Tags{}",
+                    "{C:inactive}(Currently {C:attention}#1#{C:inactive}/66){}"
                 }
             },
             
@@ -137,7 +149,8 @@ return {
             },
             c_anva_aug_rubber = {
                 name = 'Rubber',
-                text = { "1 Selected Joker is made Rubber"
+                text = { "{C:attention}#1#{} Selected Joker",
+                    "is made {C:attention}Rubber"
                 }
             },
         },
@@ -159,7 +172,9 @@ return {
             },
             anva_rubber = {
                 name = 'Rubber',
-                text = { "When destroyed, creates a copy of self"
+                text = { "When {C:red}destroyed{},",
+                    "creates a {C:attention}copy",
+                    "of itself"
                 }
             },
             anva_paint_red = {

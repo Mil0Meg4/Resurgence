@@ -42,7 +42,7 @@ SMODS.Joker({
 	blueprint_compat = false, --If this is true, blueprint will say "Compatible"
 	pos = {
 		x = 0,
-		y = 0, --the position in the atlas. x + 1 would be 71 pixels to the right (cause the atlas is set to 71px) and y + 1 would be 95 pixels down (cause the atlas is set to 95px)
+		y = 2, --the position in the atlas. x + 1 would be 71 pixels to the right (cause the atlas is set to 71px) and y + 1 would be 95 pixels down (cause the atlas is set to 95px)
 	},
 	config = {
 		extra = {},

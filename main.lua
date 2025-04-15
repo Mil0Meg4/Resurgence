@@ -48,12 +48,18 @@ function Game:update(dt)
 	end
 end
 --new context that trigger whenever a card is destroyed or sold
-local oldfunc = Card.start_dissolve
+local orig_start_dissolve = Card.start_dissolve
 function Card:start_dissolve(dissolve_colours, silent, dissolve_time_fac, no_juice)
-	if G and G.jokers and G.jokers.cards then
+	--[[ if G and G.jokers and G.jokers.cards then
 		SMODS.calculate_context({ anva_destroyed = true, card = self })
-	end
-	return oldfunc(self, dissolve_colours, silent, dissolve_time_fac, no_juice)
+	end ]]
+    if self.ability and self.ability.anva_rubber and not self.ability.selling then
+        local copy = copy_card(self, nil, nil, nil, nil)
+        copy:start_materialize()
+        copy:add_to_deck()
+        G.jokers:emplace(copy)
+    end
+	return orig_start_dissolve(self, dissolve_colours, silent, dissolve_time_fac, no_juice)
 end
 
 function SMODS.current_mod.reset_game_globals(run_start)

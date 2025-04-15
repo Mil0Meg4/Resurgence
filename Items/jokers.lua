@@ -294,7 +294,7 @@ SMODS.Joker({
 	unlocked = true,
 	discovered = false,
 	blueprint_compat = true,
-	unbound = {evo = "tree3",},
+	unbound = {evo = "tree3",tarots = 0,cards=0,discards=0},
 	loc_vars = function(self, info_queue, card)
 		local anv = card.ability.extra
 		return {
@@ -310,6 +310,21 @@ SMODS.Joker({
 		end
 		if (context.end_of_round and context.cardarea == G.jokers) and not context.blueprint then
 			anv.mult = anv.mult + anv.mult_mod
+		end
+		--------unbound--------
+		if context.after then
+			card.unbound.cards = card.unbound.cards + #G.play.cards
+		end
+		if context.discard then
+			card.unbound.discards = card.unbound.discards + 1
+		end
+		if context.using_consumeable and context.consumeable.ability.set == "Tarot" then
+			card.unbound.tarots = card.unbound.tarots + 1
+		end
+		if context.after or context.discard or context.using_consumeable then
+			if card.unbound.tarots >= 33 and card.unbound.discards >= 333 and card.unbound.cards >= 333 then
+				ANVA.unbound(card)
+			end
 		end
 	end,
 })
@@ -858,8 +873,7 @@ function evaluate_poker_hand(hand)
 			if v ~= "High Card" then hand[v] = {} end
 		end
 	end
-print(hand)
-return hand
+	return hand
 end
 
 

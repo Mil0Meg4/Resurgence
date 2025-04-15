@@ -25,6 +25,21 @@ SMODS.Rarity({
 	},
 	default_weight = 0.00066,
 })
+function ANVA.unbound(card)
+    G.E_MANAGER:add_event(Event({
+        func = function()
+            play_sound('tarot2', 1.1, 0.6)
+            card:set_ability(G.P_CENTERS["j_anva_"..card.unbound.evo])
+			card:juice_up(0.3, 0.5)
+            return true
+        end
+    }))
+    return {
+        --message = localize('k_unbound'),
+        colour = ANVA.C.VAMPIRICA,
+        card = card
+    }
+end
 
 SMODS.Joker({
 	key = "sigma",
@@ -279,6 +294,7 @@ SMODS.Joker({
 	unlocked = true,
 	discovered = false,
 	blueprint_compat = true,
+	unbound = {evo = "tree3",},
 	loc_vars = function(self, info_queue, card)
 		local anv = card.ability.extra
 		return {
@@ -766,7 +782,7 @@ SMODS.Joker {
 	set_badges = function(self, card, badges)
 		badges[#badges - 1] = create_badge("Undertale", ANVA.C.UNDER, G.C.WHITE, 1) --This adds the primer badge ABOVE the rarity. if this was +1 it would add below
 	end,
-  }
+}
 
 SMODS.Joker({
 	key = "gaster",

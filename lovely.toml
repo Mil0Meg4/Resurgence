@@ -12,3 +12,12 @@ position = "at"
 payload = "{card_limit = self.GAME.starting_params.joker_slots, type = 'joker', highlight_limit = 100})"
 match_indent = true
 
+#copy unbound table
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "for _, k in ipairs(reset_keys) do"
+position = "before"
+payload = "self.unbound = center.unbound --for aneyh vampirica's unbound jokers"
+
+match_indent = true

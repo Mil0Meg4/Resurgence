@@ -80,9 +80,9 @@ function SMODS.current_mod.reset_game_globals(run_start)
     end
 end
 
--------------------------------------------------------------
+-------------------------------------------------------------------------
 ----stuff for making tweaks and paints have their own collection tabs----
--------------------------------------------------------------
+-------------------------------------------------------------------------
 SMODS.current_mod.custom_collection_tabs = function()
     return {
         UIBox_button({
@@ -130,6 +130,10 @@ create_UIBox_Other_GameObjects = function()
     return wrap_without_paints_and_tweaks(other_objects_ref)
 end
 
+
+------------------------------------------------------------
+-----------------------Planar Sets--------------------------
+------------------------------------------------------------
 SMODS.ObjectType({
 	key = "undertale",
 	default = "j_anva_frisk",
@@ -166,9 +170,9 @@ SMODS.ObjectType({
 	end,
 })
 
-------------------------------------------------------
------------------Alpha and Omega----------------------
-------------------------------------------------------
+--------------------------------------------------------
+-------------------Alpha and Omega----------------------
+--------------------------------------------------------
 SMODS.Rank {
 
     key = 'alpha_rank',

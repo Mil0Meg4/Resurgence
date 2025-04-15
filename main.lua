@@ -1,5 +1,6 @@
 ANVA = {}
 ANVA.C = {
+    VAMPIRICA = HEX("880808"),
     AUGMENT = HEX("b59262"),
 }
 ANVA.GRADIENTS = {
@@ -14,6 +15,7 @@ SMODS.load_file("Items/editions.lua")()
 SMODS.load_file("Items/augments.lua")()
 SMODS.load_file("Items/tweaks.lua")()
 SMODS.load_file("Items/paints.lua")()
+SMODS.load_file("Items/enhancements.lua")()
 
 --PLACEHOLDER ATLAS
 print(G.C.CRY_EXOTIC)
@@ -152,3 +154,67 @@ SMODS.ObjectType({
 		SMODS.ObjectType.inject(self)
 	end,
 })
+
+------------------------------------------------------
+-----------------Alpha and Omega----------------------
+------------------------------------------------------
+SMODS.Rank {
+
+    key = 'alpha_rank',
+    card_key = 'ALPHA',
+
+    hc_atlas = 'wip',
+    lc_atlas = 'wip',
+    pos = { x = 0 },
+
+    next = { 'anva_omega_rank' },
+	prev = { 'anva_omega_rank' },
+
+    nominal = 0,
+    shorthand = 'a',
+    hidden = true,
+
+	in_pool = function(self, args)
+        return false
+    end
+}
+SMODS.Rank {
+
+    key = 'omega_rank',
+    card_key = 'OMEGA',
+
+    hc_atlas = 'wip',
+    lc_atlas = 'wip',
+    pos = { x = 0 },
+
+    next = { 'anva_alpha_rank' },
+	prev = { 'anva_alpha_rank' },
+
+    nominal = 0,
+    shorthand = 'o',
+    hidden = true,
+
+	in_pool = function(self, args)
+        return false
+    end
+}
+SMODS.Suit {
+
+    key = 'al_om',
+    card_key = 'ALPHA_OMEGA',
+
+    lc_atlas = 'wip',
+    lc_ui_atlas = 'wip',
+    lc_colour = ANVA.C.VAMPIRICA,
+
+    hc_atlas = 'wip',
+    hc_ui_atlas = 'wip',
+    hc_colour = ANVA.C.VAMPIRICA,
+
+    pos = { y = 0 },
+    ui_pos = { x = 0, y = 0 },
+
+    in_pool = function(self, args)
+        return false
+    end
+}

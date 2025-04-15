@@ -720,7 +720,7 @@ SMODS.Joker {
 	blueprint_compat = true,
 	eternal_compat = true,
 	pos = { x = 0, y = 1 },
-	cost = 5,
+	cost = 3,
 	discovered = true,
 	calculate = function(self, card, context)
 		if context.joker_main then 
@@ -792,7 +792,7 @@ SMODS.Joker({
 	rarity = "anva_gast_err",
 	cost = 66,
 	immutable = true,
-	config = {h_size = 6},
+	config = {h_size = 6, scored_sixes = 0},
 	effect = "Hand Size",
 	unlocked = true,
 	discovered = false,
@@ -800,11 +800,30 @@ SMODS.Joker({
 	calculate = function(self, card, context)
 		if context.cardarea == G.play and context.individual then
 			if context.other_card:get_id() == 6 then
-			return{
-				dollars = 6,
-				chips = 66,
-				mult = 6
-			}
+				local anv = card.ability
+				anv.scored_sixes = anv.scored_sixes+1
+				if anv.scored_sixes >= 66 then
+					anv.scored_sixes = 0
+					G.E_MANAGER:add_event(Event({
+						func = (function()
+							add_tag(Tag('tag_negative'))
+							add_tag(Tag('tag_negative'))
+							add_tag(Tag('tag_negative'))
+							add_tag(Tag('tag_negative'))
+							add_tag(Tag('tag_negative'))
+							add_tag(Tag('tag_negative'))
+							play_sound('generic1', 0.4 + math.random()*0.6, 0.35)
+							play_sound('negative', 0.4 + math.random()*0.6, 0.45)
+						   return true
+					   end)
+					}))
+					end
+				return{
+					dollars = 6,
+					chips = 66,
+					mult = 6
+				}
+				
 			end
 		end
 	end,
@@ -824,3 +843,47 @@ SMODS.Joker({
 		badges[#badges - 1] = create_badge("Undertale", ANVA.C.UNDER, G.C.WHITE, 1) --This adds the primer badge ABOVE the rarity. if this was +1 it would add below
 	end,
 })
+
+local orig_evaluate_poker_hand = evaluate_poker_hand
+function evaluate_poker_hand(hand)
+	local hand = orig_evaluate_poker_hand(hand)
+	if next(find_joker("j_anva_mini_mice")) then
+		for _, v in ipairs(G.handlist) do
+			if hand[v][1] then
+				hand["High Card"] = hand[v]
+				break
+			end
+		end
+		for _, v in ipairs(G.handlist) do
+			if v ~= "High Card" then hand[v] = {} end
+		end
+	end
+print(hand)
+return hand
+end
+
+
+SMODS.Joker {
+	key = 'mini_mice',
+	config = { 
+	  extra = {mult = 10} },
+	pools = {planar = true, undertale = true},
+	rarity = 1,
+	atlas = 'joke',
+	blueprint_compat = true,
+	eternal_compat = true,
+	pos = { x = 2, y = 0 },
+	cost = 2,
+	discovered = true,
+	calculate = function(self, card, context)
+		if context.joker_main then 
+			local anv = card.ability.extra
+			return{
+				mult = anv.mult
+			}
+		end
+	end,
+	set_badges = function(self, card, badges)
+		badges[#badges - 1] = create_badge("Undertale", ANVA.C.UNDER, G.C.WHITE, 1) --This adds the primer badge ABOVE the rarity. if this was +1 it would add below
+	end,
+}

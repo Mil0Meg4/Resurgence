@@ -140,7 +140,7 @@ SMODS.Joker({
 
 SMODS.Joker({
 	key = "gaba",
-	atlas = "wip",
+	atlas = "joke",
 	rarity = "anva_unb",
 	cost = 10,
 	unlocked = true,

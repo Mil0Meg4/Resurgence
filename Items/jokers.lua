@@ -49,7 +49,7 @@ SMODS.Joker({
 	unlocked = true,
 	discovered = false,
 	eternal_compat = false,
-	perishible_compat = false,
+	perishable_compat = false,
 	blueprint_compat = false, --If this is true, blueprint will say "Compatible"
 	pos = {
 		x = 0,
@@ -162,7 +162,7 @@ SMODS.Joker({
 	cost = 10,
 	unlocked = true,
 	discovered = false,
-	perishible_compat = false,
+	perishable_compat = false,
 	blueprint_compat = false,
 	pos = {
 		x = 0,
@@ -297,7 +297,7 @@ SMODS.Joker({
 	config = { extra = { mult = 3, mult_mod = 2 } },
 	unlocked = true,
 	discovered = false,
-	perishible_compat = false,
+	perishable_compat = false,
 	blueprint_compat = true,
 	unbound = {evo = "tree3",tarots = 0,cards=0,discards=0},
 	loc_vars = function(self, info_queue, card)
@@ -326,7 +326,7 @@ SMODS.Joker({
 		if context.using_consumeable and context.consumeable.ability.set == "Tarot" and not context.blueprint then
 			card.unbound.tarots = card.unbound.tarots + 1
 		end
-		if context.after or context.discard or context.using_consumeable then
+		if context.after or context.discard or context.using_consumeable and not context.blueprint then
 			if card.unbound.tarots >= 33 and card.unbound.discards >= 333 and card.unbound.cards >= 333 then
 				ANVA.unbound(card)
 			end
@@ -437,7 +437,7 @@ SMODS.Joker({
 	config = {},
 	unlocked = true,
 	discovered = false,
-	perishible_compat = false,
+	perishable_compat = false,
 	blueprint_compat = true,
 	loc_vars = function(self, info_queue)
 		info_queue[#info_queue + 1] = G.P_CENTERS.j_blueprint
@@ -766,7 +766,7 @@ SMODS.Joker {
 	pools = {planar = true, undertale = true},
 	blueprint_compat = true,
 	eternal_compat = true,
-	perishible_compat = false,
+	perishable_compat = false,
 	pos = { x = 2, y = 0 },
 	cost = 7,
 	discovered = true,
@@ -818,7 +818,7 @@ SMODS.Joker({
 	effect = "Hand Size",
 	unlocked = true,
 	discovered = false,
-	perishible_compat = false,
+	perishable_compat = false,
 	blueprint_compat = true,
 	calculate = function(self, card, context)
 		if context.cardarea == G.play and context.individual then

@@ -757,6 +757,7 @@ SMODS.Joker {
 			anv.chips = anv.chips+(anv.chipsadd*monsters) 
 		end
 		if context.joker_main then
+			local anv = card.ability.extra
 			return{
 				chips = anv.chips
 			}

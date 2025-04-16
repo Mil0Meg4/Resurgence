@@ -19,9 +19,9 @@ function ANVA.unbound(card)
 	print("fuck")
 	G.E_MANAGER:add_event(Event({
 		func = function()
-			if card.unbound and card.unbound.evo then
+			if card.ability.unbound and card.ability.unbound.evo then
 				play_sound('tarot2', 1.1, 0.6)
-				card:set_ability(G.P_CENTERS["j_anva_"..card.unbound.evo])
+				card:set_ability(G.P_CENTERS["j_anva_"..card.ability.unbound.evo])
 			else print("No Unbound Field") end
 			return true
 		end
@@ -261,16 +261,16 @@ SMODS.Joker({
 		end
 		--------unbound--------
 		if context.after and not context.blueprint then
-			card.unbound.cards = card.unbound.cards + #G.play.cards
+			card.ability.unbound.cards = card.ability.unbound.cards + #G.play.cards
 		end
 		if context.discard and not context.blueprint then
-			card.unbound.discards = card.unbound.discards + 1
+			card.ability.unbound.discards = card.ability.unbound.discards + 1
 		end
 		if context.using_consumeable and context.consumeable.ability.set == "Tarot" and not context.blueprint then
-			card.unbound.tarots = card.unbound.tarots + 1
+			card.ability.unbound.tarots = card.ability.unbound.tarots + 1
 		end
 		if context.after or context.discard or context.using_consumeable and not context.blueprint then
-			if card.unbound.tarots >= 33 and card.unbound.discards >= 333 and card.unbound.cards >= 333 then
+			if card.ability.unbound.tarots >= 33 and card.ability.unbound.discards >= 333 and card.ability.unbound.cards >= 333 then
 				return ANVA.unbound(card)
 			end
 		end

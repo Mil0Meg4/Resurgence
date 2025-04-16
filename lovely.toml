@@ -18,6 +18,6 @@ match_indent = true
 target = "card.lua"
 pattern = "for _, k in ipairs(reset_keys) do"
 position = "before"
-payload = "self.unbound = center.unbound --for aneyh vampirica's unbound jokers"
+payload = "self.ability.unbound = center.unbound --for aneyh vampirica's unbound jokers"
 
 match_indent = true

@@ -7,6 +7,7 @@ ANVA.mod_table_values = function(table, ref, operation,target_keywords,banned_ke
     if target_keywords and not next(target_keywords) then target_keywords = nil end--if target_keywords exists but is empty, it becomes nil
     if not banned_keywords then banned_keywords = {} end
     if not ref then ref = table end--if no ref table is given, take the main one as a reference
+	banned_keywords["unbound"] = true--does not modify the unbound vals
     --convert config to three vars to avoid typing it in full every time
     local set = operation.set or nil--value to replace the starting value with
     local add = operation.add or 0--value to add to the starting value 

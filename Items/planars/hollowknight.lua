@@ -12,7 +12,8 @@ SMODS.Joker {
 	discovered = true,
 	unbound = {evo = "nailsage"},
 	calculate = function(self, card, context)
-		if (context.individual and context.cardarea == G.play) or (context.post_trigger and context.other_card.ability.set == "Joker") then
+		if (context.individual and context.cardarea == G.play) or 
+		(context.post_trigger and context.other_card.ability.set == "Joker" and context.other_card ~= card) then
 			local _card = context.other_card
 			if not (_card.retrig and _card.retrig[(context.blueprint_card and context.blueprint_card.ID) or card.ID]) then
                 if not _card.retrig then _card.retrig = {} end
@@ -52,7 +53,8 @@ SMODS.Joker {
 	cost = 10,
 	discovered = true,
 	calculate = function(self, card, context)
-		if (context.individual and context.cardarea == G.play) or (context.post_trigger and context.other_card.ability.set == "Joker") then
+		if (context.individual and context.cardarea == G.play) or 
+		(context.post_trigger and context.other_card.ability.set == "Joker" and context.other_card ~= card) then
 			local _card = context.other_card
 			if not (_card.retrig and _card.retrig[(context.blueprint_card and context.blueprint_card.ID) or card.ID]) then
                 if not _card.retrig then _card.retrig = {} end

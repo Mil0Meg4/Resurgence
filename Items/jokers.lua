@@ -16,18 +16,21 @@ SMODS.Rarity({
 })
 
 function ANVA.unbound(card)
-    G.E_MANAGER:add_event(Event({
-        func = function()
-            play_sound('tarot2', 1.1, 0.6)
-            card:set_ability(G.P_CENTERS["j_anva_"..card.unbound.evo])
-            return true
-        end
-    }))
-    return {
-        message = localize('k_anva_unb'),
-        colour = ANVA.C.UNBOUND,
-        card = card
-    }
+	print("fuck")
+	G.E_MANAGER:add_event(Event({
+		func = function()
+			if card.unbound and card.unbound.evo then
+				play_sound('tarot2', 1.1, 0.6)
+				card:set_ability(G.P_CENTERS["j_anva_"..card.unbound.evo])
+			else print("No Unbound Field") end
+			return true
+		end
+	}))
+	return {
+		message = localize('k_anva_unb'),
+		colour = ANVA.C.UNBOUND,
+		card = card
+	}
 end
 function ANVA.literally_me_fr(card,joker_key)
     G.E_MANAGER:add_event(Event({

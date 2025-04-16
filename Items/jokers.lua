@@ -120,7 +120,7 @@ SMODS.Joker({
 	key = "charon",
 	atlas = "joke",
 	rarity = "anva_prim",
-	cost = 10,
+	cost = 50,
 	unlocked = true,
 	discovered = false,
 	blueprint_compat = false,

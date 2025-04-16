@@ -8,6 +8,9 @@ ANVA.C = {
     PRIMORDIAL = HEX("000000"),
     UNBOUND = HEX("000000"),
     ARTIFACT = HEX("000000"),
+    PINK = HEX("eda5b2"),
+    CYAN = HEX("93cbcb"),
+    BROWN = HEX("4e3f36"),
 }
 ANVA.GRADIENTS = {
     UNDER = {G.C.RED,G.C.PURPLE},
@@ -59,6 +62,15 @@ SMODS.Atlas({
     px = 34,
     py = 34
 })
+
+local lc = loc_colour
+function loc_colour(_c, _default)
+    if not G.ARGS.LOC_COLOURS then
+        lc()
+    end
+    G.ARGS.LOC_COLOURS.anv_pink = ANVA.C.PINK
+    return lc(_c, _default)
+end
 
 local orig_update = Game.update
 function Game:update(dt)

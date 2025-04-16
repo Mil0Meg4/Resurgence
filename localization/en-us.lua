@@ -202,7 +202,29 @@ return {
                 text = { "Retriggers {C:attention}#1#{} time"
                 }
             },
-            
+            anva_paint_pink = {
+                name = 'Pink Paint',
+                text = { "{C:chips}+#1#{} Chips per {C:anv_pink}Pink",
+                    "card in {C:attention}full deck",
+                    "{C:chips}+#2#{} Chips per {C:anv_pink}Pink{} Joker",
+                    "{C:inactive}(Currently {C:chips}+#3#{C:inactive} Chips)"
+                }
+            },
+            anva_paint_cyan = {
+                name = 'Cyan Paint',
+                text = { "{C:chips}+#1#{} Hands"
+                }
+            },
+            anva_paint_purple = {
+                name = 'Purple Paint',
+                text = { "{C:red}+#1#{} Mult per time",
+                    "an {C:attention}High Card{} or",
+                    "{C:attention}Straight Flush{} has",
+                    "been played this run",
+                    "{C:inactive}(Currently {C:red}+#2#{C:inactive} Mult)"
+                }
+            },
+
         },
         Planet={},
         Spectral={},
@@ -221,6 +243,8 @@ return {
             k_anva_prim = "Primordial",
             k_anva_unb = "Unbound",
             k_augment = "Augment Card",
+            k_discards = "+1 Discrds",
+            k_hands = "+1 Hands",
             b_augment_cards = "Augment Cards",
             anva_tweak_ui = "Tweaks",
             anva_paint_ui = "Paints"
@@ -234,6 +258,10 @@ return {
             anva_paint_green = "Green Paint",
             anva_paint_yellow = "Yellow Paint",
             anva_paint_orange = "Orange Paint",
+            anva_paint_pink = "Pink Paint",
+            anva_paint_cyan = "Cyan Paint",
+            anva_paint_purple = "Purple Paint",
+            anva_paint_brown = "Brown Paint",
         },
         poker_hand_descriptions={},
         poker_hands={},

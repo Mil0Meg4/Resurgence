@@ -8,6 +8,7 @@ ANVA.mod_table_values = function(table, ref, operation,target_keywords,banned_ke
     if not banned_keywords then banned_keywords = {} end
     if not ref then ref = table end--if no ref table is given, take the main one as a reference
 	banned_keywords["unbound"] = true--does not modify the unbound vals
+	banned_keywords["paint"] = true--does not modify the paint vals
     --convert config to three vars to avoid typing it in full every time
     local set = operation.set or nil--value to replace the starting value with
     local add = operation.add or 0--value to add to the starting value 
@@ -81,22 +82,33 @@ end
 
 --Removes a joker's Paint
 function ANVA.remove_paint(card)
-        for k, _ in pairs(card and card.ability or {}) do
-            if ANVA.is_paint(k) then
-                card.ability[k] = nil
-            end
-        end
-    end
+	for k, _ in pairs(card and card.ability or {}) do
+		if ANVA.is_paint(k) then
+			card.ability[k] = nil
+		end
+	end
+end																		
 
 --Sets a joker's Paint, repleacing previous one
   function ANVA.set_paint(card, type)
     local key = 'anva_paint_' .. type
-  
+
     if card and ANVA.is_paint(key) then
         ANVA.remove_paint(card)
         SMODS.Stickers[key]:apply(card, true)
     end
 end
+
+--Checks if card has a certain paint
+function ANVA.has_paint(card,type)
+	local key = 'anva_paint_' .. type
+	for k, _ in pairs(card and card.ability or {}) do
+		if ANVA.is_paint(k) and k == key then
+			return true
+		end
+	end
+	return false
+end	
 
 --Returns a table with all the suit in hand and the number of cards of each
 function ANVA.get_suits(scoring_hand, bypass_debuff)

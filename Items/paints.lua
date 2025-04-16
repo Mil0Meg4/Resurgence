@@ -22,7 +22,7 @@ ANVA.Paint = SMODS.Sticker:extend {
 
     apply = function(self, card, val)
         card.ability[self.key] = val and copy_table(self.config) or nil
-        card.paint = val and copy_table(self.config) or nil 
+        card.ability.paint = val and copy_table(self.config) or nil 
     end
 }
 
@@ -84,13 +84,13 @@ ANVA.Paint {
     weight = 26,
     config = {chips = 40},
     loc_vars = function(self, info_queue, card)
-        local anv = self.config or card.paint
+        local anv = card.ability.paint or self.config
         return { vars = { anv.chips } }
     end,
     calculate = function(self, card, context)
         if context.joker_main or (context.main_scoring and context.cardarea == G.play) then
             return {
-                chips = self.config.chips
+                chips = card.ability.paint.chips
             }
         end
     end
@@ -102,13 +102,13 @@ ANVA.Paint {
     weight = 26,
     config = {mult = 8},
     loc_vars = function(self, info_queue, card)
-        local anv = self.config or card.paint
+        local anv = card.ability.paint or self.config
         return { vars = { anv.mult } }
     end,
     calculate = function(self, card, context)
         if context.joker_main or (context.main_scoring and context.cardarea == G.play) then
             return {
-                mult = self.config.mult
+                mult = card.ability.paint.mult
             }
         end
     end
@@ -121,15 +121,15 @@ ANVA.Paint {
     weight = 24,
     config = {dis = 1},
     loc_vars = function(self, info_queue, card)
-        local anv = self.config or card.paint
+        local anv = card.ability.paint or self.config
         return { vars = { anv.dis } }
     end,
     calculate = function(self, card, context)
         if (context.main_scoring and context.cardarea == G.play) or (context.setting_blind and not card.getting_sliced and context.cardarea == G.jokers) then -- checks cards in main scoring phase and jokers in joker area
-            ease_discard(self.config.dis)
+            ease_discard(card.ability.paint.dis)
             return {
                 message = localize('k_discards'),
-                color = G.C.RED,
+                colour = G.C.RED,
             }
         end
     end
@@ -141,12 +141,12 @@ ANVA.Paint {
     weight = 24,
     config = {dollars = 4},
     loc_vars = function(self, info_queue, card)
-        local anv = self.config or card.paint
+        local anv = card.ability.paint or self.config
         return { vars = { anv.dollars } }
     end,
     calculate = function(self, card, context)
         if (context.main_scoring and context.cardarea  == G.play) or (context.end_of_round and context.cardarea == G.jokers) then -- checks cards in main scoring phase and jokers in joker area
-            return { dollars = self.config.dollars }
+            return { dollars = card.ability.paint.dollars }
         end
     end
 }
@@ -157,7 +157,7 @@ ANVA.Paint {
     weight = 21,
     config = {ret = 1},
     loc_vars = function(self, info_queue, card)
-        local anv = self.config or card.paint
+        local anv = card.ability.paint or self.config
         return { vars = { anv.ret } }
     end,
     calculate = function(self, card, context)
@@ -166,33 +166,64 @@ ANVA.Paint {
 		then
 			return {
 				message = localize('k_again_ex'),
-				repetitions = self.config.ret,
+				repetitions = card.ability.paint.ret,
 			}
 		end
     end
 }
---[[ ANVA.Paint {
+ANVA.Paint {
     key = 'paint_pink',
-    badge_colour = G.C.MONEY,
+    badge_colour = ANVA.C.PINK,
     shader = 'pink',
     weight = 19,
-    config = {},
+    config = {chips_c = 25,chips_j = 35},
     loc_vars = function(self, info_queue, card)
-        local anv = self.config or card.paint
+        local anv = card.ability.paint or self.config
+        local card_tally = 0
+        local joker_tally = 0
+        for k, v in pairs(G.playing_cards or {}) do
+			if ANVA.has_paint(v,'pink') then card_tally = card_tally + 1 end
+		end
+        for k, v in pairs(G.jokers and G.jokers.cards or {}) do
+			if ANVA.has_paint(v,'pink') then joker_tally = joker_tally + 1 end
+		end
+        return { vars = {anv.chips_c,anv.chips_j, anv.chips_c * card_tally + anv.chips_j * joker_tally } }
     end,
     calculate = function(self, card, context)
+        if context.joker_main or (context.main_scoring and context.cardarea == G.play) then
+            local anv = card.ability.paint
+            local card_tally = 0
+            local joker_tally = 0
+            for k, v in pairs(G.playing_cards) do
+                if ANVA.has_paint(v,'pink') then card_tally = card_tally + 1 end
+            end
+            for k, v in pairs(G.jokers.cards) do
+                if ANVA.has_paint(v,'pink') then joker_tally = joker_tally + 1 end
+            end
+            return {
+                chips = anv.chips_c * card_tally + anv.chips_j * joker_tally
+            }
+        end
     end
-}
+} 
 ANVA.Paint {
     key = 'paint_cyan',
-    badge_colour = G.C.CHIPS,
+    badge_colour = ANVA.C.CYAN,
     shader = 'cyan',
     weight = 18,
-    config = {},
+    config = {hand = 1},
     loc_vars = function(self, info_queue, card)
-        local anv = self.config or card.paint
+        local anv = card.ability.paint or self.config
+        return { vars = { anv.hand } }
     end,
     calculate = function(self, card, context)
+        if (context.main_scoring and context.cardarea == G.play) or (context.setting_blind and not card.getting_sliced and context.cardarea == G.jokers) then -- checks cards in main scoring phase and jokers in joker area
+            ease_hands_played(card.ability.paint.hand)
+            return {
+                message = localize('k_hands'),
+                colour = G.C.CHIPS,
+            }
+        end
     end
 }
 ANVA.Paint {
@@ -200,21 +231,29 @@ ANVA.Paint {
     badge_colour = G.C.PURPLE,
     shader = 'purple',
     weight = 15,
-    config = {},
+    config = {mult = 5,hand_a = "High Card",hand_b = "Straight Flush"},
     loc_vars = function(self, info_queue, card)
-        local anv = self.config or card.paint
+        local anv = card.ability.paint or self.config
+        local tally = G.GAME.hands[anv.hand_a].played + G.GAME.hands[anv.hand_b].played
+        return { vars = { anv.mult,anv.mult * tally } }
     end,
     calculate = function(self, card, context)
+        if context.joker_main or (context.main_scoring and context.cardarea == G.play) then
+            local tally = G.GAME.hands[card.ability.paint.hand_a].played + G.GAME.hands[card.ability.paint.hand_b].played
+            return {
+                mult = card.ability.paint.mult * tally
+            }
+        end
     end
 }
-ANVA.Paint {
+--[[ ANVA.Paint {
     key = 'paint_brown',
-    badge_colour = ANVA.C.AUGMENT,
+    badge_colour = ANVA.C.BROWN,
     shader = 'brown',
     weight = 7,
     config = {},
     loc_vars = function(self, info_queue, card)
-        local anv = self.config or card.paint
+        local anv = self.config or card.ability.paint
     end,
     calculate = function(self, card, context)
     end

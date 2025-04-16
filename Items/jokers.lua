@@ -142,7 +142,10 @@ SMODS.Joker({
 	calculate = function(self, card, context)
 		local anv = card.ability.extra
 		if context.ending_shop and not context.blueprint then
-			ease_dollars(to_number(math.max(0, math.min(G.GAME.dollars * 5, anv.max)), true)) ---ease_dollars is used to manipulate the ammount of cash you have, to_number is for talisman compatiblity and math.max is used to set the max value for the added cash
+			--ease_dollars(to_number(math.max(0, math.min(G.GAME.dollars * 5, anv.max)), true))---ease_dollars is used to manipulate the ammount of cash you have, to_number is for talisman compatiblity and math.max is used to set the max value for the added cash
+			return {
+				dollars = to_number(math.max(0, math.min(G.GAME.dollars * 4, anv.max)))
+			}
 		end
 	end,
 	in_pool = function(self, wawa, wawa2)

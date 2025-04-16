@@ -177,7 +177,7 @@ SMODS.Joker({
 				local anv = card.ability
 				anv.scored_sixes = anv.scored_sixes+1
 				if anv.scored_sixes >= 66 then
-					anv.scored_sixes = 66
+					anv.scored_sixes = 0
 					G.E_MANAGER:add_event(Event({
 						func = (function()
 							for i=1,6 do

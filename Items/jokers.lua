@@ -1,6 +1,6 @@
 SMODS.Rarity({
 	key = "prim",
-	badge_colour = G.C.ORANGE,
+	badge_colour = ANVA.C.PRIMORDIAL,
 	pools = {
 		["Joker"] = {
 			rate = 0.01, --added which pool its in so it can naturally spawn. mess arround with it
@@ -11,7 +11,7 @@ SMODS.Rarity({
 
 SMODS.Rarity({
 	key = "unb",
-	badge_colour = G.C.PURPLE,
+	badge_colour = ANVA.C.UNBOUND,
 	pools = {},
 })
 

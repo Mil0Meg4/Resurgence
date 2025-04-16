@@ -5,12 +5,18 @@ ANVA.C = {
     DIVINE = HEX("ffffbb"),
     FAUST = HEX("b66444"),
     CURSED = HEX("4a0044"),
+    PRIMORDIAL = HEX("000000"),
+    UNBOUND = HEX("000000"),
+    ARTIFACT = HEX("000000"),
 }
 ANVA.GRADIENTS = {
     UNDER = {G.C.RED,G.C.PURPLE},
     ULTRA = {ANVA.C.VAMPIRICA,G.C.BLACK},
     VAMP = {ANVA.C.VAMPIRICA,G.C.MONEY},
-    HOLLOW = {HEX("6b8cad"),G.C.BLACK}
+    HOLLOW = {HEX("6b8cad"),G.C.BLACK},
+    PRIMORDIAL = {ANVA.C.VAMPIRICA,HEX("52134b")},
+    UNBOUND = {HEX("bc5a25"),ANVA.C.VAMPIRICA},
+    ARTIFACT = {HEX("40b5c4"),HEX("a8ced3")}
 
 }
 SMODS.load_file("Items/funcs.lua")()

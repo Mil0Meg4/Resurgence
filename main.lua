@@ -5,8 +5,9 @@ ANVA.C = {
 }
 ANVA.GRADIENTS = {
     UNDER = {G.C.RED,G.C.PURPLE},
-    ULTRA = {HEX("880808"),G.C.BLACK},
-    VAMP = {HEX("880808"),G.C.MONEY}
+    ULTRA = {ANVA.C.VAMPIRICA,G.C.BLACK},
+    VAMP = {ANVA.C.VAMPIRICA,G.C.MONEY},
+    HOLLOW = {HEX("6b8cad"),G.C.BLACK}
 
 }
 SMODS.load_file("Items/funcs.lua")()
@@ -19,6 +20,7 @@ SMODS.load_file("Items/jokers.lua")()
 SMODS.load_file("Items/planars/ultrakill.lua")()
 SMODS.load_file("Items/planars/undertale.lua")()
 SMODS.load_file("Items/planars/vampire.lua")()
+SMODS.load_file("Items/planars/hollowknight.lua")()
 
 --joker ATLAS
 SMODS.Atlas{
@@ -167,6 +169,14 @@ SMODS.ObjectType({
 SMODS.ObjectType({
 	key = "vampire",
 	default = "j_anva_poe",
+	cards = {},
+	inject = function(self)
+		SMODS.ObjectType.inject(self)
+	end,
+})
+SMODS.ObjectType({
+	key = "hollow",
+	default = "j_anva_sly",
 	cards = {},
 	inject = function(self)
 		SMODS.ObjectType.inject(self)

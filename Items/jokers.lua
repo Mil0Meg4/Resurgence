@@ -1,6 +1,6 @@
 SMODS.Rarity({
 	key = "prim",
-	badge_colour = G.C.ORANGE,
+	badge_colour = ANVA.C.PRIMORDIAL,
 	pools = {
 		["Joker"] = {
 			rate = 0.01, --added which pool its in so it can naturally spawn. mess arround with it
@@ -11,7 +11,7 @@ SMODS.Rarity({
 
 SMODS.Rarity({
 	key = "unb",
-	badge_colour = G.C.PURPLE,
+	badge_colour = ANVA.C.UNBOUND,
 	pools = {},
 })
 
@@ -25,7 +25,21 @@ function ANVA.unbound(card)
     }))
     return {
         message = localize('k_anva_unb'),
-        colour = ANVA.C.VAMPIRICA,
+        colour = ANVA.C.UNBOUND,
+        card = card
+    }
+end
+function ANVA.literally_me_fr(card,joker_key)
+    G.E_MANAGER:add_event(Event({
+        func = function()
+            play_sound('tarot2', 1.1, 0.6)
+            card:set_ability(G.P_CENTERS["j_anva_"..joker_key])
+            return true
+        end
+    }))
+    return {
+        message = localize('k_anva_prim'),
+        colour = ANVA.C.PRIMORDIAL,
         card = card
     }
 end
@@ -64,11 +78,7 @@ SMODS.Joker({
 			elseif context.using_consumeable and context.consumeable.config.center.key == "c_world" then
 				print("6")
 			elseif context.using_consumeable and context.consumeable.config.center.key == "c_star" then
-				card:start_dissolve({ HEX("57ecab") }, nil, 0.1) --Removes self
-				SMODS.add_card({
-					key = "j_anva_andromeda", --adds andromeda
-					set = "Joker",
-				})
+				return ANVA.literally_me_fr(card,"andromeda")
 			elseif context.using_consumeable and context.consumeable.config.center.key == "c_sun" then
 				print("8")
 			elseif context.using_consumeable and context.consumeable.config.center.key == "c_lovers" then
@@ -80,11 +90,7 @@ SMODS.Joker({
 			elseif context.using_consumeable and context.consumeable.config.center.key == "c_judgement" then
 				print("12")
 			elseif context.using_consumeable and context.consumeable.config.center.key == "c_hermit" then
-				card:start_dissolve({ HEX("57ecab") }, nil, 0.1) --Removes self
-				SMODS.add_card({
-					key = "j_anva_charon", --adds charon
-					set = "Joker",
-				})
+				return ANVA.literally_me_fr(card,"charon")
 			elseif context.using_consumeable and context.consumeable.config.center.key == "c_temperance" then
 				print("14")
 			elseif context.using_consumeable and context.consumeable.config.center.key == "c_strength" then
@@ -114,7 +120,7 @@ SMODS.Joker({
 	key = "charon",
 	atlas = "joke",
 	rarity = "anva_prim",
-	cost = 10,
+	cost = 50,
 	unlocked = true,
 	discovered = false,
 	blueprint_compat = false,
@@ -136,7 +142,10 @@ SMODS.Joker({
 	calculate = function(self, card, context)
 		local anv = card.ability.extra
 		if context.ending_shop and not context.blueprint then
-			ease_dollars(to_number(math.max(0, math.min(G.GAME.dollars * 5, anv.max)), true)) ---ease_dollars is used to manipulate the ammount of cash you have, to_number is for talisman compatiblity and math.max is used to set the max value for the added cash
+			--ease_dollars(to_number(math.max(0, math.min(G.GAME.dollars * 5, anv.max)), true))---ease_dollars is used to manipulate the ammount of cash you have, to_number is for talisman compatiblity and math.max is used to set the max value for the added cash
+			return {
+				dollars = to_number(math.max(0, math.min(G.GAME.dollars * 4, anv.max)))
+			}
 		end
 	end,
 	in_pool = function(self, wawa, wawa2)
@@ -259,7 +268,7 @@ SMODS.Joker({
 		end
 		if context.after or context.discard or context.using_consumeable and not context.blueprint then
 			if card.unbound.tarots >= 33 and card.unbound.discards >= 333 and card.unbound.cards >= 333 then
-				ANVA.unbound(card)
+				return ANVA.unbound(card)
 			end
 		end
 	end,

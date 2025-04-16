@@ -2,6 +2,9 @@ ANVA = {}
 ANVA.C = {
     VAMPIRICA = HEX("880808"),
     AUGMENT = HEX("b59262"),
+    DIVINE = HEX("ffffbb"),
+    FAUST = HEX("b66444"),
+    CURSED = HEX("4a0044"),
 }
 ANVA.GRADIENTS = {
     UNDER = {G.C.RED,G.C.PURPLE},

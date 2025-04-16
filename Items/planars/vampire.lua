@@ -121,3 +121,32 @@ SMODS.Joker({
 		badges[#badges - 1] = create_badge("Vampire Survivors", ANVA.C.VAMP, G.C.WHITE, 1) --This adds the primer badge ABOVE the rarity. if this was +1 it would add below
 	end,
 })
+
+SMODS.Joker({
+	key = "sos",
+	atlas = "joke",
+	pos = { x = 0, y = 0 },
+	rarity = 3,
+	cost = 10,
+	config = { extra = { multstack = 15, xmultstack = 1 } },
+	pools = {planar = true, vampire = true},
+	unlocked = true,
+	discovered = false,
+	blueprint_compat = true,
+	loc_vars = function(self, info_queue, card)
+		local anv = card.ability.extra
+		return {
+			vars = { anv.multstack, anv.xmultstack },
+		}
+	end,
+	calculate = function(self, card, context)
+		local anv = card.ability.extra
+		local maxboost = 5
+		if context.joker_main then
+			return {
+				mult = math.max(anv.multstack*(G.jokers.config.card_limit - #G.jokers.cards), 0),
+				xmult = math.max(anv.xmultstack*(G.jokers.config.card_limit - #G.jokers.cards), 1)
+			}
+			end
+		end
+})

@@ -424,6 +424,8 @@ SMODS.Joker({
 	},
 	pride_flag_paints = {any=true}
 })
+
+
 --[[ SMODS.Joker({
 	key = "pride_test",
 	atlas = "wip",

@@ -88,6 +88,15 @@ function SMODS.current_mod.reset_game_globals(run_start)
     end
 end
 
+SMODS.Sound({
+	key = "prim_music",
+	path = "primordial.ogg",
+	sync = false,
+	pitch = 1,
+	select_music_track = function()
+		return #ANVA.advanced_find_joker(nil,"anva_prim", nil, nil, true) ~= 0
+	end
+})
 -------------------------------------------------------------------------
 ----stuff for making tweaks and paints have their own collection tabs----
 -------------------------------------------------------------------------

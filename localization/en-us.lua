@@ -114,7 +114,7 @@ return {
             },
             j_anva_filth = {
                 name = 'Filth',
-                text = { "{C:mult}+2{} Mult and {C:chips}+10{} Chips"
+                text = { "{C:mult}+#2#{} Mult and {C:chips}+#1#{} Chips"
                 }
             },
             j_anva_alphys = {

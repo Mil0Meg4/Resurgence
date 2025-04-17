@@ -10,6 +10,12 @@ SMODS.Joker {
 	pos = { x = 0, y = 1 },
 	cost = 3,
 	discovered = true,
+	loc_vars = function(self, info_queue, card)
+		local anv = card.ability.extra --to avoid typing card.ability.extra each time. Not needed but very handy
+		return {
+			vars = { anv.chips, anv.mult }, --for example in here anv = card.ability.extra. Also this is needed to display the values in the desc of the card
+		}
+	end,
 	calculate = function(self, card, context)
 		if context.joker_main then 
 			local anv = card.ability.extra

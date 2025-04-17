@@ -131,7 +131,6 @@ SMODS.Joker {
 		end
 		if context.skip_blind then
 			local anv = card.ability.extra
-			local monsters = -1
 			for k,v in pairs(G.jokers.cards) do
 				if v.config.center.pools.undertale then
 					monsters = monsters + 1

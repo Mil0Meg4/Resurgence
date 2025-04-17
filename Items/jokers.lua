@@ -258,6 +258,11 @@ SMODS.Joker({
 		end
 		if (context.end_of_round and context.cardarea == G.jokers) and not context.blueprint then
 			anv.mult = anv.mult + anv.mult_mod
+			return {
+				message = localize('k_tree_grow'),
+				colour = G.C.GREEN,
+				card = card
+			}
 		end
 		--------unbound--------
 		if context.after and not context.blueprint then

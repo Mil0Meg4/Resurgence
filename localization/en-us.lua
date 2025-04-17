@@ -221,6 +221,7 @@ return {
             k_anva_prim = "Primordial",
             k_anva_unb = "Unbound",
             k_augment = "Augment Card",
+            k_tree_grow = "Grow!",
             b_augment_cards = "Augment Cards",
             anva_tweak_ui = "Tweaks",
             anva_paint_ui = "Paints"

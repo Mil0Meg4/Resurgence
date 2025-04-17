@@ -244,6 +244,7 @@ return {
             k_anva_unb = "Unbound",
             k_augment = "Augment Card",
             k_tree_grow = "Grow!",
+            k_tree3_grow = "Grow(3)!",
             k_discards = "+1 Discrds",
             k_hands = "+1 Hands",
             b_augment_cards = "Augment Cards",

@@ -120,7 +120,7 @@ return {
             j_anva_alphys = {
                 name = 'Alphys, Royal Scientist',
                 text = { "Create a {C:attention}Blueprint",
-                    "after defeating {C:attention}Boss Blind"
+                    "when selecting {C:attention}Boss Blind"
                 }
             },
             j_anva_gaster = {

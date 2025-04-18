@@ -89,7 +89,7 @@ SMODS.Joker({
 		info_queue[#info_queue + 1] = G.P_CENTERS.j_blueprint
 	end,
 	calculate = function(self, card, context)
-		if context.end_of_round and G.GAME.blind.boss and not context.other_card then
+		if context.setting_blind and context.blind.boss then
 			if #G.jokers.cards < G.jokers.config.card_limit or self.area == G.jokers then
 				local new_card = create_card("Blueprint", G.jokers, nil, nil, nil, nil, "j_blueprint")
 				new_card:add_to_deck()

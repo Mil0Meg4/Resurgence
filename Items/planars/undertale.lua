@@ -122,26 +122,31 @@ SMODS.Joker {
 		}
 	end,
 	calculate = function(self, card, context)
-		if context.setting_blind and G.GAME.blind:get_type() ~= 'Boss' and not context.blueprint then
+		if context.setting_blind and G.GAME.blind:get_type() ~= 'Boss' then
 			local _tag = G.GAME.skip_tag
-			if _tag and _tag.config then
+			if _tag and _tag.config and _tag.config.ref_table then
 				add_tag(_tag.config.ref_table)
 				G.GAME.skip_tag = ''
 			end
 		end
 		if context.skip_blind then
 			local anv = card.ability.extra
+			local monsters = 0
 			for k,v in pairs(G.jokers.cards) do
 				if v.config.center.pools.undertale then
 					monsters = monsters + 1
 				end
 			end
 			anv.chips = anv.chips+(anv.chipsadd*monsters) 
+			return {
+				message = localize("k_upgrade_ex"),
+				colour = G.C.CHIPS
+			}
 		end
 		if context.joker_main then
 			local anv = card.ability.extra
 			return{
-				chips = anv.chips
+				chips = anv.chips,
 			}
 		end
 	end,

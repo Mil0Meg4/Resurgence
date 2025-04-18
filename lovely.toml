@@ -21,3 +21,16 @@ position = "before"
 payload = "self.ability.unbound = center.unbound --for aneyh vampirica's unbound jokers"
 
 match_indent = true
+
+#sans
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = "if G.blind_select then "
+position = "after"
+payload = '''
+    local _tag = e.UIBox:get_UIE_by_ID('tag_container')
+    G.GAME.skip_tag = _tag
+'''
+match_indent = true
+times = 2

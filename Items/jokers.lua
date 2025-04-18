@@ -271,7 +271,7 @@ SMODS.Joker({
 		if context.discard and not context.blueprint then
 			card.ability.unbound.discards = card.ability.unbound.discards + 1
 		end
-		if context.using_consumeable and context.consumeable.ability.set == "Tarot" and not context.blueprint then
+		if context.using_consumeable and not context.blueprint then
 			card.ability.unbound.tarots = card.ability.unbound.tarots + 1
 		end
 		if context.after or context.discard or context.using_consumeable and not context.blueprint then

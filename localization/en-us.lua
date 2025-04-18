@@ -139,7 +139,29 @@ return {
                 text = { ""
                 }
             },
-            
+            j_anva_sly = {
+                name = 'Sly',
+                text = { "Earn {C:money}$#1#{} when",
+                    "a card or Joker",
+                    "is {C:attention}Retriggered"
+                }
+            },
+            j_anva_nailsage = {
+                name = 'Great Nailsage Sly',
+                text = { "Earn {C:money}$#1#{} when a card ",
+                    "or Joker is {C:attention}Retriggered",
+                    "{X:mult,C:white}X#2#{} mult for",
+                    "each {C:money}$#3#{} you have",
+                    "{C:inactive}(Currently {X:mult,C:white}X#4#{C:inactive} Mult"
+                }
+            },
+            j_anva_sheo = {
+                name = 'Great Nailsage Sly',
+                text = { "Retrigger all played",
+                    "{C:attention}Painted{} cards and",
+                    "all {C:attention}Painted{} Jokers"
+                }
+            },
         },
         Augment={
             c_anva_aug_mother = {

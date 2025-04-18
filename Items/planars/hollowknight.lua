@@ -1,7 +1,7 @@
 SMODS.Joker {
 	key = 'sly',
 	pools = {planar = true, hollow = true},
-	rarity = 1,
+	rarity = 2,
 	atlas = 'joke',
 	blueprint_compat = true,
 	eternal_compat = true,
@@ -11,6 +11,12 @@ SMODS.Joker {
 	cost = 5,
 	discovered = true,
 	unbound = {evo = "nailsage"},
+	loc_vars = function(self, info_queue, card)
+		local anv = card.ability.extra
+		return {
+			vars = { anv.dollars},
+		}
+	end,
 	calculate = function(self, card, context)
 		if (context.individual and context.cardarea == G.play) or 
 		(context.post_trigger and context.other_card.ability.set == "Joker" and context.other_card ~= card) then
@@ -52,6 +58,12 @@ SMODS.Joker {
 	pos = { x = 3, y = 0},
 	cost = 10,
 	discovered = true,
+	loc_vars = function(self, info_queue, card)
+		local anv = card.ability.extra
+		return {
+			vars = { anv.dollars,anv.x_mult,anv.dollar_div,1 + anv.x_mult * to_number(math.max(0,math.floor((G.GAME.dollars + (G.GAME.dollar_buffer or 0))/anv.dollar_div)))},
+		}
+	end,
 	calculate = function(self, card, context)
 		if (context.individual and context.cardarea == G.play) or 
 		(context.post_trigger and context.other_card.ability.set == "Joker" and context.other_card ~= card) then
@@ -74,6 +86,42 @@ SMODS.Joker {
 		if context.joker_main then
 			return{
 				xmult = 1 + card.ability.extra.x_mult * to_number(math.max(0,math.floor((G.GAME.dollars + (G.GAME.dollar_buffer or 0))/card.ability.extra.dollar_div)))
+			}
+		end
+	end,
+	set_badges = function(self, card, badges)
+		badges[#badges - 1] = create_badge("Hollow Knight", ANVA.C.HOLLOW, G.C.WHITE, 1)
+	end,
+}
+SMODS.Joker {
+	key = 'sheo',
+	pools = {planar = true, hollow = true},
+	rarity = 2,
+	atlas = 'joke',
+	blueprint_compat = true,
+	eternal_compat = true,
+    perishable_compat = true,
+	pos = { x = 3, y = 0},
+	cost = 6,
+	discovered = true,
+	calculate = function(self, card, context)
+		if context.retrigger_joker_check and not context.retrigger_joker and context.other_card ~= self then
+			if ANVA.has_paint(context.other_card) then
+				return {
+					message = localize("k_again_ex"),
+					repetitions = 1,
+					card = card,
+				}
+			else
+				return nil, true
+			end
+		end
+		if context.repetition and context.cardarea == G.play and ANVA.has_paint(context.other_card)
+		then
+			return {
+				message = localize("k_again_ex"),
+				repetitions = 1,
+				card = card,
 			}
 		end
 	end,

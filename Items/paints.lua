@@ -253,7 +253,7 @@ ANVA.Paint {
     weight = 7,
     calculate = function(self, card, context)
         local _card = nil
-        local area = card.area == G.play and G.play.cards or card.area == G.hand and G.play.hand or nil
+        local area = card.area == G.play and G.play.cards or card.area == G.hand and G.hand.cards or card.area == G.jokers and G.jokers.cards or nil
         if area then
             for i = 1, #area do
                 if area[i] == card then _card = area[i+1] end

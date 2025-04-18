@@ -229,6 +229,12 @@ return {
                     "{C:inactive}(Currently {C:red}+#2#{C:inactive} Mult)"
                 }
             },
+            anva_paint_brown = {
+                name = 'Brown Paint',
+                text = { "Copies ability of",
+                    "{C:attention}Paint{} to the right"
+                }
+            },
 
         },
         Planet={},

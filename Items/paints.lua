@@ -246,18 +246,48 @@ ANVA.Paint {
         end
     end
 }
---[[ ANVA.Paint {
+ANVA.Paint {
     key = 'paint_brown',
     badge_colour = ANVA.C.BROWN,
     shader = 'brown',
     weight = 7,
-    config = {},
-    loc_vars = function(self, info_queue, card)
-        local anv = self.config or card.ability.paint
-    end,
     calculate = function(self, card, context)
+        local _card = nil
+        local area = card.area == G.play and G.play.cards or card.area == G.hand and G.play.hand or nil
+        if area then
+            for i = 1, #area do
+                if area[i] == card then _card = area[i+1] end
+            end
+        end
+        if _card and ANVA.has_paint(_card) and _card ~= card then
+            context.blueprint = (context.blueprint and (context.blueprint + 1)) or 1
+			context.blueprint_card = context.blueprint_card or card
+            if context.blueprint > #area + 1 then return end
+            local key = ""
+            for k, _ in pairs(_card and _card.ability or {}) do
+                if ANVA.is_paint(k) then
+                    key = k
+                end
+            end
+            local other_paint_ret = _card:calculate_sticker(context,key)
+            local eff_card = context.blueprint_card or card
+			context.blueprint = nil
+			context.blueprint_card = nil
+			if other_paint_ret == true then
+				return other_paint_ret
+			end
+			if other_paint_ret then
+				if not other_paint_ret then
+					other_paint_ret = {}
+				end
+				other_paint_ret.card = eff_card
+				other_paint_ret.colour = ANVA.C.BROWN
+				other_paint_ret.no_callback = true
+				return other_paint_ret
+			end
+        end
     end
-} ]]
+}
 
 --gives cards a random chance of being painted, also handles pride flag
 local orig_create_card = create_card

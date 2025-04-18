@@ -99,16 +99,16 @@ end
     end
 end
 
---Checks if card has a certain paint
+--Checks if card has a certain paint. Leave the type field empty to check for any paint
 function ANVA.has_paint(card,type)
-	local key = 'anva_paint_' .. type
+	local key = type and 'anva_paint_' .. type or nil
 	for k, _ in pairs(card and card.ability or {}) do
-		if ANVA.is_paint(k) and k == key then
-			return true
+		if ANVA.is_paint(k) then
+			return not key or k == key
 		end
 	end
 	return false
-end	
+end
 
 --Returns a table with all the suit in hand and the number of cards of each
 function ANVA.get_suits(scoring_hand, bypass_debuff)

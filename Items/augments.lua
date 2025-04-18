@@ -101,7 +101,7 @@ SMODS.Consumable({
 
 
 ----debug stuff----
---[[SMODS.Consumable({
+--[[ SMODS.Consumable({
     key = 'aug_red',
     set = 'Augment',
     atlas = 'aug',
@@ -361,4 +361,4 @@ SMODS.Consumable({
             end
         return true end }))
     end
-})]]
+}) ]]

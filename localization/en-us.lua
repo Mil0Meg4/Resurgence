@@ -134,6 +134,11 @@ return {
                     "{C:inactive}(Currently {C:attention}#1#{C:inactive}/66){}"
                 }
             },
+            j_anva_triangleJoke = {
+                name = 'Triangle Joker',
+                text = { ""
+                }
+            },
             
         },
         Augment={

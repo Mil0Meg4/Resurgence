@@ -467,3 +467,35 @@ SMODS.Joker({
 		end
 	end,
 }) ]]
+
+SMODS.Joker({
+	key = "triangleJoke",
+	atlas = "joke",
+	pos = { x = 0, y = 0 },
+	rarity = 3,
+	cost = 7,
+	config = {
+		extra = {
+			xmult = 3
+		},
+	},
+	unlocked = true,
+	discovered = false,
+	blueprint_compat = false,
+	loc_vars = function(self, info_queue, card)
+		local anv = card.ability.extra
+		return {
+			vars = { anv.xmult },
+		}
+	end,
+	calculate = function(self, card, context)
+		if context.individual and context.cardarea == G.play and #G.play.cards == 3 then
+			if context.other_card:get_id() == 3 then
+				local anv = card.ability.extra
+				return{
+					xmult = anv.xmult,
+				}
+			end
+		end
+	end,
+})

@@ -148,5 +148,8 @@ SMODS.Joker({
 				xmult = math.max(anv.xmultstack*(G.jokers.config.card_limit - #G.jokers.cards), 1)
 			}
 			end
-		end
+		end,
+		set_badges = function(self, card, badges)
+			badges[#badges - 1] = create_badge("Vampire Survivors", ANVA.C.VAMP, G.C.WHITE, 1) --This adds the primer badge ABOVE the rarity. if this was +1 it would add below
+		end,
 })

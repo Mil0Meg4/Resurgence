@@ -89,3 +89,27 @@ SMODS.Joker({
 		badges[#badges - 1] = create_badge("Ultrakill", ANVA.C.ULTRA, G.C.WHITE, 1) --This adds the primer badge ABOVE the rarity. if this was +1 it would add below
 	end,
 })
+
+SMODS.Joker {
+	key = 'v1',
+	config = { 
+	  extra = {xred = 3, xredgain = 1, steelcardscorereq = 8, steelcardscored = 0} },
+	pools = {planar = true, ultrakill = true},
+	rarity = 4,
+	atlas = 'joke',
+	blueprint_compat = true,
+	eternal_compat = true,
+	pos = { x = 0, y = 1 },
+	cost = 20,
+	discovered = true,
+	loc_vars = function(self, info_queue, card)
+		local anv = card.ability.extra --to avoid typing card.ability.extra each time. Not needed but very handy
+		return {
+			vars = { anv.xred, anv.xredgain, anv.steelcardscorereq }, --for example in here anv = card.ability.extra. Also this is needed to display the values in the desc of the card
+		}
+	end,
+	
+	set_badges = function(self, card, badges)
+		badges[#badges - 1] = create_badge("Ultrakill", ANVA.C.ULTRA, G.C.WHITE, 1) --This adds the primer badge ABOVE the rarity. if this was +1 it would add below
+	end,
+}

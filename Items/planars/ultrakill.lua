@@ -117,8 +117,9 @@ SMODS.Joker {
 				if anv.steelcardscored >= anv.steelcardscorereq then
 					anv.steelcardscored = 0
 					ANVA.update_add_to_deck(card, function(card)
+					local anv = card.ability.extra
 					anv.xred = anv.xred + anv.xredgain
-					end)
+					return end)
 				end
 			end
 		end

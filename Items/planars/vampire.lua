@@ -136,7 +136,10 @@ SMODS.Joker({
 	loc_vars = function(self, info_queue, card)
 		local anv = card.ability.extra
 		return {
-			vars = { anv.multstack, anv.xmultstack },
+			vars = { anv.multstack, anv.xmultstack,
+			G.jokers and math.max(anv.multstack*(G.jokers.config.card_limit - #G.jokers.cards), 0) or 0,
+			(G.jokers and math.max(anv.xmultstack*(G.jokers.config.card_limit - #G.jokers.cards), 0) or 0 ) + 1,
+			}
 		}
 	end,
 	calculate = function(self, card, context)

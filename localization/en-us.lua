@@ -60,22 +60,35 @@ return {
             },
             j_anva_sans = {
                 name = 'Sans',
-                text = { ""
+                text = { "{C:chips}+#1#{} Chips",
+                    "When selecting {C:attention}Blind{}, get",
+                    "its associated {C:attention}Skip Tag.",
+                    "When skipping {C:attention}Blind{}, this",
+                    "Joker gains {C:chips}+#2#{} Chips for",
+                    "each {C:anv_under}Undertale{} Joker"
                 }
             },
             j_anva_doom = {
                 name = 'Doom Itself',
-                text = { ""
+                text = { "{C:chips}+#1#{} Chips, or {C:chips}+#2#{} Chips if all",
+                    "cards in {C:attention}full deck{} are {C:attention}Stone Cards",
+                    "{C:red}Destroy{} a random non-{C:attention}Stone{} card from your",
+                    "deck when a {C:attention}Stone Cards{} is scored"
                 }
             },
             j_anva_bartender = {
                 name = 'Bartender',
-                text = { ""
+                text = { "{C:attention}+#2#{} Consumable Slot",
+                    "{C:red}+#1#{} Mult per {C:attention}consumable{} held",
+                    "{C:inactive}(Currently {C:red}+#3#{C:inactive} Mult)"
                 }
             },
             j_anva_andromeda = {
                 name = 'Andromeda',
-                text = { ""
+                text = { "Create a {C:attention}The Star {C:purple}Tarot",
+                    "card with {C:money}X650 {C:attention}sell value",
+                    "when a {C:diamonds}Diamond{} is scored",
+                    "{C:inactive}(Mult have room)"
                 }
             },
             j_anva_tree = {
@@ -109,7 +122,22 @@ return {
             },
             j_anva_pride_rainbow = {
                 name = 'Pride Flag',
-                text = { ""
+                text = { "All cards and Jokers",
+                    "in {C:attention}booster{} are {C:attention}Painted"
+                }
+            },
+            j_anva_pride_bi = {
+                name = 'Pride Flag',
+                text = { "All cards and Jokers",
+                    "in {C:attention}booster{} are {C:attention}Painted",
+                    "{C:red}Red{}, {C:purple}Purple{} or {C:chips}Blue"
+                }
+            },
+            j_anva_pride_pan = {
+                name = 'Pride Flag',
+                text = { "All cards and Jokers",
+                    "in {C:attention}booster{} are {C:attention}Painted",
+                    "{C:anv_pink}Pink{}, {C:money}Yellow{} or {C:anv_cyan}Cyan"
                 }
             },
             j_anva_filth = {
@@ -120,7 +148,8 @@ return {
             j_anva_alphys = {
                 name = 'Alphys, Royal Scientist',
                 text = { "Create a {C:attention}Blueprint",
-                    "when selecting {C:attention}Boss Blind"
+                    "when selecting {C:attention}Boss Blind",
+                    "{C:inactive}(Mult have room)"
                 }
             },
             j_anva_gaster = {
@@ -136,7 +165,10 @@ return {
             },
             j_anva_triangleJoke = {
                 name = 'Triangle Joker',
-                text = { ""
+                text = { "Each played {C:attention}3{} gives",
+                    "{X:mult,C:white}X#1#{} Mult when scored",
+                    "if played hand has",
+                    "exactly {C:attention}3{} cards"
                 }
             },
             j_anva_sly = {
@@ -156,10 +188,24 @@ return {
                 }
             },
             j_anva_sheo = {
-                name = 'Great Nailsage Sly',
+                name = 'Paintmaster Sheo',
                 text = { "Retrigger all played",
                     "{C:attention}Painted{} cards and",
                     "all {C:attention}Painted{} Jokers"
+                }
+            },
+            j_anva_mini_mice = {
+                name = 'Mini Mice',
+                text = {"{C:red}+#1#{} Mult",
+                    "All hands are considered",
+                    "to be an {C:attention}High Card"
+                }
+            },
+            j_anva_sos = {
+                name = 'Silent Old Sanctuary',
+                text = {"{C:red}+#1#{} Mult and {X:mult,C:white}X#2#{} Mult",
+                    "per empty {C:attention}Joker{} slot",
+                    "{C:inactive}(Currently {C:mult}+#3#{C:inactive} Mult and {X:mult,C:white}X#4#{C:inactive} Mult"
                 }
             },
         },

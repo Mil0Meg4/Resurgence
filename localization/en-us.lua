@@ -201,6 +201,13 @@ return {
                     "to be an {C:attention}High Card"
                 }
             },
+            j_anva_v1 = {
+                name = 'V1',
+                text = {"x3 value of Red paint",
+                "Every 8th scored Steel card",
+                "increases value by x1"
+                }
+            },
             j_anva_sos = {
                 name = 'Silent Old Sanctuary',
                 text = {"{C:red}+#1#{} Mult and {X:mult,C:white}X#2#{} Mult",

@@ -47,7 +47,7 @@ return {
                 name = 'Frisk',
                 text = { "{C:chips}+20{} Chips for",
                          "each {C:attention}unique rarity",
-                         "among your {C:attention}Jokers"
+                         "among owned {C:attention}Jokers"
                 }
             },
             j_anva_papyrus = {

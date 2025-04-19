@@ -219,8 +219,8 @@ return {
                 name = 'The Directer',
                 text = {"Any joker, consumable and voucher can appear",
                     "in the shop, with equal chances",
+                }
             },
-        },
         },
         Augment={
             c_anva_aug_mother = {

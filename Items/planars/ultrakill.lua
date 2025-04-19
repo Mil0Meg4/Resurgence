@@ -109,6 +109,22 @@ SMODS.Joker {
 		}
 	end,
 	
+	add_to_deck = function(self, card, from_debuff)
+		for k, v in pairs(SMODS.Stickers) do
+			if k == "anva_paint_red" then
+				ANVA.mod_table_values(v.config,nil,{mult = card.ability.extra.xred})
+			end
+		end
+	end,
+
+	remove_from_deck = function(self, card, from_debuff)
+		for k, v in pairs(SMODS.Stickers) do
+			if k == "anva_paint_red" then
+				ANVA.mod_table_values(v.config,nil,{mult = 1/card.ability.extra.xred})
+			end
+		end
+	end,
+
 	set_badges = function(self, card, badges)
 		badges[#badges - 1] = create_badge("Ultrakill", ANVA.C.ULTRA, G.C.WHITE, 1) --This adds the primer badge ABOVE the rarity. if this was +1 it would add below
 	end,

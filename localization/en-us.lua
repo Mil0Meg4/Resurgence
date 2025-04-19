@@ -212,7 +212,7 @@ return {
             j_anva_directer = {
                 name = 'The Directer',
                 text = {"Any joker, consumable and voucher can appear",
-                    "in the first row of the shop",
+                    "in the shop, with equal chances",
             },
             
         },

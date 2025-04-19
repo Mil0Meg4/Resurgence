@@ -61,7 +61,7 @@ SMODS.Joker({
 	discovered = false,
 	blueprint_compat = false,
 	loc_vars = function(self, info_queue)
-		info_queue[#info_queue + 1] = { key = "anva_paint_blue", set = "Other", vars = {} }
+		info_queue[#info_queue + 1] = ANVA.paint_tooltip("blue")
 	end,
 	calculate = function(self, card, context)
 		if context.before and #G.play.cards == 1 then

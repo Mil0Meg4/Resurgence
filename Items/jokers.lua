@@ -465,7 +465,7 @@ SMODS.Joker({
 	pride_flag_paints = {pink=true,yellow=true,cyan=true},
 	loc_vars = function(self, info_queue, card)
 		for k,v in pairs(self.pride_flag_paints) do
-			info_queue[#info_queue + 1] = { key = "anva_paint_"..k, set = "Other", vars = {} }
+			info_queue[#info_queue + 1] = ANVA.paint_tooltip(k)
 		end
 	end,
 	in_pool = function(self, wawa, wawa2)
@@ -488,7 +488,7 @@ SMODS.Joker({
 	pride_flag_paints = {red=true,blue=true,purple=true},
 	loc_vars = function(self, info_queue, card)
 		for k,v in pairs(self.pride_flag_paints) do
-			info_queue[#info_queue + 1] = { key = "anva_paint_"..k, set = "Other", vars = {} }
+			info_queue[#info_queue + 1] = ANVA.paint_tooltip(k)
 		end
 	end,
 	in_pool = function(self, wawa, wawa2)

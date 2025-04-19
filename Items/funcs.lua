@@ -319,3 +319,18 @@ function ANVA.advanced_find_joker(name, rarity, edition, ability, non_debuff, ar
 	end
 	return jokers
 end
+
+function ANVA.paint_tooltip(type)
+	local key = 'anva_paint_' .. type
+	local paint = SMODS.Stickers[key]
+	if not paint then return end
+
+	local vars = {}
+	if paint.loc_vars then
+		local card = { ability = {} }
+		paint:apply(card, true)
+		vars = paint:loc_vars({}, card).vars
+	end
+
+	return {set = 'Other',key = key,vars = vars}
+end

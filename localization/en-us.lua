@@ -156,7 +156,7 @@ return {
                 }
             },
             j_anva_sheo = {
-                name = 'Great Nailsage Sly',
+                name = 'Paintmaster Sheo',
                 text = { "Retrigger all played",
                     "{C:attention}Painted{} cards and",
                     "all {C:attention}Painted{} Jokers"

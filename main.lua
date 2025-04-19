@@ -69,6 +69,8 @@ function loc_colour(_c, _default)
         lc()
     end
     G.ARGS.LOC_COLOURS.anv_pink = ANVA.C.PINK
+    G.ARGS.LOC_COLOURS.anv_cyan = ANVA.C.CYAN
+    G.ARGS.LOC_COLOURS.anv_under = ANVA.C.UNDER
     return lc(_c, _default)
 end
 

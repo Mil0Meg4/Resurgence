@@ -263,6 +263,12 @@ SMODS.Joker {
 	pos = { x = 2, y = 0 },
 	cost = 2,
 	discovered = true,
+	loc_vars = function(self, info_queue, card)
+		local anv = card.ability
+		return {
+			vars = { anv.mult },
+		}
+	end,
 	calculate = function(self, card, context)
 		if context.joker_main then 
 			local anv = card.ability.extra

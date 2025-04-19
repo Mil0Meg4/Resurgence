@@ -163,26 +163,30 @@ SMODS.Joker({
 	unlocked = true,
 	discovered = false,
 	blueprint_compat = true,
-	pos = {
-		x = 0,
-		y = 0,
-	},
+	pos = {x = 0,y = 0},
+	config = {extra = {cost_mult = 650}},
+	loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue + 1] = G.P_CENTERS.c_star
+		local anv = card.ability.extra
+		return {vars = {anv.cost_mult}}
+	end,
 	calculate = function(self, card, context)
 		if context.individual and context.other_card:is_suit("Diamonds") and context.cardarea == G.play then
-				G.E_MANAGER:add_event(Event({
-					func = function()
-						if #G.consumeables.cards < G.consumeables.config.card_limit then
-							play_sound('tarot2', 1.1, 0.6)
-							local new_card = SMODS.add_card({
-								key = "c_star",
-								area = G.consumeables,
-							})
-							new_card.ability.extra_value = (new_card.sell_cost * 650) - new_card.sell_cost
-							new_card:set_cost()
-						end
-						return true
+			local anv = card.ability.extra
+			G.E_MANAGER:add_event(Event({
+				func = function()
+					if #G.consumeables.cards < G.consumeables.config.card_limit then
+						play_sound('tarot2', 1.1, 0.6)
+						local new_card = SMODS.add_card({
+							key = "c_star",
+							area = G.consumeables,
+						})
+						new_card.ability.extra_value = (new_card.sell_cost * anv.cost_mult) - new_card.sell_cost
+						new_card:set_cost()
 					end
-				}))
+					return true
+				end
+			}))
 		end
 	end,
 	in_pool = function(self, wawa, wawa2)
@@ -346,17 +350,15 @@ SMODS.Joker({
 	blueprint_compat = true,
 	loc_vars = function(self, info_queue, card)
 		local anv = card.ability.extra
+		local drinks = G.consumeables and #G.consumeables.cards or 0
 		return {
-			vars = { anv.mult, anv.con_slot },
+			vars = { anv.mult, anv.con_slot, anv.mult * drinks},
 		}
 	end,
 	calculate = function(self, card, context)
 		if context.joker_main then
 			local anv = card.ability.extra
-			local drinks = 0
-			for i = 1, #G.consumeables.cards do
-				drinks = drinks + 1
-			end
+			local drinks = #G.consumeables.cards
 			return {
 				mult = anv.mult * drinks,
 			}
@@ -406,9 +408,10 @@ SMODS.Joker({
 		},
 	},
 	loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue + 1] = G.P_CENTERS.m_stone
 		local anv = card.ability.extra
 		return {
-			vars = { anv.max },
+			vars = { anv.chips,anv.chips2 },
 		}
 	end,
 	calculate = function(self, card, context)
@@ -503,7 +506,7 @@ SMODS.Joker({
 		x = 1,
 		y = 3,
 	},
-	pride_flag_paints = {red=true,blue=true,purple=true},
+	pride_flag_paints = {red=true,purple=true,blue=true},
 	loc_vars = function(self, info_queue, card)
 		for k,v in pairs(self.pride_flag_paints) do
 			info_queue[#info_queue + 1] = ANVA.paint_tooltip(k)

@@ -215,6 +215,13 @@ return {
                     "{C:inactive}(Currently {C:mult}+#3#{C:inactive} Mult and {X:mult,C:white}X#4#{C:inactive} Mult"
                 }
             },
+            },
+            j_anva_directer = {
+                name = 'The Directer',
+                text = {"Any joker, consumable and voucher can appear",
+                    "in the shop, with equal chances",
+            },
+            
         },
         Augment={
             c_anva_aug_mother = {

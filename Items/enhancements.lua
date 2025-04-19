@@ -28,7 +28,7 @@ SMODS.Enhancement {
     atlas = 'enha',
     pos = { x = 1, y = 0 },
     replace_base_card = true,
-    config = {extra = {e_chips = 2}},
+    config = {extra = {e_chips = 1.7}},
     loc_vars = function(self, info_queue, card)
 		local anv = card and card.ability.extra or self.config.extra
 		return {

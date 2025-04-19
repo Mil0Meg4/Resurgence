@@ -16,7 +16,6 @@ SMODS.Rarity({
 })
 
 function ANVA.unbound(card)
-	print("fuck")
 	G.E_MANAGER:add_event(Event({
 		func = function()
 			if card.ability.unbound and card.ability.unbound.evo then
@@ -170,14 +169,20 @@ SMODS.Joker({
 	},
 	calculate = function(self, card, context)
 		if context.individual and context.other_card:is_suit("Diamonds") and context.cardarea == G.play then
-			if #G.consumeables.cards < G.consumeables.config.card_limit or self.area == G.consumeables then
-				local new_card = SMODS.add_card({
-					key = "c_star",
-					area = G.consumeables,
-				})
-				new_card.ability.extra_value = (new_card.sell_cost * 25) - new_card.sell_cost
-				new_card:set_cost()
-			end
+				G.E_MANAGER:add_event(Event({
+					func = function()
+						if #G.consumeables.cards < G.consumeables.config.card_limit then
+							play_sound('tarot2', 1.1, 0.6)
+							local new_card = SMODS.add_card({
+								key = "c_star",
+								area = G.consumeables,
+							})
+							new_card.ability.extra_value = (new_card.sell_cost * 650) - new_card.sell_cost
+							new_card:set_cost()
+						end
+						return true
+					end
+				}))
 		end
 	end,
 	in_pool = function(self, wawa, wawa2)

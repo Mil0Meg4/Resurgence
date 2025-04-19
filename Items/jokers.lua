@@ -452,15 +452,15 @@ SMODS.Joker({
 
 SMODS.Joker({
 	key = "pride_pan",
-	atlas = "wip",
+	atlas = "joke",
 	rarity = 3,
 	cost = 10,
 	unlocked = true,
 	discovered = false,
 	blueprint_compat = true,
 	pos = {
-		x = 2,
-		y = 0,
+		x = 1,
+		y = 4,
 	},
 	pride_flag_paints = {pink=true,yellow=true,cyan=true},
 	loc_vars = function(self, info_queue, card)
@@ -475,15 +475,15 @@ SMODS.Joker({
 
 SMODS.Joker({
 	key = "pride_bi",
-	atlas = "wip",
+	atlas = "joke",
 	rarity = 3,
 	cost = 10,
 	unlocked = true,
 	discovered = false,
 	blueprint_compat = true,
 	pos = {
-		x = 2,
-		y = 0,
+		x = 1,
+		y = 3,
 	},
 	pride_flag_paints = {red=true,blue=true,purple=true},
 	loc_vars = function(self, info_queue, card)

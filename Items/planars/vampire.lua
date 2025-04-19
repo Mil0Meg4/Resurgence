@@ -155,3 +155,56 @@ SMODS.Joker({
 		badges[#badges - 1] = create_badge("Vampire Survivors", ANVA.C.VAMP, G.C.WHITE, 1) --This adds the primer badge ABOVE the rarity. if this was +1 it would add below
 	end,
 })
+
+local gcp = get_current_pool
+function get_current_pool(_type, _rarity, _legendary, _append, override_equilibrium_effect)
+	if
+		next(find_joker("j_anva_directer"))
+		and not G.GAME.modifiers.cry_equilibrium
+		and (_append == "sho" or _type == "Voucher" or _type == "Booster")
+	then
+		if
+			_type ~= "Enhanced"
+			and _type ~= "Edition"
+			and _type ~= "Back"
+			and _type ~= "Tag"
+			and _type ~= "Seal"
+			and _type ~= "Stake"
+		then
+			-- we're regenerating the pool every time because of banned keys but it's fine tbh
+			P_CRY_ITEMS = {}
+			local valid_pools = { "Joker", "Consumeables", "Voucher", "Booster" }
+			for _, id in ipairs(valid_pools) do
+				for k, v in pairs(G.P_CENTER_POOLS[id]) do
+					if
+						v.unlocked == true
+						and not Cryptid.no(v, "doe", k)
+						and not (G.GAME.banned_keys[v.key] or G.GAME.cry_banished_keys[v.key])
+					then
+						P_CRY_ITEMS[#P_CRY_ITEMS + 1] = v.key
+					end
+				end
+			end
+			if #P_CRY_ITEMS <= 0 then
+				P_CRY_ITEMS[#P_CRY_ITEMS + 1] = "v_blank"
+			end
+			return P_CRY_ITEMS, "cry_equilibrium" .. G.GAME.round_resets.ante
+		end
+	end
+	return gcp(_type, _rarity, _legendary, _append)
+end
+
+SMODS.Joker({
+	key = "directer",
+	atlas = "joke",
+	pos = { x = 0, y = 0 },
+	rarity = "anva_prim",
+	cost = 121,
+	pools = {planar = true, vampire = true},
+	unlocked = true,
+	discovered = false,
+	blueprint_compat = false,
+	set_badges = function(self, card, badges)
+		badges[#badges - 1] = create_badge("Vampire Survivors", ANVA.C.VAMP, G.C.WHITE, 1) --This adds the primer badge ABOVE the rarity. if this was +1 it would add below
+	end
+})

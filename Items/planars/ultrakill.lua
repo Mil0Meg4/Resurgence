@@ -109,6 +109,37 @@ SMODS.Joker {
 		}
 	end,
 	
+	calculate = function(self, card, context)
+		if context.cardarea == G.play and context.individual then
+			if SMODS.has_enhancement(context.other_card,'m_steel') then
+				local anv = card.ability.extra
+				anv.steelcardscored = anv.steelcardscored + 1
+				if anv.steelcardscored >= anv.steelcardscorereq then
+					anv.steelcardscored = 0
+					ANVA.update_add_to_deck(card, function(card)
+					anv.xred = anv.xred + anv.xredgain
+					end)
+				end
+			end
+		end
+	end,
+
+	add_to_deck = function(self, card, from_debuff)
+		for k, v in pairs(SMODS.Stickers) do
+			if k == "anva_paint_red" then
+				ANVA.mod_table_values(v.config,nil,{mult = card.ability.extra.xred})
+			end
+		end
+	end,
+
+	remove_from_deck = function(self, card, from_debuff)
+		for k, v in pairs(SMODS.Stickers) do
+			if k == "anva_paint_red" then
+				ANVA.mod_table_values(v.config,nil,{mult = 1/card.ability.extra.xred})
+			end
+		end
+	end,
+
 	set_badges = function(self, card, badges)
 		badges[#badges - 1] = create_badge("Ultrakill", ANVA.C.ULTRA, G.C.WHITE, 1) --This adds the primer badge ABOVE the rarity. if this was +1 it would add below
 	end,

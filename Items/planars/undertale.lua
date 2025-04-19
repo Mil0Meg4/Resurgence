@@ -264,7 +264,7 @@ SMODS.Joker {
 	cost = 2,
 	discovered = true,
 	loc_vars = function(self, info_queue, card)
-		local anv = card.ability
+		local anv = card.ability.extra
 		return {
 			vars = { anv.mult },
 		}

@@ -66,11 +66,11 @@ SMODS.Joker({
 	calculate = function(self, card, context)
 		if context.before and #G.play.cards == 1 then
 			ANVA.set_paint(G.play.cards[1], "blue")
+			return {
+				message = localize("k_blue"),
+				colour = G.C.CHIPS
+			}
 		end
-		return {
-			message = localize("k_blue"),
-			colour = G.C.CHIPS
-		}
 	end,
 	set_badges = function(self, card, badges)
 		badges[#badges - 1] = create_badge("Undertale", ANVA.C.UNDER, G.C.WHITE, 1)

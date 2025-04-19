@@ -89,3 +89,59 @@ SMODS.Joker({
 		badges[#badges - 1] = create_badge("Ultrakill", ANVA.C.ULTRA, G.C.WHITE, 1) --This adds the primer badge ABOVE the rarity. if this was +1 it would add below
 	end,
 })
+
+SMODS.Joker {
+	key = 'v1',
+	config = { 
+	  extra = {xred = 3, xredgain = 1, steelcardscorereq = 8, steelcardscored = 0} },
+	pools = {planar = true, ultrakill = true},
+	rarity = 4,
+	atlas = 'joke',
+	blueprint_compat = true,
+	eternal_compat = true,
+	pos = { x = 0, y = 1 },
+	cost = 20,
+	discovered = true,
+	loc_vars = function(self, info_queue, card)
+		local anv = card.ability.extra --to avoid typing card.ability.extra each time. Not needed but very handy
+		return {
+			vars = { anv.xred, anv.xredgain, anv.steelcardscorereq }, --for example in here anv = card.ability.extra. Also this is needed to display the values in the desc of the card
+		}
+	end,
+	
+	calculate = function(self, card, context)
+		if context.cardarea == G.play and context.individual then
+			if SMODS.has_enhancement(context.other_card,'m_steel') then
+				local anv = card.ability.extra
+				anv.steelcardscored = anv.steelcardscored + 1
+				if anv.steelcardscored >= anv.steelcardscorereq then
+					anv.steelcardscored = 0
+					ANVA.update_add_to_deck(card, function(card)
+					local anv = card.ability.extra
+					anv.xred = anv.xred + anv.xredgain
+					return end)
+				end
+			end
+		end
+	end,
+
+	add_to_deck = function(self, card, from_debuff)
+		for k, v in pairs(SMODS.Stickers) do
+			if k == "anva_paint_red" then
+				ANVA.mod_table_values(v.config,nil,{mult = card.ability.extra.xred})
+			end
+		end
+	end,
+
+	remove_from_deck = function(self, card, from_debuff)
+		for k, v in pairs(SMODS.Stickers) do
+			if k == "anva_paint_red" then
+				ANVA.mod_table_values(v.config,nil,{mult = 1/card.ability.extra.xred})
+			end
+		end
+	end,
+
+	set_badges = function(self, card, badges)
+		badges[#badges - 1] = create_badge("Ultrakill", ANVA.C.ULTRA, G.C.WHITE, 1) --This adds the primer badge ABOVE the rarity. if this was +1 it would add below
+	end,
+}

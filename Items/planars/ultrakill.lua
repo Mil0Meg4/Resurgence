@@ -78,11 +78,12 @@ SMODS.Joker({
 			then --In order, checks if there is a joker on the left (rr = our position and -1 being one left), checks if the joker on the left has an edition and checks if its divine
 				G.jokers.cards[rr - 1]:set_edition() --removes the edition
 				anv.xxmult = anv.xxmult + anv.xxmultg --upgrades xxmult by adding xxmultg
+				return {
+					message = localize("k_upgrade_ex"),
+					colour = G.C.RED
+				}
 			end
 		end
-	end,
-	in_pool = function(self, wawa, wawa2)
-		return true
 	end,
 	set_badges = function(self, card, badges)
 		badges[#badges - 1] = create_badge("Ultrakill", ANVA.C.ULTRA, G.C.WHITE, 1) --This adds the primer badge ABOVE the rarity. if this was +1 it would add below

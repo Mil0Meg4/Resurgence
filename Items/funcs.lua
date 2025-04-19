@@ -85,9 +85,10 @@ function ANVA.remove_paint(card)
 	for k, _ in pairs(card and card.ability or {}) do
 		if ANVA.is_paint(k) then
 			card.ability[k] = nil
+			card.ability.paint = nil
 		end
 	end
-end																		
+end
 
 --Sets a joker's Paint, repleacing previous one
   function ANVA.set_paint(card, type)

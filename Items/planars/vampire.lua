@@ -141,15 +141,14 @@ SMODS.Joker({
 	end,
 	calculate = function(self, card, context)
 		local anv = card.ability.extra
-		local maxboost = 5
 		if context.joker_main then
 			return {
 				mult = math.max(anv.multstack*(G.jokers.config.card_limit - #G.jokers.cards), 0),
-				xmult = math.max(anv.xmultstack*(G.jokers.config.card_limit - #G.jokers.cards), 1)
+				xmult = math.max(anv.xmultstack*(G.jokers.config.card_limit - #G.jokers.cards), 0) + 1
 			}
-			end
-		end,
-		set_badges = function(self, card, badges)
-			badges[#badges - 1] = create_badge("Vampire Survivors", ANVA.C.VAMP, G.C.WHITE, 1) --This adds the primer badge ABOVE the rarity. if this was +1 it would add below
-		end,
+		end
+	end,
+	set_badges = function(self, card, badges)
+		badges[#badges - 1] = create_badge("Vampire Survivors", ANVA.C.VAMP, G.C.WHITE, 1) --This adds the primer badge ABOVE the rarity. if this was +1 it would add below
+	end,
 })

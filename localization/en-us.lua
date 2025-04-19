@@ -280,6 +280,10 @@ return {
             k_tree3_grow = "Grow(3)!",
             k_discards = "+1 Discrds",
             k_hands = "+1 Hands",
+            k_blue = "Blue",
+            k_sans_tag = "Skele-tag",
+            k_dedebuffed = "De-debuffed",
+            k_plus_negative = "Negative",
             b_augment_cards = "Augment Cards",
             anva_tweak_ui = "Tweaks",
             anva_paint_ui = "Paints"

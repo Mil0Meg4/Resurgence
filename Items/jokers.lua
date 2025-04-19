@@ -214,9 +214,9 @@ SMODS.Joker({
 	calculate = function(self, card, context)
 		local anv = card.ability.extra
 		local c = context --i got lazy. This is the same thing as anv, just used for "context"
-		if c.end_of_round and context.main_eval and not context.blueprint then
+		--[[ if c.end_of_round and context.main_eval and not context.blueprint then
 			ease_dollars(anv.money) --add money
-		end
+		end ]]
 		if c.starting_shop and to_number(G.GAME.dollars) > anv.max then --checks entering the shop and compares the ammount of dollars player has with anv.max, in this case 100. to_number() is for talisman compatiblity.
 			for i = 1, #G.jokers.cards do
 				if G.jokers.cards[i] ~= card and G.jokers.cards[i].debuff == false then --checks for any card which is NOT THIS CARD and if the cards are debuffed.
@@ -224,6 +224,11 @@ SMODS.Joker({
 					anv.active = true --sets active to true. I added this to avoid the cards being undebuffed for no reason when the shop is left with 0 cash or less.
 				end
 			end
+			return {
+				message = localize('k_debuffed'),
+				colour = G.C.RED,
+				card = card
+			}
 		end
 		if c.ending_shop and to_number(G.GAME.dollars) <= 0 and anv.active then --checks if the player has left the shop, compares the ammount of dollars player has to 0, and checks if active is true
 			for i = 1, #G.jokers.cards do
@@ -232,7 +237,15 @@ SMODS.Joker({
 					anv.active = false --sets the check as false since it reverted
 				end
 			end
+			return {
+				message = localize('k_dedebuffed'),
+				colour = G.C.GREEN,
+				card = card
+			}
 		end
+	end,
+	calc_dollar_bonus = function(self, card)
+		return card.ability.extra.money
 	end,
 })
 
@@ -265,7 +278,7 @@ SMODS.Joker({
 			anv.mult = anv.mult + anv.mult_mod
 			return {
 				message = localize('k_tree_grow'),
-				colour = G.C.GREEN,
+				colour = G.C.RED,
 				card = card
 			}
 		end
@@ -314,7 +327,7 @@ SMODS.Joker({
 			anv.eeemult = anv.eeemult + anv.eeemult_mod
 			return {
 				message = localize('k_tree3_grow'),
-				colour = G.C.GREEN,
+				colour = G.C.RED,
 				card = card
 			}
 		end

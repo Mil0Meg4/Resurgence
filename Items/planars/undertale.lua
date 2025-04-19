@@ -67,6 +67,10 @@ SMODS.Joker({
 		if context.before and #G.play.cards == 1 then
 			ANVA.set_paint(G.play.cards[1], "blue")
 		end
+		return {
+			message = localize("k_blue"),
+			colour = G.C.CHIPS
+		}
 	end,
 	set_badges = function(self, card, badges)
 		badges[#badges - 1] = create_badge("Undertale", ANVA.C.UNDER, G.C.WHITE, 1)
@@ -94,6 +98,10 @@ SMODS.Joker({
 				local new_card = create_card("Blueprint", G.jokers, nil, nil, nil, nil, "j_blueprint")
 				new_card:add_to_deck()
 				G.jokers:emplace(new_card)
+				return {
+					--message = localize("k_upgrade_ex"),
+					--colour = G.C.CHIPS
+				}
 			end
 		end
 	end,
@@ -127,6 +135,10 @@ SMODS.Joker {
 			if _tag and _tag.config and _tag.config.ref_table then
 				add_tag(_tag.config.ref_table)
 				G.GAME.skip_tag = ''
+				return {
+					message = localize("k_sans_tag"),
+					colour = G.C.FILTER
+				}
 			end
 		end
 		if context.skip_blind then
@@ -192,11 +204,14 @@ SMODS.Joker({
 						   return true
 					   end)
 					}))
-					end
+				end
 				return{
 					dollars = 6,
 					chips = 66,
-					mult = 6
+					mult = 6,
+					message = (anv.scored_sixes == 0) and localize('k_plus_negative') or (anv.scored_sixes..'/66'),
+					colour = (anv.scored_sixes == 0) and G.C.DARK_EDITION or G.C.FILTER,
+					card = card
 				}
 				
 			end

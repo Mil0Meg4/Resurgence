@@ -335,3 +335,14 @@ function ANVA.paint_tooltip(type)
 
 	return {set = 'Other',key = key,vars = vars}
 end
+
+function ANVA.update_add_to_deck(card, func)
+	if not card.added_to_deck then
+		return func(card)
+	else
+		card:remove_from_deck(true)
+		local ret = func(card)
+		card:add_to_deck(true)
+		return ret
+	end
+end

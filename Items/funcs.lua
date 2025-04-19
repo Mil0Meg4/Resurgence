@@ -183,6 +183,34 @@ function poll_paint(_key, _mod, _guaranteed, _options)
 	return nil
 end
 
+function ANVA.poll_flag(_key)
+	local flag_poll = pseudorandom(pseudoseed(_key or 'paint_generic')) 
+	local pool = {
+		rainbow = 20,
+		--trans = 6,
+		--lesbian = 6,
+		bi = 7,
+		--gay = 9,
+		--nb = 6,
+		--ace = 5,
+		--aro = 6,
+		--acoace = 7,
+		pan = 9,
+	}
+	local total_weight = 0
+	for k, v in pairs(pool) do
+		total_weight = total_weight + v
+	end
+	local weight_i = 0
+	for k, v in pairs(pool) do
+		weight_i = weight_i + v
+
+		if flag_poll > 1 - (weight_i) / total_weight then
+			return "j_anva_pride_"..k
+		end
+	end
+end
+
 -- Finds jokers with specific properties (shamelessly stolen from cryptid)
 function ANVA.advanced_find_joker(name, rarity, edition, ability, non_debuff, area)
 	local jokers = {}

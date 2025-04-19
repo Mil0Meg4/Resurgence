@@ -418,9 +418,9 @@ SMODS.Joker({
 				G.E_MANAGER:add_event(Event({
 					func = function()
 						if #cards > 0 then
-						local card2 = pseudorandom_element(cards, pseudoseed("doom"))
-						card2:start_dissolve({ HEX("57ecab") }, nil, 0.1) 
-						card2 = nil
+							local card2 = pseudorandom_element(cards, pseudoseed("doom"))
+							if card2 then card2:start_dissolve({ HEX("57ecab") }, nil, 0.1) end
+							card2 = nil
 						end
 						return true
 					end,
@@ -444,12 +444,14 @@ SMODS.Joker({
 		x = 1,
 		y = 0,
 	},
-	pride_flag_paints = {any=true}
+	pride_flag_paints = {any=true},
+	in_pool = function(self, wawa, wawa2)
+		return G.GAME.current_pride_flag == self.key
+    end,
 })
 
-
---[[ SMODS.Joker({
-	key = "pride_test",
+SMODS.Joker({
+	key = "pride_pan",
 	atlas = "wip",
 	rarity = 3,
 	cost = 10,
@@ -460,13 +462,39 @@ SMODS.Joker({
 		x = 2,
 		y = 0,
 	},
-	pride_flag_paints = {red=true,blue=true,green=true},
+	pride_flag_paints = {pink=true,yellow=true,cyan=true},
 	loc_vars = function(self, info_queue, card)
 		for k,v in pairs(self.pride_flag_paints) do
 			info_queue[#info_queue + 1] = { key = "anva_paint_"..k, set = "Other", vars = {} }
 		end
 	end,
-}) ]]
+	in_pool = function(self, wawa, wawa2)
+		return G.GAME.current_pride_flag == self.key
+    end,
+})
+
+SMODS.Joker({
+	key = "pride_bi",
+	atlas = "wip",
+	rarity = 3,
+	cost = 10,
+	unlocked = true,
+	discovered = false,
+	blueprint_compat = true,
+	pos = {
+		x = 2,
+		y = 0,
+	},
+	pride_flag_paints = {red=true,blue=true,purple=true},
+	loc_vars = function(self, info_queue, card)
+		for k,v in pairs(self.pride_flag_paints) do
+			info_queue[#info_queue + 1] = { key = "anva_paint_"..k, set = "Other", vars = {} }
+		end
+	end,
+	in_pool = function(self, wawa, wawa2)
+		return G.GAME.current_pride_flag == self.key
+    end,
+})
 
 SMODS.Joker({
 	key = "triangleJoke",

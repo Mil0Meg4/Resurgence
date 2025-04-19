@@ -93,7 +93,7 @@ SMODS.Joker({
 SMODS.Joker {
 	key = 'v1',
 	config = { 
-	  extra = {xred = 3, xredgain = 1, steelcardscorereq = 8, steelcardscored = 0} },
+	extra = {xred = 3, xredgain = 1, steelcardscorereq = 8, steelcardscored = 0} },
 	pools = {planar = true, ultrakill = true},
 	rarity = 4,
 	atlas = 'joke',
@@ -104,8 +104,9 @@ SMODS.Joker {
 	discovered = true,
 	loc_vars = function(self, info_queue, card)
 		local anv = card.ability.extra --to avoid typing card.ability.extra each time. Not needed but very handy
+		info_queue[#info_queue + 1] = G.P_CENTERS.m_steel
 		return {
-			vars = { anv.xred, anv.xredgain, anv.steelcardscorereq }, --for example in here anv = card.ability.extra. Also this is needed to display the values in the desc of the card
+			vars = { anv.xred, anv.xredgain, anv.steelcardscorereq,anv.steelcardscored }, --for example in here anv = card.ability.extra. Also this is needed to display the values in the desc of the card
 		}
 	end,
 	
@@ -121,6 +122,11 @@ SMODS.Joker {
 					anv.xred = anv.xred + anv.xredgain
 					return end)
 				end
+				return{
+					message = (anv.steelcardscored == 0) and localize('k_upgrade_ex') or (anv.steelcardscored..'/'..anv.steelcardscorereq),
+					colour = G.C.FILTER,
+					card = card
+				}
 			end
 		end
 	end,

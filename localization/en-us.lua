@@ -203,9 +203,10 @@ return {
             },
             j_anva_v1 = {
                 name = 'V1',
-                text = {"x3 value of Red paint",
-                "Every 8th scored Steel card",
-                "increases value by x1"
+                text = {"{C:attention}X#1#{} value of {C:red}Red Paint",
+                "Increases value by {C:attention}X#2#",
+                "every {C:attention}#3#{} scored {C:attention}Steel Cards",
+                "{C:inactive}(Currently {C:attention}#4#{C:inactive}/#3#){}"
                 }
             },
             j_anva_sos = {
@@ -217,8 +218,10 @@ return {
             },
             j_anva_directer = {
                 name = 'The Directer',
-                text = {"Any joker, consumable and voucher can appear",
-                    "in the shop, with equal chances",
+                text = {"Any Joker, consumable",
+                    "and voucher can appear",
+                    "in the {C:attention}shop{}, with",
+                    "{C:attention}equal chances",
                 }
             },
         },

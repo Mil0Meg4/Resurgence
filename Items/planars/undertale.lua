@@ -2,17 +2,27 @@ SMODS.Rarity({
 	key = "gast_err",
 	badge_colour = G.C.CHIPS,
 	pools = {
-		["Joker"] = {
-			rate = 0.00006, --added which pool its in so it can naturally spawn. mess arround with it
-		},
 	},
-	default_weight = 0.00066,
+	default_weight = 0,
 })
 
 SMODS.Shader {
     key = 'gaster',
     path = 'gaster.fs'
 }
+
+local orig_create_card = create_card
+function create_card(_type, area, legendary, _rarity, skip_materialize, soulable, forced_key, key_append)
+	if not forced_key and soulable and not G.GAME.banned_keys["c_soul"] then
+		if (_type == 'Planet' or _type == 'Spectral') and
+		not (G.GAME.used_jokers['j_anva_gaster'] and not next(find_joker("Showman")))  then 
+			if pseudorandom('gast_'.._type..G.GAME.round_resets.ante) > (1 - 0.003/5) then
+				forced_key = 'j_anva_gaster'
+			end
+		end
+	end
+	return orig_create_card(_type, area, legendary, _rarity, skip_materialize, soulable, forced_key, key_append)
+end
 
 SMODS.Joker({
 	key = "frisk",

@@ -20,7 +20,8 @@ return {
                 }
             },
             j_anva_gaba = {
-                name = 'Gabriel, Apostate of Hate',
+                name = 'Gabriel',
+                anv_subtitle = "Apostate of Hate",
                 text = {"{X:mult,C:white}^#1#{} Mult",
                         "At end of {C:money}shop{},",
                         "{C:red}removes{} {C:dark_edition}Divine{} from",
@@ -146,14 +147,16 @@ return {
                 }
             },
             j_anva_alphys = {
-                name = 'Alphys, Royal Scientist',
+                name = 'Alphys',
+                anv_subtitle = "Royal Scientist",
                 text = { "Create a {C:attention}Blueprint",
                     "when selecting {C:attention}Boss Blind",
                     "{C:inactive}(Mult have room)"
                 }
             },
             j_anva_gaster = {
-                name = 'Gaster, Royal Scientist',
+                name = 'Gaster',
+                anv_subtitle = "Royal Scientist",
                 text = { "{C:attention}+6{} Joker Slots, Consumable Slots,",
                     "Handsize, and Shop Slots",
                     "Scored {C:attention}6s{} give {C:chips}+66{}",

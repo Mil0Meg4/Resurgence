@@ -13,3 +13,6 @@ Augments - New consumables that can drastically alter jokers. Found a Wee Joker 
 - [Steamodded](https://github.com/Steamopollys/Steamodded)
 - [Lovely](https://github.com/ethangreen-dev/lovely-injector)
 - [Talisman](https://github.com/MathIsFun0/Talisman)
+
+# Credits 
+- Thanks to AutumnMood, Samario and the Cryptid dev team for letting us steel your code (without your consent)

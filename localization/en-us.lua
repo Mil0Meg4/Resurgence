@@ -203,9 +203,9 @@ return {
             },
             j_anva_v1 = {
                 name = 'V1',
-                text = {"x3 value of Red paint",
-                "Every 8th scored Steel card",
-                "increases value by x1"
+                text = {"{C:attention}x#1#{} value of Red paint",
+                "Every {C:attention}#3#th{} scored {C:attention}Steel{} card",
+                "increases value by {C:attention}x#2#{}"
                 }
             },
             j_anva_sos = {

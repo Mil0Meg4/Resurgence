@@ -3,10 +3,10 @@ SMODS.Rarity({
 	badge_colour = ANVA.C.PRIMORDIAL,
 	pools = {
 		["Joker"] = {
-			rate = 0.01, --added which pool its in so it can naturally spawn. mess arround with it
+			rate = 0.002 * math.floor((G.GAME.round_resets.ante - 1)/4), --formula for how rare primordials are. They can't apperar before ante 5 and the chances increase every 4 antes
 		},
 	},
-	default_weight = 0.01,
+	default_weight = 0.002,
 })
 
 SMODS.Rarity({

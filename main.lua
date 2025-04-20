@@ -55,6 +55,14 @@ SMODS.Atlas{
     py = 95
 }
 
+--tinker pack ATLAS
+SMODS.Atlas{
+    key = "tinker",
+    path = "boosters.png",
+    px = 71,
+    py = 95
+}
+
 --Mod icon
 SMODS.Atlas({
     key = "modicon",
@@ -71,6 +79,7 @@ function loc_colour(_c, _default)
     G.ARGS.LOC_COLOURS.anv_pink = ANVA.C.PINK
     G.ARGS.LOC_COLOURS.anv_cyan = ANVA.C.CYAN
     G.ARGS.LOC_COLOURS.anv_under = ANVA.C.UNDER
+    G.ARGS.LOC_COLOURS.anv_aug= ANVA.C.AUGMENT
     return lc(_c, _default)
 end
 
@@ -108,6 +117,15 @@ function SMODS.current_mod.reset_game_globals(run_start)
         G.GAME.current_pride_flag = ANVA.poll_flag("game_start")
     end
 end
+
+SMODS.Sound({
+	key = "augment_music",
+	path = "augment.ogg",
+	sync = true,
+	select_music_track = function()
+		return G.pack_cards and G.pack_cards.cards and G.pack_cards.cards[1] and G.pack_cards.cards[1].ability.set == "Augment"
+	end
+})
 
 SMODS.Sound({
 	key = "prim_music",

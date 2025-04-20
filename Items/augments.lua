@@ -3,8 +3,8 @@ SMODS.ConsumableType({
     primary_colour = ANVA.C.AUGMENT,
     secondary_colour = ANVA.C.AUGMENT,
     collection_rows = {4, 3},
-    shop_rate = 4,
-    default = 'c_anva_motherboard'
+    shop_rate = 0,
+    default = 'c_anva_aug_mother'
 })
 
 SMODS.UndiscoveredSprite({
@@ -99,6 +99,151 @@ SMODS.Consumable({
     end
 })
 
+--Boosters
+SMODS.Booster({
+    key = 'small_aug_1',
+    atlas = 'tinker',
+    kind = "Augment",
+    pos = { x = 0, y = 0 },
+    config = {choose = 1, extra = 3},
+    cost = 4,
+    weight = 0.3,
+    loc_vars = function(self, info_queue, card)
+        return {vars = {(card and card.ability.choose or self.config.choose), card and card.ability.extra or self.config.extra}}
+    end,
+    create_card = function(self, card)
+        return create_card("Augment", G.pack_cards, nil, nil, true,  true, nil, "augpack")
+    end,
+    ease_background_colour = function(self)
+        ease_colour(G.C.DYN_UI.MAIN, ANVA.C.AUGMENT)
+        ease_background_colour{new_colour = ANVA.C.AUGMENT, special_colour = G.C.BLACK, contrast = 2}
+    end,
+    group_key = 'k_anva_aug_pack',
+    draw_hand = false,
+    particles = function(self)
+        G.booster_pack_sparkles = Particles(1, 1, 0,0, {
+            timer = 0.015,
+            scale = 0.2,
+            initialize = true,
+            lifespan = 1,
+            speed = 1.1,
+            padding = -1,
+            attach = G.ROOM_ATTACH,
+            colours = {G.PRISM.C.myth_1, lighten(ANVA.C.AUGMENT, 0.4), lighten(ANVA.C.AUGMENT, 0.2), darken(ANVA.C.AUGMENT, 0.2)},
+            fill = true
+        })
+        G.booster_pack_sparkles.fade_alpha = 1
+        G.booster_pack_sparkles:fade(1, 0)
+    end,
+})
+SMODS.Booster({
+    key = 'small_aug_2',
+    atlas = 'tinker',
+    kind = "Augment",
+    pos = { x = 1, y = 0 },
+    config = {choose = 1, extra = 3},
+    cost = 4,
+    weight = 0.3,
+    loc_vars = function(self, info_queue, card)
+        return {vars = {(card and card.ability.choose or self.config.choose), card and card.ability.extra or self.config.extra}}
+    end,
+    create_card = function(self, card)
+        return create_card("Augment", G.pack_cards, nil, nil, true,  true, nil, "augpack")
+    end,
+    ease_background_colour = function(self)
+        ease_colour(G.C.DYN_UI.MAIN, ANVA.C.AUGMENT)
+        ease_background_colour{new_colour = ANVA.C.AUGMENT, special_colour = G.C.BLACK, contrast = 2}
+    end,
+    group_key = 'k_anva_aug_pack',
+    draw_hand = false,
+    particles = function(self)
+        G.booster_pack_sparkles = Particles(1, 1, 0,0, {
+            timer = 0.015,
+            scale = 0.2,
+            initialize = true,
+            lifespan = 1,
+            speed = 1.1,
+            padding = -1,
+            attach = G.ROOM_ATTACH,
+            colours = {G.PRISM.C.myth_1, lighten(ANVA.C.AUGMENT, 0.4), lighten(ANVA.C.AUGMENT, 0.2), darken(ANVA.C.AUGMENT, 0.2)},
+            fill = true
+        })
+        G.booster_pack_sparkles.fade_alpha = 1
+        G.booster_pack_sparkles:fade(1, 0)
+    end,
+})
+SMODS.Booster({
+    key = 'mid_aug',
+    atlas = 'tinker',
+    kind = "Augment",
+    pos = { x = 2, y = 0 },
+    config = {choose = 1, extra = 5},
+    cost = 6,
+    weight = 0.3,
+    loc_vars = function(self, info_queue, card)
+        return {vars = {(card and card.ability.choose or self.config.choose), card and card.ability.extra or self.config.extra}}
+    end,
+    create_card = function(self, card)
+        return create_card("Augment", G.pack_cards, nil, nil, true,  true, nil, "augpack")
+    end,
+    ease_background_colour = function(self)
+        ease_colour(G.C.DYN_UI.MAIN, ANVA.C.AUGMENT)
+        ease_background_colour{new_colour = ANVA.C.AUGMENT, special_colour = G.C.BLACK, contrast = 2}
+    end,
+    group_key = 'k_anva_aug_pack',
+    draw_hand = false,
+    particles = function(self)
+        G.booster_pack_sparkles = Particles(1, 1, 0,0, {
+            timer = 0.015,
+            scale = 0.2,
+            initialize = true,
+            lifespan = 1,
+            speed = 1.1,
+            padding = -1,
+            attach = G.ROOM_ATTACH,
+            colours = {G.PRISM.C.myth_1, lighten(ANVA.C.AUGMENT, 0.4), lighten(ANVA.C.AUGMENT, 0.2), darken(ANVA.C.AUGMENT, 0.2)},
+            fill = true
+        })
+        G.booster_pack_sparkles.fade_alpha = 1
+        G.booster_pack_sparkles:fade(1, 0)
+    end,
+})
+SMODS.Booster({
+    key = 'big_aug',
+    atlas = 'tinker',
+    kind = "Augment",
+    pos = { x = 3, y = 0 },
+    config = {choose = 2, extra = 5},
+    cost = 8,
+    weight = 0.07,
+    loc_vars = function(self, info_queue, card)
+        return {vars = {(card and card.ability.choose or self.config.choose), card and card.ability.extra or self.config.extra}}
+    end,
+    create_card = function(self, card)
+        return create_card("Augment", G.pack_cards, nil, nil, true,  true, nil, "augpack")
+    end,
+    ease_background_colour = function(self)
+        ease_colour(G.C.DYN_UI.MAIN, ANVA.C.AUGMENT)
+        ease_background_colour{new_colour = ANVA.C.AUGMENT, special_colour = G.C.BLACK, contrast = 2}
+    end,
+    group_key = 'k_anva_aug_pack',
+    draw_hand = false,
+    particles = function(self)
+        G.booster_pack_sparkles = Particles(1, 1, 0,0, {
+            timer = 0.015,
+            scale = 0.2,
+            initialize = true,
+            lifespan = 1,
+            speed = 1.1,
+            padding = -1,
+            attach = G.ROOM_ATTACH,
+            colours = {G.PRISM.C.myth_1, lighten(ANVA.C.AUGMENT, 0.4), lighten(ANVA.C.AUGMENT, 0.2), darken(ANVA.C.AUGMENT, 0.2)},
+            fill = true
+        })
+        G.booster_pack_sparkles.fade_alpha = 1
+        G.booster_pack_sparkles:fade(1, 0)
+    end,
+})
 
 ----debug stuff----
 --[[ SMODS.Consumable({

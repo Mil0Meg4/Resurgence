@@ -319,7 +319,34 @@ return {
                     "{C:attention}Paint{} to the right"
                 }
             },
-
+            p_anva_small_aug_1 = {
+                name = "Tinker Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2#{C:anv_aug} Augment{} cards",
+                },
+            },
+            p_anva_small_aug_2 = {
+                name = "Tinker Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2#{C:anv_aug} Augment{} cards",
+                },
+            },
+            p_anva_mid_aug = {
+                name = "Jumbo Tinker Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2#{C:anv_aug} Augment{} cards",
+                },
+            },
+            p_anva_big_aug  = {
+                name = "Mega Tinker Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2#{C:anv_aug} Augment{} cards",
+                },
+            },
         },
         Planet={},
         Spectral={},
@@ -335,6 +362,7 @@ return {
         challenge_names={},
         collabs={},
         dictionary={
+            k_anva_aug_pack = "Tinker Pack",
             k_anva_prim = "Primordial",
             k_anva_unb = "Unbound",
             k_augment = "Augment Card",

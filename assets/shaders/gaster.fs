@@ -94,7 +94,7 @@ vec4 HSL(vec4 c)
 	return hsl;
 }
 
-//Shader by Samario
+//Shader shamelessly stolen, thanks to Samario
 float rand(vec2 co){
     return fract(sin(dot(co.xy ,vec2(12.9898,7.233))) * 4375.5453);
 }

@@ -9,6 +9,11 @@ SMODS.Rarity({
 	default_weight = 0.00066,
 })
 
+SMODS.Shader {
+    key = 'gaster',
+    path = 'gaster.fs'
+}
+
 SMODS.Joker({
 	key = "frisk",
 	atlas = "joke",
@@ -218,19 +223,22 @@ SMODS.Joker({
 		end
 	end,
 	add_to_deck = function(self, card, from_debuff)
-	local anv = card.ability.extra
-	G.consumeables.config.card_limit = G.consumeables.config.card_limit + 6
-	G.jokers.config.card_limit = G.jokers.config.card_limit + 6
-	change_shop_size(6)
+		local anv = card.ability.extra
+		G.consumeables.config.card_limit = G.consumeables.config.card_limit + 6
+		G.jokers.config.card_limit = G.jokers.config.card_limit + 6
+		change_shop_size(6)
 	end,
 	remove_from_deck = function(self, card, from_debuff)
-	local anv = card.ability.extra
-	G.consumeables.config.card_limit = G.consumeables.config.card_limit - 6
-	G.jokers.config.card_limit = G.jokers.config.card_limit - 6
-	change_shop_size(-6)
+		local anv = card.ability.extra
+		G.consumeables.config.card_limit = G.consumeables.config.card_limit - 6
+		G.jokers.config.card_limit = G.jokers.config.card_limit - 6
+		change_shop_size(-6)
 	end,
 	set_badges = function(self, card, badges)
 		badges[#badges - 1] = create_badge("Undertale", ANVA.C.UNDER, G.C.WHITE, 1)
+	end,
+	draw = function(self, card, layer)
+		card.children.center:draw_shader("anva_gaster", nil, card.ARGS.send_to_shader)
 	end,
 })
 

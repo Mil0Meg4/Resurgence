@@ -55,7 +55,6 @@ SMODS.Atlas{
     px = 71,
     py = 95
 }
-
 --tinker pack ATLAS
 SMODS.Atlas{
     key = "tinker",
@@ -63,7 +62,13 @@ SMODS.Atlas{
     px = 71,
     py = 95
 }
-
+--Ranks Atlas
+SMODS.Atlas{
+    key = "ranks",
+    path = "rank.png",
+    px = 71,
+    py = 95
+}
 --Mod icon
 SMODS.Atlas({
     key = "modicon",
@@ -71,7 +76,6 @@ SMODS.Atlas({
     px = 34,
     py = 34
 })
-
 local lc = loc_colour
 function loc_colour(_c, _default)
     if not G.ARGS.LOC_COLOURS then
@@ -296,6 +300,28 @@ SMODS.Suit {
     ui_pos = { x = 0, y = 0 },
 
     in_pool = function(self, args)
+        return false
+    end
+}
+
+--42
+SMODS.Rank {
+
+    key = '42',
+    card_key = '42',
+
+    hc_atlas = 'ranks',
+    lc_atlas = 'ranks',
+    pos = { x = 0 },
+
+    next = { 'anva_42' },
+	prev = { 'anva_42' },
+
+    nominal = 42,
+    shorthand = '42',
+    hidden = true,
+
+	in_pool = function(self, args)
         return false
     end
 }

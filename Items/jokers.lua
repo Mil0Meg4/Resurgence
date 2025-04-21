@@ -128,8 +128,9 @@ SMODS.Joker({
 	blueprint_compat = false,
 	pos = {
 		x = 0,
-		y = 0,
+		y = 3,
 	},
+	soul_pos = {x = 0, y = 4},
 	config = {
 		extra = {
 			max = 2000, --maximum value as variable

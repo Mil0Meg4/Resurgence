@@ -141,6 +141,55 @@ return {
                     "{C:anv_pink}Pink{}, {C:money}Yellow{} or {C:anv_cyan}Cyan"
                 }
             },
+            j_anva_pride_gay = {
+                name = 'Pride Flag',
+                text = { "All cards and Jokers",
+                    "in {C:attention}booster{} are {C:attention}Painted",
+                    "{C:anv_cyan}Cyan{}, {C:inactive}White{} or {C:chips}Blue"
+                }
+            },
+            j_anva_pride_nb = {
+                name = 'Pride Flag',
+                text = { "All cards and Jokers",
+                    "in {C:attention}booster{} are {C:attention}Painted",
+                    "{C:money}Yellow{}, {C:purple}Purple{} or {C:anv_black}Black"
+                }
+            },
+            j_anva_pride_trans = {
+                name = 'Pride Flag',
+                text = { "All cards and Jokers",
+                    "in {C:attention}booster{} are {C:attention}Painted",
+                    "{C:chips}Blue{}, {C:anv_pink}Pink{} or {C:inactive}White"
+                }
+            },
+            j_anva_pride_ace = {
+                name = 'Pride Flag',
+                text = { "All cards and Jokers",
+                    "in {C:attention}booster{} are {C:attention}Painted",
+                    "{C:anv_black}Black{}, {C:inactive}White{} or {C:purple}Purple"
+                }
+            },
+            j_anva_pride_aro = {
+                name = 'Pride Flag',
+                text = { "All cards and Jokers",
+                    "in {C:attention}booster{} are {C:attention}Painted",
+                    "{C:green}Green{}, {C:inactive}White{} or {C:anv_black}Black{}"
+                }
+            },
+            j_anva_pride_aroace = {
+                name = 'Pride Flag',
+                text = { "All cards and Jokers",
+                    "in {C:attention}booster{} are {C:attention}Painted",
+                    "{C:money}Yellow{}, {C:inactive}White{} or {C:chips}Blue"
+                }
+            },
+            j_anva_pride_lesbian = {
+                name = 'Pride Flag',
+                text = { "All cards and Jokers",
+                    "in {C:attention}booster{} are {C:attention}Painted",
+                    "{C:attention}Orange{}, {C:inactive}White{} or {C:purple}Purple"
+                }
+            },
             j_anva_filth = {
                 name = 'Filth',
                 text = { "{C:mult}+#2#{} Mult and {C:chips}+#1#{} Chips"
@@ -291,6 +340,11 @@ return {
                 text = { "{C:red}+#1#{} Discards"
                 }
             },
+            anva_paint_green_playing_card = {
+                name = 'Green Paint',
+                text = { "{C:red}+#1#{} Discardshhh"
+                }
+            },
             anva_paint_yellow = {
                 name = 'Yellow Paint',
                 text = { "Earn {C:money}$#1#{}"
@@ -308,6 +362,22 @@ return {
                     "{C:chips}+#2#{} Chips per {C:anv_pink}Pink{} Joker",
                     "{C:inactive}(Currently {C:chips}+#3#{C:inactive} Chips)"
                 }
+            },
+            anva_paint_white = {
+                name = 'White Paint',
+                text = { "{C:chips}+#1#{} Chips",
+                    "{C:chips}+#2#{} Chips per other",
+                    "{C:attention}Painted{} card in {C:attention}full deck",
+                    "{C:inactive}(Currently {C:chips}+#3#{C:inactive} Chips)"
+                }
+            },
+            anva_paint_black = {
+                name = 'Black Paint',
+                text = { "{X:mult,C:white}X#1#{} Mult",
+                "{X:mult,C:white}X#2#{} Mult per other",
+                "{C:attention}Painted{} Joker",
+                "{C:inactive}(Currently {X:mult,C:white}X#3#{C:inactive} Mult)"
+            }
             },
             anva_paint_cyan = {
                 name = 'Cyan Paint',
@@ -401,6 +471,8 @@ return {
             anva_paint_cyan = "Cyan Paint",
             anva_paint_purple = "Purple Paint",
             anva_paint_brown = "Brown Paint",
+            anva_paint_white = "White Paint",
+            anva_paint_black = "Black Paint",
         },
         poker_hand_descriptions={},
         poker_hands={},
@@ -409,7 +481,9 @@ return {
         suits_plural={},
         suits_singular={},
         tutorial={},
-        v_dictionary={},
+        v_dictionary={
+            ml_anva_paint_green_desc = "Pink Paint",
+        },
         v_text={},
     },
 }

@@ -38,6 +38,8 @@ ANVA.Paint_keys = {
     "pink",
     "cyan",
     "brown",
+    "white",
+    "black"
 }
 
 SMODS.Shader {
@@ -75,6 +77,14 @@ SMODS.Shader {
 SMODS.Shader {
     key = 'brown',
     path = 'brown.fs'
+}
+SMODS.Shader {
+    key = 'white',
+    path = 'white.fs'
+}
+SMODS.Shader {
+    key = 'black',
+    path = 'black.fs'
 }
 
 ANVA.Paint {
@@ -288,7 +298,67 @@ ANVA.Paint {
         end
     end
 }
-
+ANVA.Paint {
+    key = 'paint_white',
+    badge_colour = G.C.WHITE,
+    badge_text_colour = G.C.GREY,
+    shader = 'white',
+    weight = 9,
+    config = {chips_1 = 15,chips_2 = 15},
+    loc_vars = function(self, info_queue, card)
+        local anv = self.config
+        local tally = 0
+        for k, v in pairs(G.playing_cards or {}) do
+			if ANVA.has_paint(v) then tally = tally + 1 end
+		end
+        --[[ for k, v in pairs(G.jokers and G.jokers.cards or {}) do
+			if ANVA.has_paint(v) then joker_tally = joker_tally + 1 end
+		end ]]
+        return { vars = {anv.chips_1,anv.chips_2,anv.chips_1 + anv.chips_2 * tally} }
+    end,
+    calculate = function(self, card, context)
+        if context.joker_main or (context.main_scoring and context.cardarea == G.play) then
+            local anv = self.config
+            local tally = 0
+            for k, v in pairs(G.playing_cards or {}) do
+                if ANVA.has_paint(v) then tally = tally + 1 end
+            end
+            --[[ for k, v in pairs(G.jokers and G.jokers.cards or {}) do
+                if ANVA.has_paint(v) then joker_tally = joker_tally + 1 end
+            end ]]
+            return {
+                chips = anv.chips_1 + anv.chips_2 * tally
+            }
+        end
+    end
+} 
+ANVA.Paint {
+    key = 'paint_black',
+    badge_colour = G.C.BLACK,
+    shader = 'black',
+    weight = 9,
+    config = {x_mult_1 = 2,x_mult_2 = 0.5},
+    loc_vars = function(self, info_queue, card)
+        local anv = self.config
+        local tally = 0
+        for k, v in pairs(G.jokers and G.jokers.cards or {}) do
+			if ANVA.has_paint(v) then tally = tally + 1 end
+		end
+        return { vars = {anv.x_mult_1,anv.x_mult_2,anv.x_mult_1 + anv.x_mult_2 * tally} }
+    end,
+    calculate = function(self, card, context)
+        if context.joker_main or (context.main_scoring and context.cardarea == G.play) then
+            local anv = self.config
+            local tally = 0
+            for k, v in pairs(G.jokers and G.jokers.cards or {}) do
+                if ANVA.has_paint(v) then tally = tally + 1 end
+            end
+            return {
+                xmult = anv.x_mult_1 + anv.x_mult_2 * tally
+            }
+        end
+    end
+} 
 --gives cards a random chance of being painted, also handles pride flag
 local orig_create_card = create_card
 function create_card(_type, area, legendary, _rarity, skip_materialize, soulable, forced_key, key_append)

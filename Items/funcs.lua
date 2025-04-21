@@ -74,7 +74,7 @@ function ANVA.has_tweak(card,type)
 	local key = type and 'anva_' .. type or nil
 	for k, _ in pairs(card and card.ability or {}) do
 		if ANVA.is_tweak(k) then
-			return not key or k == key
+			return not key and k or k == key
 		end
 	end
 	return false
@@ -111,12 +111,12 @@ end
     end
 end
 
---Checks if card has a certain paint. Leave the type field empty to check for any paint
+--Checks if card has a certain paint. Leave the type field empty to check for any paint and return its key
 function ANVA.has_paint(card,type)
 	local key = type and 'anva_paint_' .. type or nil
 	for k, _ in pairs(card and card.ability or {}) do
 		if ANVA.is_paint(k) then
-			return not key or k == key
+			return not key and k or k == key
 		end
 	end
 	return false
@@ -199,14 +199,14 @@ function ANVA.poll_flag(_key)
 	local flag_poll = pseudorandom(pseudoseed(_key or 'paint_generic')) 
 	local pool = {
 		rainbow = 20,
-		--trans = 6,
-		--lesbian = 6,
+		trans = 6,
+		lesbian = 6,
 		bi = 7,
-		--gay = 9,
-		--nb = 6,
-		--ace = 5,
-		--aro = 6,
-		--acoace = 7,
+		gay = 9,
+		nb = 6,
+		ace = 5,
+		aro = 6,
+		acoace = 7,
 		pan = 9,
 	}
 	local total_weight = 0

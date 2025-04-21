@@ -520,6 +520,167 @@ SMODS.Joker({
 })
 
 SMODS.Joker({
+	key = "pride_trans",
+	atlas = "joke",
+	rarity = 3,
+	cost = 10,
+	unlocked = true,
+	discovered = false,
+	blueprint_compat = true,
+	pos = {
+		x = 1,
+		y = 5,
+	},
+	pride_flag_paints = {blue=true,pink=true,white=true},
+	loc_vars = function(self, info_queue, card)
+		for k,v in pairs(self.pride_flag_paints) do
+			info_queue[#info_queue + 1] = ANVA.paint_tooltip(k)
+		end
+	end,
+	in_pool = function(self, wawa, wawa2)
+		return G.GAME.current_pride_flag == self.key
+    end,
+})
+
+SMODS.Joker({
+	key = "pride_lesbian",
+	atlas = "joke",
+	rarity = 3,
+	cost = 10,
+	unlocked = true,
+	discovered = false,
+	blueprint_compat = true,
+	pos = {
+		x = 1,
+		y = 9,
+	},
+	pride_flag_paints = {orange=true,white=true,purple=true},
+	loc_vars = function(self, info_queue, card)
+		for k,v in pairs(self.pride_flag_paints) do
+			info_queue[#info_queue + 1] = ANVA.paint_tooltip(k)
+		end
+	end,
+	in_pool = function(self, wawa, wawa2)
+		return G.GAME.current_pride_flag == self.key
+    end,
+})
+
+SMODS.Joker({
+	key = "pride_gay",
+	atlas = "joke",
+	rarity = 3,
+	cost = 10,
+	unlocked = true,
+	discovered = false,
+	blueprint_compat = true,
+	pos = {
+		x = 1,
+		y = 1,
+	},
+	pride_flag_paints = {cyan=true,white=true,blue=true},
+	loc_vars = function(self, info_queue, card)
+		for k,v in pairs(self.pride_flag_paints) do
+			info_queue[#info_queue + 1] = ANVA.paint_tooltip(k)
+		end
+	end,
+	in_pool = function(self, wawa, wawa2)
+		return G.GAME.current_pride_flag == self.key
+    end,
+})
+
+SMODS.Joker({
+	key = "pride_nb",
+	atlas = "joke",
+	rarity = 3,
+	cost = 10,
+	unlocked = true,
+	discovered = false,
+	blueprint_compat = true,
+	pos = {
+		x = 1,
+		y = 2,
+	},
+	pride_flag_paints = {yellow=true,purple=true,black=true},
+	loc_vars = function(self, info_queue, card)
+		for k,v in pairs(self.pride_flag_paints) do
+			info_queue[#info_queue + 1] = ANVA.paint_tooltip(k)
+		end
+	end,
+	in_pool = function(self, wawa, wawa2)
+		return G.GAME.current_pride_flag == self.key
+    end,
+})
+
+SMODS.Joker({
+	key = "pride_ace",
+	atlas = "joke",
+	rarity = 3,
+	cost = 10,
+	unlocked = true,
+	discovered = false,
+	blueprint_compat = true,
+	pos = {
+		x = 1,
+		y = 6,
+	},
+	pride_flag_paints = {black=true,white=true,purple=true},
+	loc_vars = function(self, info_queue, card)
+		for k,v in pairs(self.pride_flag_paints) do
+			info_queue[#info_queue + 1] = ANVA.paint_tooltip(k)
+		end
+	end,
+	in_pool = function(self, wawa, wawa2)
+		return G.GAME.current_pride_flag == self.key
+    end,
+})
+
+SMODS.Joker({
+	key = "pride_aro",
+	atlas = "joke",
+	rarity = 3,
+	cost = 10,
+	unlocked = true,
+	discovered = false,
+	blueprint_compat = true,
+	pos = {
+		x = 1,
+		y = 7,
+	},
+	pride_flag_paints = {green=true,white=true,black=true},
+	loc_vars = function(self, info_queue, card)
+		for k,v in pairs(self.pride_flag_paints) do
+			info_queue[#info_queue + 1] = ANVA.paint_tooltip(k)
+		end
+	end,
+	in_pool = function(self, wawa, wawa2)
+		return G.GAME.current_pride_flag == self.key
+    end,
+})
+
+SMODS.Joker({
+	key = "pride_aroace",
+	atlas = "joke",
+	rarity = 3,
+	cost = 10,
+	unlocked = true,
+	discovered = false,
+	blueprint_compat = true,
+	pos = {
+		x = 1,
+		y = 8,
+	},
+	pride_flag_paints = {yellow=true,white=true,blue=true},
+	loc_vars = function(self, info_queue, card)
+		for k,v in pairs(self.pride_flag_paints) do
+			info_queue[#info_queue + 1] = ANVA.paint_tooltip(k)
+		end
+	end,
+	in_pool = function(self, wawa, wawa2)
+		return G.GAME.current_pride_flag == self.key
+    end,
+})
+
+SMODS.Joker({
 	key = "triangleJoke",
 	atlas = "joke",
 	pos = { x = 0, y = 0 },

@@ -34,3 +34,24 @@ payload = '''
 '''
 match_indent = true
 times = 2
+
+#Paint badge text color
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = 'badges[#badges + 1] = create_badge(localize(v, "labels"), get_badge_colour(v))'
+position = "before"
+match_indent = true
+payload = '''
+local paint_key = ANVA.has_paint(card)
+if paint_key and v == paint_key then
+  badges[#badges + 1] = create_badge(localize(v, "labels"), get_badge_colour(v), SMODS.Stickers[paint_key].badge_text_colour)
+else
+'''
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = 'badges[#badges + 1] = create_badge(localize(v, "labels"), get_badge_colour(v))'
+position = "after"
+match_indent = true
+payload = "end"

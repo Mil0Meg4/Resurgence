@@ -11,6 +11,7 @@ ANVA.C = {
     PINK = HEX("eda5b2"),
     CYAN = HEX("93cbcb"),
     BROWN = HEX("4e3f36"),
+    BLACK = HEX("000000"),
 }
 ANVA.GRADIENTS = {
     UNDER = {G.C.RED,G.C.PURPLE},
@@ -80,6 +81,7 @@ function loc_colour(_c, _default)
     G.ARGS.LOC_COLOURS.anv_cyan = ANVA.C.CYAN
     G.ARGS.LOC_COLOURS.anv_under = ANVA.C.UNDER
     G.ARGS.LOC_COLOURS.anv_aug= ANVA.C.AUGMENT
+    G.ARGS.LOC_COLOURS.anv_black= ANVA.C.BLACK
     return lc(_c, _default)
 end
 

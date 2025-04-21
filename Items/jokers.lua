@@ -60,6 +60,7 @@ SMODS.Joker({
 		x = 0,
 		y = 2, --the position in the atlas. x + 1 would be 71 pixels to the right (cause the atlas is set to 71px) and y + 1 would be 95 pixels down (cause the atlas is set to 95px)
 	},
+	soul_pos = {x = 0, y = 3},
 	config = {
 		extra = {},
 	},
@@ -128,9 +129,9 @@ SMODS.Joker({
 	blueprint_compat = false,
 	pos = {
 		x = 0,
-		y = 3,
+		y = 4,
 	},
-	soul_pos = {x = 0, y = 4},
+	soul_pos = {x = 0, y = 5},
 	config = {
 		extra = {
 			max = 2000, --maximum value as variable

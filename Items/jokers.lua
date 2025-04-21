@@ -548,3 +548,30 @@ SMODS.Joker({
 		end
 	end,
 })
+
+SMODS.Joker({
+	key = "godot",
+	atlas = "joke",
+	pos = { x = 4, y = 0 },
+	rarity = 2,
+	cost = 7,
+	config = {extra = { x_mult = 3,}},
+	unlocked = true,
+	discovered = false,
+	blueprint_compat = true,
+	loc_vars = function(self, info_queue, card)
+		local anv = card.ability.extra
+		return {
+			vars = { anv.x_mult},
+		}
+	end,
+	calculate = function(self, card, context)
+		if context.other_joker and ANVA.has_tweak(context.other_joker) then
+			local anv = card.ability.extra
+			return {
+				xmult = anv.x_mult,
+				card = card
+			}
+		end
+	end,
+})

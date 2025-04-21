@@ -69,6 +69,17 @@ function ANVA.remove_tweak(card)
     end
 end
 
+--Checks if card has a certain tweak. Leave the type field empty to check for any tweak
+function ANVA.has_tweak(card,type)
+	local key = type and 'anva_' .. type or nil
+	for k, _ in pairs(card and card.ability or {}) do
+		if ANVA.is_tweak(k) then
+			return not key or k == key
+		end
+	end
+	return false
+end
+
 --Returns true if imputed Sticker is a Paint
 function ANVA.is_paint(str)
     local paints = ANVA.Paint_keys
@@ -354,7 +365,9 @@ function Card:generate_UIBox_ability_table()
 	
 	local center_obj = self.config.center
 	
-	if center_obj and center_obj.discovered and ((center_obj.set and G.localization.descriptions[center_obj.set] and G.localization.descriptions[center_obj.set][center_obj.key].anv_subtitle) or center_obj.anv_subtitle) then
+	if center_obj and center_obj.discovered and ((center_obj.set and G.localization.descriptions[center_obj.set] 
+	and G.localization.descriptions[center_obj.set][center_obj.key]
+	and G.localization.descriptions[center_obj.set][center_obj.key].anv_subtitle) or center_obj.anv_subtitle) then
 	
 		if ret.name and ret.name ~= true then
 			local text = ret.name

@@ -219,12 +219,19 @@ return {
                     "{C:inactive}(Currently {C:mult}+#3#{C:inactive} Mult and {X:mult,C:white}X#4#{C:inactive} Mult"
                 }
             },
+            
             j_anva_directer = {
                 name = 'The Directer',
                 text = {"Any Joker, consumable",
                     "and voucher can appear",
                     "in the {C:attention}shop{}, with",
                     "{C:attention}equal chances",
+                }
+            },
+            j_anva_godot = {
+                name = 'Godot',
+                text = {"Each {C:attention}Tweaked{} Joker",
+                    "gives {X:mult,C:white}X#1#{} Mult",
                 }
             },
         },

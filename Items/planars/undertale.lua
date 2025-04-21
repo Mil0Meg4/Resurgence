@@ -95,7 +95,8 @@ SMODS.Joker({
 SMODS.Joker({
 	key = "alphys",
 	atlas = "joke",
-	pos = { x = 2, y = 0 },
+	pos = { x = 2, y = 5 },
+	soul_pos = { x = 2, y = 4 },
 	pools = {planar = true, undertale = true},
 	rarity = 4,
 	cost = 20,

@@ -148,7 +148,7 @@ return {
             },
             j_anva_alphys = {
                 name = 'Alphys',
-                anv_subtitle = "the Royal Scientist",
+                anv_subtitle = "The Royal Scientist",
                 text = { "Create a {C:attention}Blueprint",
                     "when selecting {C:attention}Boss Blind",
                     "{C:inactive}(Mult have room)"
@@ -156,7 +156,7 @@ return {
             },
             j_anva_gaster = {
                 name = 'Gaster',
-                anv_subtitle = "the Royal Scientist",
+                anv_subtitle = "The Royal Scientist",
                 text = { "{C:attention}+6{} Joker Slots, Consumable Slots,",
                     "Handsize, and Shop Slots",
                     "Scored {C:attention}6s{} give {C:chips}+66{}",

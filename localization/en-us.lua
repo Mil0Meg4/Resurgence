@@ -283,6 +283,20 @@ return {
                     "gives {X:mult,C:white}X#1#{} Mult",
                 }
             },
+            j_anva_bfm_l = {
+                name = "B.F.M.(Left Half)",
+                anv_subtitle = "Big Furry Monster",
+                text = {"{C:red}+#1#{} Mult if to the",
+                    "left of the {C:attention}Right Half",
+                }
+            },
+            j_anva_bfm_r = {
+                name = "B.F.M.(Right Half)",
+                anv_subtitle = "Big Furry Monster",
+                text = {"{C:chips}+#1#{} Chips if to the",
+                    "right of the {C:attention}Left Half",
+                }
+            },
         },
         Augment={
             c_anva_aug_mother = {

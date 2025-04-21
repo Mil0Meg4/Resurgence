@@ -401,8 +401,9 @@ SMODS.Joker({
 	blueprint_compat = true,
 	pos = {
 		x = 0,
-		y = 0,
+		y = 6,
 	},
+	soul_pos = {x = 0, y = 7},
 	config = {
 		extra = {
 			chips = 125000,

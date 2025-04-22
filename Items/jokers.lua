@@ -85,9 +85,9 @@ SMODS.Joker({
 			elseif context.using_consumeable and context.consumeable.config.center.key == "c_sun" then
 				print("8")
 			elseif context.using_consumeable and context.consumeable.config.center.key == "c_lovers" then
-				print("9")
+				return ANVA.literally_me_fr(card,"sappho")
 			elseif context.using_consumeable and context.consumeable.config.center.key == "c_tower" then
-				print("10")
+				return ANVA.literally_me_fr(card,"doom")
 			elseif context.using_consumeable and context.consumeable.config.center.key == "c_death" then
 				print("11")
 			elseif context.using_consumeable and context.consumeable.config.center.key == "c_judgement" then

@@ -64,8 +64,14 @@ SMODS.Atlas{
 }
 --Ranks Atlas
 SMODS.Atlas{
-    key = "ranks",
-    path = "rank.png",
+    key = "ranks_lc",
+    path = "rank_lc.png",
+    px = 71,
+    py = 95
+}
+SMODS.Atlas{
+    key = "ranks_hc",
+    path = "rank_hc.png",
     px = 71,
     py = 95
 }
@@ -310,8 +316,8 @@ SMODS.Rank {
     key = '42',
     card_key = '42',
 
-    hc_atlas = 'ranks',
-    lc_atlas = 'ranks',
+    hc_atlas = 'ranks_hc',
+    lc_atlas = 'ranks_lc',
     pos = { x = 0 },
 
     next = { 'anva_42' },

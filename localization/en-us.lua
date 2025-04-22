@@ -246,6 +246,13 @@ return {
                     "all {C:attention}Painted{} Jokers"
                 }
             },
+            j_anva_sappho = {
+                name = 'Sappho of Lesbos',
+                text = { "Retrigger all played",
+                    "{C:spades}Spades{}, {C:hearts}Hearts{}, {C:clubs}Clubs{},",
+                    "{C:diamonds}Diamonds{}, and {C:attention}Wild{} cards {C:attention}#1#{} times"
+                }
+            },
             j_anva_mini_mice = {
                 name = 'Mini Mice',
                 text = {"{C:red}+#1#{} Mult",

@@ -284,15 +284,15 @@ return {
                 }
             },
             j_anva_bfm_l = {
-                name = "B.F.M.(Left Half)",
-                anv_subtitle = "Big Furry Monster",
+                name = "Big Furry Monster",
+                anv_subtitle = "Left Half",
                 text = {"{C:red}+#1#{} Mult if to the",
                     "left of the {C:attention}Right Half",
                 }
             },
             j_anva_bfm_r = {
-                name = "B.F.M.(Right Half)",
-                anv_subtitle = "Big Furry Monster",
+                name = "Big Furry Monster",
+                anv_subtitle = "Right Half",
                 text = {"{C:chips}+#1#{} Chips if to the",
                     "right of the {C:attention}Left Half",
                 }
@@ -356,7 +356,7 @@ return {
             },
             anva_paint_green_playing_card = {
                 name = 'Green Paint',
-                text = { "{C:red}+#1#{} Discardshhh"
+                text = { "{C:red}+#1#{} Discards"
                 }
             },
             anva_paint_yellow = {

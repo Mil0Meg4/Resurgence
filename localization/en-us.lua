@@ -354,11 +354,6 @@ return {
                 text = { "{C:red}+#1#{} Discards"
                 }
             },
-            anva_paint_green_playing_card = {
-                name = 'Green Paint',
-                text = { "{C:red}+#1#{} Discards"
-                }
-            },
             anva_paint_yellow = {
                 name = 'Yellow Paint',
                 text = { "Earn {C:money}$#1#{}"

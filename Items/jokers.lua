@@ -378,7 +378,7 @@ SMODS.Joker({
 	end,
 })
 
-function nonstone()
+function ANVA.nonstone()
 	local bb = #G.playing_cards
 	if G.playing_cards then
 		for _, v in pairs(G.playing_cards) do
@@ -420,7 +420,7 @@ SMODS.Joker({
 	calculate = function(self, card, context)
 		local anv = card.ability.extra
 		if context.joker_main then
-			if nonstone() > 0 then
+			if ANVA.nonstone() > 0 then
 				return{
 					chips = anv.chips,
 				}
@@ -431,10 +431,10 @@ SMODS.Joker({
 			end
 		end
 		if context.individual and context.cardarea == G.play then
-			if context.other_card.ability.effect == "Stone Card" then
+			if SMODS.has_enhancement(context.other_card,"m_stone") then
 				local cards = {}
 				for i = 1, #G.playing_cards do
-					if G.playing_cards[i].ability.effect ~= "Stone Card" then
+					if G.playing_cards[i].area ~= G.hand and G.playing_cards[i].area ~= G.play and G.playing_cards[i].ability.effect ~= "Stone Card" then
 						cards[#cards + 1] = G.playing_cards[i]
 					end
 				end

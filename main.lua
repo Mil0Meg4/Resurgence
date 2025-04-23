@@ -291,17 +291,18 @@ SMODS.Rank {
 }
 SMODS.Suit {
 
-    key = 'al_om',
+    key = 'greek',
     card_key = 'ALPHA_OMEGA',
 
-    --lc_atlas = 'aug',
-    --lc_ui_atlas = 'aug',
+    lc_atlas = 'enha',
+    lc_ui_atlas = 'enha',
     lc_colour = ANVA.C.VAMPIRICA,
 
-    --hc_atlas = 'aug',
-    --hc_ui_atlas = 'aug',
+    hc_atlas = 'enha',
+    hc_ui_atlas = 'enha',
     hc_colour = ANVA.C.VAMPIRICA,
 
+    hidded = true,
     pos = { y = 0 },
     ui_pos = { x = 0, y = 0 },
 

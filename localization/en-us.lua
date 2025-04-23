@@ -87,8 +87,9 @@ return {
             j_anva_andromeda = {
                 name = 'Andromeda',
                 text = { "Create a {C:attention}The Star {C:purple}Tarot",
-                    "card with {C:money}X650 {C:attention}sell value",
-                    "when a {C:diamonds}Diamond{} is scored",
+                    "and add {C:money}$#1# {C:attention}sell value{} to",
+                    "all {C:attention}Consumables{} when a",
+                    "{C:diamonds}Diamond{} is scored",
                     "{C:inactive}(Mult have room)"
                 }
             },

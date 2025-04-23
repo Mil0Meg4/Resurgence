@@ -166,11 +166,11 @@ SMODS.Joker({
 	discovered = false,
 	blueprint_compat = true,
 	pos = {x = 0,y = 0},
-	config = {extra = {cost_mult = 650}},
+	config = {extra = {cost_increase = 25}},
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue + 1] = G.P_CENTERS.c_star
 		local anv = card.ability.extra
-		return {vars = {anv.cost_mult}}
+		return {vars = {anv.cost_increase}}
 	end,
 	calculate = function(self, card, context)
 		if context.individual and context.other_card:is_suit("Diamonds") and context.cardarea == G.play then
@@ -183,9 +183,13 @@ SMODS.Joker({
 							key = "c_star",
 							area = G.consumeables,
 						})
-						new_card.ability.extra_value = (new_card.sell_cost * anv.cost_mult) - new_card.sell_cost
-						new_card:set_cost()
 					end
+					for k, v in ipairs(G.consumeables.cards) do
+                        if v.set_cost then 
+                            v.ability.extra_value = (v.ability.extra_value or 0) + anv.cost_increase
+                            v:set_cost()
+                        end
+                    end
 					return true
 				end
 			}))

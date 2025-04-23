@@ -96,8 +96,6 @@ vec4 HSL(vec4 c)
 }
 extern PRECISION float lines_offset;
 
-
-vec4 paint_color = vec4(153., 0., 255., 0.) / 255.;
 vec4 dissolve_mask(vec4 final_pixel, vec2 texture_coords, vec2 uv);
 
 
@@ -120,19 +118,16 @@ vec4 effect( vec4 colour, Image texture, vec2 texture_coords, vec2 screen_coords
     number fac4 = 0.5 + 0.5*sin(3.*uv.x+2.32*uv.y + purple.r*8.111 + sin(purple.r*1.3 + uv.y*11.2));
     number fac5 = sin(0.9*16.*uv.x+5.32*uv.y + purple.r*12. + cos(purple.r*5.3 + uv.y*4.2 - uv.x*4.));
 
-    vec4 hsl = HSL(tex);
-    
-    hsl.y = 0.02;
-    hsl.z *= (0.5 - adjusted_uv.x*(cos(purple.r*0.5)));
-    hsl.z *= (0.5 - adjusted_uv.y*(cos(purple.r*0.5)));
-    tex = RGB(hsl)+paint_color;
+    number maxfac = 0.3*max(max(fac, max(fac2, max(fac3,0.0))) + (fac+fac2+fac3*fac4), 0.);
 
-    //tex.b = tex.b-delta + delta;
-    //tex.r = tex.r-delta + delta*-2;
-    //tex.g = tex.g-delta + delta*-2;
+	tex.g = tex.g-delta + delta*maxfac*(0.5 - fac5*0.12) - 0.1;
 
-    tex.a = 0.8*min(tex.a, 0.3*tex.a + 0.9*min(0.5, 0.5));
-    
+	vec4 hslt = HSL(tex);
+
+	hslt.r = 0.8;
+
+	tex = RGB(hslt);
+    tex.a = 0.75*tex.a;
 
     return dissolve_mask(tex, texture_coords, uv);
 }

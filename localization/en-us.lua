@@ -493,9 +493,17 @@ return {
         poker_hand_descriptions={},
         poker_hands={},
         quips={},
-        ranks={},
-        suits_plural={},
-        suits_singular={},
+        ranks={
+            anva_42 = "42",
+            anva_alpha_rank = "Alpha",
+            anva_omega_rank = "Omega",
+        },
+        suits_plural={
+            anva_greek = "Greek"
+        },
+        suits_singular={
+            anva_greek = "Greek"
+        },
         tutorial={},
         v_dictionary={
             ml_anva_paint_green_desc = "Pink Paint",

@@ -688,7 +688,7 @@ SMODS.Joker({
 SMODS.Joker({
 	key = "triangleJoke",
 	atlas = "joke",
-	pos = { x = 0, y = 0 },
+	pos = { x = 4, y = 1 },
 	rarity = 3,
 	cost = 7,
 	config = {

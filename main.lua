@@ -108,6 +108,22 @@ function Game:update(dt)
 			ANVA.C[k][i] = c[1][i] * p + c[2][i] * (1 - p)
 		end
 	end
+
+    --fate
+    if G.GAME.fate_amount then
+        G.GAME.probabilities.normal = G.GAME.probabilities.normal / G.GAME.fate_amount
+        G.GAME.fate_amount = nil
+    end
+    if next(find_joker("j_anva_fate")) then
+        local rand = 100e99^pseudorandom("g") + 100e9
+        if pseudorandom("r") < 0.5 then
+            G.GAME.probabilities.normal = G.GAME.probabilities.normal * rand
+            G.GAME.fate_amount = rand
+        else
+            G.GAME.probabilities.normal = G.GAME.probabilities.normal * -rand
+            G.GAME.fate_amount = -rand
+        end
+    end
 end
 --new context that trigger whenever a card is destroyed or sold
 local orig_start_dissolve = Card.start_dissolve

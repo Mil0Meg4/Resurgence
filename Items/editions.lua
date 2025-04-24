@@ -2,6 +2,10 @@ SMODS.Shader {
     key = 'divine',
     path = 'divine.fs'
 }
+SMODS.Shader {
+    key = 'faustian',
+    path = 'faustian.fs'
+}
 
 SMODS.Edition{
     key = "divine",
@@ -20,7 +24,7 @@ SMODS.Edition{
 SMODS.Edition{
     key = "faust",
 	order = 5,
-	shader = false,
+	shader = 'faustian',
 	weight = 7,
 	extra_cost = 10,
     in_shop = true,

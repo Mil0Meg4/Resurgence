@@ -24,6 +24,7 @@ ANVA.GRADIENTS = {
 
 }
 SMODS.load_file("Items/funcs.lua")()
+SMODS.load_file("Items/ui.lua")()
 SMODS.load_file("Items/editions.lua")()
 SMODS.load_file("Items/augments.lua")()
 SMODS.load_file("Items/tweaks.lua")()

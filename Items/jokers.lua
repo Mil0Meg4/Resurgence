@@ -166,7 +166,7 @@ SMODS.Joker({
 	discovered = false,
 	blueprint_compat = true,
 	pos = {x = 4,y = 2},
-	soul_pos = {x = 4,y = 3},
+	soul_pos = {x = 4,y = 3,top = {x = 4,y = 4,no_shadow = true}},
 	config = {extra = {cost_increase = 25}},
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue + 1] = G.P_CENTERS.c_star

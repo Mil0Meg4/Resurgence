@@ -859,3 +859,35 @@ SMODS.Joker({
 		end
 	end,
 })
+
+SMODS.Joker({
+	key = "tall_joker",
+	atlas = "joke",
+	pos = { x = 4, y = 5 },
+	rarity = 1,
+	cost = 2,
+	config = {
+		extra = {
+			chips = 50
+		},
+	},
+	unlocked = true,
+	discovered = false,
+	blueprint_compat = false,
+	loc_vars = function(self, info_queue, card)
+		local anv = card.ability.extra
+		return {
+			vars = { anv.chips },
+		}
+	end,
+	calculate = function(self, card, context)
+		if context.individual and context.cardarea == G.play then
+			if SMODS.has_enhancement(context.other_card, "m_bonus") then
+				local anv = card.ability.extra
+				return{
+					chips = anv.chips,
+				}
+			end
+		end
+	end,
+})

@@ -112,7 +112,7 @@ function Game:update(dt)
 	end
 
     --fate
-    if G.GAME.fate_amount then
+    --[[ if G.GAME.fate_amount then
         G.GAME.probabilities.normal = G.GAME.probabilities.normal / G.GAME.fate_amount
         G.GAME.fate_amount = nil
     end
@@ -125,7 +125,7 @@ function Game:update(dt)
             G.GAME.probabilities.normal = G.GAME.probabilities.normal * -rand
             G.GAME.fate_amount = -rand
         end
-    end
+    end ]]
 end
 --new context that trigger whenever a card is destroyed or sold
 local orig_start_dissolve = Card.start_dissolve
@@ -163,7 +163,7 @@ SMODS.Sound({
 	sync = false,
 	pitch = 1,
 	select_music_track = function()
-		return #ANVA.advanced_find_joker(nil,"anva_prim", nil, nil, true) ~= 0
+		return #ANVA.advanced_find_joker(nil,"anva_prim", nil, nil, true) ~= 0 and 15
 	end
 })
 -------------------------------------------------------------------------

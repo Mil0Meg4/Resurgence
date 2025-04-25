@@ -191,6 +191,7 @@ SMODS.Joker({
                             v:set_cost()
                         end
                     end
+					card:juice_up(0.3, 0.5)
 					return true
 				end
 			}))
@@ -443,7 +444,7 @@ SMODS.Joker({
 						cards[#cards + 1] = G.playing_cards[i]
 					end
 				end
-				print(#cards)
+				--print(#cards)
 				G.E_MANAGER:add_event(Event({
 					func = function()
 						if #cards > 0 then
@@ -742,7 +743,7 @@ SMODS.Joker({
 			for i = 1, #G.jokers.cards do
 				if G.jokers.cards[i] == card and G.jokers.cards[i+1] then 
 					active = G.jokers.cards[i+1].config.center.key == "j_anva_bfm_r"
-					print(G.jokers.cards[i+1].config.center.key)
+					--print(G.jokers.cards[i+1].config.center.key)
 				end
 			end
 			if active then
@@ -779,7 +780,7 @@ SMODS.Joker({
 			for i = 1, #G.jokers.cards do
 				if G.jokers.cards[i] == card and G.jokers.cards[i-1] then 
 					active = G.jokers.cards[i-1].config.center.key == "j_anva_bfm_l"
-					print(G.jokers.cards[i-1].config.center.key)
+					--print(G.jokers.cards[i-1].config.center.key)
 				end
 			end
 			if active then

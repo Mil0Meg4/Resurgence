@@ -45,7 +45,7 @@ match_indent = true
 payload = '''
 local paint_key = ANVA.has_paint(card)
 if paint_key and v == paint_key then
-  badges[#badges + 1] = create_badge(localize(v, "labels"), get_badge_colour(v), SMODS.Stickers[paint_key].badge_text_colour)
+    badges[#badges + 1] = create_badge(localize(v, "labels"), get_badge_colour(v), SMODS.Stickers[paint_key].badge_text_colour)
 else
 '''
 [[patches]]
@@ -55,3 +55,25 @@ pattern = 'badges[#badges + 1] = create_badge(localize(v, "labels"), get_badge_c
 position = "after"
 match_indent = true
 payload = "end"
+
+#Make 42 give chips from joker and consumable area
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = '''
+    if card.ability.set == 'Enhanced' then
+        local enhancement = card:calculate_enhancement(context)
+        if enhancement then
+            ret.enhancement = enhancement
+        end
+    end
+'''
+position = "before"
+match_indent = true
+payload = '''
+if card.config.card then
+    if context.joker_main then
+        ret.playing_card_in_weird_places = {chips = card.base.nominal, card = card}
+    end
+end
+'''

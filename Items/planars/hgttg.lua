@@ -6,7 +6,7 @@ SMODS.Joker({
 	rarity = 4,
 	cost = 20,
 	immutable = true,
-	config = {extra = {mult = 42}},
+	config = {extra = {mult = 21, x_mult = 1.2}},
 	unlocked = true,
 	discovered = false,
 	perishable_compat = false,
@@ -23,7 +23,8 @@ SMODS.Joker({
 			if _card.base.value == "anva_42" then
                 local anv = card.ability.extra
                 return {
-                    mult = anv.mult
+                    mult = anv.mult,
+					xmult = anv.x_mult
                 }
 			end
 		end

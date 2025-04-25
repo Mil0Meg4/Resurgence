@@ -863,7 +863,7 @@ SMODS.Joker({
 SMODS.Joker({
 	key = "tall_joker",
 	atlas = "joke",
-	pos = { x = 0, y = 0 },
+	pos = { x = 4, y = 5 },
 	rarity = 1,
 	cost = 2,
 	config = {

@@ -566,6 +566,8 @@ SMODS.Rank {
     shorthand = '20',
     hidden = true,
 
+    straight_edge = true,
+
 	in_pool = function(self, args)
         return false
     end

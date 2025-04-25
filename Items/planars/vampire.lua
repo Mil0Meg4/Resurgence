@@ -188,7 +188,7 @@ function get_current_pool(_type, _rarity, _legendary, _append, override_equilibr
 			if #P_CRY_ITEMS <= 0 then
 				P_CRY_ITEMS[#P_CRY_ITEMS + 1] = "v_blank"
 			end
-			return P_CRY_ITEMS, "cry_equilibrium" .. G.GAME.round_resets.ante
+			return P_CRY_ITEMS, "anva_directer" .. G.GAME.round_resets.ante
 		end
 	end
 	return gcp(_type, _rarity, _legendary, _append)

@@ -899,3 +899,42 @@ SMODS.Joker({
 		return false
 	end,
 })
+
+SMODS.Joker({
+	key = "short_joker",
+	atlas = "joke",
+	pos = { x = 4, y = 6 },
+	rarity = 1,
+	cost = 4,
+	display_size = { w = 71.0 * 1.1, h = 95 / 1.1 },
+	config = {
+		extra = {
+			mult = 10
+		},
+	},
+	unlocked = true,
+	discovered = false,
+	blueprint_compat = false,
+	loc_vars = function(self, info_queue, card)
+		local anv = card.ability.extra
+		return {
+			vars = { anv.mult },
+		}
+	end,
+	calculate = function(self, card, context)
+		if context.individual and context.cardarea == G.play then
+			if SMODS.has_enhancement(context.other_card, "m_bonus") then
+				local anv = card.ability.extra
+				return{
+					mult = anv.mult,
+				}
+			end
+		end
+	end,
+	in_pool = function(self, wawa, wawa2)
+		for k, v in pairs(G.playing_cards) do
+			if SMODS.has_enhancement(v, "m_bonus") then return true end --if this was false this joker wouldnt spawn naturally.	
+		end
+		return false
+	end,
+})

@@ -261,6 +261,12 @@ return {
                     "to be an {C:attention}High Card"
                 }
             },
+            j_anva_tall_joker = {
+                name = 'Tall Joker',
+                text = {"Played {C:attention}Bonus Cards{} give",
+                        "{C:blue}+#1#{} Chips when scored"
+                }
+            },
             j_anva_v1 = {
                 name = 'V1',
                 text = {"{C:attention}X#1#{} value of {C:red}Red Paint",

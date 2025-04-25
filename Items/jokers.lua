@@ -866,7 +866,8 @@ SMODS.Joker({
 	atlas = "joke",
 	pos = { x = 4, y = 5 },
 	rarity = 1,
-	cost = 2,
+	cost = 4,
+	display_size = { w = 71.0 / 1.1, h = 95 * 1.1 },
 	config = {
 		extra = {
 			chips = 50
@@ -890,5 +891,11 @@ SMODS.Joker({
 				}
 			end
 		end
+	end,
+	in_pool = function(self, wawa, wawa2)
+		for k, v in pairs(G.playing_cards) do
+			if SMODS.has_enhancement(v, "m_bonus") then return true end --if this was false this joker wouldnt spawn naturally.	
+		end
+		return false
 	end,
 })

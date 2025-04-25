@@ -74,6 +74,7 @@ payload = '''
 if card.config.card then
     if context.joker_main then
         ret.playing_card_in_weird_places = {chips = card.base.nominal, card = card}
+        SMODS.calculate_context({scoring_42 = true, blueprint_card = context.blueprint_card, other_card = card}, post_trig)
     end
 end
 '''

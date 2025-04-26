@@ -1,6 +1,12 @@
 return {
     descriptions = {
-        Back={},
+        Back={
+            b_anva_number20 = {
+                name = "Deck of Numbers",
+                text = {"Instead of Face cards and aces,",
+                        "your deck includes ranks 11 through 20"}
+            },
+        },
         Blind={},
         Edition={},
         Joker={

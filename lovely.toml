@@ -89,3 +89,31 @@ match_indent = true
 payload = '''
 if self.GAME.starting_params.anva_banned_ranks and self.GAME.starting_params.anva_banned_ranks[SMODS.Ranks[v.value].key] then keep = false end'''
 
+#add more coloumns for ranks to deck view
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/overrides.lua"]'
+pattern = '''local t = {n = G.UIT.ROOT, config = {align = "cm", colour = G.C.CLEAR}, nodes = {'''
+position = "before"
+payload = '''
+local max_shown = 13
+local rank_col_1 = {}
+local a = #rank_cols + 1
+for i=1, 13 do
+    if rank_cols[a-i] then rank_col_1[a-i] = rank_cols[a-i] else break end
+end
+local rank_col_2 = {}
+for i=1, 13 do
+    if rank_cols[a-i-max_shown] then rank_col_2[a-i] = rank_cols[a-i-max_shown] else break end
+end
+local rank_col_3 = {}
+for i=1, 13 do
+    if rank_cols[a-i-max_shown*2] then rank_col_3[a-i] = rank_cols[a-i-max_shown*2] else break end
+end
+rank_cols = {{n = G.UIT.C, config = {align = "cm"}, nodes = rank_col_1},
+{n = G.UIT.C, config = {align = "cm"}, nodes = rank_col_2},
+{n = G.UIT.C, config = {align = "cm"}, nodes = rank_col_3}}
+
+'''
+match_indent = true
+

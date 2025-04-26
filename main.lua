@@ -146,6 +146,7 @@ end
 
 function SMODS.current_mod.reset_game_globals(run_start)
 	if run_start then
+        G.GAME.high_ranks = false
         G.GAME.current_pride_flag = ANVA.poll_flag("game_start")
     end
 end

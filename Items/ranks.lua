@@ -40,7 +40,7 @@ SMODS.Rank {
     hidden = true,
 
 	in_pool = function(self, args)
-        return false
+        return G.GAME.high_ranks
     end
 }
 --12
@@ -61,7 +61,7 @@ SMODS.Rank {
     hidden = true,
 
 	in_pool = function(self, args)
-        return false
+        return G.GAME.high_ranks
     end
 }
 
@@ -83,7 +83,7 @@ SMODS.Rank {
     hidden = true,
 
 	in_pool = function(self, args)
-        return false
+        return G.GAME.high_ranks
     end
 }
 
@@ -105,7 +105,7 @@ SMODS.Rank {
     hidden = true,
 
 	in_pool = function(self, args)
-        return false
+        return G.GAME.high_ranks
     end
 }
 
@@ -127,7 +127,7 @@ SMODS.Rank {
     hidden = true,
 
 	in_pool = function(self, args)
-        return false
+        return G.GAME.high_ranks
     end
 }
 
@@ -149,7 +149,7 @@ SMODS.Rank {
     hidden = true,
 
 	in_pool = function(self, args)
-        return false
+        return G.GAME.high_ranks
     end
 }
 
@@ -171,7 +171,7 @@ SMODS.Rank {
     hidden = true,
 
 	in_pool = function(self, args)
-        return false
+        return G.GAME.high_ranks
     end
 }
 
@@ -193,7 +193,7 @@ SMODS.Rank {
     hidden = true,
 
 	in_pool = function(self, args)
-        return false
+        return G.GAME.high_ranks
     end
 }
 
@@ -215,7 +215,7 @@ SMODS.Rank {
     hidden = true,
 
 	in_pool = function(self, args)
-        return false
+        return G.GAME.high_ranks
     end
 }
 
@@ -239,6 +239,6 @@ SMODS.Rank {
     straight_edge = true,
 
 	in_pool = function(self, args)
-        return false
+        return G.GAME.high_ranks
     end
 }

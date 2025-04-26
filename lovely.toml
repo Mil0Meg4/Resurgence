@@ -78,3 +78,14 @@ if card.config.card then
     end
 end
 '''
+
+#ban ranks with deck
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "if self.GAME.starting_params.no_faces and SMODS.Ranks[v.value].face then keep = false end"
+position = 'after'
+match_indent = true
+payload = '''
+if self.GAME.starting_params.anva_banned_ranks and self.GAME.starting_params.anva_banned_ranks[SMODS.Ranks[v.value].key] then keep = false end'''
+

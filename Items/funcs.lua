@@ -395,3 +395,12 @@ function Card:generate_UIBox_ability_table()
 	end
 	return ret
 end
+--[[ 
+function ANVA.table_has(list, value)
+	for i, v in ipairs(list) do
+		if v == value then
+			return true
+		end
+	end
+	return false
+end ]]

@@ -36,6 +36,7 @@ SMODS.Rank {
 	prev = { '10' },
 
     nominal = 11,
+    face_nominal = 0.5,
     shorthand = '11',
     hidden = true,
 

@@ -21,6 +21,7 @@ SMODS.Rank {
     end
 }
 
+table.insert(SMODS.Ranks['10'].next, 'anva_11')--add 11 after 10
 --11
 SMODS.Rank {
 
@@ -42,7 +43,6 @@ SMODS.Rank {
         return false
     end
 }
-
 --12
 SMODS.Rank {
 

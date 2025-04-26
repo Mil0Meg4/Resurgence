@@ -6,6 +6,6 @@ SMODS.Back {
     config = {remove_faces = true},
 	apply = function(self)
         G.GAME.starting_params.anva_banned_ranks = {Ace = true}
-		G.GAME.high_ranks = true
+		G.GAME.macro_ranks = true
     end,
 }

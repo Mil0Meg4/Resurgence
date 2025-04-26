@@ -21,7 +21,10 @@ SMODS.Enhancement {
             local _rank = SMODS.Ranks["anva_alpha_rank"]
             card:set_base(G.P_CARDS[('%s_%s'):format(_suit.card_key, _rank.card_key)])
         end
-    end
+    end,
+    get_weight = function(self, weight, object_type)
+        return 0
+    end,
 }
 SMODS.Enhancement {
     key = 'omega',
@@ -46,5 +49,8 @@ SMODS.Enhancement {
             local _rank = SMODS.Ranks["anva_omega_rank"]
             card:set_base(G.P_CARDS[('%s_%s'):format(_suit.card_key, _rank.card_key)])
         end
-    end
+    end,
+    get_weight = function(self, weight, object_type)
+        return 0
+    end,
 }

@@ -96,18 +96,18 @@ target = '=[SMODS _ "src/overrides.lua"]'
 pattern = '''local t = {n = G.UIT.ROOT, config = {align = "cm", colour = G.C.CLEAR}, nodes = {'''
 position = "before"
 payload = '''
-local max_shown = 13
+local max_shown = math.max(13,math.ceil(#rank_cols/3))
 local rank_col_1 = {}
 local a = #rank_cols + 1
-for i=1, 13 do
+for i=1, max_shown do
     if rank_cols[a-i] then rank_col_1[a-i] = rank_cols[a-i] else break end
 end
 local rank_col_2 = {}
-for i=1, 13 do
+for i=1, max_shown do
     if rank_cols[a-i-max_shown] then rank_col_2[a-i] = rank_cols[a-i-max_shown] else break end
 end
 local rank_col_3 = {}
-for i=1, 13 do
+for i=1, max_shown do
     if rank_cols[a-i-max_shown*2] then rank_col_3[a-i] = rank_cols[a-i-max_shown*2] else break end
 end
 rank_cols = {{n = G.UIT.C, config = {align = "cm"}, nodes = rank_col_1},

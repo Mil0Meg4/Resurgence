@@ -45,7 +45,7 @@ return {
             },
             j_anva_pugnala = {
                 name = 'Pugnala',
-                text = { "{X:mult,C:white}X3{} Mult if played",
+                text = { "{X:mult,C:white}X#1#{} Mult if played",
                          "hand contains only",
                          "{C:clubs}Clubs{} and {C:diamonds}Diamonds{}"
                 }

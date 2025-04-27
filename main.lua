@@ -331,3 +331,25 @@ SMODS.Suit {
         return false
     end
 }
+
+--------------------------------------------------------
+----------------------Functions-------------------------
+--------------------------------------------------------
+
+function ANVA.fact (n)
+    if n <= 0 then
+      return 1
+    else
+      return n * ANVA.fact(n-1)
+    end
+  end
+
+function ANVA.acorn (n, n2)
+    if n <= 0 or n2 <= 0 then
+        return 1
+    else
+        return  (  (  (
+        ( ( n ^ n ) ^ 3 ) ^ ( n2 ^ 3 )
+                ) ) )
+    end
+end

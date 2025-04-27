@@ -395,6 +395,12 @@ function Card:generate_UIBox_ability_table()
 	end
 	return ret
 end
+function ANVA.is_macro(card)
+	return card.base.value and SMODS.Ranks[card.base.value].anva_macro or false
+end
+function ANVA.is_micro(card)
+	return card.base.value and SMODS.Ranks[card.base.value].anva_micro or false
+end
 --[[ 
 function ANVA.table_has(list, value)
 	for i, v in ipairs(list) do

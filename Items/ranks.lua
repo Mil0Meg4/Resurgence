@@ -16,6 +16,7 @@ SMODS.Rank {
     shorthand = '42',
     hidden = true,
 
+    anva_macro = true,
 	in_pool = function(self, args)
         return false
     end
@@ -40,6 +41,7 @@ SMODS.Rank {
     shorthand = '11',
     hidden = true,
 
+    anva_macro = true,
 	in_pool = function(self, args)
         return G.GAME.macro_ranks
     end
@@ -61,6 +63,7 @@ SMODS.Rank {
     shorthand = '12',
     hidden = true,
 
+    anva_macro = true,
 	in_pool = function(self, args)
         return G.GAME.macro_ranks
     end
@@ -83,6 +86,7 @@ SMODS.Rank {
     shorthand = '13',
     hidden = true,
 
+    anva_macro = true,
 	in_pool = function(self, args)
         return G.GAME.macro_ranks
     end
@@ -105,6 +109,7 @@ SMODS.Rank {
     shorthand = '14',
     hidden = true,
 
+    anva_macro = true,
 	in_pool = function(self, args)
         return G.GAME.macro_ranks
     end
@@ -127,6 +132,7 @@ SMODS.Rank {
     shorthand = '15',
     hidden = true,
 
+    anva_macro = true,
 	in_pool = function(self, args)
         return G.GAME.macro_ranks
     end
@@ -149,6 +155,7 @@ SMODS.Rank {
     shorthand = '16',
     hidden = true,
 
+    anva_macro = true,
 	in_pool = function(self, args)
         return G.GAME.macro_ranks
     end
@@ -171,6 +178,7 @@ SMODS.Rank {
     shorthand = '17',
     hidden = true,
 
+    anva_macro = true,
 	in_pool = function(self, args)
         return G.GAME.macro_ranks
     end
@@ -193,6 +201,7 @@ SMODS.Rank {
     shorthand = '18',
     hidden = true,
 
+    anva_macro = true,
 	in_pool = function(self, args)
         return G.GAME.macro_ranks
     end
@@ -215,6 +224,7 @@ SMODS.Rank {
     shorthand = '19',
     hidden = true,
 
+    anva_macro = true,
 	in_pool = function(self, args)
         return G.GAME.macro_ranks
     end
@@ -243,3 +253,11 @@ SMODS.Rank {
         return G.GAME.macro_ranks
     end
 }
+
+local orig_get_id = Card.get_id
+function Card:get_id()
+    if SMODS.has_no_rank(self) and not self.vampired then
+        return -math.random(100, 1000000)
+    end
+    return ANVA.is_macro(self) and self.base.nominal or orig_get_id(self)
+end

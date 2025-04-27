@@ -337,6 +337,13 @@ return {
                     "{C:red}+#1#{} Mult and {X:mult,C:white}X#2#{} Mult"
                 }
             },
+            j_anva_memory = {
+                name = "Drawn from Memory",
+                text={
+                    "Copies ability of {C:chips}Common",
+                    "{C:attention}Joker{} to the right",
+                },
+            },
         },
         Augment={
             c_anva_aug_mother = {

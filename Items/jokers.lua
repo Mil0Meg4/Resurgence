@@ -875,7 +875,7 @@ SMODS.Joker({
 	},
 	unlocked = true,
 	discovered = false,
-	blueprint_compat = false,
+	blueprint_compat = true,
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue + 1] = G.P_CENTERS.m_bonus
 		local anv = card.ability.extra
@@ -915,7 +915,7 @@ SMODS.Joker({
 	},
 	unlocked = true,
 	discovered = false,
-	blueprint_compat = false,
+	blueprint_compat = true,
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue + 1] = G.P_CENTERS.m_bonus
 		local anv = card.ability.extra
@@ -954,7 +954,7 @@ SMODS.Joker({
 	},
 	unlocked = true,
 	discovered = false,
-	blueprint_compat = false,
+	blueprint_compat = true,
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue + 1] = G.P_CENTERS.m_mult
 		local anv = card.ability.extra
@@ -981,5 +981,101 @@ SMODS.Joker({
 			if SMODS.has_enhancement(v, "m_mult") then return true end --if this was false this joker wouldnt spawn naturally.	
 		end
 		return false
+	end,
+})
+
+SMODS.Joker({
+	key = "memory",
+	atlas = "joke",
+	pos = { x = 4, y = 7 },
+	rarity = 1,
+	cost = 6,
+	unlocked = true,
+	discovered = false,
+	blueprint_compat = true,
+	update = function(self, card, front)
+		if G.STAGE == G.STAGES.RUN then
+			for i = 1, #G.jokers.cards do
+				if G.jokers.cards[i] == card then
+					other_joker = G.jokers.cards[i + 1]
+				end
+			end
+			if other_joker and other_joker ~= card and other_joker.config.center.rarity == 1 and other_joker.config.center.blueprint_compat then
+				card.ability.blueprint_compat = "compatible"
+			else
+				card.ability.blueprint_compat = "incompatible"
+			end
+		end
+	end,
+	loc_vars = function(self, info_queue, card)
+		card.ability.blueprint_compat_ui = card.ability.blueprint_compat_ui or ""
+		card.ability.blueprint_compat_check = nil
+		return {
+			main_end = (card.area and card.area == G.jokers) and {
+				{
+					n = G.UIT.C,
+					config = { align = "bm", minh = 0.4 },
+					nodes = {
+						{
+							n = G.UIT.C,
+							config = {
+								ref_table = card,
+								align = "m",
+								colour = G.C.JOKER_GREY,
+								r = 0.05,
+								padding = 0.06,
+								func = "blueprint_compat",
+							},
+							nodes = {
+								{
+									n = G.UIT.T,
+									config = {
+										ref_table = card.ability,
+										ref_value = "blueprint_compat_ui",
+										colour = G.C.UI.TEXT_LIGHT,
+										scale = 0.32 * 0.8,
+									},
+								},
+							},
+						},
+					},
+				},
+			} or nil,
+		}
+	end,
+	calculate = function(self, card, context)
+		local other_joker = nil
+		for i = 1, #G.jokers.cards do
+			if G.jokers.cards[i] == card then
+				other_joker = G.jokers.cards[i + 1]
+			end
+		end
+		if other_joker and other_joker ~= card and other_joker.config.center.rarity == 1 then
+			context.blueprint = (context.blueprint and (context.blueprint + 1)) or 1
+			context.blueprint_card = context.blueprint_card or card
+
+			if context.blueprint > #G.jokers.cards + 1 then
+				return
+			end
+
+			local other_joker_ret, trig = other_joker:calculate_joker(context)
+			local eff_card = context.blueprint_card or card
+
+			context.blueprint = nil
+			context.blueprint_card = nil
+
+			if other_joker_ret == true then
+				return other_joker_ret
+			end
+			if other_joker_ret or trig then
+				if not other_joker_ret then
+					other_joker_ret = {}
+				end
+				other_joker_ret.card = eff_card
+				other_joker_ret.colour = G.C.FILTER
+				other_joker_ret.no_callback = true
+				return other_joker_ret
+			end
+		end
 	end,
 })

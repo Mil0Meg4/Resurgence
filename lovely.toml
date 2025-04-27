@@ -102,16 +102,13 @@ local rank_col_2 = {}
 local rank_col_3 = {}
 local a = #rank_cols + 1
 for i=1, #rank_cols do
-    local j = 0
-    if rank_cols[a-i] then
-        if i > max_shown*2 then 
-            rank_col_3[a-i] = rank_cols[a-i]
-        elseif i > max_shown then 
-            rank_col_2[a-i] = rank_cols[a-i]
-        else 
-            rank_col_1[a-i] = rank_cols[a-i]
-        end
-    else break end
+    if i > max_shown*2 then 
+        rank_col_3[a-i] = rank_cols[a-i]
+    elseif i > max_shown then 
+        rank_col_2[a-i] = rank_cols[a-i]
+    else 
+        rank_col_1[a-i] = rank_cols[a-i]
+    end
 end
 
 rank_cols = {{n = G.UIT.C, config = {align = "cm"}, nodes = rank_col_1},

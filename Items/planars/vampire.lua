@@ -87,24 +87,24 @@ SMODS.Joker({
 	blueprint_compat = true,
 	loc_vars = function(self, info_queue, card)
 		local anv = card.ability.extra
+		local stuff = -4
+		for i = 1, #G.consumeables.cards do
+			if not (G.consumeables.cards[i].edition and G.consumeables.cards[i].edition.negative) then stuff = stuff + 1 end
+		end
 		return {
-			vars = { anv.chips, anv.con_slot },
+			vars = { anv.chips, anv.con_slot, math.max(stuff,0) * anv.chips},
 		}
 	end,
 	calculate = function(self, card, context)
 		if context.joker_main then
 			local anv = card.ability.extra
-			local stuff = 0
-			local stuff_minus = 0
-			stuff_minus = stuff - 4
+			local stuff = -4
 			for i = 1, #G.consumeables.cards do
-				stuff = stuff + 1
+				if not (G.consumeables.cards[i].edition and G.consumeables.cards[i].edition.negative) then stuff = stuff + 1 end
 			end
-			if stuff_minus > 0 then
-				return {
-					chips = -stuff_minus * anv.chips,
-				}
-			end
+			return {
+				chips = -math.max(stuff,0) * anv.chips,
+			}
 		end
 	end,
 

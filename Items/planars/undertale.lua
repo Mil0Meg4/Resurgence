@@ -37,8 +37,18 @@ SMODS.Joker({
 	blueprint_compat = true,
 	loc_vars = function(self, info_queue, card)
 		local anv = card.ability.extra
+		local friends = 0
+		local rarities = {}
+		for i = 1, #G.jokers.cards do
+			if
+				G.jokers.cards[i].ability.set == "Joker" and not rarities[G.jokers.cards[i].config.center.rarity]
+			then
+				friends = friends + 1
+				rarities[G.jokers.cards[i].config.center.rarity] = true
+			end
+		end
 		return {
-			vars = { anv.chips },
+			vars = { anv.chips,anv.chips*friends },
 		}
 	end,
 	calculate = function(self, card, context)

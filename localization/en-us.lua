@@ -28,11 +28,11 @@ return {
             j_anva_gaba = {
                 name = 'Gabriel',
                 anv_subtitle = "Apostate of Hate",
-                text = {"{X:mult,C:white}^#1#{} Mult",
-                        "At end of {C:money}shop{},",
+                text = {"At end of {C:money}shop{},",
                         "{C:red}removes{} {C:dark_edition}Divine{} from",
                         "Joker to the left",
-                        "to gain {X:mult,C:white}^#2#{} Mult"
+                        "to gain {X:mult,C:white}^#2#{} Mult",
+                        "{C:inactive}(Currently {X:mult,C:white}^#1#{C:inactive} Mult)"
                 }
             },
             j_anva_sinclair = {
@@ -52,9 +52,10 @@ return {
             },
             j_anva_frisk = {
                 name = 'Frisk',
-                text = { "{C:chips}+20{} Chips for",
+                text = { "{C:chips}+#1#{} Chips for",
                          "each {C:attention}unique rarity",
-                         "among owned {C:attention}Jokers"
+                         "among owned {C:attention}Jokers",
+                         "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
                 }
             },
             j_anva_papyrus = {
@@ -67,12 +68,12 @@ return {
             },
             j_anva_sans = {
                 name = 'Sans',
-                text = { "{C:chips}+#1#{} Chips",
-                    "When selecting {C:attention}Blind{}, get",
+                text = {"When selecting {C:attention}Blind{}, get",
                     "its associated {C:attention}Skip Tag.",
                     "When skipping {C:attention}Blind{}, this",
                     "Joker gains {C:chips}+#2#{} Chips for",
-                    "each {C:anv_under}Undertale{} Joker"
+                    "each {C:anv_under}Undertale{} Joker",
+                    "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)"
                 }
             },
             j_anva_doom = {
@@ -123,9 +124,9 @@ return {
             j_anva_jandc = {
                 name = 'Johnathon & Charlotte',
                 text = {"{C:attention}+#2#{} Consumable Slots",
-                        "{C:chips}-#1#{} Chips for every",
-                        "held non-{C:dark_edition}negative{}",
-                        "consumable over {C:attention}4"
+                        "{C:chips}-#1#{} Chips for every non-{C:dark_edition}negative{}",
+                        "consumable held over {C:attention}4",
+                        "{C:inactive}(Currently {C:chips}-#3#{C:inactive} Chips)"
                 }
             },
             j_anva_pride_rainbow = {

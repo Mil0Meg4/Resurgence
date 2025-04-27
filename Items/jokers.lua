@@ -944,7 +944,7 @@ SMODS.Joker({
 SMODS.Joker({
 	key = "swordfish",
 	atlas = "joke",
-	pos = { x = 4, y = 1 },
+	pos = { x = 4, y = 8 },
 	rarity = 2,
 	cost = 5,
 	config = {
@@ -956,7 +956,7 @@ SMODS.Joker({
 	discovered = false,
 	blueprint_compat = false,
 	loc_vars = function(self, info_queue, card)
-		info_queue[#info_queue + 1] = G.P_CENTERS.m_bonus
+		info_queue[#info_queue + 1] = G.P_CENTERS.m_mult
 		local anv = card.ability.extra
 		return {
 			vars = { anv.xmult },

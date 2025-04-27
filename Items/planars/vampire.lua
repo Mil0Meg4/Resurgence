@@ -54,6 +54,12 @@ SMODS.Joker({
 	unlocked = true,
 	discovered = false,
 	blueprint_compat = true,
+	loc_vars = function(self, info_queue, card)
+		local anv = card.ability.extra
+		return {
+			vars = { anv.xmult },
+		}
+	end,
 	calculate = function(self, card, context)
 		local anv = card.ability.extra
 		if context.joker_main then

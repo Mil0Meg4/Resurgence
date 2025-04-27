@@ -940,3 +940,46 @@ SMODS.Joker({
 		return false
 	end,
 })
+
+SMODS.Joker({
+	key = "swordfish",
+	atlas = "joke",
+	pos = { x = 4, y = 1 },
+	rarity = 2,
+	cost = 5,
+	config = {
+		extra = {
+			xmult = 5
+		},
+	},
+	unlocked = true,
+	discovered = false,
+	blueprint_compat = false,
+	loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue + 1] = G.P_CENTERS.m_bonus
+		local anv = card.ability.extra
+		return {
+			vars = { anv.xmult },
+		}
+	end,
+	calculate = function(self, card, context)
+		if context.individual and context.cardarea == G.play then
+			if SMODS.has_enhancement(context.other_card, "m_mult") then
+				if context.other_card:is_suit("Spades") then
+					if context.other_card:get_id() == 14 then
+						local anv = card.ability.extra
+						return{
+							xmult = anv.xmult,
+						}
+					end
+				end
+			end
+		end
+	end,
+	in_pool = function(self, wawa, wawa2)
+		for k, v in pairs(G.playing_cards) do
+			if SMODS.has_enhancement(v, "m_mult") then return true end --if this was false this joker wouldnt spawn naturally.	
+		end
+		return false
+	end,
+})

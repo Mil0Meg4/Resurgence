@@ -295,7 +295,12 @@ return {
                     "{C:inactive}(Currently {C:mult}+#3#{C:inactive} Mult and {X:mult,C:white}X#4#{C:inactive} Mult"
                 }
             },
-            
+            j_anva_swordfish = {
+                name = 'Swordfish',
+                text = {"Played {C:attention}Mult Aces of Spades{} give",
+                        "{X:mult,C:white}X#1#{} Mult when scored"
+                }
+            },
             j_anva_directer = {
                 name = 'The Directer',
                 text = {"Any Joker, consumable",

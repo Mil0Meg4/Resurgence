@@ -14,7 +14,7 @@ SMODS.Joker({
 	loc_vars = function(self, info_queue, card)
 		local anv = card.ability.extra
 		return {
-			vars = { anv.mult },
+			vars = { anv.mult,anv.x_mult },
 		}
 	end,
 	calculate = function(self, card, context)

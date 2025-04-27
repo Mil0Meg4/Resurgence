@@ -324,6 +324,14 @@ return {
                     "right of the {C:attention}Left Half",
                 }
             },
+            j_anva_everything = {
+                name = "Life, the Universe",
+                anv_subtitle = "and Everything",
+                text = {"{C:attention}All{} future cards are {C:attention}42s",
+                    "Scored {C:attention}42s{} give",
+                    "{C:red}+#1#{} Mult and {X:mult,C:white}X#2#{} Mult"
+                }
+            },
         },
         Augment={
             c_anva_aug_mother = {

@@ -547,12 +547,15 @@ return {
             anva_20 = "20",
             anva_alpha_rank = "Alpha",
             anva_omega_rank = "Omega",
+            anva_rankless = "Nothing",
         },
         suits_plural={
-            anva_greek = "Greek"
+            anva_greek = "Greek",
+            anva_suitless = "Nothing"
         },
         suits_singular={
-            anva_greek = "Greek"
+            anva_greek = "Greek",
+            anva_suitless = "Nothing"
         },
         tutorial={},
         v_dictionary={

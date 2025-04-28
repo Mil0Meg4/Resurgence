@@ -283,7 +283,7 @@ SMODS.Rank {
 	prev = { 'anva_omega_rank' },
 
     nominal = 0,
-    shorthand = 'a',
+    shorthand = 'A',
     hidden = true,
 
 	in_pool = function(self, args)
@@ -303,7 +303,7 @@ SMODS.Rank {
 	prev = { 'anva_alpha_rank' },
 
     nominal = 0,
-    shorthand = 'o',
+    shorthand = 'O',
     hidden = true,
 
 	in_pool = function(self, args)
@@ -313,7 +313,7 @@ SMODS.Rank {
 SMODS.Suit {
 
     key = 'greek',
-    card_key = 'ALPHA_OMEGA',
+    card_key = 'GREEK',
 
     lc_atlas = 'enha',
     lc_ui_atlas = 'enha',

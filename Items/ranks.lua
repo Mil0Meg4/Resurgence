@@ -254,9 +254,69 @@ SMODS.Rank {
     end
 }
 
+---suitless and rankless
+SMODS.Rank {
+
+    key = 'rankless',
+    card_key = 'RANKLESS',
+
+    --hc_atlas = 'aug',
+    --lc_atlas = 'aug',
+    pos = { x = 99 },
+
+    --next = { 'anva_rankless' },
+	--prev = { 'anva_rankless' },
+
+    nominal = 0,
+    shorthand = '',
+    hidden = true,
+
+	in_pool = function(self, args)
+        return false
+    end
+}
+SMODS.Suit {
+
+    key = 'suitless',
+    card_key = 'SUITLESS',
+
+    --lc_atlas = 'enha',
+    --lc_ui_atlas = 'enha',
+    lc_colour = G.C.GREY,
+
+    --hc_atlas = 'enha',
+    --hc_ui_atlas = 'enha',
+    hc_colour = G.C.GREY,
+
+    hidded = true,
+    pos = { y = 99 },
+    ui_pos = { x = 0, y = 0 },
+
+    in_pool = function(self, args)
+        return false
+    end
+}
+local orig_has_no_suit = SMODS.has_no_suit
+function SMODS.has_no_suit(card)
+    if card.base.suit == "anva_suitless" then 
+        local is_wild = false
+        for k, _ in pairs(SMODS.get_enhancements(card)) do
+            if k == 'm_wild' or G.P_CENTERS[k].any_suit then is_wild = true end
+        end
+        return not is_wild
+    end
+    return orig_has_no_suit(card)
+end
+local orig_has_no_rank = SMODS.has_no_rank
+function SMODS.has_no_rank(card)
+    if card.base.value == "anva_rankless" then
+        return true
+    end
+    return orig_has_no_rank(card)
+end
 local orig_get_id = Card.get_id
 function Card:get_id()
-    if SMODS.has_no_rank(self) and not self.vampired then
+    if (SMODS.has_no_rank(self) and not self.vampired) or self.base.value == "anva_rankless" then
         return -math.random(100, 1000000)
     end
     return ANVA.is_macro(self) and self.base.nominal or orig_get_id(self)

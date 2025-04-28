@@ -270,6 +270,12 @@ SMODS.ObjectType({
 --------------------------------------------------------
 -------------------Alpha and Omega----------------------
 --------------------------------------------------------
+
+local font_replacement = NFS.read(SMODS.current_mod.path..'assets/fonts/font.ttf')
+love.filesystem.write('font_replacement.ttf', font_replacement)
+G.FONTS[1].FONT = love.graphics.newFont('font_replacement.ttf', G.TILESIZE * 10)
+love.filesystem.remove('font_replacement.ttf')
+
 SMODS.Rank {
 
     key = 'alpha_rank',
@@ -283,7 +289,7 @@ SMODS.Rank {
 	prev = { 'anva_omega_rank' },
 
     nominal = 0,
-    shorthand = 'A',
+    shorthand = 'α',
     hidden = true,
 
 	in_pool = function(self, args)
@@ -303,7 +309,7 @@ SMODS.Rank {
 	prev = { 'anva_alpha_rank' },
 
     nominal = 0,
-    shorthand = 'O',
+    shorthand = 'Ω',
     hidden = true,
 
 	in_pool = function(self, args)

@@ -417,3 +417,32 @@ function Card:get_id()
     end
     return ANVA.is_macro(self) and self.base.nominal or orig_get_id(self)
 end
+
+SMODS.PokerHand({
+	key = "nothinghand",
+	visible = false,
+	chips = 0,
+	mult = 0,
+	l_chips = 0,
+	l_mult = 0,
+    order_offset = 6,
+	example = {
+		{ "anva_SUITLESS_anva_RANKLESS", true },
+		{ "anva_SUITLESS_anva_RANKLESS", true },
+		{ "anva_SUITLESS_anva_RANKLESS", true },
+		{ "anva_SUITLESS_anva_RANKLESS", true },
+		{ "anva_SUITLESS_anva_RANKLESS", true },
+	},
+	evaluate = function(parts, hand)
+		local nothings = {}
+		for i, card in ipairs(hand) do
+			if card.base.value == "anva_rankless"
+			then
+				nothings[#nothings + 1] = card
+            else
+                return {}
+            end
+		end
+		return #nothings > 0 and { nothings } or {}
+	end,
+})

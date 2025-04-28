@@ -530,8 +530,12 @@ return {
             anva_paint_white = "White Paint",
             anva_paint_black = "Black Paint",
         },
-        poker_hand_descriptions={},
-        poker_hands={},
+        poker_hand_descriptions={
+            anva_nothinghand = {"Literally just nothing"}
+        },
+        poker_hands={
+            anva_nothinghand = "Nothing"
+        },
         quips={},
         ranks={
             anva_42 = "42",

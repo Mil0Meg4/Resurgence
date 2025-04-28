@@ -9,6 +9,14 @@ SMODS.Rank {
     lc_atlas = 'ranks_lc',
     pos = { x = 0 },
 
+    suit_map={
+        Hearts = 0,
+        Clubs = 1,
+        Diamonds = 2,
+        Spades = 3,
+        anva_suitless = 4
+    },
+
     next = { 'anva_42' },
 	prev = { 'anva_42' },
 
@@ -33,6 +41,14 @@ SMODS.Rank {
     lc_atlas = 'ranks_lc',
     pos = { x = 1 },
 
+    suit_map={
+        Hearts = 0,
+        Clubs = 1,
+        Diamonds = 2,
+        Spades = 3,
+        anva_suitless = 4
+    },
+    
     next = { 'anva_12' },
 	prev = { '10' },
 
@@ -56,6 +72,14 @@ SMODS.Rank {
     lc_atlas = 'ranks_lc',
     pos = { x = 2 },
 
+    suit_map={
+        Hearts = 0,
+        Clubs = 1,
+        Diamonds = 2,
+        Spades = 3,
+        anva_suitless = 4
+    },
+    
     next = { 'anva_13' },
 	prev = { 'anva_11' },
 
@@ -79,6 +103,14 @@ SMODS.Rank {
     lc_atlas = 'ranks_lc',
     pos = { x = 3 },
 
+    suit_map={
+        Hearts = 0,
+        Clubs = 1,
+        Diamonds = 2,
+        Spades = 3,
+        anva_suitless = 4
+    },
+    
     next = { 'anva_14' },
 	prev = { 'anva_12' },
 
@@ -102,6 +134,14 @@ SMODS.Rank {
     lc_atlas = 'ranks_lc',
     pos = { x = 4 },
 
+    suit_map={
+        Hearts = 0,
+        Clubs = 1,
+        Diamonds = 2,
+        Spades = 3,
+        anva_suitless = 4
+    },
+    
     next = { 'anva_15' },
 	prev = { 'anva_13' },
 
@@ -125,6 +165,14 @@ SMODS.Rank {
     lc_atlas = 'ranks_lc',
     pos = { x = 5 },
 
+    suit_map={
+        Hearts = 0,
+        Clubs = 1,
+        Diamonds = 2,
+        Spades = 3,
+        anva_suitless = 4
+    },
+    
     next = { 'anva_16' },
 	prev = { 'anva_14' },
 
@@ -147,6 +195,14 @@ SMODS.Rank {
     hc_atlas = 'ranks_hc',
     lc_atlas = 'ranks_lc',
     pos = { x = 6 },
+
+    suit_map={
+        Hearts = 0,
+        Clubs = 1,
+        Diamonds = 2,
+        Spades = 3,
+        anva_suitless = 4
+    },
 
     next = { 'anva_17' },
 	prev = { 'anva_15' },
@@ -171,6 +227,14 @@ SMODS.Rank {
     lc_atlas = 'ranks_lc',
     pos = { x = 7 },
 
+    suit_map={
+        Hearts = 0,
+        Clubs = 1,
+        Diamonds = 2,
+        Spades = 3,
+        anva_suitless = 4
+    },
+
     next = { 'anva_18' },
 	prev = { 'anva_16' },
 
@@ -194,6 +258,14 @@ SMODS.Rank {
     lc_atlas = 'ranks_lc',
     pos = { x = 8 },
 
+    suit_map={
+        Hearts = 0,
+        Clubs = 1,
+        Diamonds = 2,
+        Spades = 3,
+        anva_suitless = 4
+    },
+    
     next = { 'anva_19' },
 	prev = { 'anva_17' },
 
@@ -217,6 +289,14 @@ SMODS.Rank {
     lc_atlas = 'ranks_lc',
     pos = { x = 9 },
 
+    suit_map={
+        Hearts = 0,
+        Clubs = 1,
+        Diamonds = 2,
+        Spades = 3,
+        anva_suitless = 4
+    },
+    
     next = { 'anva_20' },
 	prev = { 'anva_18' },
 
@@ -240,6 +320,14 @@ SMODS.Rank {
     lc_atlas = 'ranks_lc',
     pos = { x = 10 },
 
+    suit_map={
+        Hearts = 0,
+        Clubs = 1,
+        Diamonds = 2,
+        Spades = 3,
+        anva_suitless = 4
+    },
+    
     next = { '2' },
 	prev = { 'anva_19' },
 
@@ -260,10 +348,18 @@ SMODS.Rank {
     key = 'rankless',
     card_key = 'RANKLESS',
 
-    --hc_atlas = 'aug',
-    --lc_atlas = 'aug',
-    pos = { x = 99 },
+    hc_atlas = 'ranks_hc',
+    lc_atlas = 'ranks_lc',
+    pos = { x = 11 },
 
+    suit_map={
+        Hearts = 0,
+        Clubs = 1,
+        Diamonds = 2,
+        Spades = 3,
+        anva_suitless = 4
+    },
+    
     --next = { 'anva_rankless' },
 	--prev = { 'anva_rankless' },
 
@@ -280,16 +376,16 @@ SMODS.Suit {
     key = 'suitless',
     card_key = 'SUITLESS',
 
-    --lc_atlas = 'enha',
+    lc_atlas = 'suitless',
     --lc_ui_atlas = 'enha',
     lc_colour = G.C.GREY,
 
-    --hc_atlas = 'enha',
+    hc_atlas = 'suitless',
     --hc_ui_atlas = 'enha',
     hc_colour = G.C.GREY,
 
     hidded = true,
-    pos = { y = 99 },
+    pos = { y = 0 },
     ui_pos = { x = 0, y = 0 },
 
     in_pool = function(self, args)

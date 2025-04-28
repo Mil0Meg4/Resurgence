@@ -86,6 +86,13 @@ SMODS.Atlas({
     px = 34,
     py = 34
 })
+--suitless
+SMODS.Atlas{
+    key = "suitless",
+    path = "suitless.png",
+    px = 71,
+    py = 95
+}
 local lc = loc_colour
 function loc_colour(_c, _default)
     if not G.ARGS.LOC_COLOURS then

@@ -484,7 +484,17 @@ return {
                 },
             },
         },
-        Planet={},
+        Planet={
+            c_anva_no_planet = {
+                name = "Literally Just Nothing",
+                text={
+                    "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up",
+                    "{C:attention}#2#",
+                    "{C:mult}+#3#{} Mult and",
+                    "{C:chips}+#4#{} chips",
+                },
+            },
+        },
         Spectral={},
         Stake={},
         Tag={},
@@ -498,6 +508,7 @@ return {
         challenge_names={},
         collabs={},
         dictionary={
+            k_no_planet = "Fucking Nothing",
             k_anva_aug_pack = "Tinker Pack",
             k_anva_prim = "Primordial",
             k_anva_unb = "Unbound",
@@ -512,7 +523,8 @@ return {
             k_plus_negative = "Negative",
             b_augment_cards = "Augment Cards",
             anva_tweak_ui = "Tweaks",
-            anva_paint_ui = "Paints"
+            anva_paint_ui = "Paints",
+            anva_nothinghand = "Nothing"
         },
         high_scores={},
         labels={
@@ -531,7 +543,7 @@ return {
             anva_paint_black = "Black Paint",
         },
         poker_hand_descriptions={
-            anva_nothinghand = {"Literally just nothing"}
+            anva_nothinghand = {"..."}
         },
         poker_hands={
             anva_nothinghand = "Nothing"

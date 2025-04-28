@@ -423,8 +423,8 @@ SMODS.PokerHand({
 	visible = false,
 	chips = 0,
 	mult = 0,
-	l_chips = 0,
-	l_mult = 0,
+	l_chips = 1,
+	l_mult = 1,
     order_offset = 6,
 	example = {
 		{ "anva_SUITLESS_anva_RANKLESS", true },
@@ -446,3 +446,33 @@ SMODS.PokerHand({
 		return #nothings > 0 and { nothings } or {}
 	end,
 })
+SMODS.Planet {
+    key = 'no_planet',
+    atlas = 'specral',
+    pos = { x = 0, y = 0 },
+    discovered = true,
+    unlocked = true,
+    config = {
+        hand_type = 'anva_nothinghand',
+        softlock = true,
+    },
+    loc_vars = function(self, info_queue, center)
+		return {
+			vars = {
+				G.GAME.hands["anva_nothinghand"].level,
+                localize("anva_nothinghand"),
+				G.GAME.hands["anva_nothinghand"].l_mult,
+				G.GAME.hands["anva_nothinghand"].l_chips,
+				colours = {
+					(
+						to_big(G.GAME.hands["anva_nothinghand"].level) == to_big(1) and G.C.UI.TEXT_DARK
+						or G.C.HAND_LEVELS[to_big(math.min(7, G.GAME.hands["anva_nothinghand"].level)):to_number()]
+					),
+				},
+			},
+		}
+	end,
+    set_card_type_badge = function(self, card, badges)
+		badges[1] = create_badge(localize("k_no_planet"), get_type_colour(self or card.config, card), nil, 1.2)
+	end
+}

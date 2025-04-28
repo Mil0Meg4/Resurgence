@@ -66,7 +66,7 @@ SMODS.Atlas{
     px = 71,
     py = 95
 }
---Ranks Atlas
+--Ranks ATLAS
 SMODS.Atlas{
     key = "ranks_lc",
     path = "rank_lc.png",
@@ -79,6 +79,20 @@ SMODS.Atlas{
     px = 71,
     py = 95
 }
+--suitless ATLAS
+SMODS.Atlas{
+    key = "suitless",
+    path = "suitless.png",
+    px = 71,
+    py = 95
+}
+--spectral ATLAS
+SMODS.Atlas{
+    key = "specral",
+    path = "spectrals.png",
+    px = 71,
+    py = 95
+}
 --Mod icon
 SMODS.Atlas({
     key = "modicon",
@@ -86,13 +100,6 @@ SMODS.Atlas({
     px = 34,
     py = 34
 })
---suitless
-SMODS.Atlas{
-    key = "suitless",
-    path = "suitless.png",
-    px = 71,
-    py = 95
-}
 local lc = loc_colour
 function loc_colour(_c, _default)
     if not G.ARGS.LOC_COLOURS then

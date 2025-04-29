@@ -39,7 +39,7 @@ SMODS.Joker({
 		local anv = card.ability.extra
 		local friends = 0
 		local rarities = {}
-		for i = 1, #G.jokers.cards do
+		for i = 1, G.jokers and #G.jokers.cards or 0 do
 			if
 				G.jokers.cards[i].ability.set == "Joker" and not rarities[G.jokers.cards[i].config.center.rarity]
 			then

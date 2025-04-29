@@ -94,7 +94,7 @@ SMODS.Joker({
 	loc_vars = function(self, info_queue, card)
 		local anv = card.ability.extra
 		local stuff = -4
-		for i = 1, #G.consumeables.cards do
+		for i = 1, G.consumeables and #G.consumeables.cards or 0 do
 			if not (G.consumeables.cards[i].edition and G.consumeables.cards[i].edition.negative) then stuff = stuff + 1 end
 		end
 		return {

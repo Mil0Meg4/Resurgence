@@ -344,6 +344,16 @@ return {
                     "{C:attention}Joker{} to the right",
                 },
             },
+            j_anva_tiataxet = {
+                name = "Tia & Ta'xet",
+                anv_subtitle = "Twins of Ends",
+                text={
+                    "All held cards are given",
+                    "the {C:green}most common{} Rank, Suit,",
+                    "{C:attention}Enhancement{}, {C:attention}Seal{}, {C:dark_edition}Edition{} and",
+                    "{C:attention}Paint{} amongst held cards"
+                },
+            },
         },
         Augment={
             c_anva_aug_mother = {

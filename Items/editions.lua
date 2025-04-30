@@ -14,7 +14,7 @@ SMODS.Edition{
         level = 1
     },
     calculate = function(self,card,context)
-        if context.post_joker then
+        if (context.cardarea == G.jokers and context.post_joker) or (context.main_scoring and context.cardarea  == G.play) then
             level_up_hand(card,G.GAME.last_hand_played)
             return nil,true
         end

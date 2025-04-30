@@ -30,7 +30,7 @@ SMODS.Joker({
 	pos = { x = 2, y = 2 },
 	rarity = 1,
 	cost = 3,
-	config = { extra = { chips = 20 } },
+	config = { extra = { chips = 30 } },
 	pools = {planar = true, undertale = true},
 	unlocked = true,
 	discovered = false,

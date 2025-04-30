@@ -213,8 +213,19 @@ SMODS.Joker({
                     p = k
                 end
             end
+			for i=1, #G.hand.cards do
+				local c = G.hand.cards[i]
+				local percent = 1.15 - (i-0.999)/(#G.hand.cards-0.998)*0.3
+				G.E_MANAGER:add_event(Event({
+					trigger = 'after',
+					delay = 0.15,
+					func = function() c:flip();
+					play_sound('card1', percent);
+					c:juice_up(0.3, 0.3);
+				return true end }))
+			end
             for i=1, #G.hand.cards do
-                G.E_MANAGER:add_event(Event({trigger = 'after',func = function()
+                G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.15,func = function()
                     local c = G.hand.cards[i]
                     SMODS.change_base(c,su,ra)
                     if e then c:set_edition(e) end
@@ -223,6 +234,17 @@ SMODS.Joker({
                     if p then ANVA.set_paint(c,string.sub(p,12)) end
                 return true end }))
             end
+			for i=1, #G.hand.cards do
+				local c = G.hand.cards[i]
+				local percent = 1.15 - (i-0.999)/(#G.hand.cards-0.998)*0.3
+				G.E_MANAGER:add_event(Event({
+					trigger = 'after',
+					delay = 0.15,
+					func = function() c:flip();
+					play_sound('tarot2', percent, 0.6);c:
+					juice_up(0.3, 0.3);
+				return true end }))
+			end
 		end
 	end,
 	in_pool = function(self, wawa, wawa2)

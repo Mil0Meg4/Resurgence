@@ -338,7 +338,7 @@ return {
                 }
             },
             j_anva_memory = {
-                name = "Drawn from Memory",
+                name = "Joker from Memory",
                 text={
                     "Copies ability of {C:chips}Common",
                     "{C:attention}Joker{} to the right",

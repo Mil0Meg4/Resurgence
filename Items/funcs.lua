@@ -116,10 +116,10 @@ function ANVA.has_paint(card,type)
 	local key = type and 'anva_paint_' .. type or nil
 	for k, _ in pairs(card and card.ability or {}) do
 		if ANVA.is_paint(k) then
-			return not key and k or k == key
+			return k
 		end
 	end
-	return false
+	return nil
 end
 
 --Returns a table with all the suit in hand and the number of cards of each

@@ -397,6 +397,12 @@ return {
             },
         },
         Other={
+            anva_mother = {
+                name = 'Motherboard',
+                text = { "Sets all Values to 1",
+                    "at end of shop"
+                }
+            },
             anva_lever = {
                 name = 'Lever',
                 text = { ""

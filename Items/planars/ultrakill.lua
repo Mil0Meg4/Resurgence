@@ -93,7 +93,7 @@ SMODS.Joker({
 SMODS.Joker {
 	key = 'v1',
 	config = { 
-	extra = {xred = 3, xredgain = 1, steelcardscorereq = 8, steelcardscored = 0} },
+	extra = {xred = 2, xredgain = 1, steelcardscorereq = 3, steelcardscored = 0} },
 	pools = {planar = true, ultrakill = true},
 	rarity = 4,
 	atlas = 'joke',

@@ -846,8 +846,8 @@ SMODS.Joker({
 	key = "frankenjoker",
 	atlas = "joke",
 	pos = { x = 5, y = 0 },
-	rarity = 2,
-	cost = 5,
+	rarity = 1,
+	cost = 4,
 	display_size = { w = 71.0 * 1.021, h = 95 * 1.021 },
 	config = {
 		extra = {

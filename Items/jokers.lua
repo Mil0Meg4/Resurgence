@@ -828,8 +828,14 @@ SMODS.Joker({
 		if context.repetition and context.cardarea == G.play then
 			if context.other_card:get_id() == 3 then
 				local anv = card.ability.extra
+				local current_retrigger_count = 0
+				for i, _card in pairs(G.hand.cards) do
+					if _card:get_id() == 3 then
+						current_retrigger_count = current_retrigger_count + anv.retrigger_amount
+					end
+				end
 				return{
-					repetitions = anv.retrigger_amount
+					repetitions = current_retrigger_count
 				}
 			end
 		end

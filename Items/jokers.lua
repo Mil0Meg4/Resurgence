@@ -808,7 +808,7 @@ SMODS.Joker({
 	key = "catJoker",
 	atlas = "joke",
 	pos = { x = 4, y = 9 },
-	rarity = 1,
+	rarity = 3,
 	cost = 7,
 	config = {
 		extra = {

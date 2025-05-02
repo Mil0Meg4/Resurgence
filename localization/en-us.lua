@@ -286,6 +286,13 @@ return {
                         "{C:red}+#1#{} Mult when scored"
                 }
             },
+            j_anva_frankenjoker = {
+                name = 'Frankenjoker',
+                text = {"Played {C:attention}Wild Cards{} permanently",
+                        "gain either {C:blue}+#1#{} Chips or",
+                        "{C:red}+#2#{} Mult randomly when scored"
+                }
+            },
             j_anva_v1 = {
                 name = 'V1',
                 text = {"{C:attention}X#1#{} value of {C:red}Red Paint",

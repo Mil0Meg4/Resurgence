@@ -841,3 +841,57 @@ SMODS.Joker({
 		end
 	end,
 })
+
+SMODS.Joker({
+	key = "frankenjoker",
+	atlas = "joke",
+	pos = { x = 5, y = 0 },
+	rarity = 2,
+	cost = 5,
+	display_size = { w = 71.0 * 1.021, h = 95 * 1.021 },
+	config = {
+		extra = {
+			chipsgained = 10,
+			multgained = 2
+		},
+	},
+	unlocked = true,
+	discovered = false,
+	blueprint_compat = true,
+	loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue + 1] = G.P_CENTERS.m_wild
+		local anv = card.ability.extra
+		return {
+			vars = { anv.chipsgained, anv.multgained },
+		}
+	end,
+	calculate = function(self, card, context)
+		if context.individual and context.cardarea == G.play then
+			if SMODS.has_enhancement(context.other_card, "m_wild") then
+				local anv = card.ability.extra
+				local poll = pseudorandom('swiss_poll')
+				local color = nil
+				if poll < 1/2 then
+					context.other_card.ability.perma_bonus = context.other_card.ability.perma_bonus or 0
+					context.other_card.ability.perma_bonus = context.other_card.ability.perma_bonus + anv.chipsgained
+					color = G.C.CHIPS
+				else
+					context.other_card.ability.perma_mult = context.other_card.ability.perma_mult or 0
+					context.other_card.ability.perma_mult = context.other_card.ability.perma_mult + anv.multgained
+					color = G.C.MULT
+				end
+                return {
+                    message = localize('k_upgrade_ex'),
+					colour = color,
+                    card = card
+                }
+			end
+		end
+	end,
+	in_pool = function(self, wawa, wawa2)
+		for k, v in pairs(G.playing_cards) do
+			if SMODS.has_enhancement(v, "m_wild") then return true end --if this was false this joker wouldnt spawn naturally.	
+		end
+		return false
+	end,
+})

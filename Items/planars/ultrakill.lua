@@ -8,7 +8,7 @@ SMODS.Joker {
 	blueprint_compat = true,
 	eternal_compat = true,
 	pos = { x = 0, y = 1 },
-	cost = 3,
+	cost = 1,
 	discovered = true,
 	loc_vars = function(self, info_queue, card)
 		local anv = card.ability.extra --to avoid typing card.ability.extra each time. Not needed but very handy

@@ -273,7 +273,10 @@ SMODS.Consumable({
                 ANVA.set_paint(v, card.ability.paint)--set the tweak
             end
         return true end }))
-    end
+    end,
+    in_pool = function(self, wawa, wawa2)
+		return false --if this was false this joker wouldnt spawn naturally.
+	end,
 })
 SMODS.Consumable({
     key = 'aug_blue',
@@ -302,7 +305,10 @@ SMODS.Consumable({
                 ANVA.set_paint(v, card.ability.paint)--set the tweak
             end
         return true end }))
-    end
+    end,
+    in_pool = function(self, wawa, wawa2)
+		return false --if this was false this joker wouldnt spawn naturally.
+	end,
 })
 SMODS.Consumable({
     key = 'aug_green',
@@ -331,7 +337,10 @@ SMODS.Consumable({
                 ANVA.set_paint(v, card.ability.paint)--set the tweak
             end
         return true end }))
-    end
+    end,
+    in_pool = function(self, wawa, wawa2)
+		return false --if this was false this joker wouldnt spawn naturally.
+	end,
 })
 SMODS.Consumable({
     key = 'aug_yellow',
@@ -360,7 +369,10 @@ SMODS.Consumable({
                 ANVA.set_paint(v, card.ability.paint)--set the tweak
             end
         return true end }))
-    end
+    end,
+    in_pool = function(self, wawa, wawa2)
+		return false --if this was false this joker wouldnt spawn naturally.
+	end,
 })
 SMODS.Consumable({
     key = 'aug_orange',
@@ -389,7 +401,10 @@ SMODS.Consumable({
                 ANVA.set_paint(v, card.ability.paint)--set the tweak
             end
         return true end }))
-    end
+    end,
+    in_pool = function(self, wawa, wawa2)
+		return false --if this was false this joker wouldnt spawn naturally.
+	end,
 })
 SMODS.Consumable({
     key = 'aug_pink',
@@ -418,7 +433,10 @@ SMODS.Consumable({
                 ANVA.set_paint(v, card.ability.paint)--set the tweak
             end
         return true end }))
-    end
+    end,
+    in_pool = function(self, wawa, wawa2)
+		return false --if this was false this joker wouldnt spawn naturally.
+	end,
 })
 SMODS.Consumable({
     key = 'aug_cyan',
@@ -447,7 +465,10 @@ SMODS.Consumable({
                 ANVA.set_paint(v, card.ability.paint)--set the tweak
             end
         return true end }))
-    end
+    end,
+    in_pool = function(self, wawa, wawa2)
+		return false --if this was false this joker wouldnt spawn naturally.
+	end,
 })
 SMODS.Consumable({
     key = 'aug_purple',
@@ -476,7 +497,10 @@ SMODS.Consumable({
                 ANVA.set_paint(v, card.ability.paint)--set the tweak
             end
         return true end }))
-    end
+    end,
+    in_pool = function(self, wawa, wawa2)
+		return false --if this was false this joker wouldnt spawn naturally.
+	end,
 })
 SMODS.Consumable({
     key = 'aug_brown',
@@ -505,5 +529,8 @@ SMODS.Consumable({
                 ANVA.set_paint(v, card.ability.paint)--set the tweak
             end
         return true end }))
-    end
+    end,
+    in_pool = function(self, wawa, wawa2)
+		return false --if this was false this joker wouldnt spawn naturally.
+	end,
 })

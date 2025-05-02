@@ -360,3 +360,44 @@ SMODS.Joker({
 		return false
 	end,
 })
+
+SMODS.Joker({
+	key = "sappho",
+	atlas = "joke",
+	rarity = "anva_prim",
+	cost = 50,
+	unlocked = true,
+	discovered = false,
+	blueprint_compat = true,
+	pos = {x = 0,y = 0},
+	config = {extra = {retrigger_amount = 4}},
+	loc_vars = function(self, info_queue, card)
+		local anv = card.ability.extra
+		return {vars = {anv.retrigger_amount}}
+	end,
+	calculate = function(self, card, context)
+		if context.repetition and context.cardarea == G.play then
+			local anv = card.ability.extra
+			local current_retrigger_count = 0
+			if context.other_card:is_suit("Diamonds") then
+				current_retrigger_count = current_retrigger_count + anv.retrigger_amount
+			end
+			if context.other_card:is_suit("Clubs") then
+				current_retrigger_count = current_retrigger_count + anv.retrigger_amount
+			end
+			if context.other_card:is_suit("Hearts") then
+				current_retrigger_count = current_retrigger_count + anv.retrigger_amount
+			end
+			if context.other_card:is_suit("Spades") then
+				current_retrigger_count = current_retrigger_count + anv.retrigger_amount
+			end
+			if SMODS.has_enhancement(context.other_card, "m_wild") then
+				current_retrigger_count = current_retrigger_count + anv.retrigger_amount
+			end
+			return {
+				message = localize('k_again_ex'),
+				repetitions = current_retrigger_count,
+			}
+		end
+	end,
+})

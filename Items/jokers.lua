@@ -586,47 +586,6 @@ SMODS.Joker({
 })
 
 SMODS.Joker({
-	key = "sappho",
-	atlas = "joke",
-	rarity = "anva_prim",
-	cost = 50,
-	unlocked = true,
-	discovered = false,
-	blueprint_compat = true,
-	pos = {x = 0,y = 0},
-	config = {extra = {retrigger_amount = 4}},
-	loc_vars = function(self, info_queue, card)
-		local anv = card.ability.extra
-		return {vars = {anv.retrigger_amount}}
-	end,
-	calculate = function(self, card, context)
-		if context.repetition and context.cardarea == G.play then
-			local anv = card.ability.extra
-			local current_retrigger_count = 0
-			if context.other_card:is_suit("Diamonds") then
-				current_retrigger_count = current_retrigger_count + anv.retrigger_amount
-			end
-			if context.other_card:is_suit("Clubs") then
-				current_retrigger_count = current_retrigger_count + anv.retrigger_amount
-			end
-			if context.other_card:is_suit("Hearts") then
-				current_retrigger_count = current_retrigger_count + anv.retrigger_amount
-			end
-			if context.other_card:is_suit("Spades") then
-				current_retrigger_count = current_retrigger_count + anv.retrigger_amount
-			end
-			if SMODS.has_enhancement(context.other_card, "m_wild") then
-				current_retrigger_count = current_retrigger_count + anv.retrigger_amount
-			end
-			return {
-				message = localize('k_again_ex'),
-				repetitions = current_retrigger_count,
-			}
-		end
-	end,
-})
-
-SMODS.Joker({
 	key = "tall_joker",
 	atlas = "joke",
 	pos = { x = 4, y = 5 },
@@ -840,6 +799,38 @@ SMODS.Joker({
 				other_joker_ret.colour = G.C.FILTER
 				other_joker_ret.no_callback = true
 				return other_joker_ret
+			end
+		end
+	end,
+})
+
+SMODS.Joker({
+	key = "catJoker",
+	atlas = "joke",
+	pos = { x = 4, y = 9 },
+	rarity = 1,
+	cost = 7,
+	config = {
+		extra = {
+			retrigger_amount = 1
+		},
+	},
+	unlocked = true,
+	discovered = false,
+	blueprint_compat = false,
+	loc_vars = function(self, info_queue, card)
+		local anv = card.ability.extra
+		return {
+			vars = { anv.retrigger_amount },
+		}
+	end,
+	calculate = function(self, card, context)
+		if context.repetition and context.cardarea == G.play then
+			if context.other_card:get_id() == 3 then
+				local anv = card.ability.extra
+				return{
+					repetitions = anv.retrigger_amount
+				}
 			end
 		end
 	end,

@@ -931,12 +931,17 @@ SMODS.Joker({
 			local anv = card.ability.extra
 			local currentincrease = anv.multgained
 			for i, _card in pairs(G.hand.cards) do
-				if SMODS.has_enhancement(_card, "m_mult") then
+				if SMODS.has_enhancement(_card, "m_steel") then
 					currentincrease = anv.multgainedsteel
 				end
 			end
 			if SMODS.has_enhancement(context.other_card, "m_mult") then
 				anv.currentmult = anv.currentmult + currentincrease
+				return {
+                    message = localize('k_upgrade_ex'),
+					colour = color,
+                    card = card
+                }
 			end
 		end
 	end,

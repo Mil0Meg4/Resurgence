@@ -369,7 +369,8 @@ return {
             c_anva_aug_rubber = {
                 name = 'Rubber',
                 text = { "{C:attention}#1#{} Selected Joker",
-                    "is made {C:attention}Rubber"
+                    "loses all {C:attention}Stickers{}",
+                    "and is made {C:attention}Rubber"
                 }
             },
         },

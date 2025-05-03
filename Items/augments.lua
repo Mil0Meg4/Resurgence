@@ -66,6 +66,7 @@ SMODS.Consumable({
             play_sound('tarot1')--normal consumable shenanigans
             card:juice_up(0.3, 0.5)--normal consumable shenanigans
             for _, v in ipairs(G.jokers.highlighted) do--apply to all selected jokers
+                ANVA.remove_stickers(v)
                 ANVA.set_tweak(v, card.ability.tweak)--set the tweak
             end
         return true end }))

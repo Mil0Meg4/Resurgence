@@ -39,6 +39,14 @@ ANVA.mod_table_values = function(table, ref, operation,target_keywords,banned_ke
     modify_values(table, ref)--call the previously declared function
 end
 
+function ANVA.remove_stickers(card)
+	for k, v in pairs(SMODS.Stickers) do
+        if not (ANVA.is_paint(k) or ANVA.is_tweak(k)) then
+			card:remove_sticker(k)
+        end
+    end
+end
+
 --Returns true if imputed Sticker is a Tweak
 function ANVA.is_tweak(str)
     local tweaks = ANVA.Tweaks_keys
@@ -52,15 +60,15 @@ end
 
 --Removes a joker's Tweak
 function ANVA.remove_tweak(card)
-        for k, _ in pairs(card and card.ability or {}) do
-            if ANVA.is_tweak(k) then
-                card.ability[k] = nil
-            end
-        end
-    end
+	for k, _ in pairs(card and card.ability or {}) do
+		if ANVA.is_tweak(k) then
+			card.ability[k] = nil
+		end
+	end
+end
   
 --Sets a joker's Tweak, repleacing previous one
-  function ANVA.set_tweak(card, type)
+function ANVA.set_tweak(card, type)
     local key = 'anva_' .. type
   
     if card and ANVA.is_tweak(key) then

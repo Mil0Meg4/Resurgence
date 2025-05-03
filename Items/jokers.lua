@@ -930,12 +930,12 @@ SMODS.Joker({
 		if context.individual and context.cardarea == G.play then
 			local anv = card.ability.extra
 			local currentincrease = anv.multgained
-			for i, _card in pairs(G.hand.cards) do
-				if SMODS.has_enhancement(_card, "m_steel") then
-					currentincrease = anv.multgainedsteel
-				end
-			end
 			if SMODS.has_enhancement(context.other_card, "m_mult") then
+				for i, _card in pairs(G.hand.cards) do
+					if SMODS.has_enhancement(_card, "m_steel") then
+						currentincrease = anv.multgainedsteel
+					end
+				end
 				anv.currentmult = anv.currentmult + currentincrease
 				return {
                     message = localize('k_upgrade_ex'),

@@ -81,7 +81,7 @@ return {
                 text = { "{C:chips}+#1#{} Chips, or {C:chips}+#2#{} Chips if all",
                     "cards in {C:attention}full deck{} are {C:attention}Stone Cards",
                     "{C:red}Destroy{} a random non-{C:attention}Stone{} card from your",
-                    "deck when a {C:attention}Stone Cards{} is scored"
+                    "deck when a {C:attention}Stone Card{} is scored"
                 }
             },
             j_anva_bartender = {
@@ -291,6 +291,13 @@ return {
                 text = {"Played {C:attention}Wild Cards{} permanently",
                         "gain either {C:blue}+#1#{} Chips or",
                         "{C:red}+#2#{} Mult randomly when scored"
+                }
+            },
+            j_anva_punker = {
+                name = 'Punk Joker',
+                text = {"Gains {C:red}+#1#{} Mult when played {C:attention}Mult Cards{} are scored,",
+                        "gains {C:red}+#2#{} Mult instead if you have a {C:attention}Steel Card{} held in hand",
+                        "{C:inactive}(Currently {C:red}+#3#{C:inactive} Mult)"
                 }
             },
             j_anva_v1 = {

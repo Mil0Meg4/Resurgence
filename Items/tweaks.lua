@@ -22,6 +22,7 @@ ANVA.Tweak = SMODS.Sticker:extend {
 --table with all the tweaks' keys, needed for distinguishing them from stickers
 --when creating a new tweak always add it here
 ANVA.Tweaks_keys = {
+    "mother",
     "lever",
     "rubber",
 }
@@ -35,14 +36,24 @@ ANVA.Tweak {
         if context.selling_self then--checks if the joker is being sold
 			card.ability.selling = true
 		end
-        --[[ if context.anva_destroyed and context.card == card and not card.ability.selling then--checks if the jokers is destroyed but not sold
-            --creates a copy of the joker
-            local copy = copy_card(card, nil, nil, nil, nil)
-            copy:start_materialize()
-            copy:add_to_deck()
-            G.jokers:emplace(copy)
-            return nil,true
-        end ]]
+    end
+}
+ANVA.Tweak {
+    key = 'mother',
+    atlas = 'aug',
+    pos = { x = 1, y = 0 },
+    badge_colour = G.C.CHIPS,
+    config = {valuesetto = 1,},
+    loc_vars = function(self, info_queue, card)
+		local anv = self.config
+		return {
+			vars = { anv.valuesetto, },
+		}
+	end,
+    calculate = function(self,card,context)
+        if context.ending_shop and not card.config.center.immutable then
+            ANVA.mod_table_values(card.ability,nil,{set = self.config.valuesetto},nil,{anva_mother = true},false)--modifies all values
+        end
     end
 }
 ANVA.Tweak {

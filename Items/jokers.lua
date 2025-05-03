@@ -586,47 +586,6 @@ SMODS.Joker({
 })
 
 SMODS.Joker({
-	key = "sappho",
-	atlas = "joke",
-	rarity = "anva_prim",
-	cost = 50,
-	unlocked = true,
-	discovered = false,
-	blueprint_compat = true,
-	pos = {x = 0,y = 0},
-	config = {extra = {retrigger_amount = 4}},
-	loc_vars = function(self, info_queue, card)
-		local anv = card.ability.extra
-		return {vars = {anv.retrigger_amount}}
-	end,
-	calculate = function(self, card, context)
-		if context.repetition and context.cardarea == G.play then
-			local anv = card.ability.extra
-			local current_retrigger_count = 0
-			if context.other_card:is_suit("Diamonds") then
-				current_retrigger_count = current_retrigger_count + anv.retrigger_amount
-			end
-			if context.other_card:is_suit("Clubs") then
-				current_retrigger_count = current_retrigger_count + anv.retrigger_amount
-			end
-			if context.other_card:is_suit("Hearts") then
-				current_retrigger_count = current_retrigger_count + anv.retrigger_amount
-			end
-			if context.other_card:is_suit("Spades") then
-				current_retrigger_count = current_retrigger_count + anv.retrigger_amount
-			end
-			if SMODS.has_enhancement(context.other_card, "m_wild") then
-				current_retrigger_count = current_retrigger_count + anv.retrigger_amount
-			end
-			return {
-				message = localize('k_again_ex'),
-				repetitions = current_retrigger_count,
-			}
-		end
-	end,
-})
-
-SMODS.Joker({
 	key = "tall_joker",
 	atlas = "joke",
 	pos = { x = 4, y = 5 },
@@ -842,5 +801,97 @@ SMODS.Joker({
 				return other_joker_ret
 			end
 		end
+	end,
+})
+
+SMODS.Joker({
+	key = "catJoker",
+	atlas = "joke",
+	pos = { x = 4, y = 9 },
+	rarity = 3,
+	cost = 7,
+	config = {
+		extra = {
+			retrigger_amount = 1
+		},
+	},
+	unlocked = true,
+	discovered = false,
+	blueprint_compat = true,
+	loc_vars = function(self, info_queue, card)
+		local anv = card.ability.extra
+		return {
+			vars = { anv.retrigger_amount },
+		}
+	end,
+	calculate = function(self, card, context)
+		if context.repetition and context.cardarea == G.play then
+			if context.other_card:get_id() == 3 then
+				local anv = card.ability.extra
+				local current_retrigger_count = 0
+				for i, _card in pairs(G.hand.cards) do
+					if _card:get_id() == 3 then
+						current_retrigger_count = current_retrigger_count + anv.retrigger_amount
+					end
+				end
+				return{
+					repetitions = current_retrigger_count
+				}
+			end
+		end
+	end,
+})
+
+SMODS.Joker({
+	key = "frankenjoker",
+	atlas = "joke",
+	pos = { x = 5, y = 0 },
+	rarity = 1,
+	cost = 4,
+	display_size = { w = 71.0 * 1.021, h = 95 * 1.021 },
+	config = {
+		extra = {
+			chipsgained = 10,
+			multgained = 2
+		},
+	},
+	unlocked = true,
+	discovered = false,
+	blueprint_compat = true,
+	loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue + 1] = G.P_CENTERS.m_wild
+		local anv = card.ability.extra
+		return {
+			vars = { anv.chipsgained, anv.multgained },
+		}
+	end,
+	calculate = function(self, card, context)
+		if context.individual and context.cardarea == G.play then
+			if SMODS.has_enhancement(context.other_card, "m_wild") then
+				local anv = card.ability.extra
+				local poll = pseudorandom('swiss_poll')
+				local color = nil
+				if poll < 1/2 then
+					context.other_card.ability.perma_bonus = context.other_card.ability.perma_bonus or 0
+					context.other_card.ability.perma_bonus = context.other_card.ability.perma_bonus + anv.chipsgained
+					color = G.C.CHIPS
+				else
+					context.other_card.ability.perma_mult = context.other_card.ability.perma_mult or 0
+					context.other_card.ability.perma_mult = context.other_card.ability.perma_mult + anv.multgained
+					color = G.C.MULT
+				end
+                return {
+                    message = localize('k_upgrade_ex'),
+					colour = color,
+                    card = card
+                }
+			end
+		end
+	end,
+	in_pool = function(self, wawa, wawa2)
+		for k, v in pairs(G.playing_cards) do
+			if SMODS.has_enhancement(v, "m_wild") then return true end --if this was false this joker wouldnt spawn naturally.	
+		end
+		return false
 	end,
 })

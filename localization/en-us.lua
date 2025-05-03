@@ -231,6 +231,12 @@ return {
                     "exactly {C:attention}3{} cards"
                 }
             },
+            j_anva_catJoker = {
+                name = 'Cat Joker',
+                text = { "{C:attention}Retrigger{} each played {C:attention}3{}",
+                    "{C:attention}#1#{} time per {C:attention}3{} held in hand"
+                }
+            },
             j_anva_sly = {
                 name = 'Sly',
                 text = { "Earn {C:money}$#1#{} when",
@@ -265,7 +271,7 @@ return {
                 name = 'Mini Mice',
                 text = {"{C:red}+#1#{} Mult",
                     "All hands are considered",
-                    "to be an {C:attention}High Card"
+                    "to be a {C:attention}High Card"
                 }
             },
             j_anva_tall_joker = {
@@ -278,6 +284,13 @@ return {
                 name = 'Short Joker',
                 text = {"Played {C:attention}Bonus Cards{} give",
                         "{C:red}+#1#{} Mult when scored"
+                }
+            },
+            j_anva_frankenjoker = {
+                name = 'Frankenjoker',
+                text = {"Played {C:attention}Wild Cards{} permanently",
+                        "gain either {C:blue}+#1#{} Chips or",
+                        "{C:red}+#2#{} Mult randomly when scored"
                 }
             },
             j_anva_v1 = {
@@ -385,6 +398,12 @@ return {
             },
         },
         Other={
+            anva_mother = {
+                name = 'Motherboard',
+                text = { "Sets all Values to 1",
+                    "at end of shop"
+                }
+            },
             anva_lever = {
                 name = 'Lever',
                 text = { ""

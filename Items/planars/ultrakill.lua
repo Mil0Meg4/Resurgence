@@ -8,7 +8,7 @@ SMODS.Joker {
 	blueprint_compat = true,
 	eternal_compat = true,
 	pos = { x = 0, y = 1 },
-	cost = 3,
+	cost = 1,
 	discovered = true,
 	loc_vars = function(self, info_queue, card)
 		local anv = card.ability.extra --to avoid typing card.ability.extra each time. Not needed but very handy
@@ -93,7 +93,7 @@ SMODS.Joker({
 SMODS.Joker {
 	key = 'v1',
 	config = { 
-	extra = {xred = 3, xredgain = 1, steelcardscorereq = 8, steelcardscored = 0} },
+	extra = {xred = 2, xredgain = 1, steelcardscorereq = 3, steelcardscored = 0} },
 	pools = {planar = true, ultrakill = true},
 	rarity = 4,
 	atlas = 'joke',

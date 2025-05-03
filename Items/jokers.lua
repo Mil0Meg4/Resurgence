@@ -591,7 +591,7 @@ SMODS.Joker({
 	pos = { x = 4, y = 5 },
 	rarity = 1,
 	cost = 4,
-	display_size = { w = 71.0 / 1.1, h = 95 * 1.1 },
+	display_size = { w = 71.0 / 1.3, h = 95 * 1.1 },
 	config = {
 		extra = {
 			chips = 50
@@ -631,7 +631,7 @@ SMODS.Joker({
 	pos = { x = 4, y = 6 },
 	rarity = 1,
 	cost = 4,
-	display_size = { w = 71.0 * 1.1, h = 95 / 1.1 },
+	display_size = { w = 71.0 * 1.1, h = 95 / 1.01 },
 	config = {
 		extra = {
 			mult = 10

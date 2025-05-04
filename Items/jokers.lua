@@ -465,7 +465,7 @@ SMODS.Joker({
 	},
 	unlocked = true,
 	discovered = false,
-	blueprint_compat = false,
+	blueprint_compat = true,
 	loc_vars = function(self, info_queue, card)
 		local anv = card.ability.extra
 		return {
@@ -914,7 +914,7 @@ SMODS.Joker({
 	blueprint_compat = true,
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue + 1] = G.P_CENTERS.m_mult
-		info_queue[#info_queue + 2] = G.P_CENTERS.m_steel
+		info_queue[#info_queue + 1] = G.P_CENTERS.m_steel
 		local anv = card.ability.extra
 		return {
 			vars = { anv.multgained, anv.multgainedsteel, anv.currentmult },

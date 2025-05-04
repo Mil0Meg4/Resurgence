@@ -295,8 +295,9 @@ return {
             },
             j_anva_punker = {
                 name = 'Punk Joker',
-                text = {"Gains {C:red}+#1#{} Mult when played {C:attention}Mult Cards{} are scored,",
-                        "gains {C:red}+#2#{} Mult instead if you have a {C:attention}Steel Card{} held in hand",
+                text = {"Gains {C:red}+#1#{} Mult when each played",
+                        "{C:attention}Mult Card{} is scored, gains {C:red}+#2#{} Mult",
+                        "instead if a {C:attention}Steel Card{} held in hand",
                         "{C:inactive}(Currently {C:red}+#3#{C:inactive} Mult)"
                 }
             },

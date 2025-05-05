@@ -25,6 +25,15 @@ return {
                          "{C:inactive}(Max of {C:money}$#1#{C:inactive}){}"
                 }
             },
+            j_anva_gabriel = {
+                name = 'Gabriel',
+                anv_subtitle = "Judge of Hell",
+                text = {"At end of {C:money}shop{},",
+                        "adds {C:dark_edition}Divine{} to",
+                        "Joker to the left",
+                        "Each {C:dark_edition}Divine{} Joker gives {X:mult,C:white}X#1#{} Mult"
+                }
+            },
             j_anva_gaba = {
                 name = 'Gabriel',
                 anv_subtitle = "Apostate of Hate",

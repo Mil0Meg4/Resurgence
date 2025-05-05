@@ -34,7 +34,7 @@ SMODS.Joker({
 	key = "gaba",
 	atlas = "joke",
 	rarity = "anva_unb",
-	cost = 10,
+	cost = 16,
 	unlocked = true,
 	discovered = false,
 	perishable_compat = false,
@@ -89,7 +89,56 @@ SMODS.Joker({
 		badges[#badges - 1] = create_badge("Ultrakill", ANVA.C.ULTRA, G.C.WHITE, 1) --This adds the primer badge ABOVE the rarity. if this was +1 it would add below
 	end,
 })
-
+SMODS.Joker({
+	key = "gabriel",
+	atlas = "joke",
+	pos = { x = 0, y = 1 },
+	rarity = 4,
+	cost = 8,
+	config = {
+		extra = {
+			xmult = 1.5
+		},
+	},
+	unlocked = true,
+	discovered = false,
+	blueprint_compat = true,
+	pools = {planar = true, ultrakill = true},
+	loc_vars = function(self, info_queue, card)
+		local anv = card.ability.extra
+		return {
+			vars = { anv.xmult },
+		}
+	end,
+	calculate = function(self, card, context)
+		local anv = card.ability.extra
+		if context.other_joker then
+			if context.other_joker.edition then
+				if context.other_joker.edition.anva_divine then
+			return {
+				xmult = anv.xmult,
+				card = card
+			}
+		end
+	end
+		end
+		if context.ending_shop and not context.blueprint then
+			local rr = nil
+			for i = 1, #G.jokers.cards do
+				if G.jokers.cards[i] == card then
+					rr = i
+					break
+				end
+			end
+			if G.jokers.cards[rr - 1] ~= nil then
+				G.jokers.cards[rr - 1]:set_edition({ anva_divine = true }, true)
+			end
+		end
+	end,
+	set_badges = function(self, card, badges)
+		badges[#badges - 1] = create_badge("Ultrakill", ANVA.C.ULTRA, G.C.WHITE, 1) --This adds the primer badge ABOVE the rarity. if this was +1 it would add below
+	end,
+})
 SMODS.Joker {
 	key = 'v1',
 	config = { 

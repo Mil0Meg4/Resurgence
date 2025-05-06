@@ -178,7 +178,7 @@ SMODS.Sound({
 SMODS.Sound({
 	key = "prim_music",
 	path = "primordial.ogg",
-	sync = false,
+	sync = true,
 	pitch = 1,
 	select_music_track = function()
 		return #ANVA.advanced_find_joker(nil,"anva_prim", nil, nil, true) ~= 0 and 15

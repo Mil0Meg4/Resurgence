@@ -410,13 +410,6 @@ function SMODS.has_no_rank(card)
     end
     return orig_has_no_rank(card)
 end
-local orig_get_id = Card.get_id
-function Card:get_id()
-    if (SMODS.has_no_rank(self) and not self.vampired) or self.base.value == "anva_rankless" then
-        return -math.random(100, 1000000)
-    end
-    return ANVA.is_macro(self) and self.base.nominal or orig_get_id(self)
-end
 
 SMODS.PokerHand({
 	key = "nothinghand",

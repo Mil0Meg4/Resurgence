@@ -465,7 +465,7 @@ SMODS.Joker({
 	},
 	unlocked = true,
 	discovered = false,
-	blueprint_compat = false,
+	blueprint_compat = true,
 	loc_vars = function(self, info_queue, card)
 		local anv = card.ability.extra
 		return {
@@ -591,7 +591,7 @@ SMODS.Joker({
 	pos = { x = 4, y = 5 },
 	rarity = 1,
 	cost = 4,
-	display_size = { w = 71.0 / 1.1, h = 95 * 1.1 },
+	display_size = { w = 71.0 / 1.3, h = 95 * 1.1 },
 	config = {
 		extra = {
 			chips = 50
@@ -631,7 +631,7 @@ SMODS.Joker({
 	pos = { x = 4, y = 6 },
 	rarity = 1,
 	cost = 4,
-	display_size = { w = 71.0 * 1.1, h = 95 / 1.1 },
+	display_size = { w = 71.0 * 1.1, h = 95 / 1.01 },
 	config = {
 		extra = {
 			mult = 10
@@ -869,7 +869,7 @@ SMODS.Joker({
 		if context.individual and context.cardarea == G.play then
 			if SMODS.has_enhancement(context.other_card, "m_wild") then
 				local anv = card.ability.extra
-				local poll = pseudorandom('swiss_poll')
+				local poll = pseudorandom('frankenpoll')
 				local color = nil
 				if poll < 1/2 then
 					context.other_card.ability.perma_bonus = context.other_card.ability.perma_bonus or 0
@@ -895,3 +895,63 @@ SMODS.Joker({
 		return false
 	end,
 })
+
+SMODS.Joker({
+	key = "punker",
+	atlas = "joke",
+	pos = { x = 5, y = 1 },
+	rarity = 3,
+	cost = 8,
+	config = {
+		extra = {
+			multgained = 6,
+			multgainedsteel = 12,
+			currentmult = 0
+		},
+	},
+	unlocked = true,
+	discovered = false,
+	blueprint_compat = true,
+	loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue + 1] = G.P_CENTERS.m_mult
+		info_queue[#info_queue + 1] = G.P_CENTERS.m_steel
+		local anv = card.ability.extra
+		return {
+			vars = { anv.multgained, anv.multgainedsteel, anv.currentmult },
+		}
+	end,
+	calculate = function(self, card, context)
+		if context.joker_main then
+			local anv = card.ability.extra
+			return {
+				mult = anv.currentmult,
+			}
+		end
+		if context.individual and context.cardarea == G.play then
+			local anv = card.ability.extra
+			local currentincrease = anv.multgained
+			if SMODS.has_enhancement(context.other_card, "m_mult") then
+				for i, _card in pairs(G.hand.cards) do
+					if SMODS.has_enhancement(_card, "m_steel") then
+						currentincrease = anv.multgainedsteel
+					end
+				end
+				anv.currentmult = anv.currentmult + currentincrease
+				return {
+                    message = localize('k_upgrade_ex'),
+					colour = color,
+                    card = card
+                }
+			end
+		end
+	end,
+	in_pool = function(self, wawa, wawa2)
+		for k, v in pairs(G.playing_cards) do
+			if SMODS.has_enhancement(v, "m_mult") then return true end --if this was false this joker wouldnt spawn naturally.	
+		end
+		return false
+	end,
+})
+
+
+

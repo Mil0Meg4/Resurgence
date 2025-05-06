@@ -353,6 +353,12 @@ SMODS.Suit {
     end
 }
 
+--Optional Features
+ SMODS.current_mod.optional_features = function()
+    return {
+        post_trigger = true
+    }
+end 
 --------------------------------------------------------
 ----------------------Functions-------------------------
 --------------------------------------------------------

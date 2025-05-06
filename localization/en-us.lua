@@ -25,6 +25,15 @@ return {
                          "{C:inactive}(Max of {C:money}$#1#{C:inactive}){}"
                 }
             },
+            j_anva_gabriel = {
+                name = 'Gabriel',
+                anv_subtitle = "Judge of Hell",
+                text = {"At end of {C:money}shop{},",
+                        "adds {C:dark_edition}Divine{} to",
+                        "Joker to the left",
+                        "Each {C:dark_edition}Divine{} Joker gives {X:mult,C:white}X#1#{} Mult"
+                }
+            },
             j_anva_gaba = {
                 name = 'Gabriel',
                 anv_subtitle = "Apostate of Hate",
@@ -81,7 +90,7 @@ return {
                 text = { "{C:chips}+#1#{} Chips, or {C:chips}+#2#{} Chips if all",
                     "cards in {C:attention}full deck{} are {C:attention}Stone Cards",
                     "{C:red}Destroy{} a random non-{C:attention}Stone{} card from your",
-                    "deck when a {C:attention}Stone Cards{} is scored"
+                    "deck when a {C:attention}Stone Card{} is scored"
                 }
             },
             j_anva_bartender = {
@@ -291,6 +300,14 @@ return {
                 text = {"Played {C:attention}Wild Cards{} permanently",
                         "gain either {C:blue}+#1#{} Chips or",
                         "{C:red}+#2#{} Mult randomly when scored"
+                }
+            },
+            j_anva_punker = {
+                name = 'Punk Joker',
+                text = {"Gains {C:red}+#1#{} Mult when each played",
+                        "{C:attention}Mult Card{} is scored, gains {C:red}+#2#{} Mult",
+                        "instead if a {C:attention}Steel Card{} held in hand",
+                        "{C:inactive}(Currently {C:red}+#3#{C:inactive} Mult)"
                 }
             },
             j_anva_v1 = {

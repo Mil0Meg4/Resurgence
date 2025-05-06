@@ -123,7 +123,7 @@ end
 function ANVA.has_paint(card,type)
 	local key = type and 'anva_paint_' .. type or nil
 	for k, _ in pairs(card and card.ability or {}) do
-		if ANVA.is_paint(k) then
+		if (key == k or key == nil) and ANVA.is_paint(k) then
 			return k
 		end
 	end

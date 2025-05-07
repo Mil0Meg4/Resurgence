@@ -126,7 +126,7 @@ SMODS.Booster({
             speed = 1.1,
             padding = -1,
             attach = G.ROOM_ATTACH,
-            colours = {G.PRISM.C.myth_1, lighten(ANVA.C.AUGMENT, 0.4), lighten(ANVA.C.AUGMENT, 0.2), darken(ANVA.C.AUGMENT, 0.2)},
+            colours = {ANVA.C.AUGMENT, lighten(ANVA.C.AUGMENT, 0.4), lighten(ANVA.C.AUGMENT, 0.2), darken(ANVA.C.AUGMENT, 0.2)},
             fill = true
         })
         G.booster_pack_sparkles.fade_alpha = 1
@@ -162,7 +162,7 @@ SMODS.Booster({
             speed = 1.1,
             padding = -1,
             attach = G.ROOM_ATTACH,
-            colours = {G.PRISM.C.myth_1, lighten(ANVA.C.AUGMENT, 0.4), lighten(ANVA.C.AUGMENT, 0.2), darken(ANVA.C.AUGMENT, 0.2)},
+            colours = {ANVA.C.AUGMENT, lighten(ANVA.C.AUGMENT, 0.4), lighten(ANVA.C.AUGMENT, 0.2), darken(ANVA.C.AUGMENT, 0.2)},
             fill = true
         })
         G.booster_pack_sparkles.fade_alpha = 1
@@ -198,7 +198,7 @@ SMODS.Booster({
             speed = 1.1,
             padding = -1,
             attach = G.ROOM_ATTACH,
-            colours = {G.PRISM.C.myth_1, lighten(ANVA.C.AUGMENT, 0.4), lighten(ANVA.C.AUGMENT, 0.2), darken(ANVA.C.AUGMENT, 0.2)},
+            colours = {ANVA.C.AUGMENT, lighten(ANVA.C.AUGMENT, 0.4), lighten(ANVA.C.AUGMENT, 0.2), darken(ANVA.C.AUGMENT, 0.2)},
             fill = true
         })
         G.booster_pack_sparkles.fade_alpha = 1
@@ -234,7 +234,7 @@ SMODS.Booster({
             speed = 1.1,
             padding = -1,
             attach = G.ROOM_ATTACH,
-            colours = {G.PRISM.C.myth_1, lighten(ANVA.C.AUGMENT, 0.4), lighten(ANVA.C.AUGMENT, 0.2), darken(ANVA.C.AUGMENT, 0.2)},
+            colours = {ANVA.C.AUGMENT, lighten(ANVA.C.AUGMENT, 0.4), lighten(ANVA.C.AUGMENT, 0.2), darken(ANVA.C.AUGMENT, 0.2)},
             fill = true
         })
         G.booster_pack_sparkles.fade_alpha = 1

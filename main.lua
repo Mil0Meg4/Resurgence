@@ -163,6 +163,7 @@ function SMODS.current_mod.reset_game_globals(run_start)
 	if run_start then
         G.GAME.macro_ranks = G.GAME.macro_ranks or false
         G.GAME.current_pride_flag = ANVA.poll_flag("game_start")
+        G.GAME.tinfoil_count = (G.GAME.tinfoil_count or false)
     end
 end
 

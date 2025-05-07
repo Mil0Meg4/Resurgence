@@ -96,6 +96,30 @@ SMODS.Consumable({
     end
 })
 
+SMODS.Consumable({
+    key = 'aug_tinfoil',
+    set = 'Augment',
+    atlas = 'aug',
+    pos = {x=0, y=0},
+    discovered = true,
+    config = {max_highlighted = 1},
+    can_use = function(self, card)--determins when you can use the consumable
+        --checks that at least one joker is selected but not more than the maximum allowed
+		return #G.jokers.highlighted > 0 and #G.jokers.highlighted <= self.config.max_highlighted
+	end,
+    use = function(self, card, area, copier)
+        if G.GAME.tinfoil_count == false then
+            for _, v in ipairs(G.jokers.highlighted) do--apply to all selected jokers
+                v:set_edition("foil", true)
+                G.GAME.tinfoil_count = false
+            end
+        end
+    end,
+    in_pool = function(self, wawa, wawa2)
+		return false --if this was false this joker wouldnt spawn naturally.
+	end,
+})
+
 --Boosters
 SMODS.Booster({
     key = 'small_aug_1',

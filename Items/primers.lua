@@ -17,7 +17,7 @@ SMODS.Joker({
 	key = "sigma",
 	atlas = "joke", --the atlas obv
 	rarity = "anva_prim",
-	cost = 10,
+	cost = 15,
 	unlocked = true,
 	discovered = false,
 	eternal_compat = false,
@@ -56,7 +56,7 @@ SMODS.Joker({
 			elseif context.using_consumeable and context.consumeable.config.center.key == "c_tower" then
 				return ANVA.literally_me_fr(card,"doom")
 			elseif context.using_consumeable and context.consumeable.config.center.key == "c_death" then
-				print("11")
+				return ANVA.literally_me_fr(card,"tiataxet")
 			elseif context.using_consumeable and context.consumeable.config.center.key == "c_judgement" then
 				print("12")
 			elseif context.using_consumeable and context.consumeable.config.center.key == "c_hermit" then

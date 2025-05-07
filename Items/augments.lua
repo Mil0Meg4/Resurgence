@@ -103,16 +103,21 @@ SMODS.Consumable({
     pos = {x=0, y=0},
     discovered = true,
     config = {max_highlighted = 1},
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS.e_foil
+    end,
     can_use = function(self, card)--determins when you can use the consumable
         --checks that at least one joker is selected but not more than the maximum allowed
-		return #G.jokers.highlighted > 0 and #G.jokers.highlighted <= self.config.max_highlighted
+		return not G.GAME.tinfoil_count or (#G.jokers.highlighted > 0 and #G.jokers.highlighted <= self.config.max_highlighted)
 	end,
     use = function(self, card, area, copier)
-        if G.GAME.tinfoil_count == false then
+        if G.GAME.tinfoil_count then
             for _, v in ipairs(G.jokers.highlighted) do--apply to all selected jokers
-                v:set_edition("foil", true)
+                v:set_edition("e_foil", true)
                 G.GAME.tinfoil_count = false
             end
+        else
+            G.GAME.tinfoil_count = true
         end
     end,
     in_pool = function(self, wawa, wawa2)

@@ -1,21 +1,10 @@
 SMODS.Rarity({
-	key = "prim",
-	badge_colour = ANVA.C.PRIMORDIAL,
-	pools = {
-		["Joker"] = {
-			rate = G.GAME and 0.002 * math.floor((G.GAME.round_resets.ante - 1)/4) or 0.002, --formula for how rare primordials are. They can't apperar before ante 5 and the chances increase every 4 antes
-		},
-	},
-	default_weight = 0.002,
-})
-
-SMODS.Rarity({
 	key = "unb",
-	badge_colour = ANVA.C.UNBOUND,
+	badge_colour = RSGC.C.UNBOUND,
 	pools = {},
 })
 
-function ANVA.unbound(card)
+function RSGC.unbound(card)
 	G.E_MANAGER:add_event(Event({
 		func = function()
 			if card.ability.unbound and card.ability.unbound.evo then
@@ -27,7 +16,7 @@ function ANVA.unbound(card)
 	}))
 	return {
 		message = localize('k_rsgc_unb'),
-		colour = ANVA.C.UNBOUND,
+		colour = RSGC.C.UNBOUND,
 		card = card
 	}
 end
@@ -136,7 +125,7 @@ SMODS.Joker({
 		end
 		if context.after or context.discard or context.using_consumeable and not context.blueprint then
 			if card.ability.unbound.tarots >= 33 and card.ability.unbound.discards >= 333 and card.ability.unbound.cards >= 333 then
-				return ANVA.unbound(card)
+				return RSGC.unbound(card)
 			end
 		end
 	end,
@@ -214,7 +203,7 @@ SMODS.Joker({
 	end,
 })
 
-function ANVA.nonstone()
+function RSGC.nonstone()
 	local bb = #G.playing_cards
 	if G.playing_cards then
 		for _, v in pairs(G.playing_cards) do
@@ -260,7 +249,7 @@ SMODS.Joker({
 	pride_flag_paints = {pink=true,yellow=true,cyan=true},
 	loc_vars = function(self, info_queue, card)
 		for k,v in pairs(self.pride_flag_paints) do
-			info_queue[#info_queue + 1] = ANVA.paint_tooltip(k)
+			info_queue[#info_queue + 1] = RSGC.paint_tooltip(k)
 		end
 	end,
 	in_pool = function(self, wawa, wawa2)
@@ -283,7 +272,7 @@ SMODS.Joker({
 	pride_flag_paints = {red=true,purple=true,blue=true},
 	loc_vars = function(self, info_queue, card)
 		for k,v in pairs(self.pride_flag_paints) do
-			info_queue[#info_queue + 1] = ANVA.paint_tooltip(k)
+			info_queue[#info_queue + 1] = RSGC.paint_tooltip(k)
 		end
 	end,
 	in_pool = function(self, wawa, wawa2)
@@ -306,7 +295,7 @@ SMODS.Joker({
 	pride_flag_paints = {blue=true,pink=true,white=true},
 	loc_vars = function(self, info_queue, card)
 		for k,v in pairs(self.pride_flag_paints) do
-			info_queue[#info_queue + 1] = ANVA.paint_tooltip(k)
+			info_queue[#info_queue + 1] = RSGC.paint_tooltip(k)
 		end
 	end,
 	in_pool = function(self, wawa, wawa2)
@@ -329,7 +318,7 @@ SMODS.Joker({
 	pride_flag_paints = {orange=true,white=true,purple=true},
 	loc_vars = function(self, info_queue, card)
 		for k,v in pairs(self.pride_flag_paints) do
-			info_queue[#info_queue + 1] = ANVA.paint_tooltip(k)
+			info_queue[#info_queue + 1] = RSGC.paint_tooltip(k)
 		end
 	end,
 	in_pool = function(self, wawa, wawa2)
@@ -352,7 +341,7 @@ SMODS.Joker({
 	pride_flag_paints = {cyan=true,white=true,blue=true},
 	loc_vars = function(self, info_queue, card)
 		for k,v in pairs(self.pride_flag_paints) do
-			info_queue[#info_queue + 1] = ANVA.paint_tooltip(k)
+			info_queue[#info_queue + 1] = RSGC.paint_tooltip(k)
 		end
 	end,
 	in_pool = function(self, wawa, wawa2)
@@ -375,7 +364,7 @@ SMODS.Joker({
 	pride_flag_paints = {yellow=true,purple=true,black=true},
 	loc_vars = function(self, info_queue, card)
 		for k,v in pairs(self.pride_flag_paints) do
-			info_queue[#info_queue + 1] = ANVA.paint_tooltip(k)
+			info_queue[#info_queue + 1] = RSGC.paint_tooltip(k)
 		end
 	end,
 	in_pool = function(self, wawa, wawa2)
@@ -398,7 +387,7 @@ SMODS.Joker({
 	pride_flag_paints = {black=true,white=true,purple=true},
 	loc_vars = function(self, info_queue, card)
 		for k,v in pairs(self.pride_flag_paints) do
-			info_queue[#info_queue + 1] = ANVA.paint_tooltip(k)
+			info_queue[#info_queue + 1] = RSGC.paint_tooltip(k)
 		end
 	end,
 	in_pool = function(self, wawa, wawa2)
@@ -421,7 +410,7 @@ SMODS.Joker({
 	pride_flag_paints = {green=true,white=true,black=true},
 	loc_vars = function(self, info_queue, card)
 		for k,v in pairs(self.pride_flag_paints) do
-			info_queue[#info_queue + 1] = ANVA.paint_tooltip(k)
+			info_queue[#info_queue + 1] = RSGC.paint_tooltip(k)
 		end
 	end,
 	in_pool = function(self, wawa, wawa2)
@@ -444,7 +433,7 @@ SMODS.Joker({
 	pride_flag_paints = {yellow=true,white=true,blue=true},
 	loc_vars = function(self, info_queue, card)
 		for k,v in pairs(self.pride_flag_paints) do
-			info_queue[#info_queue + 1] = ANVA.paint_tooltip(k)
+			info_queue[#info_queue + 1] = RSGC.paint_tooltip(k)
 		end
 	end,
 	in_pool = function(self, wawa, wawa2)
@@ -501,7 +490,7 @@ SMODS.Joker({
 		}
 	end,
 	calculate = function(self, card, context)
-		if context.other_joker and ANVA.has_tweak(context.other_joker) then
+		if context.other_joker and RSGC.has_tweak(context.other_joker) then
 			local rsgc = card.ability.extra
 			return {
 				xmult = rsgc.x_mult,

@@ -2,7 +2,7 @@
 --Operation contains the values for the math, which can be set, add or mult.
 --Insert values in target_keywords if you want to affect only them, or into banned_keywords if you want to affect anything but them.
 --If linear is off, the ref table replaces the main one, otherwise the function uses the main table as a base and the ref table for the modification
-ANVA.mod_table_values = function(table, ref, operation,target_keywords,banned_keywords,linear)
+RSGC.mod_table_values = function(table, ref, operation,target_keywords,banned_keywords,linear)
     if not operation then operation = {} end
     if target_keywords and not next(target_keywords) then target_keywords = nil end--if target_keywords exists but is empty, it becomes nil
     if not banned_keywords then banned_keywords = {} end
@@ -39,17 +39,17 @@ ANVA.mod_table_values = function(table, ref, operation,target_keywords,banned_ke
     modify_values(table, ref)--call the previously declared function
 end
 
-function ANVA.remove_stickers(card)
+function RSGC.remove_stickers(card)
 	for k, v in pairs(SMODS.Stickers) do
-        if not (ANVA.is_paint(k) or ANVA.is_tweak(k)) then
+        if not (RSGC.is_paint(k) or RSGC.is_tweak(k)) then
 			card:remove_sticker(k)
         end
     end
 end
 
 --Returns true if imputed Sticker is a Tweak
-function ANVA.is_tweak(str)
-    local tweaks = ANVA.Tweaks_keys
+function RSGC.is_tweak(str)
+    local tweaks = RSGC.Tweaks_keys
     for _, v in ipairs(tweaks) do
         if 'rsgc_' .. v == str then
             return true
@@ -59,29 +59,29 @@ function ANVA.is_tweak(str)
 end
 
 --Removes a joker's Tweak
-function ANVA.remove_tweak(card)
+function RSGC.remove_tweak(card)
 	for k, _ in pairs(card and card.ability or {}) do
-		if ANVA.is_tweak(k) then
+		if RSGC.is_tweak(k) then
 			card.ability[k] = nil
 		end
 	end
 end
   
 --Sets a joker's Tweak, repleacing previous one
-function ANVA.set_tweak(card, type)
+function RSGC.set_tweak(card, type)
     local key = 'rsgc_' .. type
   
-    if card and ANVA.is_tweak(key) then
-        ANVA.remove_tweak(card)
+    if card and RSGC.is_tweak(key) then
+        RSGC.remove_tweak(card)
         SMODS.Stickers[key]:apply(card, true)
     end
 end
 
 --Checks if card has a certain tweak. Leave the type field empty to check for any tweak
-function ANVA.has_tweak(card,type)
+function RSGC.has_tweak(card,type)
 	local key = type and 'rsgc_' .. type or nil
 	for k, _ in pairs(card and card.ability or {}) do
-		if ANVA.is_tweak(k) then
+		if RSGC.is_tweak(k) then
 			return not key and k or k == key
 		end
 	end
@@ -89,8 +89,8 @@ function ANVA.has_tweak(card,type)
 end
 
 --Returns true if imputed Sticker is a Paint
-function ANVA.is_paint(str)
-    local paints = ANVA.Paint_keys
+function RSGC.is_paint(str)
+    local paints = RSGC.Paint_keys
     for _, v in ipairs(paints) do
         if 'rsgc_paint_' .. v == str then
             return true
@@ -100,9 +100,9 @@ function ANVA.is_paint(str)
 end
 
 --Removes a joker's Paint
-function ANVA.remove_paint(card)
+function RSGC.remove_paint(card)
 	for k, _ in pairs(card and card.ability or {}) do
-		if ANVA.is_paint(k) then
+		if RSGC.is_paint(k) then
 			card.ability[k] = nil
 			card.ability.paint = nil
 		end
@@ -110,20 +110,20 @@ function ANVA.remove_paint(card)
 end
 
 --Sets a joker's Paint, repleacing previous one
-  function ANVA.set_paint(card, type)
+  function RSGC.set_paint(card, type)
     local key = 'rsgc_paint_' .. type
 
-    if card and ANVA.is_paint(key) then
-        ANVA.remove_paint(card)
+    if card and RSGC.is_paint(key) then
+        RSGC.remove_paint(card)
         SMODS.Stickers[key]:apply(card, true)
     end
 end
 
 --Checks if card has a certain paint. Leave the type field empty to check for any paint and return its key
-function ANVA.has_paint(card,type)
+function RSGC.has_paint(card,type)
 	local key = type and 'rsgc_paint_' .. type or nil
 	for k, _ in pairs(card and card.ability or {}) do
-		if (key == k or key == nil) and ANVA.is_paint(k) then
+		if (key == k or key == nil) and RSGC.is_paint(k) then
 			return k
 		end
 	end
@@ -131,7 +131,7 @@ function ANVA.has_paint(card,type)
 end
 
 --Returns a table with all the suit in hand and the number of cards of each
-function ANVA.get_suits(scoring_hand, bypass_debuff)
+function RSGC.get_suits(scoring_hand, bypass_debuff)
     local suits = {}
     for k, _ in pairs(SMODS.Suits) do
         suits[k] = 0
@@ -174,7 +174,7 @@ function poll_paint(_key, _mod, _guaranteed, _options)
         end
 	else
         for k, v in pairs(SMODS.Stickers) do
-            local is_paint = ANVA.is_paint(k)
+            local is_paint = RSGC.is_paint(k)
             local in_pool = (v.in_pool and type(v.in_pool) == "function") and v:in_pool({source = _key})
             if is_paint and (in_pool or v.in_shop) then
                 table.insert(available_paints, v)
@@ -203,7 +203,7 @@ function poll_paint(_key, _mod, _guaranteed, _options)
 	return nil
 end
 
-function ANVA.poll_flag(_key)
+function RSGC.poll_flag(_key)
 	local flag_poll = pseudorandom(pseudoseed(_key or 'paint_generic')) 
 	local pool = {
 		rainbow = 20,
@@ -232,7 +232,7 @@ function ANVA.poll_flag(_key)
 end
 
 -- Finds jokers with specific properties (shamelessly stolen from cryptid)
-function ANVA.advanced_find_joker(name, rarity, edition, ability, non_debuff, area)
+function RSGC.advanced_find_joker(name, rarity, edition, ability, non_debuff, area)
 	local jokers = {}
 	if not G.jokers or not G.jokers.cards then
 		return {}
@@ -340,7 +340,7 @@ function ANVA.advanced_find_joker(name, rarity, edition, ability, non_debuff, ar
 	return jokers
 end
 
-function ANVA.paint_tooltip(type)
+function RSGC.paint_tooltip(type)
 	local key = 'rsgc_paint_' .. type
 	local paint = SMODS.Stickers[key]
 	if not paint then return end
@@ -355,7 +355,7 @@ function ANVA.paint_tooltip(type)
 	return {set = 'Other',key = key,vars = vars}
 end
 
-function ANVA.update_add_to_deck(card, func)
+function RSGC.update_add_to_deck(card, func)
 	if not card.added_to_deck then
 		return func(card)
 	else
@@ -403,14 +403,14 @@ function Card:generate_UIBox_ability_table()
 	end
 	return ret
 end
-function ANVA.is_macro(card)
+function RSGC.is_macro(card)
 	return card.base.value and SMODS.Ranks[card.base.value].rsgc_macro or false
 end
-function ANVA.is_micro(card)
+function RSGC.is_micro(card)
 	return card.base.value and SMODS.Ranks[card.base.value].rsgc_micro or false
 end
 --[[ 
-function ANVA.table_has(list, value)
+function RSGC.table_has(list, value)
 	for i, v in ipairs(list) do
 		if v == value then
 			return true
@@ -418,3 +418,22 @@ function ANVA.table_has(list, value)
 	end
 	return false
 end ]]
+--code directly taken from prism, no need to chnage anything
+function RSGC.create_card(_type,area,legendary,_rarity,skip_materialize,soulable,forced_key,key_append,func)
+    local buffer_type = area == G.jokers and 'joker_buffer' or 'consumeable_buffer'
+
+    if #area.cards + G.GAME[buffer_type] < area.config.card_limit then
+        G.GAME[buffer_type] = G.GAME[buffer_type] + 1
+        G.E_MANAGER:add_event(Event {
+            func = function()
+            local card = create_card(_type,area,legendary,_rarity,skip_materialize,soulable,forced_key,key_append)
+            card:add_to_deck()
+            area:emplace(card)
+            func(card)
+            G.GAME[buffer_type] = 0
+            return true
+            end
+        })
+        return true
+    end
+end

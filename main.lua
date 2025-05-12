@@ -1,5 +1,5 @@
-ANVA = {}
-ANVA.C = {
+RSGC = {}
+RSGC.C = {
     VAMPIRICA = HEX("880808"),
     AUGMENT = HEX("b59262"),
     DIVINE = HEX("ffffbb"),
@@ -13,13 +13,13 @@ ANVA.C = {
     BROWN = HEX("4e3f36"),
     BLACK = HEX("000000"),
 }
-ANVA.GRADIENTS = {
+RSGC.GRADIENTS = {
     UNDER = {G.C.RED,G.C.PURPLE},
-    ULTRA = {ANVA.C.VAMPIRICA,G.C.BLACK},
-    VAMP = {ANVA.C.VAMPIRICA,G.C.MONEY},
+    ULTRA = {RSGC.C.VAMPIRICA,G.C.BLACK},
+    VAMP = {RSGC.C.VAMPIRICA,G.C.MONEY},
     HOLLOW = {HEX("6b8cad"),G.C.BLACK},
-    PRIMORDIAL = {ANVA.C.VAMPIRICA,HEX("52134b")},
-    UNBOUND = {HEX("bc5a25"),ANVA.C.VAMPIRICA},
+    PRIMORDIAL = {RSGC.C.VAMPIRICA,HEX("52134b")},
+    UNBOUND = {HEX("bc5a25"),RSGC.C.VAMPIRICA},
     ARTIFACT = {HEX("40b5c4"),HEX("a8ced3")}
 
 }
@@ -31,7 +31,7 @@ SMODS.load_file("Items/tweaks.lua")()
 SMODS.load_file("Items/enhancements.lua")()
 SMODS.load_file("Items/ranks.lua")()
 SMODS.load_file("Items/jokers.lua")()
-SMODS.load_file("Items/primers.lua")()
+SMODS.load_file("Items/primordials.lua")()
 SMODS.load_file("Items/decks.lua")()
 SMODS.load_file("Items/planars/ultrakill.lua")()
 SMODS.load_file("Items/planars/undertale.lua")()
@@ -106,11 +106,11 @@ function loc_colour(_c, _default)
     if not G.ARGS.LOC_COLOURS then
         lc()
     end
-    G.ARGS.LOC_COLOURS.rsgc_pink = ANVA.C.PINK
-    G.ARGS.LOC_COLOURS.rsgc_cyan = ANVA.C.CYAN
-    G.ARGS.LOC_COLOURS.rsgc_under = ANVA.C.UNDER
-    G.ARGS.LOC_COLOURS.rsgc_aug= ANVA.C.AUGMENT
-    G.ARGS.LOC_COLOURS.rsgc_black= ANVA.C.BLACK
+    G.ARGS.LOC_COLOURS.rsgc_pink = RSGC.C.PINK
+    G.ARGS.LOC_COLOURS.rsgc_cyan = RSGC.C.CYAN
+    G.ARGS.LOC_COLOURS.rsgc_under = RSGC.C.UNDER
+    G.ARGS.LOC_COLOURS.rsgc_aug= RSGC.C.AUGMENT
+    G.ARGS.LOC_COLOURS.rsgc_black= RSGC.C.BLACK
     return lc(_c, _default)
 end
 
@@ -119,12 +119,12 @@ function Game:update(dt)
     orig_update(self,dt)
 	local anim_timer = self.TIMERS.REAL * 1.5
 	local p = 0.5 * (math.sin(anim_timer) + 1)
-	for k, c in pairs(ANVA.GRADIENTS) do
-		if not ANVA.C[k] then
-			ANVA.C[k] = { 0, 0, 0, 0 }
+	for k, c in pairs(RSGC.GRADIENTS) do
+		if not RSGC.C[k] then
+			RSGC.C[k] = { 0, 0, 0, 0 }
 		end
 		for i = 1, 4 do
-			ANVA.C[k][i] = c[1][i] * p + c[2][i] * (1 - p)
+			RSGC.C[k][i] = c[1][i] * p + c[2][i] * (1 - p)
 		end
 	end
 
@@ -162,7 +162,7 @@ end
 function SMODS.current_mod.reset_game_globals(run_start)
 	if run_start then
         G.GAME.macro_ranks = G.GAME.macro_ranks or false
-        G.GAME.current_pride_flag = ANVA.poll_flag("game_start")
+        G.GAME.current_pride_flag = RSGC.poll_flag("game_start")
         G.GAME.tinfoil_count = (G.GAME.tinfoil_count or false)
     end
 end
@@ -182,7 +182,7 @@ SMODS.Sound({
 	sync = true,
 	pitch = 1,
 	select_music_track = function()
-		return #ANVA.advanced_find_joker(nil,"rsgc_prim", nil, nil, true) ~= 0 and 15
+		return #RSGC.advanced_find_joker(nil,"rsgc_prim", nil, nil, true) ~= 0 and 15
 	end
 })
 -------------------------------------------------------------------------
@@ -210,7 +210,7 @@ end
 local function wrap_without_paints_and_tweaks(func)
     local removed = {}
     for k, v in pairs(SMODS.Stickers) do
-        if ANVA.is_paint(k) or ANVA.is_tweak(k) then
+        if RSGC.is_paint(k) or RSGC.is_tweak(k) then
         removed[k] = v
         SMODS.Stickers[k] = nil
         end
@@ -339,11 +339,11 @@ SMODS.Suit {
 
     lc_atlas = 'enha',
     lc_ui_atlas = 'enha',
-    lc_colour = ANVA.C.VAMPIRICA,
+    lc_colour = RSGC.C.VAMPIRICA,
 
     hc_atlas = 'enha',
     hc_ui_atlas = 'enha',
-    hc_colour = ANVA.C.VAMPIRICA,
+    hc_colour = RSGC.C.VAMPIRICA,
 
     hidded = true,
     pos = { y = 0 },
@@ -364,15 +364,15 @@ end
 ----------------------Functions-------------------------
 --------------------------------------------------------
 
-function ANVA.fact (n)
+function RSGC.fact (n)
     if n <= 0 then
       return 1
     else
-      return n * ANVA.fact(n-1)
+      return n * RSGC.fact(n-1)
     end
   end
 
-function ANVA.acorn (n, n2)
+function RSGC.acorn (n, n2)
     if n <= 0 or n2 <= 0 then
         return 1
     else

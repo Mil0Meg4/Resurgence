@@ -1,4 +1,14 @@
-function ANVA.literally_me_fr(card,joker_key)
+SMODS.Rarity({
+	key = "prim",
+	badge_colour = RSGC.C.PRIMORDIAL,
+	pools = {
+		["Joker"] = {
+			rate = G.GAME and 0.002 * math.floor((G.GAME.round_resets.ante - 1)/4) or 0.002, --formula for how rare primordials are. They can't apperar before ante 5 and the chances increase every 4 antes
+		},
+	},
+	default_weight = 0.002,
+})
+--[[ function RSGC.literally_me_fr(card,joker_key)
     G.E_MANAGER:add_event(Event({
         func = function()
             play_sound('tarot2', 1.1, 0.6)
@@ -8,7 +18,7 @@ function ANVA.literally_me_fr(card,joker_key)
     }))
     return {
         message = localize('k_rsgc_prim'),
-        colour = ANVA.C.PRIMORDIAL,
+        colour = RSGC.C.PRIMORDIAL,
         card = card
     }
 end
@@ -48,19 +58,19 @@ SMODS.Joker({
 			elseif context.using_consumeable and context.consumeable.config.center.key == "c_world" then
 				print("6")
 			elseif context.using_consumeable and context.consumeable.config.center.key == "c_star" then
-				return ANVA.literally_me_fr(card,"andromeda")
+				return RSGC.literally_me_fr(card,"andromeda")
 			elseif context.using_consumeable and context.consumeable.config.center.key == "c_sun" then
 				print("8")
 			elseif context.using_consumeable and context.consumeable.config.center.key == "c_lovers" then
-				return ANVA.literally_me_fr(card,"sappho")
+				return RSGC.literally_me_fr(card,"sappho")
 			elseif context.using_consumeable and context.consumeable.config.center.key == "c_tower" then
-				return ANVA.literally_me_fr(card,"doom")
+				return RSGC.literally_me_fr(card,"doom")
 			elseif context.using_consumeable and context.consumeable.config.center.key == "c_death" then
-				return ANVA.literally_me_fr(card,"tiataxet")
+				return RSGC.literally_me_fr(card,"tiataxet")
 			elseif context.using_consumeable and context.consumeable.config.center.key == "c_judgement" then
 				print("12")
 			elseif context.using_consumeable and context.consumeable.config.center.key == "c_hermit" then
-				return ANVA.literally_me_fr(card,"charon")
+				return RSGC.literally_me_fr(card,"charon")
 			elseif context.using_consumeable and context.consumeable.config.center.key == "c_temperance" then
 				print("14")
 			elseif context.using_consumeable and context.consumeable.config.center.key == "c_strength" then
@@ -85,7 +95,7 @@ SMODS.Joker({
 		badges[#badges - 1] = create_badge("Primer", G.C.ORANGE, G.C.WHITE, 1) --This adds the primer badge ABOVE the rarity. if this was +1 it would add below
 	end,
 })
-
+]]
 SMODS.Joker({
 	key = "charon",
 	atlas = "joke",
@@ -151,7 +161,7 @@ SMODS.Joker({
                 if c.edition then edit[c.edition.key] = (edit[c.edition.key] or 0) + 1 end
                 if c.config.center.key ~= "c_base" then enha[c.config.center.key] = (enha[c.config.center.key] or 0) +1 end
                 if c.seal then seal[c.seal] = (seal[c.seal] or 0) + 1 end
-                if ANVA.has_paint(c) then paint[ANVA.has_paint(c)] = (paint[ANVA.has_paint(c)] or 0) + 1 end
+                if RSGC.has_paint(c) then paint[RSGC.has_paint(c)] = (paint[RSGC.has_paint(c)] or 0) + 1 end
             end
             local last_number = 0
             local ra = nil
@@ -231,7 +241,7 @@ SMODS.Joker({
                     if e then c:set_edition(e) end
                     if a then c:set_ability(G.P_CENTERS[a]) end
                     if s then c:set_seal(s) end
-                    if p then ANVA.set_paint(c,string.sub(p,12)) end
+                    if p then RSGC.set_paint(c,string.sub(p,12)) end
                 return true end }))
             end
 			for i=1, #G.hand.cards do
@@ -324,7 +334,7 @@ SMODS.Joker({
 	calculate = function(self, card, context)
 		local rsgc = card.ability.extra
 		if context.joker_main then
-			if ANVA.nonstone() > 0 then
+			if RSGC.nonstone() > 0 then
 				return{
 					chips = rsgc.chips,
 				}
@@ -358,46 +368,5 @@ SMODS.Joker({
 	end,
 	in_pool = function(self, wawa, wawa2)
 		return false
-	end,
-})
-
-SMODS.Joker({
-	key = "sappho",
-	atlas = "joke",
-	rarity = "rsgc_prim",
-	cost = 50,
-	unlocked = true,
-	discovered = false,
-	blueprint_compat = true,
-	pos = {x = 0,y = 0},
-	config = {extra = {retrigger_amount = 4}},
-	loc_vars = function(self, info_queue, card)
-		local rsgc = card.ability.extra
-		return {vars = {rsgc.retrigger_amount}}
-	end,
-	calculate = function(self, card, context)
-		if context.repetition and context.cardarea == G.play then
-			local rsgc = card.ability.extra
-			local current_retrigger_count = 0
-			if context.other_card:is_suit("Diamonds") then
-				current_retrigger_count = current_retrigger_count + rsgc.retrigger_amount
-			end
-			if context.other_card:is_suit("Clubs") then
-				current_retrigger_count = current_retrigger_count + rsgc.retrigger_amount
-			end
-			if context.other_card:is_suit("Hearts") then
-				current_retrigger_count = current_retrigger_count + rsgc.retrigger_amount
-			end
-			if context.other_card:is_suit("Spades") then
-				current_retrigger_count = current_retrigger_count + rsgc.retrigger_amount
-			end
-			if SMODS.has_enhancement(context.other_card, "m_wild") then
-				current_retrigger_count = current_retrigger_count + rsgc.retrigger_amount
-			end
-			return {
-				message = localize('k_again_ex'),
-				repetitions = current_retrigger_count,
-			}
-		end
 	end,
 })

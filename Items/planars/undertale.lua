@@ -70,7 +70,7 @@ SMODS.Joker({
 		end
 	end,
 	set_badges = function(self, card, badges)
-		badges[#badges - 1] = create_badge("Undertale", ANVA.C.UNDER, G.C.WHITE, 1)
+		badges[#badges - 1] = create_badge("Undertale", RSGC.C.UNDER, G.C.WHITE, 1)
 	end,
 })
 
@@ -86,11 +86,11 @@ SMODS.Joker({
 	discovered = false,
 	blueprint_compat = false,
 	loc_vars = function(self, info_queue)
-		info_queue[#info_queue + 1] = ANVA.paint_tooltip("blue")
+		info_queue[#info_queue + 1] = RSGC.paint_tooltip("blue")
 	end,
 	calculate = function(self, card, context)
 		if context.before and #G.play.cards == 1 then
-			ANVA.set_paint(G.play.cards[1], "blue")
+			RSGC.set_paint(G.play.cards[1], "blue")
 			return {
 				message = localize("k_blue"),
 				colour = G.C.CHIPS
@@ -98,7 +98,7 @@ SMODS.Joker({
 		end
 	end,
 	set_badges = function(self, card, badges)
-		badges[#badges - 1] = create_badge("Undertale", ANVA.C.UNDER, G.C.WHITE, 1)
+		badges[#badges - 1] = create_badge("Undertale", RSGC.C.UNDER, G.C.WHITE, 1)
 	end,
 })
 
@@ -117,22 +117,22 @@ SMODS.Joker({
 	blueprint_compat = true,
 	loc_vars = function(self, info_queue)
 		info_queue[#info_queue + 1] = G.P_CENTERS.j_blueprint
+		return {vars = {}}
 	end,
 	calculate = function(self, card, context)
 		if context.setting_blind and context.blind.boss then
-			if #G.jokers.cards < G.jokers.config.card_limit or self.area == G.jokers then
-				local new_card = create_card("Blueprint", G.jokers, nil, nil, nil, nil, "j_blueprint")
-				new_card:add_to_deck()
-				G.jokers:emplace(new_card)
-				return {
-					--message = localize("k_upgrade_ex"),
-					--colour = G.C.CHIPS
+			RSGC.create_card("Joker", G.jokers, nil, nil, nil, nil, "j_blueprint",nil,function()
+				SMODS.calculate_effect {
+					message = localize("k_blueprinted"),
+					colour = G.C.CHIPS,
+					card = card
 				}
-			end
+			end)
+			return {}
 		end
 	end,
 	set_badges = function(self, card, badges)
-		badges[#badges - 1] = create_badge("Undertale", ANVA.C.UNDER, G.C.WHITE, 1)
+		badges[#badges - 1] = create_badge("Undertale", RSGC.C.UNDER, G.C.WHITE, 1)
 	end,
 })
 
@@ -189,7 +189,7 @@ SMODS.Joker {
 		end
 	end,
 	set_badges = function(self, card, badges)
-		badges[#badges - 1] = create_badge("Undertale", ANVA.C.UNDER, G.C.WHITE, 1)
+		badges[#badges - 1] = create_badge("Undertale", RSGC.C.UNDER, G.C.WHITE, 1)
 	end,
 }
 
@@ -256,7 +256,7 @@ SMODS.Joker({
 		change_shop_size(-6)
 	end,
 	set_badges = function(self, card, badges)
-		badges[#badges - 1] = create_badge("Undertale", ANVA.C.UNDER, G.C.WHITE, 1)
+		badges[#badges - 1] = create_badge("Undertale", RSGC.C.UNDER, G.C.WHITE, 1)
 	end,
 	draw = function(self, card, layer)
 		card.children.center:draw_shader("rsgc_gaster", nil, card.ARGS.send_to_shader)
@@ -307,6 +307,6 @@ SMODS.Joker {
 		end
 	end,
 	set_badges = function(self, card, badges)
-		badges[#badges - 1] = create_badge("Undertale", ANVA.C.UNDER, G.C.WHITE, 1)
+		badges[#badges - 1] = create_badge("Undertale", RSGC.C.UNDER, G.C.WHITE, 1)
 	end,
 }

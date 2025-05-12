@@ -1,7 +1,7 @@
 SMODS.ConsumableType({
     key = "Augment",
-    primary_colour = ANVA.C.AUGMENT,
-    secondary_colour = ANVA.C.AUGMENT,
+    primary_colour = RSGC.C.AUGMENT,
+    secondary_colour = RSGC.C.AUGMENT,
     collection_rows = {4, 3},
     shop_rate = 0,
     default = 'c_rsgc_aug_mother'
@@ -35,7 +35,7 @@ SMODS.Consumable({
             play_sound('tarot1')--normal consumable shenanigans
             card:juice_up(0.3, 0.5)--normal consumable shenanigans
             for _, v in ipairs(G.jokers.highlighted) do--apply to all selected jokers
-                ANVA.set_tweak(v, card.ability.tweak)--set the tweak
+                RSGC.set_tweak(v, card.ability.tweak)--set the tweak
             end
         return true end }))
     end
@@ -62,8 +62,8 @@ SMODS.Consumable({
             play_sound('tarot1')--normal consumable shenanigans
             card:juice_up(0.3, 0.5)--normal consumable shenanigans
             for _, v in ipairs(G.jokers.highlighted) do--apply to all selected jokers
-                ANVA.remove_stickers(v)
-                ANVA.set_tweak(v, card.ability.tweak)--set the tweak
+                RSGC.remove_stickers(v)
+                RSGC.set_tweak(v, card.ability.tweak)--set the tweak
             end
         return true end }))
     end
@@ -90,7 +90,7 @@ SMODS.Consumable({
             play_sound('tarot1')--normal consumable shenanigans
             card:juice_up(0.3, 0.5)--normal consumable shenanigans
             for _, v in ipairs(G.jokers.highlighted) do--apply to all selected jokers
-                ANVA.set_tweak(v, card.ability.tweak)--set the tweak
+                RSGC.set_tweak(v, card.ability.tweak)--set the tweak
             end
         return true end }))
     end
@@ -141,8 +141,8 @@ SMODS.Booster({
         return create_card("Augment", G.pack_cards, nil, nil, true,  true, nil, "augpack")
     end,
     ease_background_colour = function(self)
-        ease_colour(G.C.DYN_UI.MAIN, ANVA.C.AUGMENT)
-        ease_background_colour{new_colour = ANVA.C.AUGMENT, special_colour = G.C.BLACK, contrast = 2}
+        ease_colour(G.C.DYN_UI.MAIN, RSGC.C.AUGMENT)
+        ease_background_colour{new_colour = RSGC.C.AUGMENT, special_colour = G.C.BLACK, contrast = 2}
     end,
     group_key = 'k_rsgc_aug_pack',
     draw_hand = false,
@@ -155,7 +155,7 @@ SMODS.Booster({
             speed = 1.1,
             padding = -1,
             attach = G.ROOM_ATTACH,
-            colours = {ANVA.C.AUGMENT, lighten(ANVA.C.AUGMENT, 0.4), lighten(ANVA.C.AUGMENT, 0.2), darken(ANVA.C.AUGMENT, 0.2)},
+            colours = {RSGC.C.AUGMENT, lighten(RSGC.C.AUGMENT, 0.4), lighten(RSGC.C.AUGMENT, 0.2), darken(RSGC.C.AUGMENT, 0.2)},
             fill = true
         })
         G.booster_pack_sparkles.fade_alpha = 1
@@ -177,8 +177,8 @@ SMODS.Booster({
         return create_card("Augment", G.pack_cards, nil, nil, true,  true, nil, "augpack")
     end,
     ease_background_colour = function(self)
-        ease_colour(G.C.DYN_UI.MAIN, ANVA.C.AUGMENT)
-        ease_background_colour{new_colour = ANVA.C.AUGMENT, special_colour = G.C.BLACK, contrast = 2}
+        ease_colour(G.C.DYN_UI.MAIN, RSGC.C.AUGMENT)
+        ease_background_colour{new_colour = RSGC.C.AUGMENT, special_colour = G.C.BLACK, contrast = 2}
     end,
     group_key = 'k_rsgc_aug_pack',
     draw_hand = false,
@@ -191,7 +191,7 @@ SMODS.Booster({
             speed = 1.1,
             padding = -1,
             attach = G.ROOM_ATTACH,
-            colours = {ANVA.C.AUGMENT, lighten(ANVA.C.AUGMENT, 0.4), lighten(ANVA.C.AUGMENT, 0.2), darken(ANVA.C.AUGMENT, 0.2)},
+            colours = {RSGC.C.AUGMENT, lighten(RSGC.C.AUGMENT, 0.4), lighten(RSGC.C.AUGMENT, 0.2), darken(RSGC.C.AUGMENT, 0.2)},
             fill = true
         })
         G.booster_pack_sparkles.fade_alpha = 1
@@ -213,8 +213,8 @@ SMODS.Booster({
         return create_card("Augment", G.pack_cards, nil, nil, true,  true, nil, "augpack")
     end,
     ease_background_colour = function(self)
-        ease_colour(G.C.DYN_UI.MAIN, ANVA.C.AUGMENT)
-        ease_background_colour{new_colour = ANVA.C.AUGMENT, special_colour = G.C.BLACK, contrast = 2}
+        ease_colour(G.C.DYN_UI.MAIN, RSGC.C.AUGMENT)
+        ease_background_colour{new_colour = RSGC.C.AUGMENT, special_colour = G.C.BLACK, contrast = 2}
     end,
     group_key = 'k_rsgc_aug_pack',
     draw_hand = false,
@@ -227,7 +227,7 @@ SMODS.Booster({
             speed = 1.1,
             padding = -1,
             attach = G.ROOM_ATTACH,
-            colours = {ANVA.C.AUGMENT, lighten(ANVA.C.AUGMENT, 0.4), lighten(ANVA.C.AUGMENT, 0.2), darken(ANVA.C.AUGMENT, 0.2)},
+            colours = {RSGC.C.AUGMENT, lighten(RSGC.C.AUGMENT, 0.4), lighten(RSGC.C.AUGMENT, 0.2), darken(RSGC.C.AUGMENT, 0.2)},
             fill = true
         })
         G.booster_pack_sparkles.fade_alpha = 1
@@ -249,8 +249,8 @@ SMODS.Booster({
         return create_card("Augment", G.pack_cards, nil, nil, true,  true, nil, "augpack")
     end,
     ease_background_colour = function(self)
-        ease_colour(G.C.DYN_UI.MAIN, ANVA.C.AUGMENT)
-        ease_background_colour{new_colour = ANVA.C.AUGMENT, special_colour = G.C.BLACK, contrast = 2}
+        ease_colour(G.C.DYN_UI.MAIN, RSGC.C.AUGMENT)
+        ease_background_colour{new_colour = RSGC.C.AUGMENT, special_colour = G.C.BLACK, contrast = 2}
     end,
     group_key = 'k_rsgc_aug_pack',
     draw_hand = false,
@@ -263,7 +263,7 @@ SMODS.Booster({
             speed = 1.1,
             padding = -1,
             attach = G.ROOM_ATTACH,
-            colours = {ANVA.C.AUGMENT, lighten(ANVA.C.AUGMENT, 0.4), lighten(ANVA.C.AUGMENT, 0.2), darken(ANVA.C.AUGMENT, 0.2)},
+            colours = {RSGC.C.AUGMENT, lighten(RSGC.C.AUGMENT, 0.4), lighten(RSGC.C.AUGMENT, 0.2), darken(RSGC.C.AUGMENT, 0.2)},
             fill = true
         })
         G.booster_pack_sparkles.fade_alpha = 1
@@ -293,10 +293,10 @@ SMODS.Consumable({
             play_sound('tarot1')--normal consumable shenanigans
             card:juice_up(0.3, 0.5)--normal consumable shenanigans
             for _, v in ipairs(G.jokers.highlighted) do--apply to all selected jokers
-                ANVA.set_paint(v, card.ability.paint)--set the tweak
+                RSGC.set_paint(v, card.ability.paint)--set the tweak
             end
             for _, v in ipairs(G.hand.highlighted) do--apply to all selected jokers
-                ANVA.set_paint(v, card.ability.paint)--set the tweak
+                RSGC.set_paint(v, card.ability.paint)--set the tweak
             end
         return true end }))
     end,
@@ -325,10 +325,10 @@ SMODS.Consumable({
             play_sound('tarot1')--normal consumable shenanigans
             card:juice_up(0.3, 0.5)--normal consumable shenanigans
             for _, v in ipairs(G.jokers.highlighted) do--apply to all selected jokers
-                ANVA.set_paint(v, card.ability.paint)--set the tweak
+                RSGC.set_paint(v, card.ability.paint)--set the tweak
             end
             for _, v in ipairs(G.hand.highlighted) do--apply to all selected jokers
-                ANVA.set_paint(v, card.ability.paint)--set the tweak
+                RSGC.set_paint(v, card.ability.paint)--set the tweak
             end
         return true end }))
     end,
@@ -357,10 +357,10 @@ SMODS.Consumable({
             play_sound('tarot1')--normal consumable shenanigans
             card:juice_up(0.3, 0.5)--normal consumable shenanigans
             for _, v in ipairs(G.jokers.highlighted) do--apply to all selected jokers
-                ANVA.set_paint(v, card.ability.paint)--set the tweak
+                RSGC.set_paint(v, card.ability.paint)--set the tweak
             end
             for _, v in ipairs(G.hand.highlighted) do--apply to all selected jokers
-                ANVA.set_paint(v, card.ability.paint)--set the tweak
+                RSGC.set_paint(v, card.ability.paint)--set the tweak
             end
         return true end }))
     end,
@@ -389,10 +389,10 @@ SMODS.Consumable({
             play_sound('tarot1')--normal consumable shenanigans
             card:juice_up(0.3, 0.5)--normal consumable shenanigans
             for _, v in ipairs(G.jokers.highlighted) do--apply to all selected jokers
-                ANVA.set_paint(v, card.ability.paint)--set the tweak
+                RSGC.set_paint(v, card.ability.paint)--set the tweak
             end
             for _, v in ipairs(G.hand.highlighted) do--apply to all selected jokers
-                ANVA.set_paint(v, card.ability.paint)--set the tweak
+                RSGC.set_paint(v, card.ability.paint)--set the tweak
             end
         return true end }))
     end,
@@ -421,10 +421,10 @@ SMODS.Consumable({
             play_sound('tarot1')--normal consumable shenanigans
             card:juice_up(0.3, 0.5)--normal consumable shenanigans
             for _, v in ipairs(G.jokers.highlighted) do--apply to all selected jokers
-                ANVA.set_paint(v, card.ability.paint)--set the tweak
+                RSGC.set_paint(v, card.ability.paint)--set the tweak
             end
             for _, v in ipairs(G.hand.highlighted) do--apply to all selected jokers
-                ANVA.set_paint(v, card.ability.paint)--set the tweak
+                RSGC.set_paint(v, card.ability.paint)--set the tweak
             end
         return true end }))
     end,
@@ -453,10 +453,10 @@ SMODS.Consumable({
             play_sound('tarot1')--normal consumable shenanigans
             card:juice_up(0.3, 0.5)--normal consumable shenanigans
             for _, v in ipairs(G.jokers.highlighted) do--apply to all selected jokers
-                ANVA.set_paint(v, card.ability.paint)--set the tweak
+                RSGC.set_paint(v, card.ability.paint)--set the tweak
             end
             for _, v in ipairs(G.hand.highlighted) do--apply to all selected jokers
-                ANVA.set_paint(v, card.ability.paint)--set the tweak
+                RSGC.set_paint(v, card.ability.paint)--set the tweak
             end
         return true end }))
     end,
@@ -485,10 +485,10 @@ SMODS.Consumable({
             play_sound('tarot1')--normal consumable shenanigans
             card:juice_up(0.3, 0.5)--normal consumable shenanigans
             for _, v in ipairs(G.jokers.highlighted) do--apply to all selected jokers
-                ANVA.set_paint(v, card.ability.paint)--set the tweak
+                RSGC.set_paint(v, card.ability.paint)--set the tweak
             end
             for _, v in ipairs(G.hand.highlighted) do--apply to all selected jokers
-                ANVA.set_paint(v, card.ability.paint)--set the tweak
+                RSGC.set_paint(v, card.ability.paint)--set the tweak
             end
         return true end }))
     end,
@@ -517,10 +517,10 @@ SMODS.Consumable({
             play_sound('tarot1')--normal consumable shenanigans
             card:juice_up(0.3, 0.5)--normal consumable shenanigans
             for _, v in ipairs(G.jokers.highlighted) do--apply to all selected jokers
-                ANVA.set_paint(v, card.ability.paint)--set the tweak
+                RSGC.set_paint(v, card.ability.paint)--set the tweak
             end
             for _, v in ipairs(G.hand.highlighted) do--apply to all selected jokers
-                ANVA.set_paint(v, card.ability.paint)--set the tweak
+                RSGC.set_paint(v, card.ability.paint)--set the tweak
             end
         return true end }))
     end,
@@ -549,10 +549,10 @@ SMODS.Consumable({
             play_sound('tarot1')--normal consumable shenanigans
             card:juice_up(0.3, 0.5)--normal consumable shenanigans
             for _, v in ipairs(G.jokers.highlighted) do--apply to all selected jokers
-                ANVA.set_paint(v, card.ability.paint)--set the tweak
+                RSGC.set_paint(v, card.ability.paint)--set the tweak
             end
             for _, v in ipairs(G.hand.highlighted) do--apply to all selected jokers
-                ANVA.set_paint(v, card.ability.paint)--set the tweak
+                RSGC.set_paint(v, card.ability.paint)--set the tweak
             end
         return true end }))
     end,

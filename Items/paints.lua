@@ -1,5 +1,5 @@
 --paints are just stickers with a different name code wise
-ANVA.Paint = SMODS.Sticker:extend {
+RSGC.Paint = SMODS.Sticker:extend {
     prefix_config = { key = true },
     should_apply = false,
     config = {},
@@ -28,7 +28,7 @@ ANVA.Paint = SMODS.Sticker:extend {
 
 --table with all the paints' keys, needed for distinguishing them from stickers
 --when creating a new paint always add it here
-ANVA.Paint_keys = {
+RSGC.Paint_keys = {
     "blue",
     "red",
     "green",
@@ -87,7 +87,7 @@ SMODS.Shader {
     path = 'black.fs'
 }
 
-ANVA.Paint {
+RSGC.Paint {
     key = 'paint_blue',
     badge_colour = G.C.CHIPS,
     shader = 'blue',
@@ -105,7 +105,7 @@ ANVA.Paint {
         end
     end
 }
-ANVA.Paint {
+RSGC.Paint {
     key = 'paint_red',
     badge_colour = G.C.RED,
     shader = 'red',
@@ -124,7 +124,7 @@ ANVA.Paint {
     end
 }
 
-ANVA.Paint {
+RSGC.Paint {
     key = 'paint_green',
     badge_colour = G.C.GREEN,
     shader = 'green',
@@ -144,7 +144,7 @@ ANVA.Paint {
         end
     end
 }
-ANVA.Paint {
+RSGC.Paint {
     key = 'paint_yellow',
     badge_colour = G.C.MONEY,
     shader = 'yellow',
@@ -160,7 +160,7 @@ ANVA.Paint {
         end
     end
 }
-ANVA.Paint {
+RSGC.Paint {
     key = 'paint_orange',
     badge_colour = G.C.FILTER,
     shader = 'orange',
@@ -181,9 +181,9 @@ ANVA.Paint {
 		end
     end
 }
-ANVA.Paint {
+RSGC.Paint {
     key = 'paint_pink',
-    badge_colour = ANVA.C.PINK,
+    badge_colour = RSGC.C.PINK,
     shader = 'pink',
     weight = 19,
     config = {chips_c = 25,chips_j = 35},
@@ -192,10 +192,10 @@ ANVA.Paint {
         local card_tally = 0
         local joker_tally = 0
         for k, v in pairs(G.playing_cards or {}) do
-			if ANVA.has_paint(v,'pink') then card_tally = card_tally + 1 end
+			if RSGC.has_paint(v,'pink') then card_tally = card_tally + 1 end
 		end
         for k, v in pairs(G.jokers and G.jokers.cards or {}) do
-			if ANVA.has_paint(v,'pink') then joker_tally = joker_tally + 1 end
+			if RSGC.has_paint(v,'pink') then joker_tally = joker_tally + 1 end
 		end
         return { vars = {rsgc.chips_c,rsgc.chips_j, rsgc.chips_c * card_tally + rsgc.chips_j * joker_tally } }
     end,
@@ -205,10 +205,10 @@ ANVA.Paint {
             local card_tally = 0
             local joker_tally = 0
             for k, v in pairs(G.playing_cards) do
-                if ANVA.has_paint(v,'pink') then card_tally = card_tally + 1 end
+                if RSGC.has_paint(v,'pink') then card_tally = card_tally + 1 end
             end
             for k, v in pairs(G.jokers.cards) do
-                if ANVA.has_paint(v,'pink') then joker_tally = joker_tally + 1 end
+                if RSGC.has_paint(v,'pink') then joker_tally = joker_tally + 1 end
             end
             return {
                 chips = rsgc.chips_c * card_tally + rsgc.chips_j * joker_tally
@@ -216,9 +216,9 @@ ANVA.Paint {
         end
     end
 } 
-ANVA.Paint {
+RSGC.Paint {
     key = 'paint_cyan',
-    badge_colour = ANVA.C.CYAN,
+    badge_colour = RSGC.C.CYAN,
     shader = 'cyan',
     weight = 18,
     config = {hand = 1},
@@ -236,7 +236,7 @@ ANVA.Paint {
         end
     end
 }
-ANVA.Paint {
+RSGC.Paint {
     key = 'paint_purple',
     badge_colour = G.C.PURPLE,
     shader = 'purple',
@@ -256,9 +256,9 @@ ANVA.Paint {
         end
     end
 }
-ANVA.Paint {
+RSGC.Paint {
     key = 'paint_brown',
-    badge_colour = ANVA.C.BROWN,
+    badge_colour = RSGC.C.BROWN,
     shader = 'brown',
     weight = 7,
     calculate = function(self, card, context)
@@ -269,13 +269,13 @@ ANVA.Paint {
                 if area[i] == card then _card = area[i+1] end
             end
         end
-        if _card and ANVA.has_paint(_card) and _card ~= card then
+        if _card and RSGC.has_paint(_card) and _card ~= card then
             context.blueprint = (context.blueprint and (context.blueprint + 1)) or 1
 			context.blueprint_card = context.blueprint_card or card
             if context.blueprint > #area + 1 then return end
             local key = ""
             for k, _ in pairs(_card and _card.ability or {}) do
-                if ANVA.is_paint(k) then
+                if RSGC.is_paint(k) then
                     key = k
                 end
             end
@@ -291,14 +291,14 @@ ANVA.Paint {
 					other_paint_ret = {}
 				end
 				other_paint_ret.card = eff_card
-				other_paint_ret.colour = ANVA.C.BROWN
+				other_paint_ret.colour = RSGC.C.BROWN
 				other_paint_ret.no_callback = true
 				return other_paint_ret
 			end
         end
     end
 }
-ANVA.Paint {
+RSGC.Paint {
     key = 'paint_white',
     badge_colour = G.C.WHITE,
     badge_text_colour = G.C.GREY,
@@ -309,10 +309,10 @@ ANVA.Paint {
         local rsgc = self.config
         local tally = 0
         for k, v in pairs(G.playing_cards or {}) do
-			if ANVA.has_paint(v) then tally = tally + 1 end
+			if RSGC.has_paint(v) then tally = tally + 1 end
 		end
         --[[ for k, v in pairs(G.jokers and G.jokers.cards or {}) do
-			if ANVA.has_paint(v) then joker_tally = joker_tally + 1 end
+			if RSGC.has_paint(v) then joker_tally = joker_tally + 1 end
 		end ]]
         return { vars = {rsgc.chips_1,rsgc.chips_2,rsgc.chips_1 + rsgc.chips_2 * tally} }
     end,
@@ -321,10 +321,10 @@ ANVA.Paint {
             local rsgc = self.config
             local tally = 0
             for k, v in pairs(G.playing_cards or {}) do
-                if ANVA.has_paint(v) then tally = tally + 1 end
+                if RSGC.has_paint(v) then tally = tally + 1 end
             end
             --[[ for k, v in pairs(G.jokers and G.jokers.cards or {}) do
-                if ANVA.has_paint(v) then joker_tally = joker_tally + 1 end
+                if RSGC.has_paint(v) then joker_tally = joker_tally + 1 end
             end ]]
             return {
                 chips = rsgc.chips_1 + rsgc.chips_2 * tally
@@ -332,7 +332,7 @@ ANVA.Paint {
         end
     end
 } 
-ANVA.Paint {
+RSGC.Paint {
     key = 'paint_black',
     badge_colour = G.C.BLACK,
     shader = 'black',
@@ -342,7 +342,7 @@ ANVA.Paint {
         local rsgc = self.config
         local tally = 0
         for k, v in pairs(G.jokers and G.jokers.cards or {}) do
-			if ANVA.has_paint(v) then tally = tally + 1 end
+			if RSGC.has_paint(v) then tally = tally + 1 end
 		end
         return { vars = {rsgc.x_mult_1,rsgc.x_mult_2,rsgc.x_mult_1 + rsgc.x_mult_2 * tally} }
     end,
@@ -351,7 +351,7 @@ ANVA.Paint {
             local rsgc = self.config
             local tally = 0
             for k, v in pairs(G.jokers and G.jokers.cards or {}) do
-                if ANVA.has_paint(v) then tally = tally + 1 end
+                if RSGC.has_paint(v) then tally = tally + 1 end
             end
             return {
                 xmult = rsgc.x_mult_1 + rsgc.x_mult_2 * tally
@@ -382,7 +382,7 @@ function create_card(_type, area, legendary, _rarity, skip_materialize, soulable
     if (_type=='Joker') then
         paint = poll_paint('paint'..(key_append or '')..G.GAME.round_resets.ante,nil,flag,paints)
     end
-    if paint then ANVA.set_paint(_card,paint) end
+    if paint then RSGC.set_paint(_card,paint) end
     return _card
 end
 -------------------------------------------------------------
@@ -392,7 +392,7 @@ local function paint_ui()
     local paints = {}
 
     for k, v in pairs(SMODS.Stickers) do
-        if ANVA.is_paint(k) then
+        if RSGC.is_paint(k) then
         paints[k] = v
         end
     end

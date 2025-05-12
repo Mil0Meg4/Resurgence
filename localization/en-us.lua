@@ -345,20 +345,6 @@ return {
                     "gives {X:mult,C:white}X#1#{} Mult",
                 }
             },
-            j_rsgc_bfm_l = {
-                name = "Big Furry Monster",
-                rsgc_subtitle = "Left Half",
-                text = {"{C:red}+#1#{} Mult if to the",
-                    "left of the {C:attention}Right Half",
-                }
-            },
-            j_rsgc_bfm_r = {
-                name = "Big Furry Monster",
-                rsgc_subtitle = "Right Half",
-                text = {"{C:chips}+#1#{} Chips if to the",
-                    "right of the {C:attention}Left Half",
-                }
-            },
             j_rsgc_everything = {
                 name = "Life, the Universe",
                 rsgc_subtitle = "and Everything",
@@ -569,6 +555,7 @@ return {
             k_dedebuffed = "De-debuffed",
             k_plus_negative = "Negative",
             b_augment_cards = "Augment Cards",
+            k_blueprinted = "Blueprint",
             rsgc_tweak_ui = "Tweaks",
             rsgc_paint_ui = "Paints",
             rsgc_nothinghand = "Nothing"

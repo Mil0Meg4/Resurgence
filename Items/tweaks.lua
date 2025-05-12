@@ -1,5 +1,5 @@
 --tweaks are just stickers with a different name code wise
-ANVA.Tweak = SMODS.Sticker:extend {
+RSGC.Tweak = SMODS.Sticker:extend {
     prefix_config = { key = true },
     should_apply = false,
     config = {},
@@ -21,13 +21,13 @@ ANVA.Tweak = SMODS.Sticker:extend {
 
 --table with all the tweaks' keys, needed for distinguishing them from stickers
 --when creating a new tweak always add it here
-ANVA.Tweaks_keys = {
+RSGC.Tweaks_keys = {
     "mother",
     "lever",
     "rubber",
 }
 
-ANVA.Tweak {
+RSGC.Tweak {
     key = 'rubber',
     atlas = 'aug',
     pos = { x = 1, y = 0 },
@@ -38,7 +38,7 @@ ANVA.Tweak {
 		end
     end
 }
-ANVA.Tweak {
+RSGC.Tweak {
     key = 'mother',
     atlas = 'aug',
     pos = { x = 1, y = 0 },
@@ -52,11 +52,11 @@ ANVA.Tweak {
 	end,
     calculate = function(self,card,context)
         if context.ending_shop and not card.config.center.immutable then
-            ANVA.mod_table_values(card.ability,nil,{set = self.config.valuesetto},nil,{rsgc_mother = true},false)--modifies all values
+            RSGC.mod_table_values(card.ability,nil,{set = self.config.valuesetto},nil,{rsgc_mother = true},false)--modifies all values
         end
     end
 }
-ANVA.Tweak {
+RSGC.Tweak {
     key = 'lever',
     atlas = 'aug',
     pos = { x = 1, y = 0 },
@@ -70,7 +70,7 @@ ANVA.Tweak {
 	end,
     calculate = function(self,card,context)
         if context.reroll_shop and not card.config.center.immutable then--checks if rerolling
-            ANVA.mod_table_values(card.ability,card.ability.rsgc_lever,{mult = self.config.increase},nil,{rsgc_lever = true},true)--modifies all values
+            RSGC.mod_table_values(card.ability,card.ability.rsgc_lever,{mult = self.config.increase},nil,{rsgc_lever = true},true)--modifies all values
         end
         if context.end_of_round and G.GAME.blind.boss and not context.other_card and not card.config.center.immutable then
             --I'm not explaining all of this, just know that this resets the values after they surpass the threshold
@@ -101,7 +101,7 @@ local function tweak_ui()
     local tweaks = {}
 
     for k, v in pairs(SMODS.Stickers) do
-        if ANVA.is_tweak(k) then
+        if RSGC.is_tweak(k) then
         tweaks[k] = v
         end
     end

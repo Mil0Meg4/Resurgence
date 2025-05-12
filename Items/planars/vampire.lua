@@ -39,7 +39,7 @@ SMODS.Joker({
 		end
 	end,
 	set_badges = function(self, card, badges)
-		badges[#badges - 1] = create_badge("Vampire Survivors", ANVA.C.VAMP, G.C.WHITE, 1) --This adds the primer badge ABOVE the rarity. if this was +1 it would add below
+		badges[#badges - 1] = create_badge("Vampire Survivors", RSGC.C.VAMP, G.C.WHITE, 1) --This adds the primer badge ABOVE the rarity. if this was +1 it would add below
 	end,
 })
 
@@ -63,7 +63,7 @@ SMODS.Joker({
 	calculate = function(self, card, context)
 		local rsgc = card.ability.extra
 		if context.joker_main then
-			local suits = ANVA.get_suits(G.play.cards)
+			local suits = RSGC.get_suits(G.play.cards)
 			local other_suits = false
 			for k, v in pairs(suits) do
 				if k ~= "Clubs" and k ~= "Diamonds" and v > 0 then
@@ -76,7 +76,7 @@ SMODS.Joker({
 		end
 	end,
 	set_badges = function(self, card, badges)
-		badges[#badges - 1] = create_badge("Vampire Survivors", ANVA.C.VAMP, G.C.WHITE, 1) --This adds the primer badge ABOVE the rarity. if this was +1 it would add below
+		badges[#badges - 1] = create_badge("Vampire Survivors", RSGC.C.VAMP, G.C.WHITE, 1) --This adds the primer badge ABOVE the rarity. if this was +1 it would add below
 	end,
 })
 
@@ -124,7 +124,7 @@ SMODS.Joker({
 		G.consumeables.config.card_limit = G.consumeables.config.card_limit - rsgc.con_slot
 	end,
 	set_badges = function(self, card, badges)
-		badges[#badges - 1] = create_badge("Vampire Survivors", ANVA.C.VAMP, G.C.WHITE, 1) --This adds the primer badge ABOVE the rarity. if this was +1 it would add below
+		badges[#badges - 1] = create_badge("Vampire Survivors", RSGC.C.VAMP, G.C.WHITE, 1) --This adds the primer badge ABOVE the rarity. if this was +1 it would add below
 	end,
 })
 
@@ -158,7 +158,7 @@ SMODS.Joker({
 		end
 	end,
 	set_badges = function(self, card, badges)
-		badges[#badges - 1] = create_badge("Vampire Survivors", ANVA.C.VAMP, G.C.WHITE, 1) --This adds the primer badge ABOVE the rarity. if this was +1 it would add below
+		badges[#badges - 1] = create_badge("Vampire Survivors", RSGC.C.VAMP, G.C.WHITE, 1) --This adds the primer badge ABOVE the rarity. if this was +1 it would add below
 	end,
 })
 
@@ -211,6 +211,6 @@ SMODS.Joker({
 	discovered = false,
 	blueprint_compat = false,
 	set_badges = function(self, card, badges)
-		badges[#badges - 1] = create_badge("Vampire Survivors", ANVA.C.VAMP, G.C.WHITE, 1) --This adds the primer badge ABOVE the rarity. if this was +1 it would add below
+		badges[#badges - 1] = create_badge("Vampire Survivors", RSGC.C.VAMP, G.C.WHITE, 1) --This adds the primer badge ABOVE the rarity. if this was +1 it would add below
 	end
 })

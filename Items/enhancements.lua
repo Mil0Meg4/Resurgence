@@ -63,5 +63,5 @@ function Card:get_id()
     elseif SMODS.has_enhancement(self,"m_rsgc_alpha") then
         return SMODS.Ranks["rsgc_alpha_rank"].id
     end
-    return ANVA.is_macro(self) and self.base.nominal or orig_get_id(self)
+    return RSGC.is_macro(self) and self.base.nominal or orig_get_id(self)
 end

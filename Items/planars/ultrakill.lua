@@ -26,7 +26,7 @@ SMODS.Joker {
 		end
 	end,
 	set_badges = function(self, card, badges)
-		badges[#badges - 1] = create_badge("Ultrakill", ANVA.C.ULTRA, G.C.WHITE, 1) --This adds the primer badge ABOVE the rarity. if this was +1 it would add below
+		badges[#badges - 1] = create_badge("Ultrakill", RSGC.C.ULTRA, G.C.WHITE, 1) --This adds the primer badge ABOVE the rarity. if this was +1 it would add below
 	end,
 }
 
@@ -86,7 +86,7 @@ SMODS.Joker({
 		end
 	end,
 	set_badges = function(self, card, badges)
-		badges[#badges - 1] = create_badge("Ultrakill", ANVA.C.ULTRA, G.C.WHITE, 1) --This adds the primer badge ABOVE the rarity. if this was +1 it would add below
+		badges[#badges - 1] = create_badge("Ultrakill", RSGC.C.ULTRA, G.C.WHITE, 1) --This adds the primer badge ABOVE the rarity. if this was +1 it would add below
 	end,
 })
 SMODS.Joker({
@@ -136,7 +136,7 @@ SMODS.Joker({
 		end
 	end,
 	set_badges = function(self, card, badges)
-		badges[#badges - 1] = create_badge("Ultrakill", ANVA.C.ULTRA, G.C.WHITE, 1) --This adds the primer badge ABOVE the rarity. if this was +1 it would add below
+		badges[#badges - 1] = create_badge("Ultrakill", RSGC.C.ULTRA, G.C.WHITE, 1) --This adds the primer badge ABOVE the rarity. if this was +1 it would add below
 	end,
 })
 SMODS.Joker {
@@ -166,7 +166,7 @@ SMODS.Joker {
 				rsgc.steelcardscored = rsgc.steelcardscored + 1
 				if rsgc.steelcardscored >= rsgc.steelcardscorereq then
 					rsgc.steelcardscored = 0
-					ANVA.update_add_to_deck(card, function(card)
+					RSGC.update_add_to_deck(card, function(card)
 					local rsgc = card.ability.extra
 					rsgc.xred = rsgc.xred + rsgc.xredgain
 					return end)
@@ -183,7 +183,7 @@ SMODS.Joker {
 	add_to_deck = function(self, card, from_debuff)
 		for k, v in pairs(SMODS.Stickers) do
 			if k == "rsgc_paint_red" then
-				ANVA.mod_table_values(v.config,nil,{mult = card.ability.extra.xred})
+				RSGC.mod_table_values(v.config,nil,{mult = card.ability.extra.xred})
 			end
 		end
 	end,
@@ -191,12 +191,12 @@ SMODS.Joker {
 	remove_from_deck = function(self, card, from_debuff)
 		for k, v in pairs(SMODS.Stickers) do
 			if k == "rsgc_paint_red" then
-				ANVA.mod_table_values(v.config,nil,{mult = 1/card.ability.extra.xred})
+				RSGC.mod_table_values(v.config,nil,{mult = 1/card.ability.extra.xred})
 			end
 		end
 	end,
 
 	set_badges = function(self, card, badges)
-		badges[#badges - 1] = create_badge("Ultrakill", ANVA.C.ULTRA, G.C.WHITE, 1) --This adds the primer badge ABOVE the rarity. if this was +1 it would add below
+		badges[#badges - 1] = create_badge("Ultrakill", RSGC.C.ULTRA, G.C.WHITE, 1) --This adds the primer badge ABOVE the rarity. if this was +1 it would add below
 	end,
 }

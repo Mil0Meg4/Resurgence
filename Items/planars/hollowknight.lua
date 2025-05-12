@@ -39,11 +39,11 @@ SMODS.Joker {
 		if not context.blueprint and context.cardarea == G.jokers
 		and (context.setting_blind or context.ending_shop or context.end_of_round) 
 		and to_big(G.GAME.dollars + (G.GAME.dollar_buffer or 0)) >= to_big(150) then
-			return ANVA.unbound(card)
+			return RSGC.unbound(card)
 		end
 	end,
 	set_badges = function(self, card, badges)
-		badges[#badges - 1] = create_badge("Hollow Knight", ANVA.C.HOLLOW, G.C.WHITE, 1)
+		badges[#badges - 1] = create_badge("Hollow Knight", RSGC.C.HOLLOW, G.C.WHITE, 1)
 	end,
 }
 SMODS.Joker {
@@ -90,7 +90,7 @@ SMODS.Joker {
 		end
 	end,
 	set_badges = function(self, card, badges)
-		badges[#badges - 1] = create_badge("Hollow Knight", ANVA.C.HOLLOW, G.C.WHITE, 1)
+		badges[#badges - 1] = create_badge("Hollow Knight", RSGC.C.HOLLOW, G.C.WHITE, 1)
 	end,
 }
 SMODS.Joker {
@@ -106,7 +106,7 @@ SMODS.Joker {
 	discovered = true,
 	calculate = function(self, card, context)
 		if context.retrigger_joker_check and not context.retrigger_joker and context.other_card ~= self then
-			if ANVA.has_paint(context.other_card) then
+			if RSGC.has_paint(context.other_card) then
 				return {
 					message = localize("k_again_ex"),
 					repetitions = 1,
@@ -116,7 +116,7 @@ SMODS.Joker {
 				return nil, true
 			end
 		end
-		if context.repetition and context.cardarea == G.play and ANVA.has_paint(context.other_card)
+		if context.repetition and context.cardarea == G.play and RSGC.has_paint(context.other_card)
 		then
 			return {
 				message = localize("k_again_ex"),
@@ -126,6 +126,6 @@ SMODS.Joker {
 		end
 	end,
 	set_badges = function(self, card, badges)
-		badges[#badges - 1] = create_badge("Hollow Knight", ANVA.C.HOLLOW, G.C.WHITE, 1)
+		badges[#badges - 1] = create_badge("Hollow Knight", RSGC.C.HOLLOW, G.C.WHITE, 1)
 	end,
 }

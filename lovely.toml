@@ -43,7 +43,7 @@ pattern = 'badges[#badges + 1] = create_badge(localize(v, "labels"), get_badge_c
 position = "before"
 match_indent = true
 payload = '''
-local paint_key = ANVA.has_paint(card)
+local paint_key = RSGC.has_paint(card)
 if paint_key and v == paint_key then
     badges[#badges + 1] = create_badge(localize(v, "labels"), get_badge_colour(v), SMODS.Stickers[paint_key].badge_text_colour)
 else

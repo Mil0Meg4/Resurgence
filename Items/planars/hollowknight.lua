@@ -12,9 +12,9 @@ SMODS.Joker {
 	discovered = true,
 	unbound = {evo = "nailsage"},
 	loc_vars = function(self, info_queue, card)
-		local anv = card.ability.extra
+		local rsgc = card.ability.extra
 		return {
-			vars = { anv.dollars},
+			vars = { rsgc.dollars},
 		}
 	end,
 	calculate = function(self, card, context)
@@ -49,7 +49,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'nailsage',
 	pools = {planar = true, hollow = true},
-	rarity = "anva_unb",
+	rarity = "rsgc_unb",
 	atlas = 'joke',
 	blueprint_compat = true,
 	eternal_compat = true,
@@ -59,9 +59,9 @@ SMODS.Joker {
 	cost = 10,
 	discovered = true,
 	loc_vars = function(self, info_queue, card)
-		local anv = card.ability.extra
+		local rsgc = card.ability.extra
 		return {
-			vars = { anv.dollars,anv.x_mult,anv.dollar_div,1 + anv.x_mult * to_number(math.max(0,math.floor((G.GAME.dollars + (G.GAME.dollar_buffer or 0))/anv.dollar_div)))},
+			vars = { rsgc.dollars,rsgc.x_mult,rsgc.dollar_div,1 + rsgc.x_mult * to_number(math.max(0,math.floor((G.GAME.dollars + (G.GAME.dollar_buffer or 0))/rsgc.dollar_div)))},
 		}
 	end,
 	calculate = function(self, card, context)

@@ -10,32 +10,32 @@ SMODS.Joker({
 	discovered = false,
 	blueprint_compat = true,
 	loc_vars = function(self, info_queue, card)
-		local anv = card.ability.extra
+		local rsgc = card.ability.extra
 		return {
-			vars = { anv.mult, anv.timer },
+			vars = { rsgc.mult, rsgc.timer },
 		}
 	end,
 	calculate = function(self, card, context)
-		local anv = card.ability.extra
+		local rsgc = card.ability.extra
 		if context.individual and context.cardarea == G.play then
 			if context.other_card:is_suit("Hearts") and not context.blueprint then
-				if anv.timer >= 2 then
-					anv.mult = anv.mult * 2
-					anv.timer = 1
+				if rsgc.timer >= 2 then
+					rsgc.mult = rsgc.mult * 2
+					rsgc.timer = 1
 				else
-					anv.timer = anv.timer + 1
+					rsgc.timer = rsgc.timer + 1
 				end
 				return {
 					mult = card.ability.extra.mult,
 				}
 			else
-				anv.timer = 0
-				anv.mult = 4
+				rsgc.timer = 0
+				rsgc.mult = 4
 			end
 		end
 		if context.after then
-			anv.mult = 4
-			anv.timer = 0
+			rsgc.mult = 4
+			rsgc.timer = 0
 		end
 	end,
 	set_badges = function(self, card, badges)
@@ -55,13 +55,13 @@ SMODS.Joker({
 	discovered = false,
 	blueprint_compat = true,
 	loc_vars = function(self, info_queue, card)
-		local anv = card.ability.extra
+		local rsgc = card.ability.extra
 		return {
-			vars = { anv.xmult },
+			vars = { rsgc.xmult },
 		}
 	end,
 	calculate = function(self, card, context)
-		local anv = card.ability.extra
+		local rsgc = card.ability.extra
 		if context.joker_main then
 			local suits = ANVA.get_suits(G.play.cards)
 			local other_suits = false
@@ -71,7 +71,7 @@ SMODS.Joker({
 				end
 			end
 			if not other_suits then
-				return { xmult = anv.xmult }
+				return { xmult = rsgc.xmult }
 			end
 		end
 	end,
@@ -92,36 +92,36 @@ SMODS.Joker({
 	discovered = false,
 	blueprint_compat = true,
 	loc_vars = function(self, info_queue, card)
-		local anv = card.ability.extra
+		local rsgc = card.ability.extra
 		local stuff = -4
 		for i = 1, G.consumeables and #G.consumeables.cards or 0 do
 			if not (G.consumeables.cards[i].edition and G.consumeables.cards[i].edition.negative) then stuff = stuff + 1 end
 		end
 		return {
-			vars = { anv.chips, anv.con_slot, math.max(stuff,0) * anv.chips},
+			vars = { rsgc.chips, rsgc.con_slot, math.max(stuff,0) * rsgc.chips},
 		}
 	end,
 	calculate = function(self, card, context)
 		if context.joker_main then
-			local anv = card.ability.extra
+			local rsgc = card.ability.extra
 			local stuff = -4
 			for i = 1, #G.consumeables.cards do
 				if not (G.consumeables.cards[i].edition and G.consumeables.cards[i].edition.negative) then stuff = stuff + 1 end
 			end
 			return {
-				chips = -math.max(stuff,0) * anv.chips,
+				chips = -math.max(stuff,0) * rsgc.chips,
 			}
 		end
 	end,
 
 	add_to_deck = function(self, card, from_debuff)
-		local anv = card.ability.extra
-		G.consumeables.config.card_limit = G.consumeables.config.card_limit + anv.con_slot
+		local rsgc = card.ability.extra
+		G.consumeables.config.card_limit = G.consumeables.config.card_limit + rsgc.con_slot
 	end,
 
 	remove_from_deck = function(self, card, from_debuff)
-		local anv = card.ability.extra
-		G.consumeables.config.card_limit = G.consumeables.config.card_limit - anv.con_slot
+		local rsgc = card.ability.extra
+		G.consumeables.config.card_limit = G.consumeables.config.card_limit - rsgc.con_slot
 	end,
 	set_badges = function(self, card, badges)
 		badges[#badges - 1] = create_badge("Vampire Survivors", ANVA.C.VAMP, G.C.WHITE, 1) --This adds the primer badge ABOVE the rarity. if this was +1 it would add below
@@ -140,20 +140,20 @@ SMODS.Joker({
 	discovered = false,
 	blueprint_compat = true,
 	loc_vars = function(self, info_queue, card)
-		local anv = card.ability.extra
+		local rsgc = card.ability.extra
 		return {
-			vars = { anv.multstack, anv.xmultstack,
-			G.jokers and math.max(anv.multstack*(G.jokers.config.card_limit - #G.jokers.cards), 0) or 0,
-			(G.jokers and math.max(anv.xmultstack*(G.jokers.config.card_limit - #G.jokers.cards), 0) or 0 ) + 1,
+			vars = { rsgc.multstack, rsgc.xmultstack,
+			G.jokers and math.max(rsgc.multstack*(G.jokers.config.card_limit - #G.jokers.cards), 0) or 0,
+			(G.jokers and math.max(rsgc.xmultstack*(G.jokers.config.card_limit - #G.jokers.cards), 0) or 0 ) + 1,
 			}
 		}
 	end,
 	calculate = function(self, card, context)
-		local anv = card.ability.extra
+		local rsgc = card.ability.extra
 		if context.joker_main then
 			return {
-				mult = math.max(anv.multstack*(G.jokers.config.card_limit - #G.jokers.cards), 0),
-				xmult = math.max(anv.xmultstack*(G.jokers.config.card_limit - #G.jokers.cards), 0) + 1
+				mult = math.max(rsgc.multstack*(G.jokers.config.card_limit - #G.jokers.cards), 0),
+				xmult = math.max(rsgc.xmultstack*(G.jokers.config.card_limit - #G.jokers.cards), 0) + 1
 			}
 		end
 	end,
@@ -165,7 +165,7 @@ SMODS.Joker({
 local gcp = get_current_pool
 function get_current_pool(_type, _rarity, _legendary, _append, override_equilibrium_effect)
 	if
-		next(find_joker("j_anva_directer"))
+		next(find_joker("j_rsgc_directer"))
 		and not G.GAME.modifiers.cry_equilibrium
 		and (_append == "sho" or _type == "Voucher" or _type == "Booster")
 	then
@@ -194,7 +194,7 @@ function get_current_pool(_type, _rarity, _legendary, _append, override_equilibr
 			if #P_CRY_ITEMS <= 0 then
 				P_CRY_ITEMS[#P_CRY_ITEMS + 1] = "v_blank"
 			end
-			return P_CRY_ITEMS, "anva_directer" .. G.GAME.round_resets.ante
+			return P_CRY_ITEMS, "rsgc_directer" .. G.GAME.round_resets.ante
 		end
 	end
 	return gcp(_type, _rarity, _legendary, _append)
@@ -204,7 +204,7 @@ SMODS.Joker({
 	key = "directer",
 	atlas = "joke",
 	pos = { x = 0, y = 0 },
-	rarity = "anva_prim",
+	rarity = "rsgc_prim",
 	cost = 121,
 	pools = {planar = true, vampire = true},
 	unlocked = true,

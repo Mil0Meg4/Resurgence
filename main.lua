@@ -106,11 +106,11 @@ function loc_colour(_c, _default)
     if not G.ARGS.LOC_COLOURS then
         lc()
     end
-    G.ARGS.LOC_COLOURS.anv_pink = ANVA.C.PINK
-    G.ARGS.LOC_COLOURS.anv_cyan = ANVA.C.CYAN
-    G.ARGS.LOC_COLOURS.anv_under = ANVA.C.UNDER
-    G.ARGS.LOC_COLOURS.anv_aug= ANVA.C.AUGMENT
-    G.ARGS.LOC_COLOURS.anv_black= ANVA.C.BLACK
+    G.ARGS.LOC_COLOURS.rsgc_pink = ANVA.C.PINK
+    G.ARGS.LOC_COLOURS.rsgc_cyan = ANVA.C.CYAN
+    G.ARGS.LOC_COLOURS.rsgc_under = ANVA.C.UNDER
+    G.ARGS.LOC_COLOURS.rsgc_aug= ANVA.C.AUGMENT
+    G.ARGS.LOC_COLOURS.rsgc_black= ANVA.C.BLACK
     return lc(_c, _default)
 end
 
@@ -133,7 +133,7 @@ function Game:update(dt)
         G.GAME.probabilities.normal = G.GAME.probabilities.normal / G.GAME.fate_amount
         G.GAME.fate_amount = nil
     end
-    if next(find_joker("j_anva_fate")) then
+    if next(find_joker("j_rsgc_fate")) then
         local rand = 100e99^pseudorandom("g") + 100e9
         if pseudorandom("r") < 0.5 then
             G.GAME.probabilities.normal = G.GAME.probabilities.normal * rand
@@ -148,9 +148,9 @@ end
 local orig_start_dissolve = Card.start_dissolve
 function Card:start_dissolve(dissolve_colours, silent, dissolve_time_fac, no_juice)
 	--[[ if G and G.jokers and G.jokers.cards then
-		SMODS.calculate_context({ anva_destroyed = true, card = self })
+		SMODS.calculate_context({ rsgc_destroyed = true, card = self })
 	end ]]
-    if self.ability and self.ability.anva_rubber and not self.ability.selling then
+    if self.ability and self.ability.rsgc_rubber and not self.ability.selling then
         local copy = copy_card(self, nil, nil, nil, nil)
         copy:start_materialize()
         copy:add_to_deck()
@@ -182,7 +182,7 @@ SMODS.Sound({
 	sync = true,
 	pitch = 1,
 	select_music_track = function()
-		return #ANVA.advanced_find_joker(nil,"anva_prim", nil, nil, true) ~= 0 and 15
+		return #ANVA.advanced_find_joker(nil,"rsgc_prim", nil, nil, true) ~= 0 and 15
 	end
 })
 -------------------------------------------------------------------------
@@ -191,16 +191,16 @@ SMODS.Sound({
 SMODS.current_mod.custom_collection_tabs = function()
     return {
         UIBox_button({
-        button = 'your_collection_anva_tweaks',
-        id = 'your_collection_anva_tweaks',
-        label = { localize('anva_tweak_ui') },
+        button = 'your_collection_rsgc_tweaks',
+        id = 'your_collection_rsgc_tweaks',
+        label = { localize('rsgc_tweak_ui') },
         minw = 5,
         minh = 1
         }),
         UIBox_button({
-        button = 'your_collection_anva_paints',
-        id = 'your_collection_anva_paints',
-        label = { localize('anva_paint_ui') },
+        button = 'your_collection_rsgc_paints',
+        id = 'your_collection_rsgc_paints',
+        label = { localize('rsgc_paint_ui') },
         minw = 5,
         minh = 1
         })
@@ -241,7 +241,7 @@ end
 ------------------------------------------------------------
 SMODS.ObjectType({
 	key = "undertale",
-	default = "j_anva_frisk",
+	default = "j_rsgc_frisk",
 	cards = {},
 	inject = function(self)
 		SMODS.ObjectType.inject(self)
@@ -250,7 +250,7 @@ SMODS.ObjectType({
 
 SMODS.ObjectType({
 	key = "ultrakill",
-	default = "j_anva_filth",
+	default = "j_rsgc_filth",
 	cards = {},
 	inject = function(self)
 		SMODS.ObjectType.inject(self)
@@ -259,7 +259,7 @@ SMODS.ObjectType({
 
 SMODS.ObjectType({
 	key = "planar",
-	default = "j_anva_filth",
+	default = "j_rsgc_filth",
 	cards = {},
 	inject = function(self)
 		SMODS.ObjectType.inject(self)
@@ -268,7 +268,7 @@ SMODS.ObjectType({
 
 SMODS.ObjectType({
 	key = "vampire",
-	default = "j_anva_poe",
+	default = "j_rsgc_poe",
 	cards = {},
 	inject = function(self)
 		SMODS.ObjectType.inject(self)
@@ -276,7 +276,7 @@ SMODS.ObjectType({
 })
 SMODS.ObjectType({
 	key = "hollow",
-	default = "j_anva_sly",
+	default = "j_rsgc_sly",
 	cards = {},
 	inject = function(self)
 		SMODS.ObjectType.inject(self)
@@ -301,8 +301,8 @@ SMODS.Rank {
     --lc_atlas = 'aug',
     pos = { x = 1 },
 
-    next = { 'anva_omega_rank' },
-	prev = { 'anva_omega_rank' },
+    next = { 'rsgc_omega_rank' },
+	prev = { 'rsgc_omega_rank' },
 
     nominal = 0,
     shorthand = 'α',
@@ -321,8 +321,8 @@ SMODS.Rank {
     --lc_atlas = 'aug',
     pos = { x = 1 },
 
-    next = { 'anva_alpha_rank' },
-	prev = { 'anva_alpha_rank' },
+    next = { 'rsgc_alpha_rank' },
+	prev = { 'rsgc_alpha_rank' },
 
     nominal = 0,
     shorthand = 'Ω',

@@ -5,9 +5,9 @@ SMODS.Enhancement {
     replace_base_card = true,
     config = {extra = {e_mult = 2}},
     loc_vars = function(self, info_queue, card)
-		local anv = card and card.ability.extra or self.config.extra
+		local rsgc = card and card.ability.extra or self.config.extra
 		return {
-			vars = {anv.e_mult},
+			vars = {rsgc.e_mult},
 		}
 	end,
     calculate = function(self, card, context)
@@ -28,9 +28,9 @@ SMODS.Enhancement {
     replace_base_card = true,
     config = {extra = {e_chips = 1.7}},
     loc_vars = function(self, info_queue, card)
-		local anv = card and card.ability.extra or self.config.extra
+		local rsgc = card and card.ability.extra or self.config.extra
 		return {
-			vars = {anv.e_chips},
+			vars = {rsgc.e_chips},
 		}
 	end,
     calculate = function(self, card, context)
@@ -47,21 +47,21 @@ SMODS.Enhancement {
 
 local orig_is_suit = Card.is_suit
 function Card:is_suit(suit, bypass_debuff, flush_calc)
-    if SMODS.has_enhancement(self,"m_anva_omega") or SMODS.has_enhancement(self,"m_anva_alpha") then
-        if suit == "anva_greek" then return true end
+    if SMODS.has_enhancement(self,"m_rsgc_omega") or SMODS.has_enhancement(self,"m_rsgc_alpha") then
+        if suit == "rsgc_greek" then return true end
         return false
     end
     return orig_is_suit(self,suit, bypass_debuff, flush_calc)
 end
 local orig_get_id = Card.get_id
 function Card:get_id()
-    if (SMODS.has_no_rank(self) and not self.vampired) or self.base.value == "anva_rankless" then
+    if (SMODS.has_no_rank(self) and not self.vampired) or self.base.value == "rsgc_rankless" then
         return -math.random(100, 1000000)
     end
-    if SMODS.has_enhancement(self,"m_anva_omega") then
-        return SMODS.Ranks["anva_omega_rank"].id
-    elseif SMODS.has_enhancement(self,"m_anva_alpha") then
-        return SMODS.Ranks["anva_alpha_rank"].id
+    if SMODS.has_enhancement(self,"m_rsgc_omega") then
+        return SMODS.Ranks["rsgc_omega_rank"].id
+    elseif SMODS.has_enhancement(self,"m_rsgc_alpha") then
+        return SMODS.Ranks["rsgc_alpha_rank"].id
     end
     return ANVA.is_macro(self) and self.base.nominal or orig_get_id(self)
 end

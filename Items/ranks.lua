@@ -1,3 +1,4 @@
+---@diagnostic disable: param-type-mismatch
 
 --42
 SMODS.Rank {
@@ -14,23 +15,23 @@ SMODS.Rank {
         Clubs = 1,
         Diamonds = 2,
         Spades = 3,
-        anva_suitless = 4
+        rsgc_suitless = 4
     },
 
-    next = { 'anva_42' },
-	prev = { 'anva_42' },
+    next = { 'rsgc_42' },
+	prev = { 'rsgc_42' },
 
     nominal = 42,
     shorthand = '42',
     hidden = true,
 
-    anva_macro = true,
+    rsgc_macro = true,
 	in_pool = function(self, args)
         return false
     end
 }
 
-table.insert(SMODS.Ranks['10'].next, 'anva_11')--add 11 after 10
+table.insert(SMODS.Ranks['10'].next, 'rsgc_11')--add 11 after 10
 --11
 SMODS.Rank {
 
@@ -46,10 +47,10 @@ SMODS.Rank {
         Clubs = 1,
         Diamonds = 2,
         Spades = 3,
-        anva_suitless = 4
+        rsgc_suitless = 4
     },
     
-    next = { 'anva_12' },
+    next = { 'rsgc_12' },
 	prev = { '10' },
 
     nominal = 11,
@@ -57,7 +58,7 @@ SMODS.Rank {
     shorthand = '11',
     hidden = true,
 
-    anva_macro = true,
+    rsgc_macro = true,
 	in_pool = function(self, args)
         return G.GAME.macro_ranks
     end
@@ -77,17 +78,17 @@ SMODS.Rank {
         Clubs = 1,
         Diamonds = 2,
         Spades = 3,
-        anva_suitless = 4
+        rsgc_suitless = 4
     },
     
-    next = { 'anva_13' },
-	prev = { 'anva_11' },
+    next = { 'rsgc_13' },
+	prev = { 'rsgc_11' },
 
     nominal = 12,
     shorthand = '12',
     hidden = true,
 
-    anva_macro = true,
+    rsgc_macro = true,
 	in_pool = function(self, args)
         return G.GAME.macro_ranks
     end
@@ -108,17 +109,17 @@ SMODS.Rank {
         Clubs = 1,
         Diamonds = 2,
         Spades = 3,
-        anva_suitless = 4
+        rsgc_suitless = 4
     },
     
-    next = { 'anva_14' },
-	prev = { 'anva_12' },
+    next = { 'rsgc_14' },
+	prev = { 'rsgc_12' },
 
     nominal = 13,
     shorthand = '13',
     hidden = true,
 
-    anva_macro = true,
+    rsgc_macro = true,
 	in_pool = function(self, args)
         return G.GAME.macro_ranks
     end
@@ -139,17 +140,17 @@ SMODS.Rank {
         Clubs = 1,
         Diamonds = 2,
         Spades = 3,
-        anva_suitless = 4
+        rsgc_suitless = 4
     },
     
-    next = { 'anva_15' },
-	prev = { 'anva_13' },
+    next = { 'rsgc_15' },
+	prev = { 'rsgc_13' },
 
     nominal = 14,
     shorthand = '14',
     hidden = true,
 
-    anva_macro = true,
+    rsgc_macro = true,
 	in_pool = function(self, args)
         return G.GAME.macro_ranks
     end
@@ -170,17 +171,17 @@ SMODS.Rank {
         Clubs = 1,
         Diamonds = 2,
         Spades = 3,
-        anva_suitless = 4
+        rsgc_suitless = 4
     },
     
-    next = { 'anva_16' },
-	prev = { 'anva_14' },
+    next = { 'rsgc_16' },
+	prev = { 'rsgc_14' },
 
     nominal = 15,
     shorthand = '15',
     hidden = true,
 
-    anva_macro = true,
+    rsgc_macro = true,
 	in_pool = function(self, args)
         return G.GAME.macro_ranks
     end
@@ -201,17 +202,17 @@ SMODS.Rank {
         Clubs = 1,
         Diamonds = 2,
         Spades = 3,
-        anva_suitless = 4
+        rsgc_suitless = 4
     },
 
-    next = { 'anva_17' },
-	prev = { 'anva_15' },
+    next = { 'rsgc_17' },
+	prev = { 'rsgc_15' },
 
     nominal = 16,
     shorthand = '16',
     hidden = true,
 
-    anva_macro = true,
+    rsgc_macro = true,
 	in_pool = function(self, args)
         return G.GAME.macro_ranks
     end
@@ -232,17 +233,17 @@ SMODS.Rank {
         Clubs = 1,
         Diamonds = 2,
         Spades = 3,
-        anva_suitless = 4
+        rsgc_suitless = 4
     },
 
-    next = { 'anva_18' },
-	prev = { 'anva_16' },
+    next = { 'rsgc_18' },
+	prev = { 'rsgc_16' },
 
     nominal = 17,
     shorthand = '17',
     hidden = true,
 
-    anva_macro = true,
+    rsgc_macro = true,
 	in_pool = function(self, args)
         return G.GAME.macro_ranks
     end
@@ -263,17 +264,17 @@ SMODS.Rank {
         Clubs = 1,
         Diamonds = 2,
         Spades = 3,
-        anva_suitless = 4
+        rsgc_suitless = 4
     },
     
-    next = { 'anva_19' },
-	prev = { 'anva_17' },
+    next = { 'rsgc_19' },
+	prev = { 'rsgc_17' },
 
     nominal = 18,
     shorthand = '18',
     hidden = true,
 
-    anva_macro = true,
+    rsgc_macro = true,
 	in_pool = function(self, args)
         return G.GAME.macro_ranks
     end
@@ -294,17 +295,17 @@ SMODS.Rank {
         Clubs = 1,
         Diamonds = 2,
         Spades = 3,
-        anva_suitless = 4
+        rsgc_suitless = 4
     },
     
-    next = { 'anva_20' },
-	prev = { 'anva_18' },
+    next = { 'rsgc_20' },
+	prev = { 'rsgc_18' },
 
     nominal = 19,
     shorthand = '19',
     hidden = true,
 
-    anva_macro = true,
+    rsgc_macro = true,
 	in_pool = function(self, args)
         return G.GAME.macro_ranks
     end
@@ -325,11 +326,11 @@ SMODS.Rank {
         Clubs = 1,
         Diamonds = 2,
         Spades = 3,
-        anva_suitless = 4
+        rsgc_suitless = 4
     },
     
     next = { '2' },
-	prev = { 'anva_19' },
+	prev = { 'rsgc_19' },
 
     nominal = 20,
     shorthand = '20',
@@ -357,11 +358,11 @@ SMODS.Rank {
         Clubs = 1,
         Diamonds = 2,
         Spades = 3,
-        anva_suitless = 4
+        rsgc_suitless = 4
     },
     
-    --next = { 'anva_rankless' },
-	--prev = { 'anva_rankless' },
+    --next = { 'rsgc_rankless' },
+	--prev = { 'rsgc_rankless' },
 
     nominal = 0,
     shorthand = '',
@@ -394,7 +395,7 @@ SMODS.Suit {
 }
 local orig_has_no_suit = SMODS.has_no_suit
 function SMODS.has_no_suit(card)
-    if card.base.suit == "anva_suitless" then 
+    if card.base.suit == "rsgc_suitless" then 
         local is_wild = false
         for k, _ in pairs(SMODS.get_enhancements(card)) do
             if k == 'm_wild' or G.P_CENTERS[k].any_suit then is_wild = true end
@@ -405,7 +406,7 @@ function SMODS.has_no_suit(card)
 end
 local orig_has_no_rank = SMODS.has_no_rank
 function SMODS.has_no_rank(card)
-    if card.base.value == "anva_rankless" then
+    if card.base.value == "rsgc_rankless" then
         return true
     end
     return orig_has_no_rank(card)
@@ -420,16 +421,16 @@ SMODS.PokerHand({
 	l_mult = 1,
     order_offset = 6,
 	example = {
-		{ "anva_SUITLESS_anva_RANKLESS", true },
-		{ "anva_SUITLESS_anva_RANKLESS", true },
-		{ "anva_SUITLESS_anva_RANKLESS", true },
-		{ "anva_SUITLESS_anva_RANKLESS", true },
-		{ "anva_SUITLESS_anva_RANKLESS", true },
+		{ "rsgc_SUITLESS_rsgc_RANKLESS", true },
+		{ "rsgc_SUITLESS_rsgc_RANKLESS", true },
+		{ "rsgc_SUITLESS_rsgc_RANKLESS", true },
+		{ "rsgc_SUITLESS_rsgc_RANKLESS", true },
+		{ "rsgc_SUITLESS_rsgc_RANKLESS", true },
 	},
 	evaluate = function(parts, hand)
 		local nothings = {}
 		for i, card in ipairs(hand) do
-			if card.base.value == "anva_rankless"
+			if card.base.value == "rsgc_rankless"
 			then
 				nothings[#nothings + 1] = card
             else
@@ -446,20 +447,20 @@ SMODS.Planet {
     discovered = true,
     unlocked = true,
     config = {
-        hand_type = 'anva_nothinghand',
+        hand_type = 'rsgc_nothinghand',
         softlock = true,
     },
     loc_vars = function(self, info_queue, center)
 		return {
 			vars = {
-				G.GAME.hands["anva_nothinghand"].level,
-                localize("anva_nothinghand"),
-				G.GAME.hands["anva_nothinghand"].l_mult,
-				G.GAME.hands["anva_nothinghand"].l_chips,
+				G.GAME.hands["rsgc_nothinghand"].level,
+                localize("rsgc_nothinghand"),
+				G.GAME.hands["rsgc_nothinghand"].l_mult,
+				G.GAME.hands["rsgc_nothinghand"].l_chips,
 				colours = {
 					(
-						to_big(G.GAME.hands["anva_nothinghand"].level) == to_big(1) and G.C.UI.TEXT_DARK
-						or G.C.HAND_LEVELS[to_big(math.min(7, G.GAME.hands["anva_nothinghand"].level)):to_number()]
+						to_big(G.GAME.hands["rsgc_nothinghand"].level) == to_big(1) and G.C.UI.TEXT_DARK
+						or G.C.HAND_LEVELS[to_big(math.min(7, G.GAME.hands["rsgc_nothinghand"].level)):to_number()]
 					),
 				},
 			},

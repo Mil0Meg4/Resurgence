@@ -15,9 +15,9 @@ local orig_create_card = create_card
 function create_card(_type, area, legendary, _rarity, skip_materialize, soulable, forced_key, key_append)
 	if not forced_key and soulable and not G.GAME.banned_keys["c_soul"] then
 		if (_type == 'Planet' or _type == 'Spectral') and
-		not (G.GAME.used_jokers['j_anva_gaster'] and not next(find_joker("Showman")))  then 
+		not (G.GAME.used_jokers['j_rsgc_gaster'] and not next(find_joker("Showman")))  then 
 			if pseudorandom('gast_'.._type..G.GAME.round_resets.ante) > (1 - 0.003/5) then
-				forced_key = 'j_anva_gaster'
+				forced_key = 'j_rsgc_gaster'
 			end
 		end
 	end
@@ -36,7 +36,7 @@ SMODS.Joker({
 	discovered = false,
 	blueprint_compat = true,
 	loc_vars = function(self, info_queue, card)
-		local anv = card.ability.extra
+		local rsgc = card.ability.extra
 		local friends = 0
 		local rarities = {}
 		for i = 1, G.jokers and #G.jokers.cards or 0 do
@@ -48,12 +48,12 @@ SMODS.Joker({
 			end
 		end
 		return {
-			vars = { anv.chips,anv.chips*friends },
+			vars = { rsgc.chips,rsgc.chips*friends },
 		}
 	end,
 	calculate = function(self, card, context)
 		if context.joker_main then
-			local anv = card.ability.extra
+			local rsgc = card.ability.extra
 			local friends = 0
 			local rarities = {}
 			for i = 1, #G.jokers.cards do
@@ -65,7 +65,7 @@ SMODS.Joker({
 				end
 			end
 			return {
-				chips = anv.chips * friends,
+				chips = rsgc.chips * friends,
 			}
 		end
 	end,
@@ -150,9 +150,9 @@ SMODS.Joker {
 	cost = 7,
 	discovered = true,
 	loc_vars = function(self, info_queue, card)
-		local anv = card.ability.extra
+		local rsgc = card.ability.extra
 		return {
-			vars = { anv.chips, anv.chipsadd },
+			vars = { rsgc.chips, rsgc.chipsadd },
 		}
 	end,
 	calculate = function(self, card, context)
@@ -168,23 +168,23 @@ SMODS.Joker {
 			end
 		end
 		if context.skip_blind then
-			local anv = card.ability.extra
+			local rsgc = card.ability.extra
 			local monsters = 0
 			for k,v in pairs(G.jokers.cards) do
 				if v.config.center.pools.undertale then
 					monsters = monsters + 1
 				end
 			end
-			anv.chips = anv.chips+(anv.chipsadd*monsters) 
+			rsgc.chips = rsgc.chips+(rsgc.chipsadd*monsters) 
 			return {
 				message = localize("k_upgrade_ex"),
 				colour = G.C.CHIPS
 			}
 		end
 		if context.joker_main then
-			local anv = card.ability.extra
+			local rsgc = card.ability.extra
 			return{
-				chips = anv.chips,
+				chips = rsgc.chips,
 			}
 		end
 	end,
@@ -198,7 +198,7 @@ SMODS.Joker({
 	atlas = "joke",
 	pos = { x = 2, y = 3 },
 	pools = {planar = true, undertale = true},
-	rarity = "anva_gast_err",
+	rarity = "rsgc_gast_err",
 	cost = 66,
 	immutable = true,
 	config = {h_size = 6, scored_sixes = 0},
@@ -208,18 +208,18 @@ SMODS.Joker({
 	perishable_compat = false,
 	blueprint_compat = true,
 	loc_vars = function(self, info_queue, card)
-		local anv = card.ability
+		local rsgc = card.ability
 		return {
-			vars = { anv.scored_sixes },
+			vars = { rsgc.scored_sixes },
 		}
 	end,
 	calculate = function(self, card, context)
 		if context.cardarea == G.play and context.individual then
 			if context.other_card:get_id() == 6 then
-				local anv = card.ability
-				anv.scored_sixes = anv.scored_sixes+1
-				if anv.scored_sixes >= 66 then
-					anv.scored_sixes = 0
+				local rsgc = card.ability
+				rsgc.scored_sixes = rsgc.scored_sixes+1
+				if rsgc.scored_sixes >= 66 then
+					rsgc.scored_sixes = 0
 					G.E_MANAGER:add_event(Event({
 						func = (function()
 							for i=1,6 do
@@ -235,8 +235,8 @@ SMODS.Joker({
 					dollars = 6,
 					chips = 66,
 					mult = 6,
-					message = (anv.scored_sixes == 0) and localize('k_plus_negative') or (anv.scored_sixes..'/66'),
-					colour = (anv.scored_sixes == 0) and G.C.DARK_EDITION or G.C.FILTER,
+					message = (rsgc.scored_sixes == 0) and localize('k_plus_negative') or (rsgc.scored_sixes..'/66'),
+					colour = (rsgc.scored_sixes == 0) and G.C.DARK_EDITION or G.C.FILTER,
 					card = card
 				}
 				
@@ -244,13 +244,13 @@ SMODS.Joker({
 		end
 	end,
 	add_to_deck = function(self, card, from_debuff)
-		local anv = card.ability.extra
+		local rsgc = card.ability.extra
 		G.consumeables.config.card_limit = G.consumeables.config.card_limit + 6
 		G.jokers.config.card_limit = G.jokers.config.card_limit + 6
 		change_shop_size(6)
 	end,
 	remove_from_deck = function(self, card, from_debuff)
-		local anv = card.ability.extra
+		local rsgc = card.ability.extra
 		G.consumeables.config.card_limit = G.consumeables.config.card_limit - 6
 		G.jokers.config.card_limit = G.jokers.config.card_limit - 6
 		change_shop_size(-6)
@@ -259,14 +259,14 @@ SMODS.Joker({
 		badges[#badges - 1] = create_badge("Undertale", ANVA.C.UNDER, G.C.WHITE, 1)
 	end,
 	draw = function(self, card, layer)
-		card.children.center:draw_shader("anva_gaster", nil, card.ARGS.send_to_shader)
+		card.children.center:draw_shader("rsgc_gaster", nil, card.ARGS.send_to_shader)
 	end,
 })
 
 local orig_evaluate_poker_hand = evaluate_poker_hand
 function evaluate_poker_hand(hand)
 	local hand = orig_evaluate_poker_hand(hand)
-	if next(find_joker("j_anva_mini_mice")) then
+	if next(find_joker("j_rsgc_mini_mice")) then
 		for _, v in ipairs(G.handlist) do
 			if hand[v][1] then
 				hand["High Card"] = hand[v]
@@ -293,16 +293,16 @@ SMODS.Joker {
 	cost = 2,
 	discovered = true,
 	loc_vars = function(self, info_queue, card)
-		local anv = card.ability.extra
+		local rsgc = card.ability.extra
 		return {
-			vars = { anv.mult },
+			vars = { rsgc.mult },
 		}
 	end,
 	calculate = function(self, card, context)
 		if context.joker_main then 
-			local anv = card.ability.extra
+			local rsgc = card.ability.extra
 			return{
-				mult = anv.mult
+				mult = rsgc.mult
 			}
 		end
 	end,

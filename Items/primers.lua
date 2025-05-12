@@ -2,12 +2,12 @@ function ANVA.literally_me_fr(card,joker_key)
     G.E_MANAGER:add_event(Event({
         func = function()
             play_sound('tarot2', 1.1, 0.6)
-            card:set_ability(G.P_CENTERS["j_anva_"..joker_key])
+            card:set_ability(G.P_CENTERS["j_rsgc_"..joker_key])
             return true
         end
     }))
     return {
-        message = localize('k_anva_prim'),
+        message = localize('k_rsgc_prim'),
         colour = ANVA.C.PRIMORDIAL,
         card = card
     }
@@ -16,7 +16,7 @@ end
 SMODS.Joker({
 	key = "sigma",
 	atlas = "joke", --the atlas obv
-	rarity = "anva_prim",
+	rarity = "rsgc_prim",
 	cost = 15,
 	unlocked = true,
 	discovered = false,
@@ -89,7 +89,7 @@ SMODS.Joker({
 SMODS.Joker({
 	key = "charon",
 	atlas = "joke",
-	rarity = "anva_prim",
+	rarity = "rsgc_prim",
 	cost = 50,
 	unlocked = true,
 	discovered = false,
@@ -105,17 +105,17 @@ SMODS.Joker({
 		},
 	},
 	loc_vars = function(self, info_queue, card)
-		local anv = card.ability.extra
+		local rsgc = card.ability.extra
 		return {
-			vars = { anv.max },
+			vars = { rsgc.max },
 		}
 	end,
 	calculate = function(self, card, context)
-		local anv = card.ability.extra
+		local rsgc = card.ability.extra
 		if context.ending_shop then
-			--ease_dollars(to_number(math.max(0, math.min(G.GAME.dollars * 5, anv.max)), true))---ease_dollars is used to manipulate the ammount of cash you have, to_number is for talisman compatiblity and math.max is used to set the max value for the added cash
+			--ease_dollars(to_number(math.max(0, math.min(G.GAME.dollars * 5, rsgc.max)), true))---ease_dollars is used to manipulate the ammount of cash you have, to_number is for talisman compatiblity and math.max is used to set the max value for the added cash
 			return {
-				dollars = to_number(math.max(0, math.min(G.GAME.dollars * 4, anv.max)))
+				dollars = to_number(math.max(0, math.min(G.GAME.dollars * 4, rsgc.max)))
 			}
 		end
 	end,
@@ -126,7 +126,7 @@ SMODS.Joker({
 SMODS.Joker({
 	key = "tiataxet",
 	atlas = "joke",
-	rarity = "anva_prim",
+	rarity = "rsgc_prim",
 	cost = 50,
 	unlocked = true,
 	discovered = false,
@@ -254,7 +254,7 @@ SMODS.Joker({
 SMODS.Joker({
 	key = "andromeda",
 	atlas = "joke",
-	rarity = "anva_prim",
+	rarity = "rsgc_prim",
 	cost = 50,
 	unlocked = true,
 	discovered = false,
@@ -264,12 +264,12 @@ SMODS.Joker({
 	config = {extra = {cost_increase = 25}},
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue + 1] = G.P_CENTERS.c_star
-		local anv = card.ability.extra
-		return {vars = {anv.cost_increase}}
+		local rsgc = card.ability.extra
+		return {vars = {rsgc.cost_increase}}
 	end,
 	calculate = function(self, card, context)
 		if context.individual and context.other_card:is_suit("Diamonds") and context.cardarea == G.play then
-			local anv = card.ability.extra
+			local rsgc = card.ability.extra
 			G.E_MANAGER:add_event(Event({
 				func = function()
 					if #G.consumeables.cards < G.consumeables.config.card_limit then
@@ -281,7 +281,7 @@ SMODS.Joker({
 					end
 					for k, v in ipairs(G.consumeables.cards) do
                         if v.set_cost then 
-                            v.ability.extra_value = (v.ability.extra_value or 0) + anv.cost_increase
+                            v.ability.extra_value = (v.ability.extra_value or 0) + rsgc.cost_increase
                             v:set_cost()
                         end
                     end
@@ -298,7 +298,7 @@ SMODS.Joker({
 SMODS.Joker({
 	key = "doom",
 	atlas = "joke",
-	rarity = "anva_prim",
+	rarity = "rsgc_prim",
 	cost = 10,
 	unlocked = true,
 	discovered = false,
@@ -316,21 +316,21 @@ SMODS.Joker({
 	},
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue + 1] = G.P_CENTERS.m_stone
-		local anv = card.ability.extra
+		local rsgc = card.ability.extra
 		return {
-			vars = { anv.chips,anv.chips2 },
+			vars = { rsgc.chips,rsgc.chips2 },
 		}
 	end,
 	calculate = function(self, card, context)
-		local anv = card.ability.extra
+		local rsgc = card.ability.extra
 		if context.joker_main then
 			if ANVA.nonstone() > 0 then
 				return{
-					chips = anv.chips,
+					chips = rsgc.chips,
 				}
 			else
 				return{
-					chips = anv.chips2,
+					chips = rsgc.chips2,
 				}
 			end
 		end
@@ -364,7 +364,7 @@ SMODS.Joker({
 SMODS.Joker({
 	key = "sappho",
 	atlas = "joke",
-	rarity = "anva_prim",
+	rarity = "rsgc_prim",
 	cost = 50,
 	unlocked = true,
 	discovered = false,
@@ -372,27 +372,27 @@ SMODS.Joker({
 	pos = {x = 0,y = 0},
 	config = {extra = {retrigger_amount = 4}},
 	loc_vars = function(self, info_queue, card)
-		local anv = card.ability.extra
-		return {vars = {anv.retrigger_amount}}
+		local rsgc = card.ability.extra
+		return {vars = {rsgc.retrigger_amount}}
 	end,
 	calculate = function(self, card, context)
 		if context.repetition and context.cardarea == G.play then
-			local anv = card.ability.extra
+			local rsgc = card.ability.extra
 			local current_retrigger_count = 0
 			if context.other_card:is_suit("Diamonds") then
-				current_retrigger_count = current_retrigger_count + anv.retrigger_amount
+				current_retrigger_count = current_retrigger_count + rsgc.retrigger_amount
 			end
 			if context.other_card:is_suit("Clubs") then
-				current_retrigger_count = current_retrigger_count + anv.retrigger_amount
+				current_retrigger_count = current_retrigger_count + rsgc.retrigger_amount
 			end
 			if context.other_card:is_suit("Hearts") then
-				current_retrigger_count = current_retrigger_count + anv.retrigger_amount
+				current_retrigger_count = current_retrigger_count + rsgc.retrigger_amount
 			end
 			if context.other_card:is_suit("Spades") then
-				current_retrigger_count = current_retrigger_count + anv.retrigger_amount
+				current_retrigger_count = current_retrigger_count + rsgc.retrigger_amount
 			end
 			if SMODS.has_enhancement(context.other_card, "m_wild") then
-				current_retrigger_count = current_retrigger_count + anv.retrigger_amount
+				current_retrigger_count = current_retrigger_count + rsgc.retrigger_amount
 			end
 			return {
 				message = localize('k_again_ex'),

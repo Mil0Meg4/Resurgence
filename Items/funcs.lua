@@ -51,7 +51,7 @@ end
 function ANVA.is_tweak(str)
     local tweaks = ANVA.Tweaks_keys
     for _, v in ipairs(tweaks) do
-        if 'anva_' .. v == str then
+        if 'rsgc_' .. v == str then
             return true
         end
     end
@@ -69,7 +69,7 @@ end
   
 --Sets a joker's Tweak, repleacing previous one
 function ANVA.set_tweak(card, type)
-    local key = 'anva_' .. type
+    local key = 'rsgc_' .. type
   
     if card and ANVA.is_tweak(key) then
         ANVA.remove_tweak(card)
@@ -79,7 +79,7 @@ end
 
 --Checks if card has a certain tweak. Leave the type field empty to check for any tweak
 function ANVA.has_tweak(card,type)
-	local key = type and 'anva_' .. type or nil
+	local key = type and 'rsgc_' .. type or nil
 	for k, _ in pairs(card and card.ability or {}) do
 		if ANVA.is_tweak(k) then
 			return not key and k or k == key
@@ -92,7 +92,7 @@ end
 function ANVA.is_paint(str)
     local paints = ANVA.Paint_keys
     for _, v in ipairs(paints) do
-        if 'anva_paint_' .. v == str then
+        if 'rsgc_paint_' .. v == str then
             return true
         end
     end
@@ -111,7 +111,7 @@ end
 
 --Sets a joker's Paint, repleacing previous one
   function ANVA.set_paint(card, type)
-    local key = 'anva_paint_' .. type
+    local key = 'rsgc_paint_' .. type
 
     if card and ANVA.is_paint(key) then
         ANVA.remove_paint(card)
@@ -121,7 +121,7 @@ end
 
 --Checks if card has a certain paint. Leave the type field empty to check for any paint and return its key
 function ANVA.has_paint(card,type)
-	local key = type and 'anva_paint_' .. type or nil
+	local key = type and 'rsgc_paint_' .. type or nil
 	for k, _ in pairs(card and card.ability or {}) do
 		if (key == k or key == nil) and ANVA.is_paint(k) then
 			return k
@@ -226,7 +226,7 @@ function ANVA.poll_flag(_key)
 		weight_i = weight_i + v
 
 		if flag_poll > 1 - (weight_i) / total_weight then
-			return "j_anva_pride_"..k
+			return "j_rsgc_pride_"..k
 		end
 	end
 end
@@ -341,7 +341,7 @@ function ANVA.advanced_find_joker(name, rarity, edition, ability, non_debuff, ar
 end
 
 function ANVA.paint_tooltip(type)
-	local key = 'anva_paint_' .. type
+	local key = 'rsgc_paint_' .. type
 	local paint = SMODS.Stickers[key]
 	if not paint then return end
 
@@ -375,7 +375,7 @@ function Card:generate_UIBox_ability_table()
 	
 	if center_obj and center_obj.discovered and ((center_obj.set and G.localization.descriptions[center_obj.set] 
 	and G.localization.descriptions[center_obj.set][center_obj.key]
-	and G.localization.descriptions[center_obj.set][center_obj.key].anv_subtitle) or center_obj.anv_subtitle) then
+	and G.localization.descriptions[center_obj.set][center_obj.key].rsgc_subtitle) or center_obj.rsgc_subtitle) then
 	
 		if ret.name and ret.name ~= true then
 			local text = ret.name
@@ -387,8 +387,8 @@ function Card:generate_UIBox_ability_table()
 					config={
 						object = DynaText({string = (center_obj.set 
 						and G.localization.descriptions[center_obj.set] 
-						and G.localization.descriptions[center_obj.set][center_obj.key].anv_subtitle)
-						or center_obj.anv_subtitle, 
+						and G.localization.descriptions[center_obj.set][center_obj.key].rsgc_subtitle)
+						or center_obj.rsgc_subtitle, 
 						colours = {G.C.WHITE},
 						float = true,
 						shadow = true,
@@ -404,10 +404,10 @@ function Card:generate_UIBox_ability_table()
 	return ret
 end
 function ANVA.is_macro(card)
-	return card.base.value and SMODS.Ranks[card.base.value].anva_macro or false
+	return card.base.value and SMODS.Ranks[card.base.value].rsgc_macro or false
 end
 function ANVA.is_micro(card)
-	return card.base.value and SMODS.Ranks[card.base.value].anva_micro or false
+	return card.base.value and SMODS.Ranks[card.base.value].rsgc_micro or false
 end
 --[[ 
 function ANVA.table_has(list, value)

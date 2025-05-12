@@ -87,7 +87,7 @@ pattern = "if self.GAME.starting_params.no_faces and SMODS.Ranks[v.value].face t
 position = 'after'
 match_indent = true
 payload = '''
-if self.GAME.starting_params.anva_banned_ranks and self.GAME.starting_params.anva_banned_ranks[SMODS.Ranks[v.value].key] then keep = false end'''
+if self.GAME.starting_params.rsgc_banned_ranks and self.GAME.starting_params.rsgc_banned_ranks[SMODS.Ranks[v.value].key] then keep = false end'''
 
 #add more coloumns for ranks to deck view
 [[patches]]

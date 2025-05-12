@@ -45,14 +45,14 @@ ANVA.Tweak {
     badge_colour = G.C.CHIPS,
     config = {valuesetto = 1,},
     loc_vars = function(self, info_queue, card)
-		local anv = self.config
+		local rsgc = self.config
 		return {
-			vars = { anv.valuesetto, },
+			vars = { rsgc.valuesetto, },
 		}
 	end,
     calculate = function(self,card,context)
         if context.ending_shop and not card.config.center.immutable then
-            ANVA.mod_table_values(card.ability,nil,{set = self.config.valuesetto},nil,{anva_mother = true},false)--modifies all values
+            ANVA.mod_table_values(card.ability,nil,{set = self.config.valuesetto},nil,{rsgc_mother = true},false)--modifies all values
         end
     end
 }
@@ -63,14 +63,14 @@ ANVA.Tweak {
     badge_colour = G.C.CHIPS,
     config = {increase = 1.1, reset_rate = 0.5, threshold_rate = 2,},
     loc_vars = function(self, info_queue, card)
-		local anv = self.config
+		local rsgc = self.config
 		return {
-			vars = { anv.increase, anv.threshold_rate, anv.reset_rate, },
+			vars = { rsgc.increase, rsgc.threshold_rate, rsgc.reset_rate, },
 		}
 	end,
     calculate = function(self,card,context)
         if context.reroll_shop and not card.config.center.immutable then--checks if rerolling
-            ANVA.mod_table_values(card.ability,card.ability.anva_lever,{mult = self.config.increase},nil,{anva_lever = true},true)--modifies all values
+            ANVA.mod_table_values(card.ability,card.ability.rsgc_lever,{mult = self.config.increase},nil,{rsgc_lever = true},true)--modifies all values
         end
         if context.end_of_round and G.GAME.blind.boss and not context.other_card and not card.config.center.immutable then
             --I'm not explaining all of this, just know that this resets the values after they surpass the threshold
@@ -85,12 +85,12 @@ ANVA.Tweak {
                     end
                 end
             end
-            reset_values(card.ability,card.ability.anva_lever)
+            reset_values(card.ability,card.ability.rsgc_lever)
         end
     end,
     apply = function(self, card, val)--called when applying the tweak or sticker
         card.ability[self.key] = val and copy_table(self.config) or nil--applies the sticker manually since `apply` overwrites the original function
-        card.ability.anva_lever = copy_table(card.ability)--saves the values to know when to reset them
+        card.ability.rsgc_lever = copy_table(card.ability)--saves the values to know when to reset them
     end
 }
 
@@ -120,7 +120,7 @@ local function tweak_ui()
     })
 end
 
-G.FUNCS.your_collection_anva_tweaks = function()
+G.FUNCS.your_collection_rsgc_tweaks = function()
     G.SETTINGS.paused = true
     G.FUNCS.overlay_menu {
     definition = tweak_ui()

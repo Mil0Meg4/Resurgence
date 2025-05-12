@@ -12,19 +12,19 @@ SMODS.Joker({
 	perishable_compat = false,
 	blueprint_compat = true,
 	loc_vars = function(self, info_queue, card)
-		local anv = card.ability.extra
+		local rsgc = card.ability.extra
 		return {
-			vars = { anv.mult,anv.x_mult },
+			vars = { rsgc.mult,rsgc.x_mult },
 		}
 	end,
 	calculate = function(self, card, context)
 		if context.scoring_42 or (context.cardarea == G.play and context.individual) then
             local _card = context.other_card
-			if _card.base.value == "anva_42" then
-                local anv = card.ability.extra
+			if _card.base.value == "rsgc_42" then
+                local rsgc = card.ability.extra
                 return {
-                    mult = anv.mult,
-					xmult = anv.x_mult
+                    mult = rsgc.mult,
+					xmult = rsgc.x_mult
                 }
 			end
 		end
@@ -34,7 +34,7 @@ SMODS.Joker({
 local orig_create_card = create_card
 function create_card(_type, area, legendary, _rarity, skip_materialize, soulable, forced_key, key_append)
 	local is_42 = false
-    if next(find_joker("j_anva_everything")) and _type ~= "Booster" then
+    if next(find_joker("j_rsgc_everything")) and _type ~= "Booster" then
 		if _type ~= "Base" and _type ~= "Enhanced" then
 			forced_key = "c_base"
 			_type = "Base"
@@ -42,6 +42,6 @@ function create_card(_type, area, legendary, _rarity, skip_materialize, soulable
 		is_42 = true
     end
     local card = orig_create_card(_type, area, legendary, _rarity, skip_materialize, soulable, forced_key, key_append)
-    if is_42 then SMODS.change_base(card,nil,"anva_42") end
+    if is_42 then SMODS.change_base(card,nil,"rsgc_42") end
     return card
 end

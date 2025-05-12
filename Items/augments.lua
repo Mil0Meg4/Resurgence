@@ -4,7 +4,7 @@ SMODS.ConsumableType({
     secondary_colour = ANVA.C.AUGMENT,
     collection_rows = {4, 3},
     shop_rate = 0,
-    default = 'c_anva_aug_mother'
+    default = 'c_rsgc_aug_mother'
 })
 
 SMODS.UndiscoveredSprite({
@@ -22,9 +22,9 @@ SMODS.Consumable({
     discovered = true,
     config = {max_highlighted = 2, tweak = "mother"},
     loc_vars = function(self, info_queue)
-        local anv = self.config
-        info_queue[#info_queue + 1] = { key = "anva_"..anv.tweak, set = "Other", vars = {} }
-		return { vars = {anv.max_highlighted} }
+        local rsgc = self.config
+        info_queue[#info_queue + 1] = { key = "rsgc_"..rsgc.tweak, set = "Other", vars = {} }
+		return { vars = {rsgc.max_highlighted} }
 	end,
     can_use = function(self, card)--determins when you can use the consumable
         --checks that at least one joker is selected but not more than the maximum allowed
@@ -49,9 +49,9 @@ SMODS.Consumable({
     discovered = true,
     config = {max_highlighted = 1, tweak = "rubber"},
     loc_vars = function(self, info_queue)
-        local anv = self.config
-		info_queue[#info_queue + 1] = { key = "anva_"..anv.tweak, set = "Other", vars = {} }
-		return { vars = {anv.max_highlighted} }
+        local rsgc = self.config
+		info_queue[#info_queue + 1] = { key = "rsgc_"..rsgc.tweak, set = "Other", vars = {} }
+		return { vars = {rsgc.max_highlighted} }
 	end,
     can_use = function(self, card)--determins when you can use the consumable
         --checks that at least one joker is selected but not more than the maximum allowed
@@ -77,9 +77,9 @@ SMODS.Consumable({
     discovered = true,
     config = {max_highlighted = 2, tweak = "lever"},
     loc_vars = function(self, info_queue)
-        local anv = self.config
-		info_queue[#info_queue + 1] = { key = "anva_"..anv.tweak, set = "Other", vars = {} }
-		return { vars = {anv.max_highlighted} }
+        local rsgc = self.config
+		info_queue[#info_queue + 1] = { key = "rsgc_"..rsgc.tweak, set = "Other", vars = {} }
+		return { vars = {rsgc.max_highlighted} }
 	end,
     can_use = function(self, card)--determins when you can use the consumable
         --checks that at least one joker is selected but not more than the maximum allowed
@@ -144,7 +144,7 @@ SMODS.Booster({
         ease_colour(G.C.DYN_UI.MAIN, ANVA.C.AUGMENT)
         ease_background_colour{new_colour = ANVA.C.AUGMENT, special_colour = G.C.BLACK, contrast = 2}
     end,
-    group_key = 'k_anva_aug_pack',
+    group_key = 'k_rsgc_aug_pack',
     draw_hand = false,
     particles = function(self)
         G.booster_pack_sparkles = Particles(1, 1, 0,0, {
@@ -180,7 +180,7 @@ SMODS.Booster({
         ease_colour(G.C.DYN_UI.MAIN, ANVA.C.AUGMENT)
         ease_background_colour{new_colour = ANVA.C.AUGMENT, special_colour = G.C.BLACK, contrast = 2}
     end,
-    group_key = 'k_anva_aug_pack',
+    group_key = 'k_rsgc_aug_pack',
     draw_hand = false,
     particles = function(self)
         G.booster_pack_sparkles = Particles(1, 1, 0,0, {
@@ -216,7 +216,7 @@ SMODS.Booster({
         ease_colour(G.C.DYN_UI.MAIN, ANVA.C.AUGMENT)
         ease_background_colour{new_colour = ANVA.C.AUGMENT, special_colour = G.C.BLACK, contrast = 2}
     end,
-    group_key = 'k_anva_aug_pack',
+    group_key = 'k_rsgc_aug_pack',
     draw_hand = false,
     particles = function(self)
         G.booster_pack_sparkles = Particles(1, 1, 0,0, {
@@ -252,7 +252,7 @@ SMODS.Booster({
         ease_colour(G.C.DYN_UI.MAIN, ANVA.C.AUGMENT)
         ease_background_colour{new_colour = ANVA.C.AUGMENT, special_colour = G.C.BLACK, contrast = 2}
     end,
-    group_key = 'k_anva_aug_pack',
+    group_key = 'k_rsgc_aug_pack',
     draw_hand = false,
     particles = function(self)
         G.booster_pack_sparkles = Particles(1, 1, 0,0, {
@@ -280,9 +280,9 @@ SMODS.Consumable({
     discovered = true,
     config = {max_highlighted = 1, paint = "red"},
     loc_vars = function(self, info_queue)
-        local anv = self.config
-		info_queue[#info_queue + 1] = { key = "anva_paint_"..anv.paint, set = "Other", vars = {} }
-		return { vars = {anv.max_highlighted} }
+        local rsgc = self.config
+		info_queue[#info_queue + 1] = { key = "rsgc_paint_"..rsgc.paint, set = "Other", vars = {} }
+		return { vars = {rsgc.max_highlighted} }
 	end,
     can_use = function(self, card)--determins when you can use the consumable
         --checks that at least one joker is selected but not more than the maximum allowed
@@ -312,9 +312,9 @@ SMODS.Consumable({
     discovered = true,
     config = {max_highlighted = 1, paint = "blue"},
     loc_vars = function(self, info_queue)
-        local anv = self.config
-		info_queue[#info_queue + 1] = { key = "anva_paint_"..anv.paint, set = "Other", vars = {} }
-		return { vars = {anv.max_highlighted} }
+        local rsgc = self.config
+		info_queue[#info_queue + 1] = { key = "rsgc_paint_"..rsgc.paint, set = "Other", vars = {} }
+		return { vars = {rsgc.max_highlighted} }
 	end,
     can_use = function(self, card)--determins when you can use the consumable
         --checks that at least one joker is selected but not more than the maximum allowed
@@ -344,9 +344,9 @@ SMODS.Consumable({
     discovered = true,
     config = {max_highlighted = 1, paint = "green"},
     loc_vars = function(self, info_queue)
-        local anv = self.config
-		info_queue[#info_queue + 1] = { key = "anva_paint_"..anv.paint, set = "Other", vars = {} }
-		return { vars = {anv.max_highlighted} }
+        local rsgc = self.config
+		info_queue[#info_queue + 1] = { key = "rsgc_paint_"..rsgc.paint, set = "Other", vars = {} }
+		return { vars = {rsgc.max_highlighted} }
 	end,
     can_use = function(self, card)--determins when you can use the consumable
         --checks that at least one joker is selected but not more than the maximum allowed
@@ -376,9 +376,9 @@ SMODS.Consumable({
     discovered = true,
     config = {max_highlighted = 1, paint = "yellow"},
     loc_vars = function(self, info_queue)
-        local anv = self.config
-		info_queue[#info_queue + 1] = { key = "anva_paint_"..anv.paint, set = "Other", vars = {} }
-		return { vars = {anv.max_highlighted} }
+        local rsgc = self.config
+		info_queue[#info_queue + 1] = { key = "rsgc_paint_"..rsgc.paint, set = "Other", vars = {} }
+		return { vars = {rsgc.max_highlighted} }
 	end,
     can_use = function(self, card)--determins when you can use the consumable
         --checks that at least one joker is selected but not more than the maximum allowed
@@ -408,9 +408,9 @@ SMODS.Consumable({
     discovered = true,
     config = {max_highlighted = 1, paint = "orange"},
     loc_vars = function(self, info_queue)
-        local anv = self.config
-		info_queue[#info_queue + 1] = { key = "anva_paint_"..anv.paint, set = "Other", vars = {} }
-		return { vars = {anv.max_highlighted} }
+        local rsgc = self.config
+		info_queue[#info_queue + 1] = { key = "rsgc_paint_"..rsgc.paint, set = "Other", vars = {} }
+		return { vars = {rsgc.max_highlighted} }
 	end,
     can_use = function(self, card)--determins when you can use the consumable
         --checks that at least one joker is selected but not more than the maximum allowed
@@ -440,9 +440,9 @@ SMODS.Consumable({
     discovered = true,
     config = {max_highlighted = 1, paint = "pink"},
     loc_vars = function(self, info_queue)
-        local anv = self.config
-		info_queue[#info_queue + 1] = { key = "anva_paint_"..anv.paint, set = "Other", vars = {} }
-		return { vars = {anv.max_highlighted} }
+        local rsgc = self.config
+		info_queue[#info_queue + 1] = { key = "rsgc_paint_"..rsgc.paint, set = "Other", vars = {} }
+		return { vars = {rsgc.max_highlighted} }
 	end,
     can_use = function(self, card)--determins when you can use the consumable
         --checks that at least one joker is selected but not more than the maximum allowed
@@ -472,9 +472,9 @@ SMODS.Consumable({
     discovered = true,
     config = {max_highlighted = 1, paint = "cyan"},
     loc_vars = function(self, info_queue)
-        local anv = self.config
-		info_queue[#info_queue + 1] = { key = "anva_paint_"..anv.paint, set = "Other", vars = {} }
-		return { vars = {anv.max_highlighted} }
+        local rsgc = self.config
+		info_queue[#info_queue + 1] = { key = "rsgc_paint_"..rsgc.paint, set = "Other", vars = {} }
+		return { vars = {rsgc.max_highlighted} }
 	end,
     can_use = function(self, card)--determins when you can use the consumable
         --checks that at least one joker is selected but not more than the maximum allowed
@@ -504,9 +504,9 @@ SMODS.Consumable({
     discovered = true,
     config = {max_highlighted = 1, paint = "purple"},
     loc_vars = function(self, info_queue)
-        local anv = self.config
-		info_queue[#info_queue + 1] = { key = "anva_paint_"..anv.paint, set = "Other", vars = {} }
-		return { vars = {anv.max_highlighted} }
+        local rsgc = self.config
+		info_queue[#info_queue + 1] = { key = "rsgc_paint_"..rsgc.paint, set = "Other", vars = {} }
+		return { vars = {rsgc.max_highlighted} }
 	end,
     can_use = function(self, card)--determins when you can use the consumable
         --checks that at least one joker is selected but not more than the maximum allowed
@@ -536,9 +536,9 @@ SMODS.Consumable({
     discovered = true,
     config = {max_highlighted = 1, paint = "brown"},
     loc_vars = function(self, info_queue)
-        local anv = self.config
-		info_queue[#info_queue + 1] = { key = "anva_paint_"..anv.paint, set = "Other", vars = {} }
-		return { vars = {anv.max_highlighted} }
+        local rsgc = self.config
+		info_queue[#info_queue + 1] = { key = "rsgc_paint_"..rsgc.paint, set = "Other", vars = {} }
+		return { vars = {rsgc.max_highlighted} }
 	end,
     can_use = function(self, card)--determins when you can use the consumable
         --checks that at least one joker is selected but not more than the maximum allowed

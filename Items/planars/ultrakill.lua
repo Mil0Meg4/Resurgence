@@ -11,17 +11,17 @@ SMODS.Joker {
 	cost = 1,
 	discovered = true,
 	loc_vars = function(self, info_queue, card)
-		local anv = card.ability.extra --to avoid typing card.ability.extra each time. Not needed but very handy
+		local rsgc = card.ability.extra --to avoid typing card.ability.extra each time. Not needed but very handy
 		return {
-			vars = { anv.chips, anv.mult }, --for example in here anv = card.ability.extra. Also this is needed to display the values in the desc of the card
+			vars = { rsgc.chips, rsgc.mult }, --for example in here rsgc = card.ability.extra. Also this is needed to display the values in the desc of the card
 		}
 	end,
 	calculate = function(self, card, context)
 		if context.joker_main then 
-			local anv = card.ability.extra
+			local rsgc = card.ability.extra
 			return{
-				mult = anv.mult,
-				chips = anv.chips
+				mult = rsgc.mult,
+				chips = rsgc.chips
 			}
 		end
 	end,
@@ -33,7 +33,7 @@ SMODS.Joker {
 SMODS.Joker({
 	key = "gaba",
 	atlas = "joke",
-	rarity = "anva_unb",
+	rarity = "rsgc_unb",
 	cost = 16,
 	unlocked = true,
 	discovered = false,
@@ -51,16 +51,16 @@ SMODS.Joker({
 	},
 	pools = {planar = true, ultrakill = true},
 	loc_vars = function(self, info_queue, card)
-		local anv = card.ability.extra --to avoid typing card.ability.extra each time. Not needed but very handy
+		local rsgc = card.ability.extra --to avoid typing card.ability.extra each time. Not needed but very handy
 		return {
-			vars = { anv.xxmult, anv.xxmultg }, --for example in here anv = card.ability.extra. Also this is needed to display the values in the desc of the card
+			vars = { rsgc.xxmult, rsgc.xxmultg }, --for example in here rsgc = card.ability.extra. Also this is needed to display the values in the desc of the card
 		}
 	end,
 	calculate = function(self, card, context)
-		local anv = card.ability.extra
+		local rsgc = card.ability.extra
 		if context.joker_main then --checks the usual triggering time for jokers.
 			return {
-				emult = anv.xxmult, --returns ^anv.xxmult
+				emult = rsgc.xxmult, --returns ^rsgc.xxmult
 			}
 		end
 		if context.ending_shop and not context.blueprint then --Checks for when the shop ends and if its going to be triggered by blueprint or not
@@ -74,10 +74,10 @@ SMODS.Joker({
 			if
 				G.jokers.cards[rr - 1] ~= nil
 				and G.jokers.cards[rr - 1].edition
-				and G.jokers.cards[rr - 1].edition.anva_divine
+				and G.jokers.cards[rr - 1].edition.rsgc_divine
 			then --In order, checks if there is a joker on the left (rr = our position and -1 being one left), checks if the joker on the left has an edition and checks if its divine
 				G.jokers.cards[rr - 1]:set_edition() --removes the edition
-				anv.xxmult = anv.xxmult + anv.xxmultg --upgrades xxmult by adding xxmultg
+				rsgc.xxmult = rsgc.xxmult + rsgc.xxmultg --upgrades xxmult by adding xxmultg
 				return {
 					message = localize("k_upgrade_ex"),
 					colour = G.C.RED
@@ -105,18 +105,18 @@ SMODS.Joker({
 	blueprint_compat = true,
 	pools = {planar = true, ultrakill = true},
 	loc_vars = function(self, info_queue, card)
-		local anv = card.ability.extra
+		local rsgc = card.ability.extra
 		return {
-			vars = { anv.xmult },
+			vars = { rsgc.xmult },
 		}
 	end,
 	calculate = function(self, card, context)
-		local anv = card.ability.extra
+		local rsgc = card.ability.extra
 		if context.other_joker then
 			if context.other_joker.edition then
-				if context.other_joker.edition.anva_divine then
+				if context.other_joker.edition.rsgc_divine then
 			return {
-				xmult = anv.xmult,
+				xmult = rsgc.xmult,
 				card = card
 			}
 		end
@@ -131,7 +131,7 @@ SMODS.Joker({
 				end
 			end
 			if G.jokers.cards[rr - 1] ~= nil then
-				G.jokers.cards[rr - 1]:set_edition({ anva_divine = true }, true)
+				G.jokers.cards[rr - 1]:set_edition({ rsgc_divine = true }, true)
 			end
 		end
 	end,
@@ -152,27 +152,27 @@ SMODS.Joker {
 	cost = 20,
 	discovered = true,
 	loc_vars = function(self, info_queue, card)
-		local anv = card.ability.extra --to avoid typing card.ability.extra each time. Not needed but very handy
+		local rsgc = card.ability.extra --to avoid typing card.ability.extra each time. Not needed but very handy
 		info_queue[#info_queue + 1] = G.P_CENTERS.m_steel
 		return {
-			vars = { anv.xred, anv.xredgain, anv.steelcardscorereq,anv.steelcardscored }, --for example in here anv = card.ability.extra. Also this is needed to display the values in the desc of the card
+			vars = { rsgc.xred, rsgc.xredgain, rsgc.steelcardscorereq,rsgc.steelcardscored }, --for example in here rsgc = card.ability.extra. Also this is needed to display the values in the desc of the card
 		}
 	end,
 	
 	calculate = function(self, card, context)
 		if context.cardarea == G.play and context.individual then
 			if SMODS.has_enhancement(context.other_card,'m_steel') then
-				local anv = card.ability.extra
-				anv.steelcardscored = anv.steelcardscored + 1
-				if anv.steelcardscored >= anv.steelcardscorereq then
-					anv.steelcardscored = 0
+				local rsgc = card.ability.extra
+				rsgc.steelcardscored = rsgc.steelcardscored + 1
+				if rsgc.steelcardscored >= rsgc.steelcardscorereq then
+					rsgc.steelcardscored = 0
 					ANVA.update_add_to_deck(card, function(card)
-					local anv = card.ability.extra
-					anv.xred = anv.xred + anv.xredgain
+					local rsgc = card.ability.extra
+					rsgc.xred = rsgc.xred + rsgc.xredgain
 					return end)
 				end
 				return{
-					message = (anv.steelcardscored == 0) and localize('k_upgrade_ex') or (anv.steelcardscored..'/'..anv.steelcardscorereq),
+					message = (rsgc.steelcardscored == 0) and localize('k_upgrade_ex') or (rsgc.steelcardscored..'/'..rsgc.steelcardscorereq),
 					colour = G.C.FILTER,
 					card = card
 				}
@@ -182,7 +182,7 @@ SMODS.Joker {
 
 	add_to_deck = function(self, card, from_debuff)
 		for k, v in pairs(SMODS.Stickers) do
-			if k == "anva_paint_red" then
+			if k == "rsgc_paint_red" then
 				ANVA.mod_table_values(v.config,nil,{mult = card.ability.extra.xred})
 			end
 		end
@@ -190,7 +190,7 @@ SMODS.Joker {
 
 	remove_from_deck = function(self, card, from_debuff)
 		for k, v in pairs(SMODS.Stickers) do
-			if k == "anva_paint_red" then
+			if k == "rsgc_paint_red" then
 				ANVA.mod_table_values(v.config,nil,{mult = 1/card.ability.extra.xred})
 			end
 		end

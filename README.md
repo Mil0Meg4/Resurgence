@@ -1,13 +1,12 @@
-![aneyh_vampirica_logo-export](https://github.com/user-attachments/assets/f765e787-ee8b-4698-bb00-7ea5cf8419eb)
-# Aneyh Vampirica - 
-A mod for those willing to persue the Primordial Arts. Obtain Primordial jokers, Augment your jokers to fit any situation, and use Paint to give you the final kick to boost your run into the heavens.
+# Resurgence - 
+Control powers beyond your understanding and the Primordial Arts. Obtain Primordial jokers, Augment your jokers to fit any situation, and paint your cards for even more bonuses as you tackle the final frontier of balatro runs: the Resurgence itself.
 
 
-Primordials - Powerful Jokers that all have their own ways of being found and created, discover the primordial lurking right under you.
+Primordials - Incredibly powerful jokers, that put even legendaries to shame, obtained only through summoning the wrath of the Resurgence and facing it's perils for yourself.
 
-Paint - Editions not enough for you? Paint has you covered, with a new modifier for your cards and jokers which can stack with your editions, and amp up your builds.
+Paint - Editions not enough for you? Paint has you covered, with a new modifier for your cards and jokers which can stack with your editions, and give your builds some color.
 
-Augments - New consumables that can drastically alter jokers. Found a Wee Joker that you wish was useful, but are currently running a Cloud Nine deck? Put a Lever on that joker to switch it's settings up to fit your exact needs.
+Augments - New consumables that can render jokers completely unrecognizable. want to make a chip build with mult jokers? turn mult into money? spread paint everywhere? convert sell value for your best jokers into raw power? augments got you covered, with even more options than the ones described above.
 
 # Requirements
 - [Steamodded](https://github.com/Steamopollys/Steamodded)

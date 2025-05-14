@@ -126,8 +126,9 @@ match_indent = true
 target = "functions/common_events.lua"
 pattern = '''--For the actual background colour'''
 position = "after"
-payload = '''if G.GAME.resurgence then
-    ease_background_colour{new_colour = G.C.RED, special_colour = darken(G.C.SET.Spectral, 0.2), contrast = 1.5}
+payload = '''if G.GAME.resurgence and not (state == G.STATES.TAROT_PACK or state == G.STATES.SPECTRAL_PACK 
+or state == G.STATES.STANDARD_PACK or state == G.STATES.BUFFOON_PACK or state == G.STATES.PLANET_PACK) then
+    ease_background_colour{new_colour = G.C.RED, special_colour = G.C.PURPLE, 0.2, contrast = 1.5}
     return
 end'''
 match_indent = true

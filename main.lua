@@ -127,22 +127,6 @@ function Game:update(dt)
 			RSGC.C[k][i] = c[1][i] * p + c[2][i] * (1 - p)
 		end
 	end
-
-    --fate
-    --[[ if G.GAME.fate_amount then
-        G.GAME.probabilities.normal = G.GAME.probabilities.normal / G.GAME.fate_amount
-        G.GAME.fate_amount = nil
-    end
-    if next(find_joker("j_rsgc_fate")) then
-        local rand = 100e99^pseudorandom("g") + 100e9
-        if pseudorandom("r") < 0.5 then
-            G.GAME.probabilities.normal = G.GAME.probabilities.normal * rand
-            G.GAME.fate_amount = rand
-        else
-            G.GAME.probabilities.normal = G.GAME.probabilities.normal * -rand
-            G.GAME.fate_amount = -rand
-        end
-    end ]]
 end
 --new context that trigger whenever a card is destroyed or sold
 local orig_start_dissolve = Card.start_dissolve
@@ -161,6 +145,8 @@ end
 
 function SMODS.current_mod.reset_game_globals(run_start)
 	if run_start then
+        G.GAME.resurgence = false
+        G.GAME.resurgence_notified = false
         G.GAME.macro_ranks = G.GAME.macro_ranks or false
         G.GAME.current_pride_flag = RSGC.poll_flag("game_start")
         G.GAME.tinfoil_count = (G.GAME.tinfoil_count or false)
@@ -177,6 +163,16 @@ SMODS.Sound({
 })
 
 SMODS.Sound({
+	key = "resu_music",
+	path = "resurgence.ogg",
+	sync = true,
+	pitch = 1,
+	select_music_track = function()
+		return G.GAME.resurgence and not (G.pack_cards and G.pack_cards.cards and G.pack_cards.cards[1]) and 5
+	end
+})
+
+--[[ SMODS.Sound({
 	key = "prim_music",
 	path = "primordial.ogg",
 	sync = true,
@@ -184,7 +180,7 @@ SMODS.Sound({
 	select_music_track = function()
 		return #RSGC.advanced_find_joker(nil,"rsgc_prim", nil, nil, true) ~= 0 and 15
 	end
-})
+}) ]]
 -------------------------------------------------------------------------
 ----stuff for making tweaks and paints have their own collection tabs----
 -------------------------------------------------------------------------

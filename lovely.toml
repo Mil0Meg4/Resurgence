@@ -120,3 +120,53 @@ end
 '''
 match_indent = true
 
+#resurgence background color
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = '''--For the actual background colour'''
+position = "after"
+payload = '''if G.GAME.resurgence then
+    ease_background_colour{new_colour = G.C.RED, special_colour = darken(G.C.SET.Spectral, 0.2), contrast = 1.5}
+    return
+end'''
+match_indent = true
+
+#resurgence mode start
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = '''if game_won and not G.GAME.win_notified then'''
+position = "after"
+payload = '''
+if not G.GAME.resurgence and not G.GAME.resurgence_notified then 
+    G.GAME.win_ante = G.GAME.win_ante*2
+    G.GAME.resurgence_notified = true
+    G.E_MANAGER:add_event(Event({
+        trigger = 'immediate',
+        blocking = false,
+        blockable = false,
+        func = (function()
+            if G.STATE == G.STATES.ROUND_EVAL then 
+                RSGC.resurgence_start()
+                G.GAME.resurgence = true
+                G.GAME.won = false
+                return true
+            end
+        end)
+    }))
+else
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = '''for _,v in ipairs(SMODS.get_card_areas('playing_cards', 'end_of_round')) do'''
+position = "before"
+payload = '''
+end
+'''
+match_indent = true
+
+

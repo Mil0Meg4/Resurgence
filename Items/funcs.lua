@@ -437,3 +437,7 @@ function RSGC.create_card(_type,area,legendary,_rarity,skip_materialize,soulable
         return true
     end
 end
+
+function RSGC.resurgence_start()
+	print("jimbass")
+end

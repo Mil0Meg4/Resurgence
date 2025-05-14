@@ -140,6 +140,7 @@ pattern = '''if game_won and not G.GAME.win_notified then'''
 position = "after"
 payload = '''
 if not G.GAME.resurgence and not G.GAME.resurgence_notified then 
+    G.GAME.win_ante_old = G.GAME.win_ante
     G.GAME.win_ante = G.GAME.win_ante*2
     G.GAME.resurgence_notified = true
     G.E_MANAGER:add_event(Event({

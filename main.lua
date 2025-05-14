@@ -145,6 +145,7 @@ end
 
 function SMODS.current_mod.reset_game_globals(run_start)
 	if run_start then
+        G.GAME.win_ante_old = nil
         G.GAME.resurgence = false
         G.GAME.resurgence_notified = false
         G.GAME.macro_ranks = G.GAME.macro_ranks or false
@@ -376,4 +377,13 @@ function RSGC.acorn (n, n2)
         ( ( n ^ n ) ^ 3 ) ^ ( n2 ^ 3 )
                 ) ) )
     end
+end
+
+local orig_get_new_boss = get_new_boss
+function get_new_boss() 
+    local temp = G.GAME.win_ante
+    G.GAME.win_ante = G.GAME.win_ante_old or G.GAME.win_ante
+    local ret = orig_get_new_boss()
+    G.GAME.win_ante = temp
+    return ret
 end

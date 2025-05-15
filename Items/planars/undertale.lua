@@ -121,7 +121,7 @@ SMODS.Joker({
 	end,
 	calculate = function(self, card, context)
 		if context.setting_blind and context.blind.boss then
-			RSGC.create_card("Joker", G.jokers, nil, nil, nil, nil, "j_blueprint",nil,function()
+			RSGC.create_card("Joker", G.jokers, nil, nil, nil, nil, "j_blueprint",nil,nil,function()
 				SMODS.calculate_effect {
 					message = localize("k_blueprinted"),
 					colour = G.C.CHIPS,

@@ -370,6 +370,13 @@ return {
                     "{C:attention}Paint{} amongst held cards"
                 },
             },
+            j_rsgc_jimbo = {
+                name = "Jimbo",
+                rsgc_subtitle = "True Form",
+                text = {
+                    "{C:mult}+#1#{} Mult",
+                }
+            },
         },
         Augment={
             c_rsgc_aug_mother = {
@@ -607,10 +614,26 @@ return {
             rsgc_greek = "Greek",
             rsgc_suitless = "Nothing"
         },
-        tutorial={},
         v_dictionary={
             ml_rsgc_paint_green_desc = "Pink Paint",
         },
         v_text={},
+        tutorial = {
+			rsgc_intro_1 = {
+				"Hey buddy! You broke the",
+				"{C:dark_edition,E:1}seals{} and summoned the",
+                "spirits of {C:edition,E:1}Light{} and {C:dark_edition,E:1}Dark{}!",
+			},
+            rsgc_intro_2 = {
+				"Or something like that,",
+                "i don't remember"
+			},
+            rsgc_intro_3 = {
+				"Luckily, my {C:dark_edition,E:1}true powers{} have",
+                "been unleashed too, those spirits",
+                "stand {C:red}no chance{} against them!"
+
+			},
+        }
     },
 }

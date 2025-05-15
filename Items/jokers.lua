@@ -21,6 +21,42 @@ function RSGC.unbound(card)
 	}
 end
 
+SMODS.Joker:take_ownership("joker", {
+	unbound = {evo = "jimbo"},
+	set_ability = function(self, card, initial,delay_sprites)
+		--if G.GAME.resurgence then RSGC.unbound(card) end
+	end
+})
+
+
+SMODS.Joker({
+	key = "jimbo",
+	atlas = 'joke',
+	pos = { x = 0, y = 0 },
+	rarity = "rsgc_unb",
+	cost = 3,
+	config = { extra = {mult = 5}},
+	unlocked = true,
+	discovered = true,
+	perishable_compat = true,
+	eternal_compat = true,
+	blueprint_compat = true,
+	loc_vars = function(self, info_queue, card)
+		local rsgc = card.ability.extra
+		return {
+			vars = { rsgc.mult},
+		}
+	end,
+	calculate = function(self, card, context)
+		local rsgc = card.ability.extra
+		if context.joker_main then
+			return {
+				mult = rsgc.mult,
+			}
+		end
+	end
+})
+
 SMODS.Joker({
 	key = "sinclair",
 	atlas = "joke",

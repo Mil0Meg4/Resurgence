@@ -4,6 +4,10 @@ SMODS.Rarity({
 	pools = {},
 })
 
+SMODS.Shader {
+    key = 'tree',
+    path = 'tree.fs'
+}
 function RSGC.unbound(card,func)
 	G.E_MANAGER:add_event(Event({
 		func = function()
@@ -164,7 +168,7 @@ SMODS.Joker({
 SMODS.Joker({
 	key = "tree3",
 	atlas = "joke",
-	pos = { x = 0, y = 0 },
+	pos = { x = 0, y = 8 },
 	rarity = "rsgc_unb",
 	cost = 400,
 	config = { extra = { eeemult = 3, eeemult_mod = 2 } },
@@ -192,6 +196,9 @@ SMODS.Joker({
 				card = card
 			}
 		end
+	end,
+	draw = function(self, card, layer)
+		card.children.center:draw_shader("rsgc_tree", nil, card.ARGS.send_to_shader)
 	end,
 })
 

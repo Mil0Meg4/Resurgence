@@ -4,13 +4,14 @@ SMODS.Rarity({
 	pools = {},
 })
 
-function RSGC.unbound(card)
+function RSGC.unbound(card,func)
 	G.E_MANAGER:add_event(Event({
 		func = function()
 			if card.ability.unbound and card.ability.unbound.evo then
 				play_sound('tarot2', 1.1, 0.6)
 				card:set_ability(G.P_CENTERS["j_rsgc_"..card.ability.unbound.evo])
 			else print("No Unbound Field") end
+			if func then func(card) end
 			return true
 		end
 	}))
@@ -21,14 +22,7 @@ function RSGC.unbound(card)
 	}
 end
 
-SMODS.Joker:take_ownership("joker", {
-	unbound = {evo = "jimbo"},
-	set_ability = function(self, card, initial,delay_sprites)
-		--if G.GAME.resurgence then RSGC.unbound(card) end
-	end
-})
-
-
+G.P_CENTERS.j_joker.unbound = {evo = "jimbo"}
 SMODS.Joker({
 	key = "jimbo",
 	atlas = 'joke',

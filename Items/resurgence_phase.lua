@@ -91,21 +91,26 @@ function RSGC.resurgence_info(_part)
 
         if next(SMODS.find_card("j_joker")) then
             for k,v in pairs(SMODS.find_card("j_joker")) do
-                RSGC.unbound(v)
-                v:set_edition({negative = true})
+				v:set_edition({negative = true})
+                RSGC.unbound(v,function()
+					G.E_MANAGER:add_event(Event({trigger = 'after',func = function()
+						save_run()
+						return true
+					end}))
+				end)
+                
             end
         else
             RSGC.create_card("Joker", G.jokers, nil, nil, nil, nil, "j_joker",nil,nil,function(card)
-                RSGC.unbound(card)
-                card:set_edition({negative = true})
+				card:set_edition({negative = true})
+                RSGC.unbound(card,function()
+					G.E_MANAGER:add_event(Event({trigger = 'after',func = function()
+						save_run()
+						return true
+					end}))
+				end)
             end)
         end
-		G.E_MANAGER:add_event(
-		Event({func = function()
-				save_run()
-				return true
-			end
-		}))
 	end
 end
 

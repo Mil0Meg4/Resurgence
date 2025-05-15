@@ -523,6 +523,13 @@ return {
                     "{C:attention}#2#{C:rsgc_aug} Augment{} cards",
                 },
             },
+            p_rsgc_gay = {
+                name = "Gay Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2#{C:rsgc_gay} Gay{} jokers",
+                },
+            },
         },
         Planet={
             c_rsgc_no_planet = {
@@ -550,6 +557,7 @@ return {
         dictionary={
             k_no_planet = "Fucking Nothing",
             k_rsgc_aug_pack = "Tinker Pack",
+            k_rsgc_gay = "Gay Pack",
             k_rsgc_prim = "Primordial",
             k_rsgc_unb = "Unbound",
             k_augment = "Augment Card",

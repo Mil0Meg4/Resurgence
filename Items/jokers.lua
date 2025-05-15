@@ -265,6 +265,7 @@ SMODS.Joker({
 		x = 1,
 		y = 0,
 	},
+	pools = {gay = true},
 	pride_flag_paints = {any=true},
 	in_pool = function(self, wawa, wawa2)
 		return G.GAME.current_pride_flag == self.key
@@ -283,6 +284,7 @@ SMODS.Joker({
 		x = 1,
 		y = 4,
 	},
+	pools = {gay = true},
 	pride_flag_paints = {pink=true,yellow=true,cyan=true},
 	loc_vars = function(self, info_queue, card)
 		for k,v in pairs(self.pride_flag_paints) do
@@ -306,6 +308,7 @@ SMODS.Joker({
 		x = 1,
 		y = 3,
 	},
+	pools = {gay = true},
 	pride_flag_paints = {red=true,purple=true,blue=true},
 	loc_vars = function(self, info_queue, card)
 		for k,v in pairs(self.pride_flag_paints) do
@@ -329,6 +332,7 @@ SMODS.Joker({
 		x = 1,
 		y = 5,
 	},
+	pools = {gay = true},
 	pride_flag_paints = {blue=true,pink=true,white=true},
 	loc_vars = function(self, info_queue, card)
 		for k,v in pairs(self.pride_flag_paints) do
@@ -352,6 +356,7 @@ SMODS.Joker({
 		x = 1,
 		y = 9,
 	},
+	pools = {gay = true},
 	pride_flag_paints = {orange=true,white=true,purple=true},
 	loc_vars = function(self, info_queue, card)
 		for k,v in pairs(self.pride_flag_paints) do
@@ -375,6 +380,7 @@ SMODS.Joker({
 		x = 1,
 		y = 1,
 	},
+	pools = {gay = true},
 	pride_flag_paints = {cyan=true,white=true,blue=true},
 	loc_vars = function(self, info_queue, card)
 		for k,v in pairs(self.pride_flag_paints) do
@@ -398,6 +404,7 @@ SMODS.Joker({
 		x = 1,
 		y = 2,
 	},
+	pools = {gay = true},
 	pride_flag_paints = {yellow=true,purple=true,black=true},
 	loc_vars = function(self, info_queue, card)
 		for k,v in pairs(self.pride_flag_paints) do
@@ -421,6 +428,7 @@ SMODS.Joker({
 		x = 1,
 		y = 6,
 	},
+	pools = {gay = true},
 	pride_flag_paints = {black=true,white=true,purple=true},
 	loc_vars = function(self, info_queue, card)
 		for k,v in pairs(self.pride_flag_paints) do
@@ -444,6 +452,7 @@ SMODS.Joker({
 		x = 1,
 		y = 7,
 	},
+	pools = {gay = true},
 	pride_flag_paints = {green=true,white=true,black=true},
 	loc_vars = function(self, info_queue, card)
 		for k,v in pairs(self.pride_flag_paints) do
@@ -467,6 +476,7 @@ SMODS.Joker({
 		x = 1,
 		y = 8,
 	},
+	pools = {gay = true},
 	pride_flag_paints = {yellow=true,white=true,blue=true},
 	loc_vars = function(self, info_queue, card)
 		for k,v in pairs(self.pride_flag_paints) do
@@ -903,6 +913,50 @@ SMODS.Joker({
 		end
 		return false
 	end,
+})
+
+--Boosters
+SMODS.Booster({
+    key = 'gay',
+    atlas = 'booster',
+    kind = "gay",
+	pos = { x = 0, y = 1 },
+    config = {choose = 1, extra = 4,gay_pack = true},
+    cost = 6,
+    weight = 0.08,
+    loc_vars = function(self, info_queue, card)
+        return {vars = {(card and card.ability.choose or self.config.choose), card and card.ability.extra or self.config.extra}}
+    end,
+    create_card = function(self, card)
+		if G.P_CENTERS.j_rsgc_gabriel and not (G.GAME.used_jokers["j_rsgc_gabriel"] and not next(find_joker("Showman")))
+		then
+			if pseudorandom("gay_" .. G.GAME.round_resets.ante) > 0.997 then
+				return create_card("gay", G.pack_cards, nil, nil, true, true, "j_rsgc_gabriel", nil)
+			end
+		end
+        return create_card("gay", G.pack_cards, nil, nil, true,  true, nil, "gay_pack")
+    end,
+    ease_background_colour = function(self)
+        --ease_colour(G.C.DYN_UI.MAIN, RSGC.C.GAY)
+        ease_background_colour{new_colour = RSGC.C.GAY, special_colour = G.C.BLACK, contrast = 2}
+    end,
+    group_key = 'k_rsgc_gayk',
+    draw_hand = false,
+    particles = function(self)
+        G.booster_pack_sparkles = Particles(1, 1, 0,0, {
+            timer = 0.015,
+            scale = 0.4,
+            initialize = true,
+            lifespan = 1,
+            speed = 1.1,
+            padding = -1,
+            attach = G.ROOM_ATTACH,
+            colours = {RSGC.C.GAY, lighten(RSGC.C.GAY, 0.4), lighten(RSGC.C.GAY, 0.2), darken(RSGC.C.GAY, 0.2)},
+            fill = true
+        })
+        G.booster_pack_sparkles.fade_alpha = 1
+        G.booster_pack_sparkles:fade(1, 0)
+    end,
 })
 
 

@@ -128,7 +128,7 @@ SMODS.Consumable({
 --Boosters
 SMODS.Booster({
     key = 'small_aug_1',
-    atlas = 'tinker',
+    atlas = 'booster',
     kind = "Augment",
     pos = { x = 0, y = 0 },
     config = {choose = 1, extra = 3},
@@ -164,7 +164,7 @@ SMODS.Booster({
 })
 SMODS.Booster({
     key = 'small_aug_2',
-    atlas = 'tinker',
+    atlas = 'booster',
     kind = "Augment",
     pos = { x = 1, y = 0 },
     config = {choose = 1, extra = 3},
@@ -200,7 +200,7 @@ SMODS.Booster({
 })
 SMODS.Booster({
     key = 'mid_aug',
-    atlas = 'tinker',
+    atlas = 'booster',
     kind = "Augment",
     pos = { x = 2, y = 0 },
     config = {choose = 1, extra = 5},
@@ -236,7 +236,7 @@ SMODS.Booster({
 })
 SMODS.Booster({
     key = 'big_aug',
-    atlas = 'tinker',
+    atlas = 'booster',
     kind = "Augment",
     pos = { x = 3, y = 0 },
     config = {choose = 2, extra = 5},

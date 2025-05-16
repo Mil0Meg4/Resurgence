@@ -8,7 +8,21 @@ return {
             },
         },
         Blind={},
-        Edition={},
+        Edition={
+            e_rsgc_divine = {
+                name = "Divine",
+                text = {
+                    "Level up layed",
+                    "hand {C:attention}#1#{} time"
+                }
+            },
+            e_rsgc_faustian = {
+                name = "Faustian",
+                text = {
+                    "Earn {C:money}$#1#{}",
+                }
+            }
+        },
         Joker={
             j_rsgc_sigma = {
                 name = 'SIGMA',
@@ -598,6 +612,8 @@ return {
             rsgc_paint_brown = "Brown Paint",
             rsgc_paint_white = "White Paint",
             rsgc_paint_black = "Black Paint",
+            rsgc_faustian = "Faustian",
+            rsgc_divine = "Divine",
         },
         poker_hand_descriptions={
             rsgc_nothinghand = {"..."}

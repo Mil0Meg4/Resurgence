@@ -947,7 +947,7 @@ SMODS.Booster({
         --ease_colour(G.C.DYN_UI.MAIN, RSGC.C.GAY)
         ease_background_colour{new_colour = RSGC.C.GAY, special_colour = G.C.BLACK, contrast = 2}
     end,
-    group_key = 'k_rsgc_gayk',
+    group_key = 'k_rsgc_gay',
     draw_hand = false,
     particles = function(self)
         G.booster_pack_sparkles = Particles(1, 1, 0,0, {

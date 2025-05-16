@@ -343,6 +343,37 @@ SMODS.Rank {
     end
 }
 
+SMODS.Rank {
+
+    key = 'googol',
+    card_key = 'googol',
+
+    hc_atlas = 'ranks_hc',
+    lc_atlas = 'ranks_lc',
+    pos = { x = 12 },
+
+    suit_map={
+        Hearts = 0,
+        Clubs = 1,
+        Diamonds = 2,
+        Spades = 3,
+        rsgc_suitless = 4
+    },
+
+    next = { 'rsgc_googol' },
+	prev = { 'rsgc_googol' },
+
+    nominal = 1e100,
+    shorthand = 'googol',
+    hidden = true,
+
+    straight_edge = true,
+
+	in_pool = function(self, args)
+        return G.GAME.macro_ranks
+    end
+}
+
 ---suitless and rankless
 SMODS.Rank {
 
@@ -395,7 +426,7 @@ SMODS.Suit {
 }
 local orig_has_no_suit = SMODS.has_no_suit
 function SMODS.has_no_suit(card)
-    if card.base.suit == "rsgc_suitless" then 
+    if card.base.suit == "rsgc_suitless" then
         local is_wild = false
         for k, _ in pairs(SMODS.get_enhancements(card)) do
             if k == 'm_wild' or G.P_CENTERS[k].any_suit then is_wild = true end

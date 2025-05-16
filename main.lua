@@ -371,6 +371,8 @@ SMODS.Rank {
     shorthand = 'α',
     hidden = true,
 
+    straight_edge = true,
+
 	in_pool = function(self, args)
         return false
     end
@@ -391,6 +393,8 @@ SMODS.Rank {
     shorthand = 'Ω',
     hidden = true,
 
+    straight_edge = true,
+    
 	in_pool = function(self, args)
         return false
     end

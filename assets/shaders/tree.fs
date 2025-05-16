@@ -101,12 +101,13 @@ void pR(inout vec2 p, float a) {
 
 // -------
 
+float t = tree.y + time;
 
 float fractal(vec3 p)
 {
     const int iterations = 20;
 	
-    float d = time*5. - p.z;
+    float d = t*5. - p.z;
    	p=p.yxz;
     pR(p.yz, 1.570795);
     p.x += 6.5;
@@ -233,7 +234,7 @@ vec4 effect( vec4 colour, Image texture, vec2 texture_coords, vec2 screen_coords
     uv.x *= (tex.x / tex.y)*1.5;
     uv.y -= uv.x*uv.x*0.15;
     uv.y = -uv.y;
-    vec3 camPos = vec3(3., -1.5, time*5.);
+    vec3 camPos = vec3(3., -1.5, t*5.);
     vec3 camDir = camPos+vec3(-1.25,0.1, 1.);
     mat3 cam = camera(camPos, camDir, 0.);
     vec3 rayDir = cam * normalize( vec3(uv, .8));

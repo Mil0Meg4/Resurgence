@@ -544,7 +544,15 @@ return {
         },
         Spectral={},
         Stake={},
-        Tag={},
+        Tag={
+            tag_rsgc_boy = {
+                name = "Boykisser Tag",
+                text = {
+                    "Gives a free",
+                    "{C:rsgc_gay}Gay Pack",
+                },
+            },
+        },
         Tarot={},
         Voucher={},
     },

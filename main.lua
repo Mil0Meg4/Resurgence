@@ -36,6 +36,7 @@ SMODS.load_file("Items/ranks.lua")()
 SMODS.load_file("Items/jokers.lua")()
 SMODS.load_file("Items/primordials.lua")()
 SMODS.load_file("Items/decks.lua")()
+SMODS.load_file("Items/tags.lua")()
 SMODS.load_file("Items/planars/ultrakill.lua")()
 SMODS.load_file("Items/planars/undertale.lua")()
 SMODS.load_file("Items/planars/vampire.lua")()
@@ -97,6 +98,13 @@ SMODS.Atlas{
     px = 71,
     py = 95
 }
+--tag ATLAS
+SMODS.Atlas({
+    key = 'tags',
+    path = 'tags.png',
+    px = '34',
+    py = '34'
+})
 --Mod icon
 SMODS.Atlas({
     key = "modicon",

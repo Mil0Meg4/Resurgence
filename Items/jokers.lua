@@ -279,7 +279,7 @@ SMODS.Joker({
 	cost = 10,
 	unlocked = true,
 	discovered = false,
-	blueprint_compat = true,
+	blueprint_compat = false,
 	pos = {
 		x = 1,
 		y = 4,
@@ -303,7 +303,7 @@ SMODS.Joker({
 	cost = 10,
 	unlocked = true,
 	discovered = false,
-	blueprint_compat = true,
+	blueprint_compat = false,
 	pos = {
 		x = 1,
 		y = 3,
@@ -327,7 +327,7 @@ SMODS.Joker({
 	cost = 10,
 	unlocked = true,
 	discovered = false,
-	blueprint_compat = true,
+	blueprint_compat = false,
 	pos = {
 		x = 1,
 		y = 5,
@@ -351,7 +351,7 @@ SMODS.Joker({
 	cost = 10,
 	unlocked = true,
 	discovered = false,
-	blueprint_compat = true,
+	blueprint_compat = false,
 	pos = {
 		x = 1,
 		y = 9,
@@ -375,7 +375,7 @@ SMODS.Joker({
 	cost = 10,
 	unlocked = true,
 	discovered = false,
-	blueprint_compat = true,
+	blueprint_compat = false,
 	pos = {
 		x = 1,
 		y = 1,
@@ -399,7 +399,7 @@ SMODS.Joker({
 	cost = 10,
 	unlocked = true,
 	discovered = false,
-	blueprint_compat = true,
+	blueprint_compat = false,
 	pos = {
 		x = 1,
 		y = 2,
@@ -423,7 +423,7 @@ SMODS.Joker({
 	cost = 10,
 	unlocked = true,
 	discovered = false,
-	blueprint_compat = true,
+	blueprint_compat = false,
 	pos = {
 		x = 1,
 		y = 6,
@@ -447,7 +447,7 @@ SMODS.Joker({
 	cost = 10,
 	unlocked = true,
 	discovered = false,
-	blueprint_compat = true,
+	blueprint_compat = false,
 	pos = {
 		x = 1,
 		y = 7,
@@ -471,7 +471,7 @@ SMODS.Joker({
 	cost = 10,
 	unlocked = true,
 	discovered = false,
-	blueprint_compat = true,
+	blueprint_compat = false,
 	pos = {
 		x = 1,
 		y = 8,
@@ -928,10 +928,17 @@ SMODS.Booster({
         return {vars = {(card and card.ability.choose or self.config.choose), card and card.ability.extra or self.config.extra}}
     end,
     create_card = function(self, card)
-		if G.P_CENTERS.j_rsgc_gabriel and not (G.GAME.used_jokers["j_rsgc_gabriel"] and not next(find_joker("Showman")))
-		then
-			if pseudorandom("gay_" .. G.GAME.round_resets.ante) > 0.997 then
-				return create_card("gay", G.pack_cards, nil, nil, true, true, "j_rsgc_gabriel", nil)
+		local legend = {"j_rsgc_gabriel"}
+		local pollable_legends = {}
+		for i,v in ipairs(legend) do 
+			if G.P_CENTERS[v] and not (G.GAME.used_jokers[v] and not next(find_joker("Showman"))) then 
+				table.insert(pollable_legends,v)
+			end
+		end
+		if #pollable_legends > 0 then
+			if pseudorandom("gay_" .. G.GAME.round_resets.ante) > 0.995 then
+				local poll = pseudorandom_element(pollable_legends,pseudoseed('gay_af'))
+				return create_card("gay", G.pack_cards, nil, nil, true, true, poll, nil)
 			end
 		end
         return create_card("gay", G.pack_cards, nil, nil, true,  true, nil, "gay_pack")

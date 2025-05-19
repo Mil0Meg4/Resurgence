@@ -186,32 +186,30 @@ RSGC.Paint {
     badge_colour = RSGC.C.PINK,
     shader = 'pink',
     weight = 19,
-    config = {chips_c = 25,chips_j = 35},
+    config = {chips = 25,},
     loc_vars = function(self, info_queue, card)
         local rsgc = self.config
         local card_tally = 0
-        local joker_tally = 0
         for k, v in pairs(G.playing_cards or {}) do
 			if RSGC.has_paint(v,'pink') then card_tally = card_tally + 1 end
 		end
         for k, v in pairs(G.jokers and G.jokers.cards or {}) do
-			if RSGC.has_paint(v,'pink') then joker_tally = joker_tally + 1 end
+			if RSGC.has_paint(v,'pink') then card_tally = card_tally + 1 end
 		end
-        return { vars = {rsgc.chips_c,rsgc.chips_j, rsgc.chips_c * card_tally + rsgc.chips_j * joker_tally } }
+        return { vars = {rsgc.chips, rsgc.chips * card_tally } }
     end,
     calculate = function(self, card, context)
         if context.joker_main or (context.main_scoring and context.cardarea == G.play) then
             local rsgc = self.config
             local card_tally = 0
-            local joker_tally = 0
-            for k, v in pairs(G.playing_cards) do
+            for k, v in pairs(G.playing_cards or {}) do
                 if RSGC.has_paint(v,'pink') then card_tally = card_tally + 1 end
             end
-            for k, v in pairs(G.jokers.cards) do
-                if RSGC.has_paint(v,'pink') then joker_tally = joker_tally + 1 end
+            for k, v in pairs(G.jokers and G.jokers.cards or {}) do
+                if RSGC.has_paint(v,'pink') then card_tally = card_tally + 1 end
             end
             return {
-                chips = rsgc.chips_c * card_tally + rsgc.chips_j * joker_tally
+                chips = rsgc.chips * card_tally
             }
         end
     end

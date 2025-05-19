@@ -468,9 +468,9 @@ return {
             rsgc_paint_pink = {
                 name = 'Pink Paint',
                 text = { "{C:chips}+#1#{} Chips per {C:rsgc_pink}Pink",
+                    "Joker and {C:rsgc_pink}Pink{}",
                     "card in {C:attention}full deck",
-                    "{C:chips}+#2#{} Chips per {C:rsgc_pink}Pink{} Joker",
-                    "{C:inactive}(Currently {C:chips}+#3#{C:inactive} Chips)"
+                    "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
                 }
             },
             rsgc_paint_white = {

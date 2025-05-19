@@ -1,4 +1,4 @@
-SMODS.Joker({
+RSGC.Joker({
 	key = "poe",
 	atlas = "joke",
 	pos = { x = 0, y = 0 },
@@ -8,6 +8,8 @@ SMODS.Joker({
 	pools = {planar = true, vampire = true},
 	unlocked = true,
 	discovered = false,
+	perishable_compat = true,
+	eternal_compat = true,
 	blueprint_compat = true,
 	loc_vars = function(self, info_queue, card)
 		local rsgc = card.ability.extra
@@ -38,12 +40,9 @@ SMODS.Joker({
 			rsgc.timer = 0
 		end
 	end,
-	set_badges = function(self, card, badges)
-		badges[#badges - 1] = create_badge("Vampire Survivors", RSGC.C.VAMP, G.C.WHITE, 1) --This adds the primer badge ABOVE the rarity. if this was +1 it would add below
-	end,
 })
 
-SMODS.Joker({
+RSGC.Joker({
 	key = "pugnala",
 	atlas = "joke",
 	pos = { x = 0, y = 0 },
@@ -53,6 +52,8 @@ SMODS.Joker({
 	pools = {planar = true, vampire = true},
 	unlocked = true,
 	discovered = false,
+	perishable_compat = true,
+	eternal_compat = true,
 	blueprint_compat = true,
 	loc_vars = function(self, info_queue, card)
 		local rsgc = card.ability.extra
@@ -75,12 +76,9 @@ SMODS.Joker({
 			end
 		end
 	end,
-	set_badges = function(self, card, badges)
-		badges[#badges - 1] = create_badge("Vampire Survivors", RSGC.C.VAMP, G.C.WHITE, 1) --This adds the primer badge ABOVE the rarity. if this was +1 it would add below
-	end,
 })
 
-SMODS.Joker({
+RSGC.Joker({
 	key = "jandc",
 	atlas = "joke",
 	pos = { x = 0, y = 0 },
@@ -90,6 +88,8 @@ SMODS.Joker({
 	pools = {planar = true, vampire = true},
 	unlocked = true,
 	discovered = false,
+	perishable_compat = true,
+	eternal_compat = true,
 	blueprint_compat = true,
 	loc_vars = function(self, info_queue, card)
 		local rsgc = card.ability.extra
@@ -123,12 +123,9 @@ SMODS.Joker({
 		local rsgc = card.ability.extra
 		G.consumeables.config.card_limit = G.consumeables.config.card_limit - rsgc.con_slot
 	end,
-	set_badges = function(self, card, badges)
-		badges[#badges - 1] = create_badge("Vampire Survivors", RSGC.C.VAMP, G.C.WHITE, 1) --This adds the primer badge ABOVE the rarity. if this was +1 it would add below
-	end,
 })
 
-SMODS.Joker({
+RSGC.Joker({
 	key = "sos",
 	atlas = "joke",
 	pos = { x = 0, y = 0 },
@@ -138,6 +135,8 @@ SMODS.Joker({
 	pools = {planar = true, vampire = true},
 	unlocked = true,
 	discovered = false,
+	perishable_compat = true,
+	eternal_compat = true,
 	blueprint_compat = true,
 	loc_vars = function(self, info_queue, card)
 		local rsgc = card.ability.extra
@@ -156,9 +155,6 @@ SMODS.Joker({
 				xmult = math.max(rsgc.xmultstack*(G.jokers.config.card_limit - #G.jokers.cards), 0) + 1
 			}
 		end
-	end,
-	set_badges = function(self, card, badges)
-		badges[#badges - 1] = create_badge("Vampire Survivors", RSGC.C.VAMP, G.C.WHITE, 1) --This adds the primer badge ABOVE the rarity. if this was +1 it would add below
 	end,
 })
 
@@ -200,7 +196,7 @@ function get_current_pool(_type, _rarity, _legendary, _append, override_equilibr
 	return gcp(_type, _rarity, _legendary, _append)
 end
 
-SMODS.Joker({
+RSGC.Joker({
 	key = "directer",
 	atlas = "joke",
 	pos = { x = 0, y = 0 },
@@ -209,8 +205,7 @@ SMODS.Joker({
 	pools = {planar = true, vampire = true},
 	unlocked = true,
 	discovered = false,
+	perishable_compat = true,
+	eternal_compat = true,
 	blueprint_compat = false,
-	set_badges = function(self, card, badges)
-		badges[#badges - 1] = create_badge("Vampire Survivors", RSGC.C.VAMP, G.C.WHITE, 1) --This adds the primer badge ABOVE the rarity. if this was +1 it would add below
-	end
 })

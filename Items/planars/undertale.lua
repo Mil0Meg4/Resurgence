@@ -24,7 +24,7 @@ function create_card(_type, area, legendary, _rarity, skip_materialize, soulable
 	return orig_create_card(_type, area, legendary, _rarity, skip_materialize, soulable, forced_key, key_append)
 end
 
-SMODS.Joker({
+RSGC.Joker({
 	key = "frisk",
 	atlas = "joke",
 	pos = { x = 2, y = 2 },
@@ -34,6 +34,8 @@ SMODS.Joker({
 	pools = {planar = true, undertale = true},
 	unlocked = true,
 	discovered = false,
+	perishable_compat = false,
+	eternal_compat = true,
 	blueprint_compat = true,
 	loc_vars = function(self, info_queue, card)
 		local rsgc = card.ability.extra
@@ -69,12 +71,9 @@ SMODS.Joker({
 			}
 		end
 	end,
-	set_badges = function(self, card, badges)
-		badges[#badges - 1] = create_badge("Undertale", RSGC.C.UNDER, G.C.WHITE, 1)
-	end,
 })
 
-SMODS.Joker({
+RSGC.Joker({
 	key = "papyrus",
 	atlas = "joke",
 	pos = { x = 2, y = 1 },
@@ -84,6 +83,8 @@ SMODS.Joker({
 	config = {},
 	unlocked = true,
 	discovered = false,
+	perishable_compat = true,
+	eternal_compat = true,
 	blueprint_compat = false,
 	loc_vars = function(self, info_queue)
 		info_queue[#info_queue + 1] = RSGC.paint_tooltip("blue")
@@ -97,12 +98,9 @@ SMODS.Joker({
 			}
 		end
 	end,
-	set_badges = function(self, card, badges)
-		badges[#badges - 1] = create_badge("Undertale", RSGC.C.UNDER, G.C.WHITE, 1)
-	end,
 })
 
-SMODS.Joker({
+RSGC.Joker({
 	key = "alphys",
 	atlas = "joke",
 	pos = { x = 2, y = 5 },
@@ -113,7 +111,8 @@ SMODS.Joker({
 	config = {},
 	unlocked = true,
 	discovered = false,
-	perishable_compat = false,
+	perishable_compat = true,
+	eternal_compat = true,
 	blueprint_compat = true,
 	loc_vars = function(self, info_queue)
 		info_queue[#info_queue + 1] = G.P_CENTERS.j_blueprint
@@ -131,24 +130,21 @@ SMODS.Joker({
 			return {}
 		end
 	end,
-	set_badges = function(self, card, badges)
-		badges[#badges - 1] = create_badge("Undertale", RSGC.C.UNDER, G.C.WHITE, 1)
-	end,
 })
 
-SMODS.Joker {
+RSGC.Joker {
 	key = 'sans',
 	rarity = 2,
 	atlas = 'joke',
 	config = { 
 		extra = {chips = 5, chipsadd = 10} },
 	pools = {planar = true, undertale = true},
-	blueprint_compat = true,
-	eternal_compat = true,
-	perishable_compat = false,
 	pos = { x = 2, y = 0 },
 	cost = 7,
 	discovered = true,
+	perishable_compat = false,
+	eternal_compat = true,
+	blueprint_compat = true,
 	loc_vars = function(self, info_queue, card)
 		local rsgc = card.ability.extra
 		return {
@@ -188,12 +184,9 @@ SMODS.Joker {
 			}
 		end
 	end,
-	set_badges = function(self, card, badges)
-		badges[#badges - 1] = create_badge("Undertale", RSGC.C.UNDER, G.C.WHITE, 1)
-	end,
 }
 
-SMODS.Joker({
+RSGC.Joker({
 	key = "gaster",
 	atlas = "joke",
 	pos = { x = 2, y = 3 },
@@ -206,6 +199,7 @@ SMODS.Joker({
 	unlocked = true,
 	discovered = false,
 	perishable_compat = false,
+	eternal_compat = true,
 	blueprint_compat = true,
 	loc_vars = function(self, info_queue, card)
 		local rsgc = card.ability
@@ -236,6 +230,7 @@ SMODS.Joker({
 					chips = 66,
 					mult = 6,
 					message = (rsgc.scored_sixes == 0) and localize('k_plus_negative') or (rsgc.scored_sixes..'/66'),
+					focus = card,
 					colour = (rsgc.scored_sixes == 0) and G.C.DARK_EDITION or G.C.FILTER,
 					card = card
 				}
@@ -254,9 +249,6 @@ SMODS.Joker({
 		G.consumeables.config.card_limit = G.consumeables.config.card_limit - 6
 		G.jokers.config.card_limit = G.jokers.config.card_limit - 6
 		change_shop_size(-6)
-	end,
-	set_badges = function(self, card, badges)
-		badges[#badges - 1] = create_badge("Undertale", RSGC.C.UNDER, G.C.WHITE, 1)
 	end,
 	draw = function(self, card, layer)
 		card.children.center:draw_shader("rsgc_gaster", nil, card.ARGS.send_to_shader)
@@ -280,18 +272,19 @@ function evaluate_poker_hand(hand)
 	return hand
 end
 
-SMODS.Joker {
+RSGC.Joker {
 	key = 'mini_mice',
 	config = { 
 	  extra = {mult = 10} },
 	pools = {planar = true, undertale = true},
 	rarity = 1,
 	atlas = 'joke',
-	blueprint_compat = true,
-	eternal_compat = true,
 	pos = { x = 2, y = 8 },
 	cost = 2,
 	discovered = true,
+	perishable_compat = true,
+	eternal_compat = true,
+	blueprint_compat = true,
 	loc_vars = function(self, info_queue, card)
 		local rsgc = card.ability.extra
 		return {
@@ -305,8 +298,5 @@ SMODS.Joker {
 				mult = rsgc.mult
 			}
 		end
-	end,
-	set_badges = function(self, card, badges)
-		badges[#badges - 1] = create_badge("Undertale", RSGC.C.UNDER, G.C.WHITE, 1)
 	end,
 }

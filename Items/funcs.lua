@@ -424,8 +424,7 @@ function RSGC.create_card(_type,area,legendary,_rarity,skip_materialize,soulable
     if above_limit or #area.cards + G.GAME[buffer_type] < area.config.card_limit then
 		local card
         G.GAME[buffer_type] = G.GAME[buffer_type] + (above_limit and 0 or 1)
-        G.E_MANAGER:add_event(Event {
-            func = function()
+        G.E_MANAGER:add_event(Event {func = function()
             card = create_card(_type,area,legendary,_rarity,skip_materialize,soulable,forced_key,key_append)
             card:add_to_deck()
             area:emplace(card)

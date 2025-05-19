@@ -44,7 +44,7 @@ return {
                 rsgc_subtitle = "Judge of Hell",
                 text = {"At end of {C:money}shop{},",
                         "adds {C:dark_edition}Divine{} to",
-                        "Joker to the left",
+                        "Joker to the right",
                         "Each {C:dark_edition}Divine{} Joker gives {X:mult,C:white}X#1#{} Mult"
                 }
             },
@@ -53,7 +53,7 @@ return {
                 rsgc_subtitle = "Apostate of Hate",
                 text = {"At end of {C:money}shop{},",
                         "{C:red}removes{} {C:dark_edition}Divine{} from",
-                        "Joker to the left",
+                        "Joker to the right",
                         "to gain {X:mult,C:white}^#2#{} Mult",
                         "{C:inactive}(Currently {X:mult,C:white}^#1#{C:inactive} Mult)"
                 }
@@ -305,7 +305,7 @@ return {
             },
             j_rsgc_short_joker = {
                 name = 'Short Joker',
-                text = {"Played {C:attention}Bonus Cards{} give",
+                text = {"Played {C:attention}Mult Cards{} give",
                         "{C:red}+#1#{} Mult when scored"
                 }
             },

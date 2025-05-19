@@ -1,3 +1,31 @@
+function RSGC.Joker(table)
+	if table.dependency or table.dependency == nil then
+		if table.pools then
+			if table.pools.undertale then
+				table.set_badges = function(self, card, badges)
+					badges[#badges - 1] = create_badge("Undertale", RSGC.C.UNDER, G.C.WHITE, 1)
+				end
+			end
+			if table.pools.hollow then
+				table.set_badges = function(self, card, badges)
+					badges[#badges - 1] = create_badge("Hollow Knight", RSGC.C.HOLLOW, G.C.WHITE, 1)
+				end
+			end
+			if table.pools.ultrakill then
+				table.set_badges = function(self, card, badges)
+					badges[#badges - 1] = create_badge("Ultrakill", RSGC.C.ULTRA, G.C.WHITE, 1)
+				end
+			end
+			if table.pools.vampire then
+				table.set_badges = function(self, card, badges)
+					badges[#badges - 1] = create_badge("Vampire Survivors", RSGC.C.VAMP, G.C.WHITE, 1)
+				end
+			end
+		end
+		SMODS.Joker(table)
+	end
+end
+
 SMODS.Rarity({
 	key = "unb",
 	badge_colour = RSGC.C.UNBOUND,
@@ -27,7 +55,7 @@ function RSGC.unbound(card,func)
 end
 
 G.P_CENTERS.j_joker.unbound = {evo = "jimbo"}
-SMODS.Joker({
+RSGC.Joker({
 	key = "jimbo",
 	atlas = 'joke',
 	pos = { x = 0, y = 0 },
@@ -55,7 +83,7 @@ SMODS.Joker({
 	end
 })
 
-SMODS.Joker({
+RSGC.Joker({
 	key = "sinclair",
 	atlas = "joke",
 	pos = { x = 0, y = 0 },
@@ -69,8 +97,8 @@ SMODS.Joker({
 		},
 	},
 	unlocked = true,
-	discovered = false,
-	eternal_compat = false,
+	perishable_compat = true,
+	eternal_compat = true,
 	blueprint_compat = false,
 	loc_vars = function(self, info_queue, card)
 		local rsgc = card.ability.extra
@@ -82,7 +110,7 @@ SMODS.Joker({
 		--[[ if c.end_of_round and context.main_eval and not context.blueprint then
 			ease_dollars(rsgc.money) --add money
 		end ]]
-		if c.starting_shop and to_number(G.GAME.dollars) > rsgc.max then --checks entering the shop and compares the ammount of dollars player has with rsgc.max, in this case 100. to_number() is for talisman compatiblity.
+		if c.starting_shop and to_number(G.GAME.dollars) > rsgc.max and not context.blueprint then --checks entering the shop and compares the ammount of dollars player has with rsgc.max, in this case 100. to_number() is for talisman compatiblity.
 			for i = 1, #G.jokers.cards do
 				if G.jokers.cards[i] ~= card and G.jokers.cards[i].debuff == false then --checks for any card which is NOT THIS CARD and if the cards are debuffed.
 					SMODS.debuff_card(G.jokers.cards[i], true, card.config.center.key) --debuffs the cards
@@ -95,7 +123,7 @@ SMODS.Joker({
 				card = card
 			}
 		end
-		if c.ending_shop and to_number(G.GAME.dollars) <= 0 and rsgc.active then --checks if the player has left the shop, compares the ammount of dollars player has to 0, and checks if active is true
+		if c.ending_shop and to_number(G.GAME.dollars) <= 0 and rsgc.active and not context.blueprint  then --checks if the player has left the shop, compares the ammount of dollars player has to 0, and checks if active is true
 			for i = 1, #G.jokers.cards do
 				if G.jokers.cards[i] ~= card and G.jokers.cards[i].debuff == true then --same thing as the one above, but this time checks for debuffed cards
 					SMODS.debuff_card(G.jokers.cards[i], false, card.config.center.key) --removes the debuff from debuffed cards
@@ -114,7 +142,7 @@ SMODS.Joker({
 	end,
 })
 
-SMODS.Joker({
+RSGC.Joker({
 	key = "tree",
 	atlas = "joke",
 	pos = { x = 0, y = 0 },
@@ -124,6 +152,7 @@ SMODS.Joker({
 	unlocked = true,
 	discovered = false,
 	perishable_compat = false,
+	eternal_compat = true,
 	blueprint_compat = true,
 	unbound = {evo = "tree3",tarots = 0,cards=0,discards=0},
 	loc_vars = function(self, info_queue, card)
@@ -165,7 +194,7 @@ SMODS.Joker({
 	end,
 })
 
-SMODS.Joker({
+RSGC.Joker({
 	key = "tree3",
 	atlas = "joke",
 	pos = { x = 0, y = 8 },
@@ -174,6 +203,8 @@ SMODS.Joker({
 	config = { extra = { eeemult = 3, eeemult_mod = 2 } },
 	unlocked = true,
 	discovered = false,
+	perishable_compat = false,
+	eternal_compat = true,
 	blueprint_compat = true,
 	loc_vars = function(self, info_queue, card)
 		local rsgc = card.ability.extra
@@ -202,7 +233,7 @@ SMODS.Joker({
 	end,
 })
 
-SMODS.Joker({
+RSGC.Joker({
 	key = "bartender",
 	atlas = "joke",
 	pos = { x = 0, y = 0 },
@@ -211,6 +242,8 @@ SMODS.Joker({
 	config = { extra = { mult = 5, con_slot = 1 } },
 	unlocked = true,
 	discovered = false,
+	perishable_compat = true,
+	eternal_compat = true,
 	blueprint_compat = true,
 	loc_vars = function(self, info_queue, card)
 		local rsgc = card.ability.extra
@@ -240,26 +273,15 @@ SMODS.Joker({
 	end,
 })
 
-function RSGC.nonstone()
-	local bb = #G.playing_cards
-	if G.playing_cards then
-		for _, v in pairs(G.playing_cards) do
-			if SMODS.has_enhancement(v, "m_stone") then
-				bb = bb - 1
-			end
-		end
-		return bb
-	end
-	return #G.playing_cards
-end
-
-SMODS.Joker({
+RSGC.Joker({
 	key = "pride_rainbow",
 	atlas = "joke",
 	rarity = 3,
 	cost = 10,
 	unlocked = true,
 	discovered = false,
+	perishable_compat = true,
+	eternal_compat = true,
 	blueprint_compat = false,
 	pos = {
 		x = 1,
@@ -272,13 +294,15 @@ SMODS.Joker({
     end,
 })
 
-SMODS.Joker({
+RSGC.Joker({
 	key = "pride_pan",
 	atlas = "joke",
 	rarity = 3,
 	cost = 10,
 	unlocked = true,
 	discovered = false,
+	perishable_compat = true,
+	eternal_compat = true,
 	blueprint_compat = false,
 	pos = {
 		x = 1,
@@ -296,13 +320,15 @@ SMODS.Joker({
     end,
 })
 
-SMODS.Joker({
+RSGC.Joker({
 	key = "pride_bi",
 	atlas = "joke",
 	rarity = 3,
 	cost = 10,
 	unlocked = true,
 	discovered = false,
+	perishable_compat = true,
+	eternal_compat = true,
 	blueprint_compat = false,
 	pos = {
 		x = 1,
@@ -320,13 +346,15 @@ SMODS.Joker({
     end,
 })
 
-SMODS.Joker({
+RSGC.Joker({
 	key = "pride_trans",
 	atlas = "joke",
 	rarity = 3,
 	cost = 10,
 	unlocked = true,
 	discovered = false,
+	perishable_compat = true,
+	eternal_compat = true,
 	blueprint_compat = false,
 	pos = {
 		x = 1,
@@ -344,13 +372,15 @@ SMODS.Joker({
     end,
 })
 
-SMODS.Joker({
+RSGC.Joker({
 	key = "pride_lesbian",
 	atlas = "joke",
 	rarity = 3,
 	cost = 10,
 	unlocked = true,
 	discovered = false,
+	perishable_compat = true,
+	eternal_compat = true,
 	blueprint_compat = false,
 	pos = {
 		x = 1,
@@ -368,13 +398,15 @@ SMODS.Joker({
     end,
 })
 
-SMODS.Joker({
+RSGC.Joker({
 	key = "pride_gay",
 	atlas = "joke",
 	rarity = 3,
 	cost = 10,
 	unlocked = true,
 	discovered = false,
+	perishable_compat = true,
+	eternal_compat = true,
 	blueprint_compat = false,
 	pos = {
 		x = 1,
@@ -392,13 +424,15 @@ SMODS.Joker({
     end,
 })
 
-SMODS.Joker({
+RSGC.Joker({
 	key = "pride_nb",
 	atlas = "joke",
 	rarity = 3,
 	cost = 10,
 	unlocked = true,
 	discovered = false,
+	perishable_compat = true,
+	eternal_compat = true,
 	blueprint_compat = false,
 	pos = {
 		x = 1,
@@ -416,13 +450,15 @@ SMODS.Joker({
     end,
 })
 
-SMODS.Joker({
+RSGC.Joker({
 	key = "pride_ace",
 	atlas = "joke",
 	rarity = 3,
 	cost = 10,
 	unlocked = true,
 	discovered = false,
+	perishable_compat = true,
+	eternal_compat = true,
 	blueprint_compat = false,
 	pos = {
 		x = 1,
@@ -440,13 +476,15 @@ SMODS.Joker({
     end,
 })
 
-SMODS.Joker({
+RSGC.Joker({
 	key = "pride_aro",
 	atlas = "joke",
 	rarity = 3,
 	cost = 10,
 	unlocked = true,
 	discovered = false,
+	perishable_compat = true,
+	eternal_compat = true,
 	blueprint_compat = false,
 	pos = {
 		x = 1,
@@ -464,13 +502,15 @@ SMODS.Joker({
     end,
 })
 
-SMODS.Joker({
+RSGC.Joker({
 	key = "pride_aroace",
 	atlas = "joke",
 	rarity = 3,
 	cost = 10,
 	unlocked = true,
 	discovered = false,
+	perishable_compat = true,
+	eternal_compat = true,
 	blueprint_compat = false,
 	pos = {
 		x = 1,
@@ -488,7 +528,7 @@ SMODS.Joker({
     end,
 })
 
-SMODS.Joker({
+RSGC.Joker({
 	key = "triangleJoke",
 	atlas = "joke",
 	pos = { x = 4, y = 1 },
@@ -501,6 +541,8 @@ SMODS.Joker({
 	},
 	unlocked = true,
 	discovered = false,
+	perishable_compat = true,
+	eternal_compat = true,
 	blueprint_compat = true,
 	loc_vars = function(self, info_queue, card)
 		local rsgc = card.ability.extra
@@ -520,7 +562,7 @@ SMODS.Joker({
 	end,
 })
 
-SMODS.Joker({
+RSGC.Joker({
 	key = "godot",
 	atlas = "joke",
 	pos = { x = 4, y = 0 },
@@ -529,6 +571,8 @@ SMODS.Joker({
 	config = {extra = { x_mult = 3,}},
 	unlocked = true,
 	discovered = false,
+	perishable_compat = true,
+	eternal_compat = true,
 	blueprint_compat = true,
 	loc_vars = function(self, info_queue, card)
 		local rsgc = card.ability.extra
@@ -547,7 +591,7 @@ SMODS.Joker({
 	end,
 })
 
-SMODS.Joker({
+RSGC.Joker({
 	key = "tall_joker",
 	atlas = "joke",
 	pos = { x = 4, y = 5 },
@@ -561,6 +605,8 @@ SMODS.Joker({
 	},
 	unlocked = true,
 	discovered = false,
+	perishable_compat = true,
+	eternal_compat = true,
 	blueprint_compat = true,
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue + 1] = G.P_CENTERS.m_bonus
@@ -587,7 +633,7 @@ SMODS.Joker({
 	end,
 })
 
-SMODS.Joker({
+RSGC.Joker({
 	key = "short_joker",
 	atlas = "joke",
 	pos = { x = 4, y = 6 },
@@ -601,9 +647,11 @@ SMODS.Joker({
 	},
 	unlocked = true,
 	discovered = false,
+	perishable_compat = true,
+	eternal_compat = true,
 	blueprint_compat = true,
 	loc_vars = function(self, info_queue, card)
-		info_queue[#info_queue + 1] = G.P_CENTERS.m_bonus
+		info_queue[#info_queue + 1] = G.P_CENTERS.m_mult
 		local rsgc = card.ability.extra
 		return {
 			vars = { rsgc.mult },
@@ -611,7 +659,7 @@ SMODS.Joker({
 	end,
 	calculate = function(self, card, context)
 		if context.individual and context.cardarea == G.play then
-			if SMODS.has_enhancement(context.other_card, "m_bonus") then
+			if SMODS.has_enhancement(context.other_card, "m_mult") then
 				local rsgc = card.ability.extra
 				return{
 					mult = rsgc.mult,
@@ -627,7 +675,7 @@ SMODS.Joker({
 	end,
 })
 
-SMODS.Joker({
+RSGC.Joker({
 	key = "swordfish",
 	atlas = "joke",
 	pos = { x = 4, y = 8 },
@@ -640,6 +688,8 @@ SMODS.Joker({
 	},
 	unlocked = true,
 	discovered = false,
+	perishable_compat = true,
+	eternal_compat = true,
 	blueprint_compat = true,
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue + 1] = G.P_CENTERS.m_mult
@@ -670,7 +720,7 @@ SMODS.Joker({
 	end,
 })
 
-SMODS.Joker({
+RSGC.Joker({
 	key = "memory",
 	atlas = "joke",
 	pos = { x = 4, y = 7 },
@@ -678,6 +728,8 @@ SMODS.Joker({
 	cost = 6,
 	unlocked = true,
 	discovered = false,
+	perishable_compat = true,
+	eternal_compat = true,
 	blueprint_compat = true,
 	update = function(self, card, front)
 		if G.STAGE == G.STAGES.RUN then
@@ -766,7 +818,7 @@ SMODS.Joker({
 	end,
 })
 
-SMODS.Joker({
+RSGC.Joker({
 	key = "catJoker",
 	atlas = "joke",
 	pos = { x = 4, y = 9 },
@@ -779,6 +831,8 @@ SMODS.Joker({
 	},
 	unlocked = true,
 	discovered = false,
+	perishable_compat = true,
+	eternal_compat = true,
 	blueprint_compat = true,
 	loc_vars = function(self, info_queue, card)
 		local rsgc = card.ability.extra
@@ -804,7 +858,7 @@ SMODS.Joker({
 	end,
 })
 
-SMODS.Joker({
+RSGC.Joker({
 	key = "frankenjoker",
 	atlas = "joke",
 	pos = { x = 5, y = 0 },
@@ -819,6 +873,8 @@ SMODS.Joker({
 	},
 	unlocked = true,
 	discovered = false,
+	perishable_compat = true,
+	eternal_compat = true,
 	blueprint_compat = true,
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue + 1] = G.P_CENTERS.m_wild
@@ -858,7 +914,7 @@ SMODS.Joker({
 	end,
 })
 
-SMODS.Joker({
+RSGC.Joker({
 	key = "punker",
 	atlas = "joke",
 	pos = { x = 5, y = 1 },
@@ -873,6 +929,8 @@ SMODS.Joker({
 	},
 	unlocked = true,
 	discovered = false,
+	perishable_compat = false,
+	eternal_compat = true,
 	blueprint_compat = true,
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue + 1] = G.P_CENTERS.m_mult
@@ -889,7 +947,7 @@ SMODS.Joker({
 				mult = rsgc.currentmult,
 			}
 		end
-		if context.individual and context.cardarea == G.play then
+		if context.individual and context.cardarea == G.play and not context.blueprint then
 			local rsgc = card.ability.extra
 			local currentincrease = rsgc.multgained
 			if SMODS.has_enhancement(context.other_card, "m_mult") then

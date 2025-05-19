@@ -1,15 +1,16 @@
-SMODS.Joker({
+RSGC.Joker({
 	key = "everything",
 	atlas = "joke",
 	pos = { x = 0, y = 0 },
-	pools = {planar = true, undertale = true},
+	pools = {planar = true, hgttg = true},
 	rarity = 4,
 	cost = 20,
 	immutable = true,
 	config = {extra = {mult = 21, x_mult = 1.2}},
 	unlocked = true,
 	discovered = false,
-	perishable_compat = false,
+	perishable_compat = true,
+	eternal_compat = true,
 	blueprint_compat = true,
 	loc_vars = function(self, info_queue, card)
 		local rsgc = card.ability.extra

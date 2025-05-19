@@ -3,10 +3,10 @@ SMODS.Rarity({
 	badge_colour = RSGC.C.PRIMORDIAL,
 	pools = {
 		["Joker"] = {
-			rate = G.GAME and 0.002 * math.floor((G.GAME.round_resets.ante - 1)/4) or 0.002, --formula for how rare primordials are. They can't apperar before ante 5 and the chances increase every 4 antes
+			rate = 0 --G.GAME and 0.002 * math.floor((G.GAME.round_resets.ante - 1)/4) or 0.002, --formula for how rare primordials are. They can't apperar before ante 5 and the chances increase every 4 antes
 		},
 	},
-	default_weight = 0.002,
+	default_weight = 0 --0.002
 })
 --[[ function RSGC.literally_me_fr(card,joker_key)
     G.E_MANAGER:add_event(Event({
@@ -23,7 +23,7 @@ SMODS.Rarity({
     }
 end
 
-SMODS.Joker({
+RSGC.Joker({
 	key = "sigma",
 	atlas = "joke", --the atlas obv
 	rarity = "rsgc_prim",
@@ -96,13 +96,15 @@ SMODS.Joker({
 	end,
 })
 ]]
-SMODS.Joker({
+RSGC.Joker({
 	key = "charon",
 	atlas = "joke",
 	rarity = "rsgc_prim",
 	cost = 50,
 	unlocked = true,
 	discovered = false,
+	perishable_compat = true,
+	eternal_compat = true,
 	blueprint_compat = true,
 	pos = {
 		x = 0,
@@ -125,21 +127,20 @@ SMODS.Joker({
 		if context.ending_shop then
 			--ease_dollars(to_number(math.max(0, math.min(G.GAME.dollars * 5, rsgc.max)), true))---ease_dollars is used to manipulate the ammount of cash you have, to_number is for talisman compatiblity and math.max is used to set the max value for the added cash
 			return {
-				dollars = to_number(math.max(0, math.min(G.GAME.dollars * 4, rsgc.max)))
+				dollars = to_number(math.max(0, math.min(G.GAME.dollars * 4, rsgc.max))),
 			}
 		end
 	end,
-	in_pool = function(self, wawa, wawa2)
-		return false
-	end,
 })
-SMODS.Joker({
+RSGC.Joker({
 	key = "tiataxet",
 	atlas = "joke",
 	rarity = "rsgc_prim",
 	cost = 50,
 	unlocked = true,
 	discovered = false,
+	perishable_compat = true,
+	eternal_compat = true,
 	blueprint_compat = false,
 	pos = {
 		x = 0,
@@ -257,21 +258,20 @@ SMODS.Joker({
 			end
 		end
 	end,
-	in_pool = function(self, wawa, wawa2)
-		return false
-	end,
 })
-SMODS.Joker({
+RSGC.Joker({
 	key = "andromeda",
 	atlas = "joke",
 	rarity = "rsgc_prim",
 	cost = 50,
 	unlocked = true,
 	discovered = false,
-	blueprint_compat = true,
 	pos = {x = 4,y = 2},
 	soul_pos = {x = 4,y = 3,top = {x = 4,y = 4,no_shadow = true}},
 	config = {extra = {cost_increase = 25}},
+	perishable_compat = true,
+	eternal_compat = true,
+	blueprint_compat = true,
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue + 1] = G.P_CENTERS.c_star
 		local rsgc = card.ability.extra
@@ -301,18 +301,26 @@ SMODS.Joker({
 			}))
 		end
 	end,
-	in_pool = function(self, wawa, wawa2)
-		return false
-	end,
 })
-SMODS.Joker({
+function RSGC.nonstone()
+	local bb = #G.playing_cards
+	if G.playing_cards then
+		for _, v in pairs(G.playing_cards) do
+			if SMODS.has_enhancement(v, "m_stone") then
+				bb = bb - 1
+			end
+		end
+		return bb
+	end
+	return #G.playing_cards
+end
+RSGC.Joker({
 	key = "doom",
 	atlas = "joke",
 	rarity = "rsgc_prim",
 	cost = 10,
 	unlocked = true,
 	discovered = false,
-	blueprint_compat = true,
 	pos = {
 		x = 0,
 		y = 6,
@@ -324,6 +332,9 @@ SMODS.Joker({
 			chips2 = 2500000
 		},
 	},
+	perishable_compat = true,
+	eternal_compat = true,
+	blueprint_compat = true,
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue + 1] = G.P_CENTERS.m_stone
 		local rsgc = card.ability.extra
@@ -365,8 +376,5 @@ SMODS.Joker({
 				}))
 			end
 		end
-	end,
-	in_pool = function(self, wawa, wawa2)
-		return false
 	end,
 })

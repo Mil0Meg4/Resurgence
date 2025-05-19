@@ -1,4 +1,4 @@
-SMODS.Joker {
+RSGC.Joker {
 	key = 'sly',
 	pools = {planar = true, hollow = true},
 	rarity = 2,
@@ -42,11 +42,8 @@ SMODS.Joker {
 			return RSGC.unbound(card)
 		end
 	end,
-	set_badges = function(self, card, badges)
-		badges[#badges - 1] = create_badge("Hollow Knight", RSGC.C.HOLLOW, G.C.WHITE, 1)
-	end,
 }
-SMODS.Joker {
+RSGC.Joker {
 	key = 'nailsage',
 	pools = {planar = true, hollow = true},
 	rarity = "rsgc_unb",
@@ -89,11 +86,9 @@ SMODS.Joker {
 			}
 		end
 	end,
-	set_badges = function(self, card, badges)
-		badges[#badges - 1] = create_badge("Hollow Knight", RSGC.C.HOLLOW, G.C.WHITE, 1)
-	end,
+
 }
-SMODS.Joker {
+RSGC.Joker {
 	key = 'sheo',
 	pools = {planar = true, hollow = true},
 	rarity = 2,
@@ -124,8 +119,5 @@ SMODS.Joker {
 				card = card,
 			}
 		end
-	end,
-	set_badges = function(self, card, badges)
-		badges[#badges - 1] = create_badge("Hollow Knight", RSGC.C.HOLLOW, G.C.WHITE, 1)
 	end,
 }

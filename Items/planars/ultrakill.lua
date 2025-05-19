@@ -137,7 +137,7 @@ RSGC.Joker {
 	config = { 
 	extra = {xred = 2, xredgain = 1, steelcardscorereq = 3, steelcardscored = 0} },
 	pools = {planar = true, ultrakill = true},
-	rarity = 4,
+	rarity = "rsgc_super_rare",
 	atlas = 'joke',
 	perishable_compat = true,
 	eternal_compat = true,

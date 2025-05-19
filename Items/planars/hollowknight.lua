@@ -90,7 +90,7 @@ RSGC.Joker {
 }
 RSGC.Joker {
 	key = 'sheo',
-	pools = {planar = true, hollow = true},
+	pools = {planar = true, hollow = true, gay = true},
 	rarity = 2,
 	atlas = 'joke',
 	blueprint_compat = true,

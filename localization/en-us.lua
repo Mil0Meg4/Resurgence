@@ -581,6 +581,7 @@ return {
             k_rsgc_aug_pack = "Tinker Pack",
             k_rsgc_gay = "Gay Pack",
             k_rsgc_prim = "Primordial",
+            k_rsgc_super_rare = "Absurd",
             k_rsgc_unb = "Unbound",
             k_augment = "Augment Card",
             k_tree_grow = "Grow!",
@@ -600,6 +601,7 @@ return {
         high_scores={},
         labels={
             rsgc_prim = "Primordial",
+            rsgc_super_rare = "Absurd",
             rsgc_unb = "Unbound",
             rsgc_paint_red = "Red Paint",
             rsgc_paint_blue = "Blue Paint",

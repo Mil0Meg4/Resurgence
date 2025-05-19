@@ -31,6 +31,12 @@ SMODS.Rarity({
 	badge_colour = RSGC.C.UNBOUND,
 	pools = {},
 })
+SMODS.Rarity({
+	key = "super_rare",
+	badge_colour = G.C.FILTER,
+	default_weight = 0.003,
+	pools = { ["Joker"] = true },
+})
 
 SMODS.Shader {
     key = 'tree',
@@ -822,6 +828,7 @@ RSGC.Joker({
 	key = "catJoker",
 	atlas = "joke",
 	pos = { x = 4, y = 9 },
+	pools = {gay = true},
 	rarity = 3,
 	cost = 7,
 	config = {
@@ -986,7 +993,7 @@ SMODS.Booster({
         return {vars = {(card and card.ability.choose or self.config.choose), card and card.ability.extra or self.config.extra}}
     end,
     create_card = function(self, card)
-		local legend = {"j_rsgc_gabriel"}
+		local legend = {"j_rsgc_gabriel","j_rsgc_alphys"}
 		local pollable_legends = {}
 		for i,v in ipairs(legend) do 
 			if G.P_CENTERS[v] and not (G.GAME.used_jokers[v] and not next(find_joker("Showman"))) then 

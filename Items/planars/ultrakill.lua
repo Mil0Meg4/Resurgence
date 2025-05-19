@@ -7,7 +7,7 @@ RSGC.Joker {
 	atlas = 'joke',
 	blueprint_compat = true,
 	eternal_compat = true,
-	pos = { x = 0, y = 1 },
+	pos = { x = 6, y = 0 },
 	cost = 1,
 	discovered = true,
 	loc_vars = function(self, info_queue, card)
@@ -29,7 +29,7 @@ RSGC.Joker {
 RSGC.Joker({
 	key = "gabriel",
 	atlas = "joke",
-	pos = { x = 0, y = 1 },
+	pos = { x = 6, y = 0 },
 	rarity = 4,
 	cost = 20,
 	config = {
@@ -81,6 +81,7 @@ RSGC.Joker({
 RSGC.Joker({
 	key = "gaba",
 	atlas = "joke",
+	pos = { x = 6, y = 0 },
 	rarity = "rsgc_unb",
 	cost = 30,
 	unlocked = true,
@@ -88,10 +89,6 @@ RSGC.Joker({
 	perishable_compat = false,
 	eternal_compat = true,
 	blueprint_compat = true,
-	pos = {
-		x = 0,
-		y = 1,
-	},
 	config = {
 		extra = {
 			xxmult = 1.25, --mult value to return
@@ -145,7 +142,7 @@ RSGC.Joker {
 	perishable_compat = true,
 	eternal_compat = true,
 	blueprint_compat = true,
-	pos = { x = 0, y = 1 },
+	pos = { x = 6, y = 1 },
 	cost = 20,
 	discovered = true,
 	loc_vars = function(self, info_queue, card)

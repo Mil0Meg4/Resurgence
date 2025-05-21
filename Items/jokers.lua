@@ -64,7 +64,7 @@ G.P_CENTERS.j_joker.unbound = {evo = "jimbo"}
 RSGC.Joker({
 	key = "jimbo",
 	atlas = 'joke',
-	pos = { x = 0, y = 0 },
+	pos = { x = 0, y = 9 },
 	rarity = "rsgc_unb",
 	cost = 3,
 	config = { extra = {mult = 5}},
@@ -88,6 +88,46 @@ RSGC.Joker({
 		end
 	end
 })
+
+--[[ RSGC.Joker({
+	key = "long",
+	atlas = 'long',
+	pos = { x = 0, y = 0 },
+	display_size = { w = 71*0.8, h = 757*0.8},
+	rarity = 1,
+	cost = 10,
+	config = { extra = {mult = 5}},
+	unlocked = true,
+	discovered = true,
+	perishable_compat = true,
+	eternal_compat = true,
+	blueprint_compat = true,
+	set_ability = function(self, card, initial,delay_sprites)
+		local do_play_sound = true
+		if G.your_collection then
+			for i = 1, #G.your_collection do
+				print(G.your_collection[i].cards)
+				for j = 1, #G.your_collection[i].cards do
+					if G.your_collection[i].cards[j] == card then
+						do_play_sound = false
+						break
+					end
+				end
+			end
+		end
+		if not G.your_collection then
+			RSGC.longlong = true
+			RSGC.long_started = G.TIMERS.REAL
+			play_sound("rsgc_long")
+		end
+	end,
+})
+
+local orig_draw_shader = Sprite.draw_shader
+function Sprite:draw_shader(_shader, _shadow_height, _send, _no_tilt, other_obj, ms, mr, mx, my, custom_shader, tilt_shadow)
+	if self.atlas.name == "rsgc_long" then tilt_shadow = (tilt_shadow or 1)*0.15 end
+	return orig_draw_shader(self,_shader, _shadow_height, _send, _no_tilt, other_obj, ms, mr, mx, my, custom_shader, tilt_shadow)
+end ]]
 
 RSGC.Joker({
 	key = "sinclair",

@@ -52,6 +52,12 @@ SMODS.Atlas{
     py = 95
 }
 SMODS.Atlas{
+    key = "long",
+    path = "long long joker.png",
+    px = 71,
+    py = 757,
+}
+SMODS.Atlas{
     key = "enha",
     path = "enhancement.png",
     px = 71,
@@ -149,6 +155,13 @@ end
 
 local orig_update = Game.update
 function Game:update(dt)
+
+    if RSGC.longlong then 
+        if G.TIMERS.REAL - RSGC.long_started > 24 then 
+            RSGC.longlong = false
+            RSGC.long_started = nil
+        end
+    end
     orig_update(self,dt)
 	local anim_timer = self.TIMERS.REAL * 1.5
 	local p = 0.5 * (math.sin(anim_timer) + 1)
@@ -222,6 +235,23 @@ SMODS.Sound({
 		return ((SMODS.OPENED_BOOSTER or {}).ability or {}).gay_pack
         and G.booster_pack and not G.booster_pack.REMOVED
         and 2
+	end
+})
+
+SMODS.Sound({
+	key = "long",
+	path = "long long man.ogg",
+	sync = false,
+    pitch = 1,
+})
+
+SMODS.Sound({
+	key = "music_silence",
+	path = "silence.ogg",
+	sync = true,
+    pitch = 1,
+	select_music_track = function()
+		return RSGC.longlong and 100
 	end
 })
 

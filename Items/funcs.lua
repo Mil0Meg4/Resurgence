@@ -370,13 +370,13 @@ end
 local orig_generate_UIBox_ability_table = Card.generate_UIBox_ability_table;
 function Card:generate_UIBox_ability_table()
 	local ret = orig_generate_UIBox_ability_table(self)
-	
+
 	local center_obj = self.config.center
-	
+
 	if center_obj and center_obj.discovered and ((center_obj.set and G.localization.descriptions[center_obj.set] 
 	and G.localization.descriptions[center_obj.set][center_obj.key]
 	and G.localization.descriptions[center_obj.set][center_obj.key].rsgc_subtitle) or center_obj.rsgc_subtitle) then
-	
+
 		if ret.name and ret.name ~= true then
 			local text = ret.name
 			--text[1].config.object.text_offset.y = text[1].config.object.text_offset.y - 14

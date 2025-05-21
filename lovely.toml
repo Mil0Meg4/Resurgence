@@ -172,4 +172,14 @@ end
 match_indent = true
 
 
+#makes long long jokers description actually visible inside the screen
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/overrides.lua"]'
+pattern = '''local sign = 1'''
+position = "before"
+payload = '''
+if self.config.center_key == "j_rsgc_long" then popup_direction = 'cl' end
+'''
+match_indent = true
 

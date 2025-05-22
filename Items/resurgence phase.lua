@@ -101,7 +101,7 @@ function RSGC.resurgence_info(_part)
                 
             end
         else
-            RSGC.create_card("Joker", G.jokers, nil, nil, nil, nil, "j_joker",nil,nil,function(card)
+            RSGC.create_card("Joker", G.jokers, nil, nil, nil, nil, "j_joker",nil,true,function(card)
 				card:set_edition({negative = true})
                 RSGC.unbound(card,function()
 					G.E_MANAGER:add_event(Event({trigger = 'after',func = function()

@@ -436,3 +436,14 @@ function RSGC.create_card(_type,area,legendary,_rarity,skip_materialize,soulable
         return true
     end
 end
+
+function RSGC.is_in_collection(card)
+	for j = 1, #(G.your_collection or {}) do
+		for i = 1, #((G.your_collection[j] or {}).cards or {}) do
+			if G.your_collection[j].cards[i] == card then 
+				return true
+			end
+		end
+	end
+	return false
+end

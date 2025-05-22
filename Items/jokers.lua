@@ -104,30 +104,64 @@ RSGC.Joker({
 	blueprint_compat = true,
 	set_ability = function(self, card, initial,delay_sprites)
 		local do_play_sound = true
-		if G.your_collection then
-			for i = 1, #G.your_collection do
-				print(G.your_collection[i].cards)
-				for j = 1, #G.your_collection[i].cards do
-					if G.your_collection[i].cards[j] == card then
-						do_play_sound = false
-						break
-					end
-				end
+		G.E_MANAGER:add_event(Event({func = function()
+			if not RSGC.is_in_collection(card) then
+				RSGC.longlong = true
+				RSGC.long_started = G.TIMERS.REAL
+				play_sound("rsgc_long")
 			end
-		end
-		if not G.your_collection then
-			RSGC.longlong = true
-			RSGC.long_started = G.TIMERS.REAL
-			play_sound("rsgc_long")
-		end
+			return true
+		end}))
 	end,
-})
+}) ]]
+
+function create_UIBox_your_collection_jokers()
+  local deck_tables = {}
+
+  G.your_collection = {}
+  for j = 1, 3 do
+    G.your_collection[j] = CardArea(
+      G.ROOM.T.x + 0.2*G.ROOM.T.w/2,G.ROOM.T.h,
+      5*G.CARD_W,
+      0.95*G.CARD_H, 
+      {card_limit = 5, type = 'title', highlight_limit = 0, collection = true})
+    table.insert(deck_tables, 
+    {n=G.UIT.R, config={align = "cm", padding = 0.07, no_fill = true}, nodes={
+      {n=G.UIT.O, config={object = G.your_collection[j]}}
+    }}
+    )
+  end
+
+  local joker_options = {}
+  for i = 1, math.ceil(#G.P_CENTER_POOLS.Joker/(5*#G.your_collection)) do
+    table.insert(joker_options, localize('k_page')..' '..tostring(i)..'/'..tostring(math.ceil(#G.P_CENTER_POOLS.Joker/(5*#G.your_collection))))
+  end
+
+  for i = 1, 5 do
+    for j = 1, #G.your_collection do
+      local center = G.P_CENTER_POOLS["Joker"][i+(j-1)*5]
+      local card = Card(G.your_collection[j].T.x + G.your_collection[j].T.w/2, G.your_collection[j].T.y, G.CARD_W, G.CARD_H, nil, center)
+      card.sticker = get_joker_win_sticker(center)
+      G.your_collection[j]:emplace(card)
+    end
+  end
+
+  INIT_COLLECTION_CARD_ALERTS()
+  
+  local t =  create_UIBox_generic_options({ back_func = 'your_collection', contents = {
+        {n=G.UIT.R, config={align = "cm", r = 0.1, colour = G.C.BLACK, emboss = 0.05}, nodes=deck_tables}, 
+        {n=G.UIT.R, config={align = "cm"}, nodes={
+          create_option_cycle({options = joker_options, w = 4.5, cycle_shoulders = true, opt_callback = 'your_collection_joker_page', current_option = 1, colour = G.C.RED, no_pips = true, focus_args = {snap_to = true, nav = 'wide'}})
+        }}
+    }})
+  return t
+end
 
 local orig_draw_shader = Sprite.draw_shader
 function Sprite:draw_shader(_shader, _shadow_height, _send, _no_tilt, other_obj, ms, mr, mx, my, custom_shader, tilt_shadow)
 	if self.atlas.name == "rsgc_long" then tilt_shadow = (tilt_shadow or 1)*0.15 end
 	return orig_draw_shader(self,_shader, _shadow_height, _send, _no_tilt, other_obj, ms, mr, mx, my, custom_shader, tilt_shadow)
-end ]]
+end
 
 RSGC.Joker({
 	key = "sinclair",

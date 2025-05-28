@@ -12,7 +12,7 @@ return {
             e_rsgc_divine = {
                 name = "Divine",
                 text = {
-                    "Upgrade layed",
+                    "Upgrade played",
                     "hand {C:attention}#1#{} time"
                 }
             },

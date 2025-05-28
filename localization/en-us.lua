@@ -12,7 +12,7 @@ return {
             e_rsgc_divine = {
                 name = "Divine",
                 text = {
-                    "Level up layed",
+                    "Upgrade layed",
                     "hand {C:attention}#1#{} time"
                 }
             },
@@ -45,7 +45,8 @@ return {
                 text = {"At end of {C:money}shop{},",
                         "adds {C:dark_edition}Divine{} to",
                         "Joker to the right",
-                        "Each {C:dark_edition}Divine{} Joker gives {X:mult,C:white}X#1#{} Mult"
+                        "Each {C:dark_edition}Divine{} Joker",
+                        "gives {X:mult,C:white}X#1#{} Mult"
                 }
             },
             j_rsgc_gaba = {

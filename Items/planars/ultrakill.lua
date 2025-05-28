@@ -29,7 +29,8 @@ RSGC.Joker {
 RSGC.Joker({
 	key = "gabriel",
 	atlas = "joke",
-	pos = { x = 6, y = 0 },
+	pos = { x = 6, y = 2 },
+	soul_pos = { x = 6, y = 3 },
 	rarity = 4,
 	cost = 20,
 	config = {
@@ -81,7 +82,8 @@ RSGC.Joker({
 RSGC.Joker({
 	key = "gaba",
 	atlas = "joke",
-	pos = { x = 6, y = 0 },
+	pos = { x = 6, y = 4 },
+	soul_pos = { x = 6, y = 5 },
 	rarity = "rsgc_unb",
 	cost = 30,
 	unlocked = true,
@@ -143,7 +145,7 @@ RSGC.Joker {
 	eternal_compat = true,
 	blueprint_compat = true,
 	pos = { x = 6, y = 1 },
-	cost = 20,
+	cost = 10,
 	discovered = true,
 	loc_vars = function(self, info_queue, card)
 		local rsgc = card.ability.extra --to avoid typing card.ability.extra each time. Not needed but very handy

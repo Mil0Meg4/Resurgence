@@ -1,12 +1,7 @@
 SMODS.Rarity({
 	key = "prim",
 	badge_colour = RSGC.C.PRIMORDIAL,
-	pools = {
-		["Joker"] = {
-			rate = 0 --G.GAME and 0.002 * math.floor((G.GAME.round_resets.ante - 1)/4) or 0.002, --formula for how rare primordials are. They can't apperar before ante 5 and the chances increase every 4 antes
-		},
-	},
-	default_weight = 0 --0.002
+	pools = {},
 })
 --[[ function RSGC.literally_me_fr(card,joker_key)
     G.E_MANAGER:add_event(Event({

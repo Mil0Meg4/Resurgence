@@ -20,10 +20,9 @@ RSGC.GRADIENTS = {
     ULTRA = {RSGC.C.VAMPIRICA,G.C.BLACK},
     VAMP = {RSGC.C.VAMPIRICA,G.C.MONEY},
     HOLLOW = {HEX("6b8cad"),G.C.BLACK},
-    PRIMORDIAL = {RSGC.C.VAMPIRICA,HEX("52134b")},
+    PRIMORDIAL = {HEX("3D3446"),G.C.PURPLE},
     UNBOUND = {HEX("bc5a25"),RSGC.C.VAMPIRICA},
     ARTIFACT = {HEX("40b5c4"),HEX("a8ced3")}
-
 }
 SMODS.load_file("Items/funcs.lua")()
 SMODS.load_file("Items/ui.lua")()

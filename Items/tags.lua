@@ -2,7 +2,7 @@ SMODS.Tag({
     key = 'boy',
     atlas = 'tags',
     pos = {x = 0, y = 0},
-    discovered = false,
+    discovered = true,
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS.p_rsgc_gay
     end,

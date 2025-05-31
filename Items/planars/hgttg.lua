@@ -8,7 +8,7 @@ RSGC.Joker({
 	immutable = true,
 	config = {extra = {mult = 21, x_mult = 1.2}},
 	unlocked = true,
-	discovered = false,
+	discovered = true,
 	perishable_compat = true,
 	eternal_compat = true,
 	blueprint_compat = true,

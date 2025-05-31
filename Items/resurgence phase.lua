@@ -92,6 +92,7 @@ function RSGC.resurgence_info(_part)
         if next(SMODS.find_card("j_joker")) then
             for k,v in pairs(SMODS.find_card("j_joker")) do
 				v:set_edition({negative = true})
+                v.ability.unbound = {evo = "jimbo"}
                 RSGC.unbound(v,function()
 					G.E_MANAGER:add_event(Event({trigger = 'after',func = function()
 						save_run()
@@ -103,6 +104,7 @@ function RSGC.resurgence_info(_part)
         else
             RSGC.create_card("Joker", G.jokers, nil, nil, nil, nil, "j_joker",nil,true,function(card)
 				card:set_edition({negative = true})
+                card.ability.unbound = {evo = "jimbo"}
                 RSGC.unbound(card,function()
 					G.E_MANAGER:add_event(Event({trigger = 'after',func = function()
 						save_run()

@@ -171,6 +171,10 @@ function Game:update(dt)
 		for i = 1, 4 do
 			RSGC.C[k][i] = c[1][i] * p + c[2][i] * (1 - p)
 		end
+        if G.ARGS.LOC_COLOURS then 
+            ---@diagnostic disable-next-line: assign-type-mismatch
+            G.ARGS.LOC_COLOURS["rsgc_"..string.lower(k)] = RSGC.C[k]
+        end
 	end
     local r, g, b = hsv(RSGC.C.GAY_HUE / 360, .5, 1)
 
@@ -181,7 +185,7 @@ function Game:update(dt)
     RSGC.C.GAY_HUE = (RSGC.C.GAY_HUE + 0.5) % 360
 
     if G.ARGS.LOC_COLOURS then 
-        G.ARGS.LOC_COLOURS.rsgc_gay = RSGC.C.GAY 
+        G.ARGS.LOC_COLOURS.rsgc_gay = RSGC.C.GAY
     end
     if ((SMODS.OPENED_BOOSTER or {}).ability or {}).gay_pack
     and G.booster_pack and not G.booster_pack.REMOVED then 

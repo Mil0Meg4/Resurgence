@@ -390,7 +390,11 @@ return {
                 rsgc_subtitle = "True Form",
                 text = {
                     "{C:mult}+#1#{} Mult",
-                }
+                },
+                unlock={
+                    "Start the",
+                    "{C:rsgc_primordial}Resurgence",
+                },
             },
         },
         Augment={

@@ -317,7 +317,7 @@ RSGC.Joker({
 RSGC.Joker({
 	key = "bartender",
 	atlas = "joke",
-	pos = { x = 0, y = 0 },
+	pos = { x = 5, y = 3 },
 	rarity = 2,
 	cost = 6,
 	config = { extra = { mult = 5, con_slot = 1 } },

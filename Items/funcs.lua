@@ -70,7 +70,12 @@ end
 --Sets a joker's Tweak, repleacing previous one
 function RSGC.set_tweak(card, type)
     local key = 'rsgc_' .. type
-  
+
+	--V1 stuff
+	if next(SMODS.find_card("j_rsgc_v1")) then
+		RSGC.set_paint(card, "red")
+	end
+
     if card and RSGC.is_tweak(key) then
         RSGC.remove_tweak(card)
         SMODS.Stickers[key]:apply(card, true)

@@ -328,9 +328,10 @@ return {
             j_rsgc_v1 = {
                 name = 'V1',
                 text = {"{C:attention}X#1#{} value of {C:red}Red Paint",
-                "Increases value by {C:attention}X#2#",
-                "every {C:attention}#3#{} scored {C:attention}Steel Cards",
-                "{C:inactive}(Currently {C:attention}#4#{C:inactive}/#3#){}"
+                "Increases by {C:attention}X#2#{} every",
+                "{C:attention}#3#{} {C:inactive}[#4#]{} {C:attention}Steel Cards{} scored",
+                "Whenever a Joker is",
+                "{C:attention}Tweaked{}, paint it {C:red}Red",
                 }
             },
             j_rsgc_sos = {

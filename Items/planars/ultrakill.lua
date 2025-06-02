@@ -150,6 +150,7 @@ RSGC.Joker {
 	loc_vars = function(self, info_queue, card)
 		local rsgc = card.ability.extra --to avoid typing card.ability.extra each time. Not needed but very handy
 		info_queue[#info_queue + 1] = G.P_CENTERS.m_steel
+		info_queue[#info_queue + 1] = RSGC.paint_tooltip("red")
 		return {
 			vars = { rsgc.xred, rsgc.xredgain, rsgc.steelcardscorereq,rsgc.steelcardscored }, --for example in here rsgc = card.ability.extra. Also this is needed to display the values in the desc of the card
 		}

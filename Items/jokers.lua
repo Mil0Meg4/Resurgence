@@ -1075,9 +1075,17 @@ RSGC.Joker({
 	perishable_compat = true,
 	eternal_compat = true,
 	blueprint_compat = true,
+	loc_vars = function(self, info_queue, card)
+			local rsgc = card.ability.extra
+			local tally = G.GAME and G.GAME.hands.Pair.played or 0
+			return {
+			vars = { rsgc.mult, rsgc.chips, tally * rsgc.mult, tally * rsgc.chips},
+		}
+	end,
 	calculate = function(self, card, context)
 		if context.joker_main then
 		local rsgc = card.ability.extra
+
 		return {
 		mult = rsgc.mult * G.GAME.hands.Pair.played,
 		chips = rsgc.chips * G.GAME.hands.Pair.played
@@ -1102,6 +1110,13 @@ RSGC.Joker({
 	perishable_compat = true,
 	eternal_compat = true,
 	blueprint_compat = true,
+	loc_vars = function(self, info_queue, card)
+		local rsgc = card.ability.extra
+		local tally = G.GAME and G.GAME.hands.Straight.played or 0
+		return {
+		vars = { rsgc.chips, tally * rsgc.chips},
+	}
+	end,
 	calculate = function(self, card, context)
 		if context.joker_main then
 		local rsgc = card.ability.extra

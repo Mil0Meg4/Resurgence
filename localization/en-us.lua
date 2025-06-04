@@ -90,6 +90,12 @@ return {
                         "before scoring"
                 }
             },
+                        j_rsgc_kai = {
+                name = 'Bi Kai',
+                text = {
+                        "{C:red}+#2#{} Mult and Chips per played Pair this run "
+                }
+            },
             j_rsgc_sans = {
                 name = 'Sans',
                 text = {"When selecting {C:attention}Blind{}, get",

@@ -55,6 +55,7 @@ function RSGC.unbound(card,func)
 	}))
 	return {
 		message = localize('k_rsgc_unb'),
+		focus = card,
 		colour = RSGC.C.UNBOUND,
 		card = card
 	}

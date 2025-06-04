@@ -44,6 +44,7 @@ RSGC.Joker({
 	eternal_compat = true,
 	blueprint_compat = true,
 	pools = {planar = true, ultrakill = true},
+	unbound = {evo = "gaba"},
 	loc_vars = function(self, info_queue, card)
 		local rsgc = card.ability.extra
 		return {
@@ -51,6 +52,10 @@ RSGC.Joker({
 		}
 	end,
 	calculate = function(self, card, context)
+		if not (card.edition and card.edition.key == "e_rsgc_divine") and not card.unbounding then
+			card.unbounding = true
+			return RSGC.unbound(card)
+		end
 		local rsgc = card.ability.extra
 		if context.other_joker then
 			if context.other_joker.edition then
@@ -79,6 +84,7 @@ RSGC.Joker({
         card:set_edition({ rsgc_divine = true }, true)
 	end,
 })
+
 RSGC.Joker({
 	key = "gaba",
 	atlas = "joke",

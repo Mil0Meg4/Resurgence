@@ -55,6 +55,7 @@ function RSGC.unbound(card,func)
 	}))
 	return {
 		message = localize('k_rsgc_unb'),
+		focus = card,
 		colour = RSGC.C.UNBOUND,
 		card = card
 	}
@@ -357,7 +358,7 @@ RSGC.Joker({
 RSGC.Joker({
 	key = "pride_rainbow",
 	atlas = "joke",
-	rarity = 3,
+	rarity = 2,
 	cost = 10,
 	unlocked = true,
 	discovered = true,
@@ -378,7 +379,7 @@ RSGC.Joker({
 RSGC.Joker({
 	key = "pride_pan",
 	atlas = "joke",
-	rarity = 3,
+	rarity = 2,
 	cost = 10,
 	unlocked = true,
 	discovered = true,
@@ -404,7 +405,7 @@ RSGC.Joker({
 RSGC.Joker({
 	key = "pride_bi",
 	atlas = "joke",
-	rarity = 3,
+	rarity = 2,
 	cost = 10,
 	unlocked = true,
 	discovered = true,
@@ -430,7 +431,7 @@ RSGC.Joker({
 RSGC.Joker({
 	key = "pride_trans",
 	atlas = "joke",
-	rarity = 3,
+	rarity = 2,
 	cost = 10,
 	unlocked = true,
 	discovered = true,
@@ -456,7 +457,7 @@ RSGC.Joker({
 RSGC.Joker({
 	key = "pride_lesbian",
 	atlas = "joke",
-	rarity = 3,
+	rarity = 2,
 	cost = 10,
 	unlocked = true,
 	discovered = true,
@@ -482,7 +483,7 @@ RSGC.Joker({
 RSGC.Joker({
 	key = "pride_gay",
 	atlas = "joke",
-	rarity = 3,
+	rarity = 2,
 	cost = 10,
 	unlocked = true,
 	discovered = true,
@@ -508,7 +509,7 @@ RSGC.Joker({
 RSGC.Joker({
 	key = "pride_nb",
 	atlas = "joke",
-	rarity = 3,
+	rarity = 2,
 	cost = 10,
 	unlocked = true,
 	discovered = true,
@@ -534,7 +535,7 @@ RSGC.Joker({
 RSGC.Joker({
 	key = "pride_ace",
 	atlas = "joke",
-	rarity = 3,
+	rarity = 2,
 	cost = 10,
 	unlocked = true,
 	discovered = true,
@@ -560,7 +561,7 @@ RSGC.Joker({
 RSGC.Joker({
 	key = "pride_aro",
 	atlas = "joke",
-	rarity = 3,
+	rarity = 2,
 	cost = 10,
 	unlocked = true,
 	discovered = true,
@@ -586,7 +587,7 @@ RSGC.Joker({
 RSGC.Joker({
 	key = "pride_aroace",
 	atlas = "joke",
-	rarity = 3,
+	rarity = 2,
 	cost = 10,
 	unlocked = true,
 	discovered = true,

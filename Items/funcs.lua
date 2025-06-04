@@ -215,12 +215,12 @@ function RSGC.poll_flag(_key)
 		trans = 6,
 		lesbian = 6,
 		bi = 7,
-		gay = 9,
-		nb = 6,
-		ace = 5,
+		gay = 6,
+		nb = 7,
+		ace = 6,
 		aro = 6,
-		acoace = 7,
-		pan = 9,
+		acoace = 6,
+		pan = 6,
 	}
 	local total_weight = 0
 	for k, v in pairs(pool) do

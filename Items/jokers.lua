@@ -1061,13 +1061,12 @@ RSGC.Joker({
 RSGC.Joker({
 	key = "kai",
 	atlas = "joke",
-	pos = { x = 1, y = 1 },
+	pos = { x = 5, y = 4 },
 	rarity = 3,
 	cost = 10,
 	config = {
 		extra = {
-			mult = 2,
-			chips = 2
+			mult_chips = 2,
 		},
 	},
 	unlocked = true,
@@ -1079,7 +1078,7 @@ RSGC.Joker({
 			local rsgc = card.ability.extra
 			local tally = G.GAME and G.GAME.hands.Pair.played or 0
 			return {
-			vars = { rsgc.mult, rsgc.chips, tally * rsgc.mult, tally * rsgc.chips},
+			vars = { rsgc.mult_chips, tally * rsgc.mult_chips},
 		}
 	end,
 	calculate = function(self, card, context)
@@ -1087,8 +1086,8 @@ RSGC.Joker({
 		local rsgc = card.ability.extra
 
 		return {
-		mult = rsgc.mult * G.GAME.hands.Pair.played,
-		chips = rsgc.chips * G.GAME.hands.Pair.played
+		mult = rsgc.mult_chips * G.GAME.hands.Pair.played,
+		chips = rsgc.mult_chips * G.GAME.hands.Pair.played
 		}
 		end
 	end

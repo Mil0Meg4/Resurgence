@@ -94,8 +94,16 @@ return {
                 name = 'Bi Kai',
                 text = {
                         "{C:purple}+#1#{} Chips and Mult",
-                        "per played {C:attention}Pair{} this run",
+                        "{C:attention}Pair{} per played this run",
                         "{C:inactive}(Currently {C:purple}+#2#{C:inactive} Chips and Mult)"
+                }
+            },
+            j_rsgc_kate = {
+                name = 'Straight Kate',
+                text = {
+                        "{C:chips}+#1#{} Chips per {C:attention}Straight{} ",
+                        "played this run",
+                        "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
                 }
             },
             j_rsgc_sans = {

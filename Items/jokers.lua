@@ -1056,6 +1056,62 @@ RSGC.Joker({
 	end,
 })
 
+
+RSGC.Joker({
+	key = "kai",
+	atlas = "joke",
+	pos = { x = 1, y = 1 },
+	rarity = 3,
+	cost = 10,
+	config = {
+		extra = {
+			mult = 2,
+			chips = 2
+		},
+	},
+	unlocked = true,
+	discovered = true,
+	perishable_compat = true,
+	eternal_compat = true,
+	blueprint_compat = true,
+	calculate = function(self, card, context)
+		if context.joker_main then
+		local rsgc = card.ability.extra
+		return {
+		mult = rsgc.mult * G.GAME.hands.Pair.played,
+		chips = rsgc.chips * G.GAME.hands.Pair.played
+		}
+		end
+	end
+})
+
+RSGC.Joker({
+	key = "kate",
+	atlas = "joke",
+	pos = { x = 1, y = 1 },
+	rarity = 1,
+	cost = 4,
+	config = {
+		extra = {
+			chips = 10
+		},
+	},
+	unlocked = true,
+	discovered = true,
+	perishable_compat = true,
+	eternal_compat = true,
+	blueprint_compat = true,
+	calculate = function(self, card, context)
+		if context.joker_main then
+		local rsgc = card.ability.extra
+		return {
+		chips = rsgc.chips * G.GAME.hands.Straight.played
+		}
+		end
+	end
+})
+
+
 --Boosters
 SMODS.Booster({
     key = 'gay',

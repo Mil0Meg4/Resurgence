@@ -1083,12 +1083,12 @@ RSGC.Joker({
 	end,
 	calculate = function(self, card, context)
 		if context.joker_main then
-		local rsgc = card.ability.extra
+			local rsgc = card.ability.extra
 
-		return {
-		mult = rsgc.mult_chips * G.GAME.hands.Pair.played,
-		chips = rsgc.mult_chips * G.GAME.hands.Pair.played
-		}
+			return {
+				mult = rsgc.mult_chips * G.GAME.hands.Pair.played,
+				chips = rsgc.mult_chips * G.GAME.hands.Pair.played
+			}
 		end
 	end
 })
@@ -1112,16 +1112,15 @@ RSGC.Joker({
 	loc_vars = function(self, info_queue, card)
 		local rsgc = card.ability.extra
 		local tally = G.GAME and G.GAME.hands.Straight.played or 0
-		return {
-		vars = { rsgc.chips, tally * rsgc.chips},
+		return {vars = { rsgc.chips, tally * rsgc.chips},
 	}
 	end,
 	calculate = function(self, card, context)
 		if context.joker_main then
-		local rsgc = card.ability.extra
-		return {
-		chips = rsgc.chips * G.GAME.hands.Straight.played
-		}
+			local rsgc = card.ability.extra
+			return {
+				chips = rsgc.chips * G.GAME.hands.Straight.played
+			}
 		end
 	end
 })

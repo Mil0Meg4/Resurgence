@@ -21,7 +21,7 @@ RSGC.Joker({
 	calculate = function(self, card, context)
 		if context.scoring_42 or (context.cardarea == G.play and context.individual) then
             local _card = context.other_card
-			if _card.base.value == "rsgc_42" then
+			if RSGC.is_macro(_card) and _card:get_id() == 42 then
                 local rsgc = card.ability.extra
                 return {
                     mult = rsgc.mult,

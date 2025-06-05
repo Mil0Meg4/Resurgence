@@ -90,10 +90,20 @@ return {
                         "before scoring"
                 }
             },
-                        j_rsgc_kai = {
+            j_rsgc_kai = {
                 name = 'Bi Kai',
                 text = {
-                        "{C:red}+#2#{} Mult and Chips per played Pair this run "
+                        "{C:purple}+#1#{} Chips and Mult",
+                        "{C:attention}Pair{} per played this run",
+                        "{C:inactive}(Currently {C:purple}+#2#{C:inactive} Chips and Mult)"
+                }
+            },
+            j_rsgc_kate = {
+                name = 'Straight Kate',
+                text = {
+                        "{C:chips}+#1#{} Chips per {C:attention}Straight{} ",
+                        "played this run",
+                        "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
                 }
             },
             j_rsgc_sans = {

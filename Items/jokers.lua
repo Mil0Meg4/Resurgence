@@ -1127,6 +1127,33 @@ RSGC.Joker({
 	end
 })
 
+RSGC.Joker({
+	key = "42wallbreak",
+	atlas = "joke",
+	pos = { x = 1, y = 1 },
+	rarity = 3,
+	cost = 19,
+	config = {
+		extra = {
+			retriggers = 2
+		},
+	},
+	unlocked = true,
+	discovered = true,
+	perishable_compat = true,
+	eternal_compat = true,
+	blueprint_compat = true,
+	calculate = function(self, card, context)
+		local rsgc = card.ability.extra
+		if context.repetition and context.cardarea == G.play then
+			if RSGC.is_macro(context.other_card) and context.other_card:get_id() == 42 then
+		return {
+		repetitions = rsgc.retriggers
+		}
+		end
+	end
+	end
+})
 
 --Boosters
 SMODS.Booster({

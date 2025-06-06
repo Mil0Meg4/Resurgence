@@ -21,7 +21,7 @@ RSGC.Joker({
 	calculate = function(self, card, context)
 		if context.scoring_42 or (context.cardarea == G.play and context.individual) then
             local _card = context.other_card
-			if RSGC.is_macro(_card) and _card:get_id() == 42 then
+			if _card:get_id() == SMODS.Ranks["rsgc_42"].id then
                 local rsgc = card.ability.extra
                 return {
                     mult = rsgc.mult,

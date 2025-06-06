@@ -215,6 +215,7 @@ function SMODS.current_mod.reset_game_globals(run_start)
         G.GAME.resurging = false
         G.GAME.resurging_started = false
         G.GAME.macro_ranks = G.GAME.macro_ranks or false
+        G.GAME.micro_ranks = G.GAME.micro_ranks or false
         G.GAME.current_pride_flag = RSGC.poll_flag("game_start")
         G.GAME.tinfoil_count = (G.GAME.tinfoil_count or false)
     end

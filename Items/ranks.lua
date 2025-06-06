@@ -32,6 +32,7 @@ SMODS.Rank {
 }
 
 table.insert(SMODS.Ranks['10'].next, 'rsgc_11')--add 11 after 10
+table.insert(SMODS.Ranks['Ace'].next, 'rsgc_0.9')--add 0.9 before Ace
 --11
 SMODS.Rank {
 
@@ -338,8 +339,309 @@ SMODS.Rank {
 
     straight_edge = true,
 
+    rsgc_macro = true,
 	in_pool = function(self, args)
         return G.GAME.macro_ranks
+    end
+}
+
+SMODS.Rank {
+
+    key = '0.1',
+    card_key = '0.1',
+
+    hc_atlas = 'ranks_hc',
+    lc_atlas = 'ranks_lc',
+    pos = { x = 13 },
+
+    suit_map={
+        Hearts = 0,
+        Clubs = 1,
+        Diamonds = 2,
+        Spades = 3,
+        rsgc_suitless = 4
+    },
+
+    next = { 'rsgc_0.2' },
+	--prev = { 'rsgc_19' },
+
+    nominal = 0.1,
+    shorthand = '0.1',
+    hidden = true,
+
+    rsgc_micro = true,
+	in_pool = function(self, args)
+        return G.GAME.micro_ranks
+    end
+}
+
+SMODS.Rank {
+
+    key = '0.2',
+    card_key = '0.2',
+
+    hc_atlas = 'ranks_hc',
+    lc_atlas = 'ranks_lc',
+    pos = { x = 14 },
+
+    suit_map={
+        Hearts = 0,
+        Clubs = 1,
+        Diamonds = 2,
+        Spades = 3,
+        rsgc_suitless = 4
+    },
+
+    next = { 'rsgc_0.3' },
+	prev = { 'rsgc_0.1' },
+
+    nominal = 0.2,
+    shorthand = '0.2',
+    hidden = true,
+
+    rsgc_micro = true,
+	in_pool = function(self, args)
+        return G.GAME.micro_ranks
+    end
+}
+
+SMODS.Rank {
+
+    key = '0.3',
+    card_key = '0.3',
+
+    hc_atlas = 'ranks_hc',
+    lc_atlas = 'ranks_lc',
+    pos = { x = 15 },
+
+    suit_map={
+        Hearts = 0,
+        Clubs = 1,
+        Diamonds = 2,
+        Spades = 3,
+        rsgc_suitless = 4
+    },
+
+    next = { 'rsgc_0.4' },
+	prev = { 'rsgc_0.2' },
+
+    nominal = 0.3,
+    shorthand = '0.3',
+    hidden = true,
+
+    rsgc_micro = true,
+	in_pool = function(self, args)
+        return G.GAME.micro_ranks
+    end
+}
+
+SMODS.Rank {
+
+    key = '0.4',
+    card_key = '0.4',
+
+    hc_atlas = 'ranks_hc',
+    lc_atlas = 'ranks_lc',
+    pos = { x = 16 },
+
+    suit_map={
+        Hearts = 0,
+        Clubs = 1,
+        Diamonds = 2,
+        Spades = 3,
+        rsgc_suitless = 4
+    },
+
+    next = { 'rsgc_0.5' },
+	prev = { 'rsgc_0.3' },
+
+    nominal = 0.4,
+    shorthand = '0.4',
+    hidden = true,
+
+    rsgc_micro = true,
+	in_pool = function(self, args)
+        return G.GAME.micro_ranks
+    end
+}
+
+SMODS.Rank {
+
+    key = '0.5',
+    card_key = '0.5',
+
+    hc_atlas = 'ranks_hc',
+    lc_atlas = 'ranks_lc',
+    pos = { x = 17 },
+
+    suit_map={
+        Hearts = 0,
+        Clubs = 1,
+        Diamonds = 2,
+        Spades = 3,
+        rsgc_suitless = 4
+    },
+
+    next = { 'rsgc_0.6' },
+	prev = { 'rsgc_0.4' },
+
+    nominal = 0.5,
+    shorthand = '0.5',
+    hidden = true,
+
+    rsgc_micro = true,
+	in_pool = function(self, args)
+        return G.GAME.micro_ranks
+    end
+}
+
+SMODS.Rank {
+
+    key = '0.6',
+    card_key = '0.6',
+
+    hc_atlas = 'ranks_hc',
+    lc_atlas = 'ranks_lc',
+    pos = { x = 18 },
+
+    suit_map={
+        Hearts = 0,
+        Clubs = 1,
+        Diamonds = 2,
+        Spades = 3,
+        rsgc_suitless = 4
+    },
+
+    next = { 'rsgc_0.7' },
+	prev = { 'rsgc_0.5' },
+
+    nominal = 0.6,
+    shorthand = '0.6',
+    hidden = true,
+
+    rsgc_micro = true,
+	in_pool = function(self, args)
+        return G.GAME.micro_ranks
+    end
+}
+
+SMODS.Rank {
+
+    key = '0.7',
+    card_key = '0.7',
+
+    hc_atlas = 'ranks_hc',
+    lc_atlas = 'ranks_lc',
+    pos = { x = 19 },
+
+    suit_map={
+        Hearts = 0,
+        Clubs = 1,
+        Diamonds = 2,
+        Spades = 3,
+        rsgc_suitless = 4
+    },
+
+    next = { 'rsgc_0.8' },
+	prev = { 'rsgc_0.6' },
+
+    nominal = 0.7,
+    shorthand = '0.7',
+    hidden = true,
+
+    rsgc_micro = true,
+	in_pool = function(self, args)
+        return G.GAME.micro_ranks
+    end
+}
+
+SMODS.Rank {
+
+    key = '0.8',
+    card_key = '0.8',
+
+    hc_atlas = 'ranks_hc',
+    lc_atlas = 'ranks_lc',
+    pos = { x = 20 },
+
+    suit_map={
+        Hearts = 0,
+        Clubs = 1,
+        Diamonds = 2,
+        Spades = 3,
+        rsgc_suitless = 4
+    },
+
+    next = { 'rsgc_0.9' },
+	prev = { 'rsgc_0.7' },
+
+    nominal = 0.8,
+    shorthand = '0.8',
+    hidden = true,
+
+    rsgc_micro = true,
+	in_pool = function(self, args)
+        return G.GAME.micro_ranks
+    end
+}
+
+SMODS.Rank {
+
+    key = '0.9',
+    card_key = '0.9',
+
+    hc_atlas = 'ranks_hc',
+    lc_atlas = 'ranks_lc',
+    pos = { x = 21 },
+
+    suit_map={
+        Hearts = 0,
+        Clubs = 1,
+        Diamonds = 2,
+        Spades = 3,
+        rsgc_suitless = 4
+    },
+
+    next = { 'Ace', 'rsgc_1' },
+	prev = { 'rsgc_0.8' },
+
+    nominal = 0.9,
+    shorthand = '0.9',
+    hidden = true,
+
+    rsgc_micro = true,
+	in_pool = function(self, args)
+        return G.GAME.micro_ranks
+    end
+}
+
+SMODS.Rank {
+
+    key = '1',
+    card_key = '1',
+
+    hc_atlas = 'ranks_hc',
+    lc_atlas = 'ranks_lc',
+    pos = { x = 22 },
+
+    suit_map={
+        Hearts = 0,
+        Clubs = 1,
+        Diamonds = 2,
+        Spades = 3,
+        rsgc_suitless = 4
+    },
+
+    next = { '2' },
+	prev = { 'rsgc_0.9' },
+
+    nominal = 1,
+    shorthand = '1',
+    hidden = true,
+
+    rsgc_micro = true,
+	in_pool = function(self, args)
+        return G.GAME.micro_ranks
     end
 }
 
@@ -369,6 +671,7 @@ SMODS.Rank {
 
     straight_edge = true,
 
+    rsgc_macro = true,
 	in_pool = function(self, args)
         return G.GAME.macro_ranks
     end

@@ -27,12 +27,16 @@ SMODS.Rank {
 
     rsgc_macro = true,
 	in_pool = function(self, args)
-        return false
+        for k, v in pairs(G.playing_cards or {}) do
+			if v.base.value == "rsgc_42" then return true end
+		end
+		return false
     end
 }
 
 table.insert(SMODS.Ranks['10'].next, 'rsgc_11')--add 11 after 10
-table.insert(SMODS.Ranks['Ace'].next, 'rsgc_0.9')--add 0.9 before Ace
+table.insert(SMODS.Ranks['Ace'].prev, 'rsgc_0.9')--add 0.9 before Ace
+table.insert(SMODS.Ranks['2'].prev, 'rsgc_1')--add 1 before 2
 --11
 SMODS.Rank {
 
@@ -50,7 +54,7 @@ SMODS.Rank {
         Spades = 3,
         rsgc_suitless = 4
     },
-    
+  
     next = { 'rsgc_12' },
 	prev = { '10' },
 
@@ -61,7 +65,7 @@ SMODS.Rank {
 
     rsgc_macro = true,
 	in_pool = function(self, args)
-        return G.GAME.macro_ranks
+        return RSGC.macro_pool()
     end
 }
 --12
@@ -81,7 +85,7 @@ SMODS.Rank {
         Spades = 3,
         rsgc_suitless = 4
     },
-    
+
     next = { 'rsgc_13' },
 	prev = { 'rsgc_11' },
 
@@ -91,7 +95,7 @@ SMODS.Rank {
 
     rsgc_macro = true,
 	in_pool = function(self, args)
-        return G.GAME.macro_ranks
+        return RSGC.macro_pool()
     end
 }
 
@@ -122,7 +126,7 @@ SMODS.Rank {
 
     rsgc_macro = true,
 	in_pool = function(self, args)
-        return G.GAME.macro_ranks
+        return RSGC.macro_pool()
     end
 }
 
@@ -153,7 +157,7 @@ SMODS.Rank {
 
     rsgc_macro = true,
 	in_pool = function(self, args)
-        return G.GAME.macro_ranks
+        return RSGC.macro_pool()
     end
 }
 
@@ -184,7 +188,7 @@ SMODS.Rank {
 
     rsgc_macro = true,
 	in_pool = function(self, args)
-        return G.GAME.macro_ranks
+        return RSGC.macro_pool()
     end
 }
 
@@ -215,7 +219,7 @@ SMODS.Rank {
 
     rsgc_macro = true,
 	in_pool = function(self, args)
-        return G.GAME.macro_ranks
+        return RSGC.macro_pool()
     end
 }
 
@@ -246,7 +250,7 @@ SMODS.Rank {
 
     rsgc_macro = true,
 	in_pool = function(self, args)
-        return G.GAME.macro_ranks
+        return RSGC.macro_pool()
     end
 }
 
@@ -277,7 +281,7 @@ SMODS.Rank {
 
     rsgc_macro = true,
 	in_pool = function(self, args)
-        return G.GAME.macro_ranks
+        return RSGC.macro_pool()
     end
 }
 
@@ -308,7 +312,7 @@ SMODS.Rank {
 
     rsgc_macro = true,
 	in_pool = function(self, args)
-        return G.GAME.macro_ranks
+        return RSGC.macro_pool()
     end
 }
 
@@ -329,7 +333,7 @@ SMODS.Rank {
         Spades = 3,
         rsgc_suitless = 4
     },
-    
+
     next = { '2' },
 	prev = { 'rsgc_19' },
 
@@ -341,7 +345,7 @@ SMODS.Rank {
 
     rsgc_macro = true,
 	in_pool = function(self, args)
-        return G.GAME.macro_ranks
+        return RSGC.macro_pool()
     end
 }
 
@@ -371,7 +375,7 @@ SMODS.Rank {
 
     rsgc_micro = true,
 	in_pool = function(self, args)
-        return G.GAME.micro_ranks
+        return RSGC.micro_pool()
     end
 }
 
@@ -401,7 +405,7 @@ SMODS.Rank {
 
     rsgc_micro = true,
 	in_pool = function(self, args)
-        return G.GAME.micro_ranks
+        return RSGC.micro_pool()
     end
 }
 
@@ -431,7 +435,7 @@ SMODS.Rank {
 
     rsgc_micro = true,
 	in_pool = function(self, args)
-        return G.GAME.micro_ranks
+        return RSGC.micro_pool()
     end
 }
 
@@ -461,7 +465,7 @@ SMODS.Rank {
 
     rsgc_micro = true,
 	in_pool = function(self, args)
-        return G.GAME.micro_ranks
+        return RSGC.micro_pool()
     end
 }
 
@@ -491,7 +495,7 @@ SMODS.Rank {
 
     rsgc_micro = true,
 	in_pool = function(self, args)
-        return G.GAME.micro_ranks
+        return RSGC.micro_pool()
     end
 }
 
@@ -521,7 +525,7 @@ SMODS.Rank {
 
     rsgc_micro = true,
 	in_pool = function(self, args)
-        return G.GAME.micro_ranks
+        return RSGC.micro_pool()
     end
 }
 
@@ -551,7 +555,7 @@ SMODS.Rank {
 
     rsgc_micro = true,
 	in_pool = function(self, args)
-        return G.GAME.micro_ranks
+        return RSGC.micro_pool()
     end
 }
 
@@ -581,7 +585,7 @@ SMODS.Rank {
 
     rsgc_micro = true,
 	in_pool = function(self, args)
-        return G.GAME.micro_ranks
+        return RSGC.micro_pool()
     end
 }
 
@@ -611,7 +615,7 @@ SMODS.Rank {
 
     rsgc_micro = true,
 	in_pool = function(self, args)
-        return G.GAME.micro_ranks
+        return RSGC.micro_pool()
     end
 }
 
@@ -641,7 +645,7 @@ SMODS.Rank {
 
     rsgc_micro = true,
 	in_pool = function(self, args)
-        return G.GAME.micro_ranks
+        return RSGC.micro_pool()
     end
 }
 
@@ -673,7 +677,7 @@ SMODS.Rank {
 
     rsgc_macro = true,
 	in_pool = function(self, args)
-        return G.GAME.macro_ranks
+        return false
     end
 }
 
@@ -744,6 +748,26 @@ function SMODS.has_no_rank(card)
         return true
     end
     return orig_has_no_rank(card)
+end
+
+function RSGC.macro_pool()
+    if G.GAME.macro_ranks then return true end
+    for k, v in pairs(G.playing_cards or {}) do
+        if RSGC.is_macro(v)
+        and v.base.value ~= "rsgc_42"
+        and v.base.value ~= "rsgc_69"
+        and v.base.value ~= "rsgc_googol"
+        then return true end
+    end
+    return false
+end  
+
+function RSGC.micro_pool()
+    if G.GAME.micro_ranks then return true end
+    for k, v in pairs(G.playing_cards or {}) do
+        if RSGC.is_micro(v) then return true end
+    end
+    return false
 end
 
 SMODS.PokerHand({

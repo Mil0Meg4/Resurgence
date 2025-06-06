@@ -93,7 +93,7 @@ if self.GAME.starting_params.rsgc_banned_ranks and self.GAME.starting_params.rsg
 [[patches]]
 [patches.pattern]
 target = '=[SMODS _ "src/overrides.lua"]'
-pattern = '''local t = {n = G.UIT.ROOT, config = {align = "cm", colour = G.C.CLEAR}, nodes = {'''
+pattern = '''local object = {n = G.UIT.ROOT, config = {align = "cm", colour = G.C.CLEAR}, nodes = {'''
 position = "before"
 payload = '''
 if not Unjunk then

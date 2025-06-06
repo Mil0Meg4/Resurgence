@@ -3,8 +3,9 @@ return {
         Back={
             b_rsgc_number20 = {
                 name = "Deck of Numbers",
-                text = {"Instead of Face cards and aces,",
-                        "your deck includes ranks 11 through 20"}
+                text = {"Start with {C:attention}numbered{}",
+                "ranks from {C:attention}0.1{} to {C:attention}20"
+            }
             },
         },
         Blind={},

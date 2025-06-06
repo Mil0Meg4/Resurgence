@@ -7,5 +7,6 @@ SMODS.Back {
 	apply = function(self)
         G.GAME.starting_params.rsgc_banned_ranks = {Ace = true}
 		G.GAME.macro_ranks = true
+		G.GAME.micro_ranks = true
     end,
 }

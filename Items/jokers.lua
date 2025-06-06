@@ -1144,12 +1144,12 @@ RSGC.Joker({
 	calculate = function(self, card, context)
 		local rsgc = card.ability.extra
 		if context.repetition and context.cardarea == G.play then
-			if RSGC.is_macro(context.other_card) and context.other_card:get_id() == 42 then
-		return {
-		repetitions = rsgc.retriggers
-		}
+			if context.other_card:get_id() == SMODS.Ranks["rsgc_42"].id then
+				return {
+					repetitions = rsgc.retriggers
+				}
+			end
 		end
-	end
 	end
 })
 

@@ -1165,7 +1165,7 @@ RSGC.Joker({
 	perishable_compat = true,
 	eternal_compat = true,
 	blueprint_compat = true,
-	in_pool=function(self, args)
+	in_pool=function(self, wawa, wawa2)
 		return RSGC.micro_pool()
 	end,
 	calculate = function(self, card, context)

@@ -61,37 +61,38 @@ RSGC.Tweak {
     atlas = 'aug',
     pos = { x = 1, y = 0 },
     badge_colour = G.C.CHIPS,
-    config = {increase = 1.1, reset_rate = 0.5, threshold_rate = 2,},
+    config = {rate = 1, increase = 0.1, threshold = 2},
     loc_vars = function(self, info_queue, card)
-		local rsgc = self.config
+		local rsgc = card.ability.rsgc_lever or self.config
 		return {
-			vars = { rsgc.increase, rsgc.threshold_rate, rsgc.reset_rate, },
+			vars = {rsgc.rate, rsgc.increase, rsgc.threshold},
 		}
 	end,
     calculate = function(self,card,context)
-        if context.reroll_shop and not card.config.center.immutable then--checks if rerolling
-            RSGC.mod_table_values(card.ability,card.ability.rsgc_lever,{mult = self.config.increase},nil,{rsgc_lever = true},true)--modifies all values
+        if context.after and not card.config.center.immutable then--checks if rerolling
+            local rsgc = card.ability.rsgc_lever
+            RSGC.mod_table_values(card.ability,nil,{mult = 1/rsgc.rate},nil,{rsgc_lever = true})
+            rsgc.rate = rsgc.rate + rsgc.increase
+            RSGC.mod_table_values(card.ability,nil,{mult = rsgc.rate},nil,{rsgc_lever = true})
+            return {
+                message = localize('k_upgrade_ex'),
+                focus = card,
+                card = card
+            }
         end
         if context.end_of_round and G.GAME.blind.boss and not context.other_card and not card.config.center.immutable then
-            --I'm not explaining all of this, just know that this resets the values after they surpass the threshold
-            local function reset_values(table,thr)
-                for k, v in pairs(table) do
-                    if type(v) == "number" then
-                        if thr and thr[k] and type(thr[k]) == "number" and v >= thr[k] * self.config.threshold_rate then
-                            table[k] = thr[k] * self.config.reset_rate
-                        end 
-                    elseif type(v) == "table" and k and type(thr[k]) == "table" then
-                        reset_values(v,thr[k])
-                    end
-                end
+            local rsgc = card.ability.rsgc_lever
+            if rsgc.rate >= rsgc.threshold then
+                RSGC.mod_table_values(card.ability,nil,{mult = 1/rsgc.rate},nil,{rsgc_lever = true})
+                rsgc.rate = 1
+                return {
+                    message = localize('k_reset'),
+                    focus = card,
+                    card = card
+                }
             end
-            reset_values(card.ability,card.ability.rsgc_lever)
         end
     end,
-    apply = function(self, card, val)--called when applying the tweak or sticker
-        card.ability[self.key] = val and copy_table(self.config) or nil--applies the sticker manually since `apply` overwrites the original function
-        card.ability.rsgc_lever = copy_table(card.ability)--saves the values to know when to reset them
-    end
 }
 
 -------------------------------------------------------------

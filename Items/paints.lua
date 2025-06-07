@@ -374,10 +374,11 @@ function create_card(_type, area, legendary, _rarity, skip_materialize, soulable
     end
     local paint = nil
     local _card = orig_create_card(_type, area, legendary, _rarity, skip_materialize, soulable, forced_key, key_append)
-    if (_type=='Base' or _type == 'Enhanced') then
+    local type = _card.ability.set
+    if (type=='Base' or type == 'Enhanced') then
         paint = poll_paint('paint'..(key_append or '')..G.GAME.round_resets.ante,2,flag,paints)
     end
-    if (_type=='Joker') then
+    if (type=='Joker') then
         paint = poll_paint('paint'..(key_append or '')..G.GAME.round_resets.ante,nil,flag,paints)
     end
     if paint then RSGC.set_paint(_card,paint) end

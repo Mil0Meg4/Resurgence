@@ -423,7 +423,8 @@ return {
             },
             c_rsgc_aug_lever = {
                 name = 'Lever',
-                text = { ""
+                text = { "{C:attention}#1#{} Selected Joker",
+                    "is given a {C:attention}Lever{}",
                 }
             },
             c_rsgc_aug_rubber = {
@@ -453,7 +454,11 @@ return {
             },
             rsgc_lever = {
                 name = 'Lever',
-                text = { ""
+                text = { "{C:attention}X#1#{} to all values",
+                "increases by {C:attention}#2#{} after",
+                "hand is played",
+                "{C:attention}Resets{} after defeating",
+                "{C:attention}Boss Blind{} with {C:attention}X#3#{} or more"
                 }
             },
             rsgc_rubber = {

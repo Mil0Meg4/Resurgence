@@ -23,7 +23,7 @@ SMODS.Consumable({
     config = {max_highlighted = 2, tweak = "mother"},
     loc_vars = function(self, info_queue)
         local rsgc = self.config
-        info_queue[#info_queue + 1] = { key = "rsgc_"..rsgc.tweak, set = "Other", vars = {} }
+        info_queue[#info_queue + 1] = RSGC.tweak_tooltip(rsgc.tweak)
 		return { vars = {rsgc.max_highlighted} }
 	end,
     can_use = function(self, card)--determins when you can use the consumable
@@ -50,7 +50,7 @@ SMODS.Consumable({
     config = {max_highlighted = 1, tweak = "rubber"},
     loc_vars = function(self, info_queue)
         local rsgc = self.config
-		info_queue[#info_queue + 1] = { key = "rsgc_"..rsgc.tweak, set = "Other", vars = {} }
+		info_queue[#info_queue + 1] = RSGC.tweak_tooltip(rsgc.tweak)
 		return { vars = {rsgc.max_highlighted} }
 	end,
     can_use = function(self, card)--determins when you can use the consumable
@@ -75,10 +75,10 @@ SMODS.Consumable({
     atlas = 'aug',
     pos = {x=0, y=0},
     discovered = true,
-    config = {max_highlighted = 2, tweak = "lever"},
+    config = {max_highlighted = 1, tweak = "lever"},
     loc_vars = function(self, info_queue)
         local rsgc = self.config
-		info_queue[#info_queue + 1] = { key = "rsgc_"..rsgc.tweak, set = "Other", vars = {} }
+		info_queue[#info_queue + 1] = RSGC.tweak_tooltip(rsgc.tweak)
 		return { vars = {rsgc.max_highlighted} }
 	end,
     can_use = function(self, card)--determins when you can use the consumable

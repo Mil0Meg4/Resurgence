@@ -1167,16 +1167,16 @@ RSGC.Joker({
 	blueprint_compat = true,
 	calculate = function(self, card, context)
 		local rsgc = card.ability.extra
-		if context.individual and context.cardArea == G.play and RSGC.is_micro(context.other_card) then
+		if context.individual and context.cardarea == G.play and RSGC.is_micro(context.other_card) then
 			rsgc.multgain=rsgc.multgain+context.other_card.base.nominal
 			return {
 				focus = card,
 				colour = G.C.RED,
-				message = localize('l_upgrade_ex'),
+				message = localize('k_upgrade_ex'),
 				card=card,
 			}
 		end
-		if context.joker.main then
+		if context.joker_main then
 			return {
 				xmult=rsgc.multgain
 			}

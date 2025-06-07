@@ -1130,12 +1130,12 @@ RSGC.Joker({
 	calculate = function(self, card, context)
 		local rsgc = card.ability.extra
 		if context.individual and context.cardArea == G.play and RSGC.is_micro(context.other_card) then
-		rsgc.multgain=rsgc.multgain+context.other_card.base.nominal
+			rsgc.multgain=rsgc.multgain+context.other_card.base.nominal
 		end
 		if context.joker.main then
-		return {
-			xmult=rsgc.multgain
-		}
+			return {
+				xmult=rsgc.multgain
+			}
 		end
 	end
 })

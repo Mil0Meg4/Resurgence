@@ -62,6 +62,9 @@ end
 function RSGC.remove_tweak(card)
 	for k, _ in pairs(card and card.ability or {}) do
 		if RSGC.is_tweak(k) then
+			if k == "rsgc_lever" then--resets lever
+				RSGC.mod_table_values(card.ability,nil,{mult = 1/card.ability.rsgc_lever.rate},nil,{rsgc_lever = true})
+			end
 			card.ability[k] = nil
 		end
 	end
@@ -355,6 +358,21 @@ function RSGC.paint_tooltip(type)
 		local card = { ability = {} }
 		paint:apply(card, true)
 		vars = paint:loc_vars({}, card).vars
+	end
+
+	return {set = 'Other',key = key,vars = vars}
+end
+
+function RSGC.tweak_tooltip(type)
+	local key = 'rsgc_' .. type
+	local tweak = SMODS.Stickers[key]
+	if not tweak then return end
+
+	local vars = {}
+	if tweak.loc_vars then
+		local card = { ability = {} }
+		tweak:apply(card, true)
+		vars = tweak:loc_vars({}, card).vars
 	end
 
 	return {set = 'Other',key = key,vars = vars}

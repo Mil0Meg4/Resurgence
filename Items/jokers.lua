@@ -1131,6 +1131,12 @@ RSGC.Joker({
 		local rsgc = card.ability.extra
 		if context.individual and context.cardArea == G.play and RSGC.is_micro(context.other_card) then
 			rsgc.multgain=rsgc.multgain+context.other_card.base.nominal
+			return {
+				focus = card,
+				colour = G.C.RED,
+				message = localize('l_upgrade_ex'),
+				card=card,
+			}
 		end
 		if context.joker.main then
 			return {

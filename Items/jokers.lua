@@ -1165,6 +1165,9 @@ RSGC.Joker({
 	perishable_compat = true,
 	eternal_compat = true,
 	blueprint_compat = true,
+	in_pool=function(self, args)
+		return RSGC.micro_pool()
+	end,
 	calculate = function(self, card, context)
 		local rsgc = card.ability.extra
 		if context.individual and context.cardarea == G.play and RSGC.is_micro(context.other_card) then

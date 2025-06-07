@@ -1114,6 +1114,7 @@ RSGC.Joker({
 RSGC.Joker({
 	key = "boykisser",
 	atlas = "joke",
+	pools = {gay = true},
 	pos = { x = 5, y = 5 },
 	rarity = "rsgc_super_rare",
 	cost = 9,
@@ -1200,7 +1201,7 @@ SMODS.Booster({
         return {vars = {(card and card.ability.choose or self.config.choose), card and card.ability.extra or self.config.extra}}
     end,
     create_card = function(self, card)
-		local legend = {"j_rsgc_gabriel","j_rsgc_alphys"}
+		local legend = {"j_rsgc_gabriel","j_rsgc_alphys", "j_rsgc_hampter"}
 		local pollable_legends = {}
 		for i,v in ipairs(legend) do 
 			if G.P_CENTERS[v] and not (G.GAME.used_jokers[v] and not next(find_joker("Showman"))) then 

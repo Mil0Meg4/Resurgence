@@ -1020,6 +1020,7 @@ RSGC.Joker({
 	key = "kai",
 	atlas = "joke",
 	pos = { x = 5, y = 4 },
+	pools = {gay = true},
 	rarity = 3,
 	cost = 10,
 	config = {

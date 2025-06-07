@@ -1,6 +1,6 @@
 SMODS.Back {
 	key = "number20",
-	unlocked = false,
+	unlocked = true,
 	atlas = "joke",
 	pos = { x = 0, y = 0},
     config = {remove_faces = true},

@@ -82,8 +82,8 @@ RSGC.Joker({
 		}
 	end,
 	calculate = function(self, card, context)
-		local rsgc = card.ability.extra
 		if context.joker_main then
+			local rsgc = card.ability.extra
 			return {
 				mult = rsgc.mult,
 			}
@@ -1088,24 +1088,62 @@ RSGC.Joker({
 	atlas = "joke",
 	pos = { x = 1, y = 1 },
 	rarity = 3,
-	cost = 19,
+	cost = 7,
 	config = {
 		extra = {
 			retriggers = 2
 		},
-	},
+	},                                                
 	unlocked = true,
 	discovered = true,
 	perishable_compat = true,
 	eternal_compat = true,
 	blueprint_compat = true,
 	calculate = function(self, card, context)
-		local rsgc = card.ability.extra
 		if context.repetition and context.cardarea == G.play then
+			local rsgc = card.ability.extra
 			if context.other_card:get_id() == SMODS.Ranks["rsgc_42"].id then
 				return {
 					repetitions = rsgc.retriggers
 				}
+			end
+		end
+	end
+})
+
+RSGC.Joker({
+	key = "boykisser",
+	atlas = "joke",
+	pos = { x = 5, y = 5 },
+	rarity = "rsgc_super_rare",
+	cost = 9,
+	unlocked = true,
+	discovered = true,
+	perishable_compat = true,
+	eternal_compat = true,
+	blueprint_compat = true,
+	calculate = function(self, card, context)
+		if context.joker_main then
+			local kings = 0
+			local jacks = 0
+			for i = 1, #context.scoring_hand do
+				if context.scoring_hand[i]:get_id() == 11 then jacks = jacks + 1 end
+				if context.scoring_hand[i]:get_id() == 13 then kings = kings + 1 end
+			end
+			if kings >= 2 or jacks >= 2 then
+				G.E_MANAGER:add_event(Event({
+					trigger = 'before',
+					func = (function()
+						add_tag(Tag("tag_rsgc_boy"))
+						play_sound('generic1', 0.9 + math.random()*0.1, 0.8)
+						play_sound('holo1', 1.2 + math.random()*0.1, 0.4)
+					return true
+				end)}))
+				return {
+                    message = localize('k_kiss'),
+					colour = RSGC.C.GAY,
+                    card = card
+                }
 			end
 		end
 	end

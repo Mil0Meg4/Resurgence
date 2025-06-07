@@ -600,6 +600,7 @@ return {
         challenge_names={},
         collabs={},
         dictionary={
+            k_kiss = "Kiss :3",
             k_no_planet = "Fucking Nothing",
             k_rsgc_aug_pack = "Tinker Pack",
             k_rsgc_gay = "Gay Pack",

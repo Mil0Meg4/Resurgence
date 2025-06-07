@@ -1093,7 +1093,7 @@ RSGC.Joker({
 		extra = {
 			retriggers = 2
 		},
-	},                                                
+	},                                            
 	unlocked = true,
 	discovered = true,
 	perishable_compat = true,
@@ -1141,10 +1141,45 @@ RSGC.Joker({
 				end)}))
 				return {
                     message = localize('k_kiss'),
-					colour = RSGC.C.GAY,
+					colour = G.C.PURPLE,
                     card = card
                 }
 			end
+		end
+	end,
+})
+
+RSGC.Joker({
+	key = "hampter",
+	atlas = "joke",
+	pos = { x = 1, y = 1 },
+	rarity = 4,
+	cost = 20,
+	config = {
+		extra = {
+			multgain = 1
+		},
+	},
+	unlocked = true,
+	discovered = true,
+	perishable_compat = true,
+	eternal_compat = true,
+	blueprint_compat = true,
+	calculate = function(self, card, context)
+		local rsgc = card.ability.extra
+		if context.individual and context.cardArea == G.play and RSGC.is_micro(context.other_card) then
+			rsgc.multgain=rsgc.multgain+context.other_card.base.nominal
+			return {
+				focus = card,
+				colour = G.C.RED,
+				message = localize('l_upgrade_ex'),
+				card=card,
+			}
+		end
+		if context.joker.main then
+			return {
+				xmult=rsgc.multgain
+			}
 		end
 	end
 })

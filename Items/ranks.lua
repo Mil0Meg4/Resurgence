@@ -351,8 +351,8 @@ SMODS.Rank {
 
 SMODS.Rank {
 
-    key = '0.1',
-    card_key = '0.1',
+    key = '01',
+    card_key = '01',
 
     hc_atlas = 'ranks_hc',
     lc_atlas = 'ranks_lc',
@@ -381,8 +381,8 @@ SMODS.Rank {
 
 SMODS.Rank {
 
-    key = '0.2',
-    card_key = '0.2',
+    key = '02',
+    card_key = '02',
 
     hc_atlas = 'ranks_hc',
     lc_atlas = 'ranks_lc',
@@ -411,8 +411,8 @@ SMODS.Rank {
 
 SMODS.Rank {
 
-    key = '0.3',
-    card_key = '0.3',
+    key = '03',
+    card_key = '03',
 
     hc_atlas = 'ranks_hc',
     lc_atlas = 'ranks_lc',
@@ -441,8 +441,8 @@ SMODS.Rank {
 
 SMODS.Rank {
 
-    key = '0.4',
-    card_key = '0.4',
+    key = '04',
+    card_key = '04',
 
     hc_atlas = 'ranks_hc',
     lc_atlas = 'ranks_lc',
@@ -471,8 +471,8 @@ SMODS.Rank {
 
 SMODS.Rank {
 
-    key = '0.5',
-    card_key = '0.5',
+    key = '05',
+    card_key = '05',
 
     hc_atlas = 'ranks_hc',
     lc_atlas = 'ranks_lc',
@@ -501,8 +501,8 @@ SMODS.Rank {
 
 SMODS.Rank {
 
-    key = '0.6',
-    card_key = '0.6',
+    key = '06',
+    card_key = '06',
 
     hc_atlas = 'ranks_hc',
     lc_atlas = 'ranks_lc',
@@ -531,8 +531,8 @@ SMODS.Rank {
 
 SMODS.Rank {
 
-    key = '0.7',
-    card_key = '0.7',
+    key = '07',
+    card_key = '07',
 
     hc_atlas = 'ranks_hc',
     lc_atlas = 'ranks_lc',
@@ -561,8 +561,8 @@ SMODS.Rank {
 
 SMODS.Rank {
 
-    key = '0.8',
-    card_key = '0.8',
+    key = '08',
+    card_key = '08',
 
     hc_atlas = 'ranks_hc',
     lc_atlas = 'ranks_lc',
@@ -591,8 +591,8 @@ SMODS.Rank {
 
 SMODS.Rank {
 
-    key = '0.9',
-    card_key = '0.9',
+    key = '09',
+    card_key = '09',
 
     hc_atlas = 'ranks_hc',
     lc_atlas = 'ranks_lc',
@@ -670,7 +670,7 @@ SMODS.Rank {
 	prev = { 'rsgc_googol' },
 
     nominal = 1e100,
-    shorthand = 'googol',
+    shorthand = '1e100',
     hidden = true,
 
     straight_edge = true,

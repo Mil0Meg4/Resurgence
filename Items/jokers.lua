@@ -1175,6 +1175,7 @@ RSGC.Joker({
 	eternal_compat = true,
 	blueprint_compat = true,
 	loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue+1] = {set = 'Other',key = "m_rsgc_micro_ranks"}
 		local rsgc = card.ability.extra
 		return {vars = { rsgc.multgain}}
 	end,

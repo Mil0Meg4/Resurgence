@@ -429,7 +429,7 @@ return {
             },
             j_rsgc_hampter = {
                 name = "Hampter",
-                text = {"when a {C:attention}Micro{} card is",
+                text = {"When a {C:attention}Micro{} card is",
                     "scored, this Joker gains",
                     "{X:mult,C:white}X1{} Mult times its {C:attention}rank",
                     "{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"
@@ -590,6 +590,20 @@ return {
                     "{C:attention}#2#{C:rsgc_gay} Gay{} jokers",
                 },
             },
+            m_rsgc_micro_ranks = {
+                name = "Micro Ranks",
+                text = {
+                    "(ie; {C:attention}0.1{}, {C:attention}0.2{}, {C:attention}0.3{}, {C:attention}0.4{}, {C:attention}0.5{},",
+                    "{C:attention}0.6{}, {C:attention}0.7{}, {C:attention}0.8{}, {C:attention}0.9{} and {C:attention}1{})",
+                }
+            },
+            m_rsgc_macro_ranks = {
+                name = "Macro Ranks",
+                text = {
+                    "(ie; {C:attention}11{}, {C:attention}12{}, {C:attention}13{}, {C:attention}14{}, {C:attention}15{}, {C:attention}16{}, ",
+                    "{C:attention}17{}, {C:attention}18{}, {C:attention}19{}, {C:attention}20{}, {C:attention}42{}, {C:attention}69{}, and {C:attention}Googol{})",
+                }
+            },
         },
         Planet={
             c_rsgc_no_planet = {
@@ -672,6 +686,7 @@ return {
         },
         quips={},
         ranks={
+            rsgc_googol = "Googol",
             rsgc_42 = "42",
             rsgc_11 = "11",
             rsgc_12 = "12",
@@ -683,6 +698,16 @@ return {
             rsgc_18 = "18",
             rsgc_19 = "19",
             rsgc_20 = "20",
+            rsgc_01 = "0.1",
+            rsgc_02 = "0.2",
+            rsgc_03 = "0.3",
+            rsgc_04 = "0.4",
+            rsgc_05 = "0.5",
+            rsgc_06 = "0.6",
+            rsgc_07 = "0.7",
+            rsgc_08 = "0.8",
+            rsgc_09 = "0.9",
+            rsgc_1 = "1",
             rsgc_alpha_rank = "Alpha",
             rsgc_omega_rank = "Omega",
             rsgc_rankless = "Nothing",

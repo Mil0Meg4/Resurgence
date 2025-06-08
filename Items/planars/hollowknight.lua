@@ -37,7 +37,7 @@ RSGC.Joker {
 			end
 		end
 		if not context.blueprint and context.cardarea == G.jokers
-		and (context.setting_blind or context.ending_shop or context.end_of_round) 
+		and (context.setting_blind or context.ending_shop or context.end_of_round)
 		and to_big(G.GAME.dollars + (G.GAME.dollar_buffer or 0)) >= to_big(150) then
 			return RSGC.unbound(card)
 		end

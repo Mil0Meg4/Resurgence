@@ -1200,6 +1200,114 @@ RSGC.Joker({
 	end
 })
 
+RSGC.Joker({
+	key = "shard",
+	atlas = "joke",
+	pos = { x = 0, y = 0 },
+	rarity = 3,
+	cost = 7,
+	unbound = { evo = "gsword" },
+	unlocked = true,
+	discovered = true,
+	perishable_compat = false,
+	eternal_compat = true,
+	blueprint_compat = false,
+	calculate = function(self, card, context)
+		if not context.blueprint and context.cardarea == G.jokers
+		and (context.setting_blind or context.ending_shop or context.end_of_round) then
+			if #find_joker("Obelisk") >= 3 then
+			return RSGC.unbound(card)
+			end
+		end
+	end
+})
+
+RSGC.Joker({
+	key = "gsword",
+	atlas = "joke",
+	pos = { x = 0, y = 0 },
+	config = { 
+	extra = {xmult = 10} 
+	},
+	rarity = "rsgc_unb",
+	cost = 20,
+	unbound = { evo = "msword" },
+	unlocked = true,
+	discovered = false,
+	perishable_compat = false,
+	eternal_compat = true,
+	blueprint_compat = true,
+		loc_vars = function(self, info_queue, card)
+		local rsgc = card.ability.extra 
+		return {
+			vars = { rsgc.xmult},
+		}
+	end,
+	calculate = function(self, card, context)
+			if context.joker_main then 
+				local rsgc = card.ability.extra
+				return{
+					xmult = rsgc.xmult,
+				}
+			end
+		end
+})
+
+RSGC.Joker({
+	key = "msword",
+	atlas = "joke",
+	pos = { x = 0, y = 0 },
+	config = { 
+	extra = {xmult = 10, xchips = 10, mult = 100, chips = 100} 
+	},
+	rarity = "rsgc_unb",
+	cost = 30,
+	unlocked = true,
+	discovered = false,
+	perishable_compat = true,
+	eternal_compat = true,
+	blueprint_compat = true,
+		loc_vars = function(self, info_queue, card)
+		local rsgc = card.ability.extra 
+		return {
+			vars = { rsgc.xmult, rsgc.chips, rsgc.xchips, rsgc. mult},
+		}
+	end,
+	calculate = function(self, card, context)
+			if context.joker_main then 
+				local rsgc = card.ability.extra
+				return{
+					xchips = rsgc.xchips,
+					chips = rsgc.chips,
+					mult = rsgc.mult,
+					xmult = rsgc.xmult,
+				}
+			end
+		end
+})
+
+SMODS.Consumable({
+    key = 'gsoul',
+    set = 'Spectral',
+    atlas = 'aug',
+    pos = {x=0, y=0},
+    discovered = true,
+	can_use = function(self, card)
+		return true
+	end,
+    use = function(self, card, area, copier)
+		G.GAME.used_souls = (G.GAME.used_souls or 0) + 1
+			if G.GAME.used_souls and G.GAME.used_souls >= 3 then
+			local jokers = find_joker("j_rsgc_gsword")
+				for i=1, jokers do
+				RSGC.unbound(jokers[i])
+				end
+			G.GAME.used_souls = 0
+			end
+		
+		end
+})
+
 --Boosters
 SMODS.Booster({
     key = 'gay',

@@ -96,7 +96,7 @@ target = '=[SMODS _ "src/overrides.lua"]'
 pattern = '''local object = {n = G.UIT.ROOT, config = {align = "cm", colour = G.C.CLEAR}, nodes = {'''
 position = "before"
 payload = '''
-if not Unjunk then
+if not Unjank then
     local max_shown = math.max(13,math.ceil(#rank_cols/3))
     local rank_col_1 = {}
     local rank_col_2 = {}

@@ -1299,7 +1299,7 @@ SMODS.Consumable({
 		G.GAME.used_souls = (G.GAME.used_souls or 0) + 1
 			if G.GAME.used_souls and G.GAME.used_souls >= 3 then
 			local jokers = find_joker("j_rsgc_gsword")
-				for i=1, jokers do
+				for i=1, #jokers do
 				RSGC.unbound(jokers[i])
 				end
 			G.GAME.used_souls = 0

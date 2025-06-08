@@ -414,6 +414,27 @@ return {
                     "{C:rsgc_primordial}Resurgence",
                 },
             },
+            j_rsgc_boykisser = {
+                name = "Boykisser",
+                text = {"Create a {C:rsgc_gay}Boykisser Tag",
+                    "if played hand contains {C:attention}2{}",
+                    "scoring {C:attention}Kings{} or {C:attention}Jacks",
+                },
+            },
+            j_rsgc_42wallbreak = {
+                name = "42nd Wall Break",
+                text = {"Retrigger all",
+                    "played {C:attention}42s #1#{} times"
+                },
+            },
+            j_rsgc_hampter = {
+                name = "Hampter",
+                text = {"when a {C:attention}Micro{} card is",
+                    "scored, this Joker gains",
+                    "{X:mult,C:white}X1{} Mult times its {C:attention}rank",
+                    "{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"
+                },
+            },
         },
         Augment={
             c_rsgc_aug_mother = {

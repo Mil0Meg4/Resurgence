@@ -1087,19 +1087,23 @@ RSGC.Joker({
 RSGC.Joker({
 	key = "42wallbreak",
 	atlas = "joke",
-	pos = { x = 1, y = 1 },
+	pos = { x = 0, y = 0 },
 	rarity = 3,
 	cost = 7,
 	config = {
 		extra = {
 			retriggers = 2
 		},
-	},                                            
+	},                             
 	unlocked = true,
 	discovered = true,
 	perishable_compat = true,
 	eternal_compat = true,
 	blueprint_compat = true,
+	loc_vars = function(self, info_queue, card)
+		local rsgc = card.ability.extra
+		return {vars = { rsgc.retriggers}}
+	end,
 	calculate = function(self, card, context)
 		if context.repetition and context.cardarea == G.play then
 			local rsgc = card.ability.extra
@@ -1124,6 +1128,9 @@ RSGC.Joker({
 	perishable_compat = true,
 	eternal_compat = true,
 	blueprint_compat = true,
+	loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue+1] = {key = 'tag_rsgc_boy', set = 'Tag'}
+	end,
 	calculate = function(self, card, context)
 		if context.joker_main then
 			local kings = 0
@@ -1167,6 +1174,10 @@ RSGC.Joker({
 	perishable_compat = true,
 	eternal_compat = true,
 	blueprint_compat = true,
+	loc_vars = function(self, info_queue, card)
+		local rsgc = card.ability.extra
+		return {vars = { rsgc.multgain}}
+	end,
 	in_pool=function(self, wawa, wawa2)
 		return RSGC.micro_pool()
 	end,

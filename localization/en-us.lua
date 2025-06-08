@@ -545,11 +545,8 @@ return {
             },
             rsgc_paint_purple = {
                 name = 'Purple Paint',
-                text = { "{C:red}+#1#{} Mult per time",
-                    "an {C:attention}High Card{} or",
-                    "{C:attention}Straight Flush{} has",
-                    "been played this run",
-                    "{C:inactive}(Currently {C:red}+#2#{C:inactive} Mult)"
+                text = { "{C:chips}+#2#{} Chips",
+                    "{C:red}+#1#{} Mult"
                 }
             },
             rsgc_paint_brown = {

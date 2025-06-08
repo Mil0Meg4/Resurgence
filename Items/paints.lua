@@ -161,10 +161,29 @@ RSGC.Paint {
     end
 }
 RSGC.Paint {
+    key = 'paint_purple',
+    badge_colour = G.C.PURPLE,
+    shader = 'purple',
+    weight = 22,
+    config = {mult = 4,chips = 20},
+    loc_vars = function(self, info_queue, card)
+        local rsgc = self.config or self.config
+        return { vars = { rsgc.mult,rsgc.chips } }
+    end,
+    calculate = function(self, card, context)
+        if context.joker_main or (context.main_scoring and context.cardarea == G.play) then
+            return {
+                mult = self.config.mult,
+                chips = self.config.chips
+            }
+        end
+    end
+}
+RSGC.Paint {
     key = 'paint_orange',
     badge_colour = G.C.FILTER,
     shader = 'orange',
-    weight = 21,
+    weight = 20,
     config = {ret = 1},
     loc_vars = function(self, info_queue, card)
         local rsgc = self.config
@@ -185,7 +204,7 @@ RSGC.Paint {
     key = 'paint_pink',
     badge_colour = RSGC.C.PINK,
     shader = 'pink',
-    weight = 19,
+    weight = 18,
     config = {chips = 25,},
     loc_vars = function(self, info_queue, card)
         local rsgc = self.config
@@ -235,30 +254,10 @@ RSGC.Paint {
     end
 }
 RSGC.Paint {
-    key = 'paint_purple',
-    badge_colour = G.C.PURPLE,
-    shader = 'purple',
-    weight = 15,
-    config = {mult = 5,hand_a = "High Card",hand_b = "Straight Flush"},
-    loc_vars = function(self, info_queue, card)
-        local rsgc = self.config
-        local tally = G.GAME.hands[rsgc.hand_a].played + G.GAME.hands[rsgc.hand_b].played
-        return { vars = { rsgc.mult,rsgc.mult * tally } }
-    end,
-    calculate = function(self, card, context)
-        if context.joker_main or (context.main_scoring and context.cardarea == G.play) then
-            local tally = G.GAME.hands[self.config.hand_a].played + G.GAME.hands[self.config.hand_b].played
-            return {
-                mult = self.config.mult * tally
-            }
-        end
-    end
-}
-RSGC.Paint {
     key = 'paint_brown',
     badge_colour = RSGC.C.BROWN,
     shader = 'brown',
-    weight = 7,
+    weight = 12,
     calculate = function(self, card, context)
         local _card = nil
         local area = card.area == G.play and G.play.cards or card.area == G.hand and G.hand.cards or card.area == G.jokers and G.jokers.cards or nil
@@ -301,7 +300,7 @@ RSGC.Paint {
     badge_colour = G.C.WHITE,
     badge_text_colour = G.C.GREY,
     shader = 'white',
-    weight = 9,
+    weight = 10,
     config = {chips_1 = 15,chips_2 = 15},
     loc_vars = function(self, info_queue, card)
         local rsgc = self.config
@@ -334,7 +333,7 @@ RSGC.Paint {
     key = 'paint_black',
     badge_colour = G.C.BLACK,
     shader = 'black',
-    weight = 9,
+    weight = 10,
     config = {x_mult_1 = 2,x_mult_2 = 0.5},
     loc_vars = function(self, info_queue, card)
         local rsgc = self.config

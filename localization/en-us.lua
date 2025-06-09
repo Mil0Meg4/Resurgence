@@ -435,6 +435,40 @@ return {
                     "{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"
                 },
             },
+            j_rsgc_whoa={
+                name="WHOA Joker",
+                text={
+                    "This Joker gains",
+                    "{C:chips}+#2#{} Chips when each",
+                    "played {C:attention}20{} is scored",
+                    "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)",
+                },
+            },
+            j_rsgc_shard={
+                name="Prismatic Shard",
+                text={
+                    "All Jokers in {C:attention}Buffon",
+                    "{C:attention}Packs{} are {C:attention}Obelisks",
+                    "{C:dark_edition}Transforms{} after",
+                    "obtaining {C:attention}3 Obelisks"
+                },
+            },
+            j_rsgc_gsword={
+                name="Galaxy Sword",
+                text={
+                    "{X:mult,C:white}X#1#{} Mult",
+                    "All cards in {C:spectral}Spectral",
+                    "{C:attention}Packs{} are {C:dark_edition}Galaxy Souls",
+                    "{C:dark_edition}Transforms{} after using 3 {C:inactive}[#2#]{}",
+                },
+            },
+            j_rsgc_msword={
+                name="Master Sword",
+                text={
+                    "{C:chips}+#1#{} Chips {C:mult}+#2#{} Mult",
+                    "{X:chips,C:white}X#3#{} Chips {X:mult,C:white}X#4#{} Mult",
+                },
+            },
         },
         Augment={
             c_rsgc_aug_mother = {
@@ -616,7 +650,16 @@ return {
                 },
             },
         },
-        Spectral={},
+        Spectral={
+            c_rsgc_gsoul = {
+                name = "Galaxy Soul",
+                text={
+                    "{s:0.8,C:inactive}a mystical artifact, to attain", 
+                    "{s:0.8,C:inactive}unlimited power and then didn't", 
+                    "{s:0.8,C:inactive}buy it for 40 gems at least"
+                },
+            },
+        },
         Stake={},
         Tag={
             tag_rsgc_boy = {

@@ -1202,6 +1202,49 @@ RSGC.Joker({
 })
 
 RSGC.Joker({
+	key = "whoa",
+	pos = { x = 0, y = 0 },
+	display_size = { w = 71 * 1.5, h = 95 * 1.5 },
+	rarity = "rsgc_super_rare",
+	cost = 12,
+	config = {
+		extra = {
+			chips = 0,
+			gain = 80
+		},
+	},
+	unlocked = true,
+	discovered = true,
+	perishable_compat = true,
+	eternal_compat = true,
+	blueprint_compat = true,
+	loc_vars = function(self, info_queue, card)
+		local rsgc = card.ability.extra
+		return {vars = {rsgc.chips,rsgc.gain}}
+	end,
+	in_pool=function(self, wawa, wawa2)
+		return RSGC.macro_pool()
+	end,
+	calculate = function(self, card, context)
+		local rsgc = card.ability.extra
+		if context.individual and context.cardarea == G.play and context.other_card:get_id() == SMODS.Ranks["rsgc_20"].id  then
+			rsgc.chips = rsgc.chips + rsgc.gain
+			return {
+				focus = card,
+				colour = G.C.CHIPS,
+				message = localize('k_upgrade_ex'),
+				card=card,
+			}
+		end
+		if context.joker_main then
+			return {
+				chips = rsgc.chips
+			}
+		end
+	end
+})
+
+RSGC.Joker({
 	key = "shard",
 	atlas = "joke",
 	pos = { x = 0, y = 0 },
@@ -1213,6 +1256,9 @@ RSGC.Joker({
 	perishable_compat = false,
 	eternal_compat = true,
 	blueprint_compat = false,
+	loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue + 1] = G.P_CENTERS.j_obelisk
+	end,
 	calculate = function(self, card, context)
 		if not context.blueprint and context.cardarea == G.jokers
 		and (context.setting_blind or context.ending_shop or context.end_of_round) then
@@ -1234,14 +1280,15 @@ RSGC.Joker({
 	cost = 20,
 	unbound = { evo = "msword" },
 	unlocked = true,
-	discovered = false,
+	discovered = true,
 	perishable_compat = false,
 	eternal_compat = true,
 	blueprint_compat = true,
-		loc_vars = function(self, info_queue, card)
-		local rsgc = card.ability.extra 
+	loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue + 1] = G.P_CENTERS.c_rsgc_gsoul
+		local rsgc = card.ability.extra
 		return {
-			vars = { rsgc.xmult},
+			vars = { rsgc.xmult,G.GAME.used_souls or 0},
 		}
 	end,
 	calculate = function(self, card, context)
@@ -1264,14 +1311,14 @@ RSGC.Joker({
 	rarity = "rsgc_unb",
 	cost = 30,
 	unlocked = true,
-	discovered = false,
+	discovered = true,
 	perishable_compat = true,
 	eternal_compat = true,
 	blueprint_compat = true,
 		loc_vars = function(self, info_queue, card)
 		local rsgc = card.ability.extra 
 		return {
-			vars = { rsgc.xmult, rsgc.chips, rsgc.xchips, rsgc. mult},
+			vars = {rsgc.chips, rsgc. mult, rsgc.xchips, rsgc.xmult},
 		}
 	end,
 	calculate = function(self, card, context)
@@ -1293,6 +1340,7 @@ SMODS.Consumable({
     atlas = 'aug',
     pos = {x=0, y=0},
     discovered = true,
+	no_collection = true,
 	can_use = function(self, card)
 		return true
 	end,

@@ -1357,6 +1357,44 @@ SMODS.Consumable({
 		end
 })
 
+RSGC.Joker({
+	key = "saya",
+	atlas = "joke",
+	pos = { x = 0, y = 0 },
+	config = { 
+	extra = {xmult = 10, chips = 25, modesword = true} 
+	},
+	rarity = "rsgc_unb",
+	cost = 30,
+	unlocked = true,
+	discovered = true,
+	perishable_compat = true,
+	eternal_compat = true,
+	blueprint_compat = true,
+		loc_vars = function(self, info_queue, card)
+		local rsgc = card.ability.extra 
+		return {
+			vars = {rsgc.chips, rsgc. mult, rsgc.modesword},
+		}
+	end,
+	calculate = function(self, card, context)
+			if context.joker_main then 
+				local rsgc = card.ability.extra
+				if rsgc.modesword == true then
+				rsgc.modesword = false
+				return{
+					mult=rsgc.mult,
+				}
+				else
+				rsgc.modesword = true
+				return{
+					chips=rsgc.chips,
+				}
+				end
+			end
+		end
+})
+
 --Boosters
 SMODS.Booster({
     key = 'gay',

@@ -85,9 +85,9 @@ return {
             },            
             j_rsgc_saya = {
                 name = 'Saya Sakura',
-                text = { "Gives {C:chips}+#1#{} Chips or {C:mult}+#2#{} Mult every hand",
-                         "Cycles bonus each hand played",
-                         "(Currently #3#)"
+                text = { "{C:chips}+#1#{} Chips or {C:mult}+#2#{} Mult",
+                         "Switches every hand",
+                         "{C:inactive}(Currently {C:attention}#3#{C:inactive})"
                 }
             },
             j_rsgc_papyrus = {
@@ -687,8 +687,6 @@ return {
         challenge_names={},
         collabs={},
         dictionary={
-            chips = "Chips",
-            mult = "Mult",
             k_kiss = "Kiss :3",
             k_no_planet = "Fucking Nothing",
             k_rsgc_aug_pack = "Tinker Pack",
@@ -709,7 +707,9 @@ return {
             k_blueprinted = "Blueprint",
             rsgc_tweak_ui = "Tweaks",
             rsgc_paint_ui = "Paints",
-            rsgc_nothinghand = "Nothing"
+            rsgc_nothinghand = "Nothing",
+            rsgc_chips = "Chips",
+            rsgc_mult = "Mult",
         },
         high_scores={},
         labels={

@@ -1362,7 +1362,7 @@ RSGC.Joker({
 	atlas = "joke",
 	pos = { x = 0, y = 0 },
 	config = { 
-	extra = {mult = 10, chips = 25, modesword = true} 
+		extra = {mult = 10, chips = 25, modesword = true}
 	},
 	rarity = 1,
 	cost = 30,
@@ -1374,25 +1374,25 @@ RSGC.Joker({
 	loc_vars = function(self, info_queue, card)
 		local rsgc = card.ability.extra 
 		return {
-			vars = {rsgc.chips, rsgc.mult, rsgc.modesword and localize("chips") or localize("mult")}
+			vars = {rsgc.chips, rsgc.mult, rsgc.modesword and localize("rsgc_mult") or localize("rsgc_chips")}
 		}
 	end,
 	calculate = function(self, card, context)
-			if context.joker_main then 
-				local rsgc = card.ability.extra
-				if rsgc.modesword == true then
+		if context.joker_main then 
+			local rsgc = card.ability.extra
+			if rsgc.modesword then
 				rsgc.modesword = false
 				return{
 					mult=rsgc.mult,
 				}
-				else
+			else
 				rsgc.modesword = true
 				return{
 					chips=rsgc.chips,
 				}
-				end
 			end
 		end
+	end
 })
 
 --Boosters

@@ -366,7 +366,7 @@ SMODS.Rank {
         rsgc_suitless = 4
     },
 
-    next = { 'rsgc_0.2' },
+    next = { 'rsgc_02' },
 	--prev = { 'rsgc_19' },
 
     nominal = 0.1,
@@ -396,8 +396,8 @@ SMODS.Rank {
         rsgc_suitless = 4
     },
 
-    next = { 'rsgc_0.3' },
-	prev = { 'rsgc_0.1' },
+    next = { 'rsgc_03' },
+	prev = { 'rsgc_01' },
 
     nominal = 0.2,
     shorthand = '0.2',
@@ -426,8 +426,8 @@ SMODS.Rank {
         rsgc_suitless = 4
     },
 
-    next = { 'rsgc_0.4' },
-	prev = { 'rsgc_0.2' },
+    next = { 'rsgc_04' },
+	prev = { 'rsgc_02' },
 
     nominal = 0.3,
     shorthand = '0.3',
@@ -456,8 +456,8 @@ SMODS.Rank {
         rsgc_suitless = 4
     },
 
-    next = { 'rsgc_0.5' },
-	prev = { 'rsgc_0.3' },
+    next = { 'rsgc_05' },
+	prev = { 'rsgc_03' },
 
     nominal = 0.4,
     shorthand = '0.4',
@@ -486,8 +486,8 @@ SMODS.Rank {
         rsgc_suitless = 4
     },
 
-    next = { 'rsgc_0.6' },
-	prev = { 'rsgc_0.4' },
+    next = { 'rsgc_06' },
+	prev = { 'rsgc_04' },
 
     nominal = 0.5,
     shorthand = '0.5',
@@ -516,8 +516,8 @@ SMODS.Rank {
         rsgc_suitless = 4
     },
 
-    next = { 'rsgc_0.7' },
-	prev = { 'rsgc_0.5' },
+    next = { 'rsgc_07' },
+	prev = { 'rsgc_05' },
 
     nominal = 0.6,
     shorthand = '0.6',
@@ -546,8 +546,8 @@ SMODS.Rank {
         rsgc_suitless = 4
     },
 
-    next = { 'rsgc_0.8' },
-	prev = { 'rsgc_0.6' },
+    next = { 'rsgc_08' },
+	prev = { 'rsgc_06' },
 
     nominal = 0.7,
     shorthand = '0.7',
@@ -576,8 +576,8 @@ SMODS.Rank {
         rsgc_suitless = 4
     },
 
-    next = { 'rsgc_0.9' },
-	prev = { 'rsgc_0.7' },
+    next = { 'rsgc_09' },
+	prev = { 'rsgc_07' },
 
     nominal = 0.8,
     shorthand = '0.8',
@@ -607,7 +607,7 @@ SMODS.Rank {
     },
 
     next = { 'Ace', 'rsgc_1' },
-	prev = { 'rsgc_0.8' },
+	prev = { 'rsgc_08' },
 
     nominal = 0.9,
     shorthand = '0.9',
@@ -637,7 +637,7 @@ SMODS.Rank {
     },
 
     next = { '2' },
-	prev = { 'rsgc_0.9' },
+	prev = { 'rsgc_09' },
 
     nominal = 1,
     shorthand = '1',

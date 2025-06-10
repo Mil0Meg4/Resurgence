@@ -1362,9 +1362,9 @@ RSGC.Joker({
 	atlas = "joke",
 	pos = { x = 0, y = 0 },
 	config = { 
-	extra = {xmult = 10, chips = 25, modesword = true} 
+	extra = {mult = 10, chips = 25, modesword = true} 
 	},
-	rarity = "rsgc_unb",
+	rarity = 1,
 	cost = 30,
 	unlocked = true,
 	discovered = true,

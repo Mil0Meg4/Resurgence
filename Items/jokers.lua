@@ -1371,10 +1371,10 @@ RSGC.Joker({
 	perishable_compat = true,
 	eternal_compat = true,
 	blueprint_compat = true,
-		loc_vars = function(self, info_queue, card)
+	loc_vars = function(self, info_queue, card)
 		local rsgc = card.ability.extra 
 		return {
-			vars = {rsgc.chips, rsgc. mult, rsgc.modesword},
+			vars = {rsgc.chips, rsgc.mult, rsgc.modesword and localize("chips") or localize("mult")}
 		}
 	end,
 	calculate = function(self, card, context)

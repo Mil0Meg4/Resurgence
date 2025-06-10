@@ -82,6 +82,13 @@ return {
                          "among owned {C:attention}Jokers",
                          "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
                 }
+            },            
+            j_rsgc_saya = {
+                name = 'Saya Sakura',
+                text = { "Gives {C:chips}+#1#{} Chips or {C:mult}+#2#{} Mult every hand",
+                         "Cycles bonus each hand played",
+                         "(Currently #3#)"
+                }
             },
             j_rsgc_papyrus = {
                 name = 'Papyrus',
@@ -680,6 +687,8 @@ return {
         challenge_names={},
         collabs={},
         dictionary={
+            chips = "Chips",
+            mult = "Mult",
             k_kiss = "Kiss :3",
             k_no_planet = "Fucking Nothing",
             k_rsgc_aug_pack = "Tinker Pack",

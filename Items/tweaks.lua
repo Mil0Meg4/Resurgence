@@ -71,9 +71,9 @@ RSGC.Tweak {
     calculate = function(self,card,context)
         if context.after and not card.config.center.immutable then--checks if rerolling
             local rsgc = card.ability.rsgc_lever
-            RSGC.mod_table_values(card.ability,nil,{mult = 1/rsgc.rate},nil,{rsgc_lever = true})
+            RSGC.mod_table_values(card.ability,nil,{mult = 1/rsgc.rate},nil)
             rsgc.rate = rsgc.rate + rsgc.increase
-            RSGC.mod_table_values(card.ability,nil,{mult = rsgc.rate},nil,{rsgc_lever = true})
+            RSGC.mod_table_values(card.ability,nil,{mult = rsgc.rate},nil)
             return {
                 message = localize('k_upgrade_ex'),
                 focus = card,
@@ -83,7 +83,7 @@ RSGC.Tweak {
         if context.end_of_round and G.GAME.blind.boss and not context.other_card and not card.config.center.immutable then
             local rsgc = card.ability.rsgc_lever
             if rsgc.rate >= rsgc.threshold then
-                RSGC.mod_table_values(card.ability,nil,{mult = 1/rsgc.rate},nil,{rsgc_lever = true})
+                RSGC.mod_table_values(card.ability,nil,{mult = 1/rsgc.rate},nil)
                 rsgc.rate = 1
                 return {
                     message = localize('k_reset'),

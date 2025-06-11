@@ -106,13 +106,12 @@ SMODS.Consumable({
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS.e_foil
     end,
-    can_use = function(self, card)--determins when you can use the consumable
-        --checks that at least one joker is selected but not more than the maximum allowed
+    can_use = function(self, card)
 		return not G.GAME.tinfoil_count or (#G.jokers.highlighted > 0 and #G.jokers.highlighted <= self.config.max_highlighted)
 	end,
     use = function(self, card, area, copier)
         if G.GAME.tinfoil_count then
-            for _, v in ipairs(G.jokers.highlighted) do--apply to all selected jokers
+            for _, v in ipairs(G.jokers.highlighted) do
                 v:set_edition("e_foil", true)
                 G.GAME.tinfoil_count = false
             end
@@ -121,10 +120,33 @@ SMODS.Consumable({
         end
     end,
     in_pool = function(self, wawa, wawa2)
-		return false --if this was false this joker wouldnt spawn naturally.
+		return false
 	end,
 })
 
+SMODS.Consumable({
+    key = 'aug_polar',
+    set = 'Augment',
+    atlas = 'aug',
+    pos = {x=0, y=0},
+    discovered = true,
+    config = {max_highlighted = 2},
+    loc_vars = function(self, info_queue)
+        local rsgc = self.config
+		return { vars = {rsgc.max_highlighted} }
+	end,
+    can_use = function(self, card)
+		return #G.jokers.highlighted > 0 and #G.jokers.highlighted <= self.config.max_highlighted
+	end,
+    use = function(self, card, area, copier)
+        for _, v in ipairs(G.jokers.highlighted) do
+            RSGC.mod_table_values(v.ability,nil,{mult = -1},nil)
+        end
+    end,
+    in_pool = function(self, wawa, wawa2)
+		return false
+	end,
+})
 --Boosters
 SMODS.Booster({
     key = 'small_aug_1',

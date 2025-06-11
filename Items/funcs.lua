@@ -7,8 +7,9 @@ RSGC.mod_table_values = function(table, ref, operation,target_keywords,banned_ke
     if target_keywords and not next(target_keywords) then target_keywords = nil end--if target_keywords exists but is empty, it becomes nil
     if not banned_keywords then banned_keywords = {} end
     if not ref then ref = table end--if no ref table is given, take the main one as a reference
-	banned_keywords["unbound"] = true--does not modify the unbound vals
-	banned_keywords["paint"] = true--does not modify the paint vals
+	banned_keywords["unbound"] = true
+	banned_keywords["paint"] = true
+	banned_keywords["rsgc_lever"] = true
     --convert config to three vars to avoid typing it in full every time
     local set = operation.set or nil--value to replace the starting value with
     local add = operation.add or 0--value to add to the starting value 
@@ -63,7 +64,7 @@ function RSGC.remove_tweak(card)
 	for k, _ in pairs(card and card.ability or {}) do
 		if RSGC.is_tweak(k) then
 			if k == "rsgc_lever" then--resets lever
-				RSGC.mod_table_values(card.ability,nil,{mult = 1/card.ability.rsgc_lever.rate},nil,{rsgc_lever = true})
+				RSGC.mod_table_values(card.ability,nil,{mult = 1/card.ability.rsgc_lever.rate},nil)
 			end
 			card.ability[k] = nil
 		end

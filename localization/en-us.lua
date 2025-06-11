@@ -485,15 +485,22 @@ return {
             },
             c_rsgc_aug_lever = {
                 name = 'Lever',
-                text = { "{C:attention}#1#{} Selected Joker",
+                text = { "{C:attention}#1#{} selected Joker",
                     "is given a {C:attention}Lever{}",
                 }
             },
             c_rsgc_aug_rubber = {
                 name = 'Rubber',
-                text = { "{C:attention}#1#{} Selected Joker",
+                text = { "{C:attention}#1#{} selected Joker",
                     "loses all {C:attention}Stickers{}",
                     "and is made {C:attention}Rubber"
+                }
+            },
+            c_rsgc_aug_polar = {
+                name = 'Polar Inversion',
+                text = { "{C:dark_edition}Invert{} all values of up",
+                "to {C:attention}#1#{} selected Jokers",
+                "{C:inactive}(ex: {C:attention}12{C:inactive} becomes {C:attention}-12{C:inactive})",
                 }
             },
         },

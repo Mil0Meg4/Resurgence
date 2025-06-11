@@ -94,6 +94,43 @@ RSGC.Tweak {
         end
     end,
 }
+RSGC.Tweak {
+    key = 'gilded',
+    atlas = 'aug',
+    pos = { x = 1, y = 0 },
+    badge_colour = G.C.CHIPS,
+    config = {dollars = 3},
+}
+
+local orig_calculate_joker = Card.calculate_joker
+function Card:calculate_joker(context)
+    local ret = orig_calculate_joker(self,context)
+    if ret and self.ability.rsgc_gilded then
+        ret.gilded = self.ability.rsgc_gilded.dollars
+    end
+    return ret
+end
+
+local orig_calculate_individual_effect = SMODS.calculate_individual_effect
+function SMODS.calculate_individual_effect(effect, scored_card, key, amount, from_edition)
+    if not effect.gilded then return orig_calculate_individual_effect(effect, scored_card, key, amount, from_edition) end
+    if (key == "mult"
+    or key == "chips"
+    or key == "mult_mod"
+    or key == "chip_mod")
+    and amount ~= 0 and (mult or hand_chips)
+    then
+        key = "dollars"
+        amount = effect.gilded
+    end
+    if key == "message"
+    and (effect.mult_mod
+    or effect.chip_mod)
+    then
+        return false
+    end
+    return orig_calculate_individual_effect(effect, scored_card, key, amount, from_edition)
+end
 
 -------------------------------------------------------------
 ----stuff for making tweaks have their own collection tab----

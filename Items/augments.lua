@@ -97,6 +97,33 @@ SMODS.Consumable({
 })
 
 SMODS.Consumable({
+    key = 'aug_kintsugi',
+    set = 'Augment',
+    atlas = 'aug',
+    pos = {x=0, y=0},
+    discovered = true,
+    config = {max_highlighted = 1, tweak = "gilded"},
+    loc_vars = function(self, info_queue)
+        local rsgc = self.config
+		info_queue[#info_queue + 1] = RSGC.tweak_tooltip(rsgc.tweak)
+		return { vars = {rsgc.max_highlighted} }
+	end,
+    can_use = function(self, card)--determins when you can use the consumable
+        --checks that at least one joker is selected but not more than the maximum allowed
+		return #G.jokers.highlighted > 0 and #G.jokers.highlighted <= self.config.max_highlighted
+	end,
+    use = function(self, card, area, copier)
+        G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.4,func = function()--short delay before the effect
+            play_sound('tarot1')--normal consumable shenanigans
+            card:juice_up(0.3, 0.5)--normal consumable shenanigans
+            for _, v in ipairs(G.jokers.highlighted) do--apply to all selected jokers
+                RSGC.set_tweak(v, card.ability.tweak)--set the tweak
+            end
+        return true end }))
+    end
+})
+
+SMODS.Consumable({
     key = 'aug_tinfoil',
     set = 'Augment',
     atlas = 'aug',
@@ -294,7 +321,7 @@ SMODS.Booster({
 })
 
 ----debug stuff----
-SMODS.Consumable({
+--[[ SMODS.Consumable({
     key = 'aug_red',
     set = 'Augment',
     atlas = 'aug',
@@ -581,4 +608,4 @@ SMODS.Consumable({
     in_pool = function(self, wawa, wawa2)
 		return false --if this was false this joker wouldnt spawn naturally.
 	end,
-})
+}) ]]

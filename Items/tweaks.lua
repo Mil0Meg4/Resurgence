@@ -25,6 +25,7 @@ RSGC.Tweaks_keys = {
     "mother",
     "lever",
     "rubber",
+    "gilded",
 }
 
 RSGC.Tweak {
@@ -100,6 +101,12 @@ RSGC.Tweak {
     pos = { x = 1, y = 0 },
     badge_colour = G.C.CHIPS,
     config = {dollars = 3},
+    loc_vars = function(self, info_queue, card)
+		local rsgc = card.ability.rsgc_lever or self.config
+		return {
+			vars = {rsgc.dollars},
+		}
+	end,
 }
 
 local orig_calculate_joker = Card.calculate_joker

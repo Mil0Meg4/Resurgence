@@ -489,6 +489,12 @@ return {
                     "is given a {C:attention}Lever{}",
                 }
             },
+            c_rsgc_aug_kintsugi = {
+                name = 'Kintsugi',
+                text = { "{C:attention}#1#{} selected Joker",
+                    "is made {C:attention}Gilded{}",
+                }
+            },
             c_rsgc_aug_rubber = {
                 name = 'Rubber',
                 text = { "{C:attention}#1#{} selected Joker",
@@ -501,6 +507,11 @@ return {
                 text = { "{C:dark_edition}Invert{} all values of up",
                 "to {C:attention}#1#{} selected Jokers",
                 "{C:inactive}(ex: {C:attention}12{C:inactive} becomes {C:attention}-12{C:inactive})",
+                }
+            },
+            c_rsgc_aug_tinfoil = {
+                name = 'Tinfoil',
+                text = { "",
                 }
             },
         },
@@ -528,6 +539,13 @@ return {
                 "hand is played",
                 "{C:attention}Resets{} after defeating",
                 "{C:attention}Boss Blind{} with {C:attention}X#3#{} or more"
+                }
+            },
+            rsgc_gilded = {
+                name = 'Gilded',
+                text = { "Earns {C:money}$#1#{} instead of",
+                "giving {C:chips}Chips{} or {C:red}Mult",
+                "{C:inactive}(Additve Chips/Mult only)",
                 }
             },
             rsgc_rubber = {

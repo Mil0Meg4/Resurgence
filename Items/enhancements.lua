@@ -17,6 +17,7 @@ SMODS.Enhancement {
             }
         end
     end,
+    weight = 0,
     get_weight = function(self, weight, object_type)
         return 0
     end,
@@ -40,6 +41,7 @@ SMODS.Enhancement {
             }
         end
     end,
+    weight = 0,
     get_weight = function(self, weight, object_type)
         return 0
     end,

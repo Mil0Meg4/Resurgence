@@ -9,9 +9,8 @@ RSGC.Tweak = SMODS.Sticker:extend {
     },
 
     draw = function(self, card)
-        local x_offset = (card.T.w / 71) * card.T.scale
         G.shared_stickers[self.key].role.draw_major = card
-        G.shared_stickers[self.key]:draw_shader('dissolve', nil, nil, nil, card.children.center, nil, nil, x_offset)
+        G.shared_stickers[self.key]:draw_shader('dissolve', nil, nil, nil, card.children.center, nil, nil, 0)
     end,
 
     apply = function(self, card, val)
@@ -97,8 +96,8 @@ RSGC.Tweak {
 }
 RSGC.Tweak {
     key = 'gilded',
-    atlas = 'aug',
-    pos = { x = 1, y = 0 },
+    atlas = 'tweak',
+    pos = { x = 0, y = 0 },
     badge_colour = G.C.CHIPS,
     config = {dollars = 3},
     loc_vars = function(self, info_queue, card)

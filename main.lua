@@ -69,6 +69,12 @@ SMODS.Atlas{
     px = 71,
     py = 95
 }
+SMODS.Atlas{
+    key = "tweak",
+    path = "tweak.png",
+    px = 71,
+    py = 95
+}
 --booster pack ATLAS
 SMODS.Atlas{
     key = "booster",

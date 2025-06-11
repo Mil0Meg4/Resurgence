@@ -14,7 +14,10 @@ RSGC.Paint = SMODS.Sticker:extend {
     weight = 0,
     draw = function(self, card)
         card.children.center:draw_shader(self.shader or 'foil', nil, card.ARGS.send_to_shader)
-        if card.children.front and not SMODS.has_no_rank(card) then
+        if card.children.front and not SMODS.has_no_rank(card)
+        and not SMODS.has_enhancement(card, "m_rsgc_omega")
+        and not SMODS.has_enhancement(card, "m_rsgc_alpha")
+        then
             card.children.front:draw_shader(self.shader or 'foil', nil, card.ARGS.send_to_shader)
         end
         --if card.edition then card.children.center:draw_shader("polychrome", nil, card.ARGS.send_to_shader) end

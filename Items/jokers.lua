@@ -1365,7 +1365,7 @@ RSGC.Joker({
 		extra = {mult = 10, chips = 25, modesword = true}
 	},
 	rarity = 1,
-	cost = 30,
+	cost = 3,
 	unlocked = true,
 	discovered = true,
 	perishable_compat = true,
@@ -1393,6 +1393,42 @@ RSGC.Joker({
 			end
 		end
 	end
+})
+
+RSGC.Joker({
+	key = "37steps",
+	atlas = "joke",
+	pos = { x = 0, y = 0 },
+	config = { 
+		extra = {hp=0, emult=6.9}
+	},
+	rarity = 2,
+	cost = 7,
+	unlocked = true,
+	discovered = true,
+	perishable_compat = true,
+	eternal_compat = true,
+	blueprint_compat = true,
+	loc_vars = function(self, info_queue, card)
+		local rsgc = card.ability.extra 
+		return {
+			vars = {rsgc.hp, rsgc.emult}
+		}
+	end,
+	calculate = function(self, card, context)
+		if context.joker_main then 
+			local rsgc = card.ability.extra
+			if rsgc.hp<37 then
+				rsgc.hp=rsgc.hp+1
+				return 
+			else
+				return {
+				emult=rsgc.emult
+				}	
+			end
+		end
+	end
+
 })
 
 --Boosters

@@ -25,6 +25,7 @@ RSGC.GRADIENTS = {
     ARTIFACT = {HEX("40b5c4"),HEX("a8ced3")}
 }
 SMODS.load_file("Items/funcs.lua")()
+SMODS.load_file("Items/junk.lua")()
 SMODS.load_file("Items/ui.lua")()
 SMODS.load_file("Items/resurgence phase.lua")()
 SMODS.load_file("Items/editions.lua")()

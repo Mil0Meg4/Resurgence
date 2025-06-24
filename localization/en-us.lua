@@ -515,6 +515,13 @@ return {
                 }
             },
         },
+        Junk={
+            c_rsgc_junk_sandwich = {
+                name = 'Sandwich',
+                text = { "",
+                }
+            },
+        },
         Enhanced = {
             m_rsgc_omega = {
                 name = "Omega Card",

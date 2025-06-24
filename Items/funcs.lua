@@ -471,3 +471,71 @@ function RSGC.is_in_collection(card)
 	end
 	return false
 end
+
+
+
+function RSGC.use_consumable(card, cards, func)
+    if card then
+        G.E_MANAGER:add_event(Event {
+        trigger = 'after',
+        delay = 0.4,
+        func = function()
+            play_sound('tarot1')
+            card:juice_up(0.3, 0.5)
+            return true
+        end
+        })
+    end
+
+    if cards then
+        for i = 1, #cards do
+            local percent = 1.15 - (i - 0.999) / (#cards - 0.998) * 0.3
+            G.E_MANAGER:add_event(Event {
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                cards[i]:flip()
+                play_sound('card1', percent)
+                cards[i]:juice_up(0.3, 0.3)
+                return true
+                end
+            })
+        end
+    end
+
+    G.E_MANAGER:add_event(Event {
+        trigger = 'after',
+        delay = 0.7,
+        func = function()
+            if func then
+                func()
+            end
+        return true
+        end
+    })
+
+    if cards then
+        for i = 1, #cards do
+            local percent = 0.85 + (i - 0.999) / (#cards - 0.998) * 0.3
+            G.E_MANAGER:add_event(Event {
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                cards[i]:flip()
+                play_sound('tarot2', percent, 0.6)
+                cards[i]:juice_up(0.3, 0.3)
+                return true
+                end
+            })
+        end
+    end
+
+    G.E_MANAGER:add_event(Event {
+        trigger = 'after',
+        delay = 0.2,
+        func = function()
+        G.hand:unhighlight_all()
+        return true
+        end
+    })
+end

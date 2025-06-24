@@ -31,13 +31,11 @@ SMODS.Consumable({
 		return #G.jokers.highlighted > 0 and #G.jokers.highlighted <= self.config.max_highlighted
 	end,
     use = function(self, card, area, copier)
-        G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.4,func = function()--short delay before the effect
-            play_sound('tarot1')--normal consumable shenanigans
-            card:juice_up(0.3, 0.5)--normal consumable shenanigans
-            for _, v in ipairs(G.jokers.highlighted) do--apply to all selected jokers
-                RSGC.set_tweak(v, card.ability.tweak)--set the tweak
+        RSGC.use_consumable(card,G.jokers.highlighted, function()
+            for _, v in ipairs(G.jokers.highlighted) do
+                RSGC.set_tweak(v, card.ability.tweak)
             end
-        return true end }))
+        end)
     end
 })
 
@@ -58,14 +56,12 @@ SMODS.Consumable({
 		return #G.jokers.highlighted > 0 and #G.jokers.highlighted <= self.config.max_highlighted
 	end,
     use = function(self, card, area, copier)
-        G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.4,func = function()--short delay before the effect
-            play_sound('tarot1')--normal consumable shenanigans
-            card:juice_up(0.3, 0.5)--normal consumable shenanigans
+        RSGC.use_consumable(card,G.jokers.highlighted, function()
             for _, v in ipairs(G.jokers.highlighted) do--apply to all selected jokers
                 RSGC.remove_stickers(v)
                 RSGC.set_tweak(v, card.ability.tweak)--set the tweak
             end
-        return true end }))
+        end)
     end
 })
 
@@ -86,13 +82,11 @@ SMODS.Consumable({
 		return #G.jokers.highlighted > 0 and #G.jokers.highlighted <= self.config.max_highlighted
 	end,
     use = function(self, card, area, copier)
-        G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.4,func = function()--short delay before the effect
-            play_sound('tarot1')--normal consumable shenanigans
-            card:juice_up(0.3, 0.5)--normal consumable shenanigans
+        RSGC.use_consumable(card,G.jokers.highlighted, function()
             for _, v in ipairs(G.jokers.highlighted) do--apply to all selected jokers
                 RSGC.set_tweak(v, card.ability.tweak)--set the tweak
             end
-        return true end }))
+        end)
     end
 })
 
@@ -113,13 +107,11 @@ SMODS.Consumable({
 		return #G.jokers.highlighted > 0 and #G.jokers.highlighted <= self.config.max_highlighted
 	end,
     use = function(self, card, area, copier)
-        G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.4,func = function()--short delay before the effect
-            play_sound('tarot1')--normal consumable shenanigans
-            card:juice_up(0.3, 0.5)--normal consumable shenanigans
+        RSGC.use_consumable(card,G.jokers.highlighted, function()
             for _, v in ipairs(G.jokers.highlighted) do--apply to all selected jokers
                 RSGC.set_tweak(v, card.ability.tweak)--set the tweak
             end
-        return true end }))
+        end)
     end
 })
 
@@ -137,14 +129,16 @@ SMODS.Consumable({
 		return not G.GAME.tinfoil_count or (#G.jokers.highlighted > 0 and #G.jokers.highlighted <= self.config.max_highlighted)
 	end,
     use = function(self, card, area, copier)
-        if G.GAME.tinfoil_count then
-            for _, v in ipairs(G.jokers.highlighted) do
-                v:set_edition("e_foil", true)
-                G.GAME.tinfoil_count = false
+        RSGC.use_consumable(card,G.jokers.highlighted, function()
+            if G.GAME.tinfoil_count then
+                for _, v in ipairs(G.jokers.highlighted) do
+                    v:set_edition("e_foil", true)
+                    G.GAME.tinfoil_count = false
+                end
+            else
+                G.GAME.tinfoil_count = true
             end
-        else
-            G.GAME.tinfoil_count = true
-        end
+        end)
     end,
     in_pool = function(self, wawa, wawa2)
 		return false
@@ -166,9 +160,11 @@ SMODS.Consumable({
 		return #G.jokers.highlighted > 0 and #G.jokers.highlighted <= self.config.max_highlighted
 	end,
     use = function(self, card, area, copier)
-        for _, v in ipairs(G.jokers.highlighted) do
-            RSGC.mod_table_values(v.ability,nil,{mult = -1},nil)
-        end
+        RSGC.use_consumable(card,G.jokers.highlighted, function()
+            for _, v in ipairs(G.jokers.highlighted) do
+                RSGC.mod_table_values(v.ability,nil,{mult = -1},nil)
+            end
+        end)
     end,
     in_pool = function(self, wawa, wawa2)
 		return false

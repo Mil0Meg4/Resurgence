@@ -10,6 +10,12 @@ return {
         },
         Blind={},
         Edition={
+            e_rsgc_trans = {
+                name = "Trans",
+                text = {
+                    "{X:dark_edition,C:white}^#1#{} Mult"
+                    }
+            },
             e_rsgc_divine = {
                 name = "Divine",
                 text = {
@@ -25,6 +31,52 @@ return {
             }
         },
         Joker={
+            j_rsgc_bfm_l = {
+                name = "Big Furry Monster",
+                rsgc_subtitle = "Left Half",
+                text = {"{C:red}+#1#{} Mult if to the",
+                    "left of the {C:attention}Right Half",
+                }
+            },
+            j_rsgc_bfm_r = {
+                name = "Big Furry Monster",
+                rsgc_subtitle = "Right Half",
+                text = {"{C:chips}+#1#{} Chips if to the",
+                    "right of the {C:attention}Left Half",
+                }
+            },
+            j_rsgc_surprise_test = {
+                name = "Surprise Test",
+                text = {"Played cards with rank {C:attention}X{}",
+                    "give {X:red,C:white}X#1#{} Mult when scored,",
+                    "where {C:attention}X{} is any valid solution",
+                    "of: {C:attention}#2#",
+                    "{s:0.8}Polynomial changes every round",
+                },
+            },
+            j_rsgc_time_loop = {
+                name = "Time Loop",
+                text = {"{C:chips}#1#{} Ante after {C:attention}Boss",
+                    "{C:attention}Blind{} is defeated"
+                }
+            },
+            j_rsgc_karl = {
+                name = "Karl",
+                text = {"All {C:attention}Jokers{} are {C:red}Equal",
+                    "{C:inactive}(Same rarity and cost)"
+                },
+                unlock= {
+                    "{E:1,s:1.3}?????",
+                }
+            },
+            j_rsgc_opticus = {
+                name = "Opticus",
+                text = {"{C:attention}All{} cards permanently",
+                    "gain {X:red,C:white}X#1#{} Mult when a",
+                    "card with a {C:red}different{}",
+                    "{C:attention}Suit{} is scored"
+                }
+            },
             j_rsgc_sigma = {
                 name = 'SIGMA',
                 text = { "the next {C:purple}Tarot{} card used",
@@ -719,6 +771,10 @@ return {
         challenge_names={},
         collabs={},
         dictionary={
+            k_loop = "Loop!",
+            k_rsgc_prismatic = "Prismatic",
+            k_comrade = "Comrade",
+            k_awaken = "Awakened!",
             k_kiss = "Kiss :3",
             k_no_planet = "Fucking Nothing",
             k_rsgc_aug_pack = "Tinker Pack",

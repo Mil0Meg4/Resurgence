@@ -42,6 +42,7 @@ SMODS.load_file("Items/planars/undertale.lua")()
 SMODS.load_file("Items/planars/vampire.lua")()
 SMODS.load_file("Items/planars/hollowknight.lua")()
 SMODS.load_file("Items/planars/hgttg.lua")()
+SMODS.load_file("Items/darkjoker.lua")()
 SMODS.load_file("Items/paints.lua")()--paint must be after hgttg for ordering reasons
 
 --joker ATLAS

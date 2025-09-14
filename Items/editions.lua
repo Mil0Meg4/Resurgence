@@ -57,7 +57,7 @@ SMODS.Edition {
     key = 'trans',
     shader = 'trans',
     sound = {
-        sound = 'pridark_trans',
+        sound = 'rsgc_trans',
         per = 1,
         vol = 0.7
     },

@@ -6,7 +6,7 @@ Control powers beyond your understanding and rig the cards in your favor. Obtain
 
 - **Paint** - Editions not enough for you? Paint has you covered, with a new modifier for your cards and jokers which can stack with editions, and give your builds some color.
 
-- **Music Cards** - Visual art and music often intertwine, and the Music cards are no different, weaving shifting effects that help you tune your deck to perfection by creating illegal ranks, painting cards and sequencing a new way to deckbuild, one note at a time. 
+- **Junk Cards** - What would a cosmic odyssey be without any random junk you find along the way? Junk cards, while seemingly useless, will let you create illegal (and pretty janky) new ranks, powerful new deckbuilding techniques and more chaotic effects to rig the game to your advantage, one discarded doodad at a time.
 
 - **Augments** - New consumables that can render jokers completely unrecognizable. Want to make a chip build with mult jokers? Turn mult into money? Spread paint everywhere in your deck? Convert sell value into raw power? Augments got you covered, with even more crafty options to break the rules and shape them to your liking.
 

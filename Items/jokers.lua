@@ -1444,8 +1444,8 @@ RSGC.Joker({
 	eternal_compat = true,
 	blueprint_compat = true,
 	pos = {
-		x = 1,
-		y = 2,
+		x = 5,
+		y = 6,
 	},
 	pools = {gay = true},
 	loc_vars = function(self, info_queue, card)
@@ -1460,12 +1460,12 @@ RSGC.Joker({
 			local highest_rank = 0
 			for _,v in ipairs(context.scoring_hand) do
 				if v.base.id > highest_rank then
-					if not SMODS.has_no_rank then
+					if not SMODS.has_no_rank(v) then
 						highest_rank = v.base.id
 					end
 				end
-				rsgc.chips = rsgc.chips + highest_rank
 			end
+			rsgc.chips = rsgc.chips + highest_rank
 		end
 		if context.joker_main then
 			local rsgc = card.ability.extra

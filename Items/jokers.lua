@@ -287,7 +287,7 @@ RSGC.Joker({
 	calculate = function(self, card, context)
 		if context.cardarea == G.jokers and context.end_of_round and G.GAME.blind.boss 
 		and not (context.blueprint_card or self).getting_sliced 
-		and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit  then
+		and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
 			local tarots = {}
 			for _,v in ipairs(G.consumeables.cards) do
 				if v.ability.set == 'Tarot' then

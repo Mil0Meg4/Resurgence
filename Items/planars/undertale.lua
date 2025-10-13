@@ -300,3 +300,33 @@ RSGC.Joker {
 		end
 	end,
 }
+
+--[[ SMODS.Consumable({
+    key = 'fissure_und',
+    set = 'Spectral',
+    atlas = 'joke',
+    pos = {x=0, y=0},
+    discovered = false,
+    cost = 4,
+    hidden = true,
+	config = {set = "undertale"},
+    --soul_set = "Myth",
+    can_use = function(self, card)
+		return G.jokers.config.card_limit > #G.jokers.cards
+	end,
+    use = function(self, card, area, copier)
+        G.E_MANAGER:add_event(Event({
+			func = function()
+				G.GAME.rsgc_choosing_card = "fissure"
+				G.FUNCS.overlay_menu({
+                    definition = SMODS.card_collection_UIBox(G.P_CENTER_POOLS[self.config.set], {5,5,5}, {
+                        no_materialize = true,
+                        h_mod = 0.95,
+                        back_func = "exit_overlay_menu"
+                    })
+                })
+				return true
+			end,
+		}))
+    end,
+}) ]]

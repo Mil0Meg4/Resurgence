@@ -274,6 +274,45 @@ RSGC.Joker({
 })
 
 RSGC.Joker({
+	key = "doglover",
+	atlas = "joke",
+	pos = { x = 0, y = 0 },
+	rarity = 1,
+	cost = 4,
+	unlocked = true,
+	discovered = true,
+	perishable_compat = true,
+	eternal_compat = true,
+	blueprint_compat = true,
+	calculate = function(self, card, context)
+		if context.cardarea == G.jokers and context.end_of_round and G.GAME.blind.boss 
+		and not (context.blueprint_card or self).getting_sliced 
+		and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit  then
+			local tarots = {}
+			for _,v in ipairs(G.consumeables.cards) do
+				if v.ability.set == 'Tarot' then
+					tarots[#tarots + 1] = v
+				end
+			end
+			if tarots[1] then
+				G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+				G.E_MANAGER:add_event(Event({
+					func = function()
+						local card = copy_card(pseudorandom_element(tarots, pseudoseed('doglover')), nil)
+						card:add_to_deck()
+						G.consumeables:emplace(card)
+						G.GAME.consumeable_buffer = 0
+						return true
+					end}))
+				card_eval_status_text(context_blueprint_card or self, 'extra', nil, nil, nil, {message = localize('k_duplicated_ex')})
+				return nil, true
+			end
+			return
+		end
+	end,
+})
+
+RSGC.Joker({
 	key = "bartender",
 	atlas = "joke",
 	pos = { x = 5, y = 3 },
@@ -1434,7 +1473,7 @@ RSGC.Joker({
 	key = "thighhighs",
 	atlas = "joke",
 	rarity = 2,
-	cost = 10,
+	cost = 6,
 	config = { 
 		extra = {chips=0}
 	},

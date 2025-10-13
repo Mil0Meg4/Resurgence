@@ -322,13 +322,15 @@ RSGC.Joker({
 	end,
 	calculate = function(self, card, context)
 		if context.end_of_round then 
-			if G.GAME.chips - G.GAME.blind.chips > rsgc.chips then 
+			local rsgc = card.ability.extra
+			if to_big(G.GAME.chips) - to_big(G.GAME.blind.chips) >= to_big(rsgc.chips) then
 				local chipstring = tostring(rsgc.chips)
 				chipstring="9"..chipstring
 				rsgc.chips = tonumber(chipstring)
 			end
 		end
 		if context.joker_main then
+			local rsgc = card.ability.extra
 			return {
 				chips=rsgc.chips
 			}

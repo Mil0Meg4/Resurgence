@@ -38,6 +38,24 @@ return {
                     "left of the {C:attention}Right Half",
                 }
             },
+            j_rsgc_doglover = {
+                name = "Dog Lover",
+                text = {"Duplicates one random tarot card upon beating a boss blind",
+                }
+            },
+            j_rsgc_fate = {
+                name = "Fate Itself",
+                rsgc_subtitle = "Inevitable",
+                text = {"All probabilities are {C:green} 1 in 2 {}",
+                    "Gains {X:dark_edition,C:white} ^0.1 {} {C:mult} Mult {} or {C:chips} Chips {} whenever a probability triggers",
+                }
+            },
+            j_rsgc_thighhighs = {
+                name = "Thigh High Socks",
+                text = {"This Joker gains {C:chips} Chips {} equal to the highest",
+                    "scored rank if played hand contains a Pair",
+                }
+            },
             j_rsgc_bfm_r = {
                 name = "Big Furry Monster",
                 rsgc_subtitle = "Right Half",

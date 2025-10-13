@@ -300,6 +300,41 @@ RSGC.Joker {
 		end
 	end,
 }
+RSGC.Joker({
+	key = "chara",
+	atlas = "joke",
+	pos = { x = 1, y = 1 },
+	rarity = 4,
+	cost = 25,
+	config = {
+		extra = {
+			chips = 9
+		},
+	},
+	unlocked = true,
+	discovered = true,
+	perishable_compat = true,
+	eternal_compat = true,
+	blueprint_compat = true,
+	loc_vars = function(self, info_queue, card)
+		local rsgc = card.ability.extra
+		return {vars = { rsgc.chips}}
+	end,
+	calculate = function(self, card, context)
+		if context.end_of_round then 
+			if G.GAME.chips - G.GAME.blind.chips > rsgc.chips then 
+				local chipstring = tostring(rsgc.chips)
+				chipstring="9"..chipstring
+				rsgc.chips = tonumber(chipstring)
+			end
+		end
+		if context.joker_main then
+			return {
+				chips=rsgc.chips
+			}
+		end
+	end
+})
 
 --[[ SMODS.Consumable({
     key = 'fissure_und',

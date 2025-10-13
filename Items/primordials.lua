@@ -399,7 +399,7 @@ RSGC.Joker({
 	loc_vars = function(self, info_queue, card)
 		local rsgc = card.ability.extra
 		return {
-			vars = { rsgc.echips,rsgc.emult },
+			vars = { rsgc.echips,rsgc.emult,rsgc.chips_plus,rsgc.mult_plus },
 		}
 	end,
 	calculate = function(self, card, context)
@@ -410,7 +410,7 @@ RSGC.Joker({
 				emult = rsgc.emult
 			}
 		end
-		if context.pseudorandom_result then
+		if context.pseudorandom_result and not context.blueprint then
 			local rsgc = card.ability.extra
 			if context.result then
 				rsgc.emult = rsgc.emult + rsgc.mult_plus

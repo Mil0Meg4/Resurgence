@@ -304,8 +304,8 @@ RSGC.Joker({
 	key = "chara",
 	atlas = "joke",
 	pos = { x = 1, y = 1 },
-	rarity = 4,
-	cost = 25,
+	rarity = "rsgc_prim",
+	cost = 50,
 	config = {
 		extra = {
 			chips = 9
@@ -313,7 +313,7 @@ RSGC.Joker({
 	},
 	unlocked = true,
 	discovered = true,
-	perishable_compat = true,
+	perishable_compat = false,
 	eternal_compat = true,
 	blueprint_compat = true,
 	loc_vars = function(self, info_queue, card)
@@ -321,7 +321,7 @@ RSGC.Joker({
 		return {vars = { rsgc.chips}}
 	end,
 	calculate = function(self, card, context)
-		if context.end_of_round then 
+		if context.end_of_round and not context.blueprint then 
 			local rsgc = card.ability.extra
 			if to_big(G.GAME.chips) - to_big(G.GAME.blind.chips) >= to_big(rsgc.chips) then
 				local chipstring = tostring(rsgc.chips)

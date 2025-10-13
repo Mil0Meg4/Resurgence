@@ -13,7 +13,7 @@ return {
             e_rsgc_trans = {
                 name = "Trans",
                 text = {
-                    "{X:dark_edition,C:white}^#1#{} Mult"
+                    "{X:mult,C:white}^#1#{} Mult"
                     }
             },
             e_rsgc_divine = {
@@ -40,20 +40,28 @@ return {
             },
             j_rsgc_doglover = {
                 name = "Dog Lover",
-                text = {"Duplicates one random tarot card upon beating a boss blind",
+                text = {"Creates a copy of",
+                    "a random held {C:purple}Tarot{}",
+                    "after defeating {C:attention}boss blind",
                 }
             },
             j_rsgc_fate = {
                 name = "Fate Itself",
                 rsgc_subtitle = "Inevitable",
-                text = {"All probabilities are {C:green} 1 in 2 {}",
-                    "Gains {X:dark_edition,C:white} ^0.1 {} {C:mult} Mult {} or {C:chips} Chips {} whenever a probability triggers",
+                text = {"All {C:attention}listed {C:green}probabilities{} are {C:green}1 in 2{}",
+                    "This Joker gains {X:mult,C:white}^#4#{} Mult if a {C:green}probabilty{}",
+                    "{C:attention}succeeds{} and {X:chips,C:white}^#3#{} Chips if it {C:attention}fails",
+                    "{C:inactive}(Currently {X:chips,C:white}^#1#{C:inactive} Chips and {X:mult,C:white}^#2#{C:inactive} Mult)"
                 }
             },
             j_rsgc_thighhighs = {
                 name = "Thigh High Socks",
-                text = {"This Joker gains {C:chips} Chips {} equal to the highest",
-                    "scored rank if played hand contains a Pair",
+                text = {"This Joker gains {C:chips}Chips{}",
+                    "equal to the {C:attention}highest{}",
+                    "scored rank if played", 
+                    "hand contains a {C:attention}Pair",
+                    "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)"
+
                 }
             },
             j_rsgc_bfm_r = {
@@ -132,10 +140,10 @@ return {
             },
             j_rsgc_sinclair = {
                 name = 'Sinclair',
-                text = {"Earns {C:money}$#1#{} at end of round.",
+                text = {"Earns {C:money}$#1#{} at end of round",
                         "When Shop is entered, if you have {C:money}$#2#{}",
                         "or more {C:red}debuffs{} all other {C:attention}Jokers{} until",
-                        "you have {C:money}$0{} or less when exiting."
+                        "you have {C:money}$0{} or less when exiting"
                 },
             },
             j_rsgc_pugnala = {
@@ -187,7 +195,7 @@ return {
             j_rsgc_sans = {
                 name = 'Sans',
                 text = {"When selecting {C:attention}Blind{}, get",
-                    "its associated {C:attention}Skip Tag.",
+                    "its associated {C:attention}Skip Tag",
                     "When skipping {C:attention}Blind{}, this",
                     "Joker gains {C:chips}+#2#{} Chips for",
                     "each {C:rsgc_under}Undertale{} Joker",
@@ -228,6 +236,15 @@ return {
                 name = 'Tree(3)',
                 text = { "{X:mult,C:white}^^^#1#{} Mult",
                          "{X:mult,C:white}^^^#2#{} Mult at end of round"
+                }
+            },
+            j_rsgc_chara = {
+                name = 'Chara',
+                text = { "{C:chips}+#1#{} Chips",
+                    "If {C:attention}final score{} exceeds required",
+                    "score by more than {C:attention}#1#{}, {C:dark_edition}append",
+                    "{C:attention}9{} to the {C:chips}Chips{} of this Joker",
+                    "{C:inactive}(Requirement increases with {C:chips}Chips{C:inactive})"
                 }
             },
             j_rsgc_poe = {

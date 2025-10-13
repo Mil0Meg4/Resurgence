@@ -1481,6 +1481,40 @@ SMODS.Booster({
         G.booster_pack_sparkles:fade(1, 0)
     end,
 })
-
+RSGC.Joker({
+	key = "thighhighs",
+	atlas = "joke",
+	rarity = 2,
+	cost = 10,
+	config = { 
+		extra = {chips=0}
+	},
+	unlocked = true,
+	discovered = true,
+	perishable_compat = true,
+	eternal_compat = true,
+	blueprint_compat = true,
+	pos = {
+		x = 1,
+		y = 2,
+	},
+	pools = {gay = true},
+	loc_vars = function(self, info_queue, card)
+		local rsgc = card.ability.extra 
+		return {
+			vars = {rsgc.chips}
+		}
+	end,
+	calculate = function(self, card, context)
+	if context.before and context.poker_hands['Pair'] and not context.blueprint then
+    end
+	if context.joker_main then 
+		local rsgc = card.ability.extra
+		return {
+			chips=rsgc.chips
+			}	
+		end
+	end
+})
 
 

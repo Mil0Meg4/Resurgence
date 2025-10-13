@@ -24,6 +24,18 @@ RSGC.GRADIENTS = {
     UNBOUND = {HEX("bc5a25"),RSGC.C.VAMPIRICA},
     ARTIFACT = {HEX("40b5c4"),HEX("a8ced3")}
 }
+RSGC.fissure_banned_rarities = {
+    4,
+    "cry_exotic",
+    "pridark_prismatic",
+    "entr_entropic",
+    "entr_zenith",
+    "entr_reverse_legendary",
+    "tje_tjHl",
+    "rsgc_prim",
+    "rsgc_unb",
+    "rsgc_gast_err"
+}
 SMODS.load_file("Items/funcs.lua")()
 SMODS.load_file("Items/junk.lua")()
 SMODS.load_file("Items/ui.lua")()

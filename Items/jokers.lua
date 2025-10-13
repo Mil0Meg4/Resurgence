@@ -1352,9 +1352,9 @@ SMODS.Consumable({
 				RSGC.unbound(jokers[i])
 				end
 			G.GAME.used_souls = 0
-			end
-		
 		end
+	
+	end
 })
 
 RSGC.Joker({

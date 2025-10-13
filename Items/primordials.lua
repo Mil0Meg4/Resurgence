@@ -313,7 +313,7 @@ RSGC.Joker({
 	key = "doom",
 	atlas = "joke",
 	rarity = "rsgc_prim",
-	cost = 10,
+	cost = 50,
 	unlocked = true,
 	discovered = true,
 	pos = {
@@ -373,3 +373,57 @@ RSGC.Joker({
 		end
 	end,
 })
+RSGC.Joker({
+	key = "fate",
+	atlas = "joke",
+	rarity = "rsgc_prim",
+	cost = 50,
+	unlocked = true,
+	discovered = true,
+	pos = {
+		x = 0,
+		y = 6,
+	},
+	soul_pos = {x = 0, y = 7},
+	config = {
+		extra = {
+			echips = 1,
+			emult = 1,
+			mult_plus = 0.1,
+			chips_plus = 0.1
+		},
+	},
+	perishable_compat = true,
+	eternal_compat = true,
+	blueprint_compat = true,
+	loc_vars = function(self, info_queue, card)
+		local rsgc = card.ability.extra
+		return {
+			vars = { rsgc.echips,rsgc.emult },
+		}
+	end,
+	calculate = function(self, card, context)
+		if context.joker_main then
+			local rsgc = card.ability.extra
+			return {
+				echips = rsgc.echips,
+				emult = rsgc.emult
+			}
+		end
+		if context.pseudorandom_result then
+			local rsgc = card.ability.extra
+			if context.result then
+				rsgc.emult = rsgc.emult + rsgc.mult_plus
+			else
+				rsgc.echips = rsgc.echips + rsgc.chips_plus
+			end
+		end
+	end,
+})
+local orig_get_prob_vars = SMODS.get_probability_vars
+function SMODS.get_probability_vars(trigger_obj, base_numerator, base_denominator, identifier, from_roll, no_mod)
+	if next(find_joker('j_rsgc_fate')) then
+		return 1,2
+	end
+	return orig_get_prob_vars(trigger_obj, base_numerator, base_denominator, identifier, from_roll, no_mod)
+end

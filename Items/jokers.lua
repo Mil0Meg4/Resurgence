@@ -1430,6 +1430,51 @@ RSGC.Joker({
 	end
 
 })
+RSGC.Joker({
+	key = "thighhighs",
+	atlas = "joke",
+	rarity = 2,
+	cost = 10,
+	config = { 
+		extra = {chips=0}
+	},
+	unlocked = true,
+	discovered = true,
+	perishable_compat = true,
+	eternal_compat = true,
+	blueprint_compat = true,
+	pos = {
+		x = 1,
+		y = 2,
+	},
+	pools = {gay = true},
+	loc_vars = function(self, info_queue, card)
+		local rsgc = card.ability.extra 
+		return {
+			vars = {rsgc.chips}
+		}
+	end,
+	calculate = function(self, card, context)
+		if context.before and context.poker_hands['Pair'] and not context.blueprint then
+			local rsgc = card.ability.extra
+			local highest_rank = 0
+			for _,v in ipairs(context.scoring_hand) do
+				if v.base.value > highest_rank then
+					if not SMODS.has_no_rank then
+						highest_rank = v.base.value
+					end
+				end
+				rsgc.chips = rsgc.chips + highest_rank
+			end
+		end
+		if context.joker_main then
+			local rsgc = card.ability.extra
+			return {
+				chips=rsgc.chips
+			}
+		end
+	end
+})
 
 --Boosters
 SMODS.Booster({
@@ -1480,41 +1525,6 @@ SMODS.Booster({
         G.booster_pack_sparkles.fade_alpha = 1
         G.booster_pack_sparkles:fade(1, 0)
     end,
-})
-RSGC.Joker({
-	key = "thighhighs",
-	atlas = "joke",
-	rarity = 2,
-	cost = 10,
-	config = { 
-		extra = {chips=0}
-	},
-	unlocked = true,
-	discovered = true,
-	perishable_compat = true,
-	eternal_compat = true,
-	blueprint_compat = true,
-	pos = {
-		x = 1,
-		y = 2,
-	},
-	pools = {gay = true},
-	loc_vars = function(self, info_queue, card)
-		local rsgc = card.ability.extra 
-		return {
-			vars = {rsgc.chips}
-		}
-	end,
-	calculate = function(self, card, context)
-	if context.before and context.poker_hands['Pair'] and not context.blueprint then
-    end
-	if context.joker_main then 
-		local rsgc = card.ability.extra
-		return {
-			chips=rsgc.chips
-			}	
-		end
-	end
 })
 
 

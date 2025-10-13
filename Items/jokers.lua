@@ -1462,6 +1462,7 @@ RSGC.Joker({
 				if v.base.id > highest_rank then
 					if not SMODS.has_no_rank(v) then
 						highest_rank = v.base.id
+						rsgc.chips = rsgc.chips + highest_rank
 					end
 				end
 			end

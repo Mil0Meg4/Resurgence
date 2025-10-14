@@ -327,6 +327,11 @@ RSGC.Joker({
 				local chipstring = tostring(rsgc.chips)
 				chipstring="9"..chipstring
 				rsgc.chips = tonumber(chipstring)
+				return{
+				message = localize('k_murder'),
+				colour = G.C.RED,
+				card = card
+			}
 			end
 		end
 		if context.joker_main then

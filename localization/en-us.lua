@@ -820,6 +820,7 @@ return {
             k_augment = "Augment Card",
             k_tree_grow = "Grow!",
             k_tree3_grow = "Grow(3)!",
+            k_murder = "MURDER!",
             k_discards = "+1 Discrds",
             k_hands = "+1 Hands",
             k_blue = "Blue",

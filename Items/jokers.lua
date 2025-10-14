@@ -1505,6 +1505,11 @@ RSGC.Joker({
 				end
 			end
 			rsgc.chips = rsgc.chips + highest_rank
+			return{
+				message = localize('k_upgrade'),
+				colour = G.C.BLUE,
+				card = card
+			}
 		end
 		if context.joker_main then
 			local rsgc = card.ability.extra
@@ -1541,6 +1546,11 @@ RSGC.Joker({
         if (context.end_of_round and context.cardarea == G.jokers) and not context.blueprint then
 		local rsgc = card.ability.extra
 			rsgc.mult = rsgc.mult * rsgc.multiplier
+			return{
+				message = localize('k_tree_grow'),
+				colour = G.C.RED,
+				card = card
+			}
 		end
 		if context.joker_main then
 		local rsgc = card.ability.extra
@@ -1584,6 +1594,11 @@ RSGC.Joker({
         if (context.end_of_round and context.cardarea == G.jokers) and not context.blueprint then
 			local rsgc = card.ability.extra
 			rsgc.mult = rsgc.mult ^ rsgc.multiplier
+			return{
+				message = localize('k_tree_grow3'),
+				colour = G.C.RED,
+				card = card
+			}
 		end
 		if context.joker_main then
 		local rsgc = card.ability.extra
@@ -1614,7 +1629,7 @@ RSGC.Joker({
 	blueprint_compat = true,
 	loc_vars = function(self, info_queue, card)
 		local rsgc = card.ability.extra
-		return {vars = { rsgc.xmult, rsgc.jacks}}
+		return {vars = { rsgc.increase, rsgc.jacks}}
 	end,
 	calculate = function(self, card, context)
 		if  context.individual and context.other_card and context.other_card:get_id() == 11 and not context.blueprint then
@@ -1628,6 +1643,7 @@ RSGC.Joker({
 			}
 		end
 		if context.end_of_round then
+		local rsgc = card.ability.extra
 		rsgc.jacks = 0
 		end		
 						--------unbound--------
@@ -1638,6 +1654,54 @@ RSGC.Joker({
 				return RSGC.unbound(card)
 			end
 		end
+	end
+})
+
+RSGC.Joker({
+	key = "thehunger",
+	atlas = "joke",
+	pos = { x = 1, y = 1 },
+	rarity = "rsgc_unb",
+	cost = 25,
+	config = {
+		extra = {
+			jacks = 0,
+			wilds = 0,
+			increase = 0.25
+		},
+	},
+	unlocked = true,
+	discovered = true,
+	perishable_compat = false,
+	eternal_compat = true,
+	blueprint_compat = true,
+	loc_vars = function(self, info_queue, card)
+		local rsgc = card.ability.extra
+		return {vars = { rsgc.wilds, rsgc.jacks, rsgc.increase}}
+	end,
+	calculate = function(self, card, context)
+		if  context.individual and context.other_card and not context.blueprint then
+			local rsgc = card.ability.extra
+				if context.other_card:get_id() == 11  then
+				rsgc.jacks = rsgc.jacks + 1
+				context.other_card:set_ability(G.P_CENTERS["m_wild"])
+				end
+					if SMODS.has_enhancement(context.other_card, "m_wild") then
+						rsgc.wilds = rsgc.wilds + 1
+						SMODS.change_base(context.other_card,nil,'Jack')
+					end
+		end	
+		if context.joker_main then
+		local rsgc = card.ability.extra
+			return {
+				xmult= 1 + rsgc.increase * (rsgc.jacks + rsgc.wilds)
+			}
+		end
+		if context.end_of_round then
+		local rsgc = card.ability.extra
+		rsgc.jacks = 0
+		rsgc.wilds = 0
+		end		
 	end
 })
 

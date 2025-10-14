@@ -1631,7 +1631,7 @@ RSGC.Joker({
 	blueprint_compat = true,
 	loc_vars = function(self, info_queue, card)
 		local rsgc = card.ability.extra
-		return {vars = { rsgc.increase, rsgc.jacks}}
+		return {vars = { rsgc.increase, rsgc.jacks*rsgc.increase + 1}}
 	end,
 	calculate = function(self, card, context)
 		if  context.individual and context.cardarea == G.play and context.other_card and context.other_card:get_id() == 11 and not context.blueprint then
@@ -1644,15 +1644,11 @@ RSGC.Joker({
 				xmult = 1 + rsgc.increase * rsgc.jacks
 			}
 		end
-		if context.end_of_round then
+		if context.end_of_round and not context.blueprint then
 			local rsgc = card.ability.extra
+			local unb = rsgc.jacks >= card.ability.unbound.jackstotal
 			rsgc.jacks = 0
-		end		
-						--------unbound--------
-		if not context.blueprint and context.cardarea == G.jokers
-		and (context.setting_blind or context.ending_shop or context.end_of_round) then
-			local rsgc = card.ability.extra
-			if rsgc.jacks >= card.ability.unbound.jackstotal then
+			if unb then
 				return RSGC.unbound(card)
 			end
 		end
@@ -1679,7 +1675,7 @@ RSGC.Joker({
 	blueprint_compat = true,
 	loc_vars = function(self, info_queue, card)
 		local rsgc = card.ability.extra
-		return {vars = { rsgc.wilds, rsgc.jacks, rsgc.increase}}
+		return {vars = {rsgc.increase,1 + rsgc.increase * (rsgc.jacks + rsgc.wilds)}}
 	end,
 	calculate = function(self, card, context)
 		if context.individual and context.cardarea == G.play and context.other_card and not context.blueprint  then
@@ -1717,10 +1713,10 @@ RSGC.Joker({
 		if context.joker_main then
 			local rsgc = card.ability.extra
 			return {
-				xmult= 1 + rsgc.increase * (rsgc.jacks + rsgc.wilds)
+				xmult = 1 + rsgc.increase * (rsgc.jacks + rsgc.wilds)
 			}
 		end
-		if context.end_of_round then
+		if context.end_of_round and not context.blueprint then
 			local rsgc = card.ability.extra
 			rsgc.jacks = 0
 			rsgc.wilds = 0

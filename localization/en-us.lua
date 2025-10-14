@@ -226,13 +226,13 @@ return {
                     "{C:inactive}(Mult have room)"
                 }
             },
-            j_rsgc_tree = {
+            j_rsgc_oldtree = {
                 name = 'Tree',
                 text = { "{C:mult}+#1#{} Mult",
                          "{C:mult}+#2#{} Mult at end of round"
                 }
             },
-            j_rsgc_tree3 = {
+            j_rsgc_oldtree3 = {
                 name = 'Tree(3)',
                 text = { "{X:mult,C:white}^^^#1#{} Mult",
                          "{X:mult,C:white}^^^#2#{} Mult at end of round"
@@ -262,6 +262,22 @@ return {
                         "{C:chips}-#1#{} Chips for every non-{C:dark_edition}negative{}",
                         "consumable held over {C:attention}4",
                         "{C:inactive}(Currently {C:chips}-#3#{C:inactive} Chips)"
+                }
+            },
+            j_rsgc_thejester = {
+                name = 'The Jester',
+                text = { "{X:red,C:white}X#1#{} Mult per {C:attention}Jack",
+                    "scored this round",
+                    "{C:inactive}(Currently {X:red,C:white}X#2#{C:inactive} Mult)"
+                }
+            },
+            j_rsgc_thehunger = {
+                name = 'The Hunger',
+                text = { "{X:red,C:white}X#1#{} Mult per {C:attention}Jack{} or",
+                    "{C:attention}Wild Card{} scored this round",
+                    "{C:attention}Jacks{} become {C:attention}Wild Cards{} after",
+                    "being scored and viceversa",
+                    "{C:inactive}(Currently {X:red,C:white}X#2#{C:inactive} Mult)"
                 }
             },
             j_rsgc_pride_rainbow = {

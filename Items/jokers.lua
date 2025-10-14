@@ -1529,7 +1529,7 @@ RSGC.Joker({
 	},
 	unlocked = true,
 	discovered = true,
-	perishable_compat = true,
+	perishable_compat = false,
 	eternal_compat = true,
 	blueprint_compat = true,
 	loc_vars = function(self, info_queue, card)

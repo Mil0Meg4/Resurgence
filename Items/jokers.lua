@@ -1538,11 +1538,12 @@ RSGC.Joker({
 		return {vars = { rsgc.mult, rsgc.multiplier}}
 	end,
 	calculate = function(self, card, context)
-		local rsgc = card.ability.extra
         if (context.end_of_round and context.cardarea == G.jokers) and not context.blueprint then
+		local rsgc = card.ability.extra
 			rsgc.mult = rsgc.mult * rsgc.multiplier
 		end
 		if context.joker_main then
+		local rsgc = card.ability.extra
 			return {
 				mult=rsgc.mult,
 			}
@@ -1580,14 +1581,62 @@ RSGC.Joker({
 		return {vars = { rsgc.mult, rsgc.multiplier}}
 	end,
 	calculate = function(self, card, context)
-		local rsgc = card.ability.extra
         if (context.end_of_round and context.cardarea == G.jokers) and not context.blueprint then
+			local rsgc = card.ability.extra
 			rsgc.mult = rsgc.mult ^ rsgc.multiplier
 		end
 		if context.joker_main then
+		local rsgc = card.ability.extra
 			return {
 				mult=rsgc.mult,
 			}
+		end
+	end
+})
+
+RSGC.Joker({
+	key = "thejester",
+	atlas = "joke",
+	pos = { x = 1, y = 1 },
+	rarity = 3,
+	cost = 15,
+	config = {
+		extra = {
+			jacks = 0,
+			increase = 0.5
+		},
+	},
+	unbound = {evo = "thehunger", jackstotal = 10},
+	unlocked = true,
+	discovered = true,
+	perishable_compat = false,
+	eternal_compat = true,
+	blueprint_compat = true,
+	loc_vars = function(self, info_queue, card)
+		local rsgc = card.ability.extra
+		return {vars = { rsgc.xmult, rsgc.jacks}}
+	end,
+	calculate = function(self, card, context)
+		if  context.individual and context.other_card and context.other_card:get_id() == 11 and not context.blueprint then
+			local rsgc = card.ability.extra
+				rsgc.jacks = rsgc.jacks + 1
+		end		
+		if context.joker_main then
+		local rsgc = card.ability.extra
+			return {
+				xmult= rsgc.increase * rsgc.jacks
+			}
+		end
+		if context.end_of_round then
+		rsgc.jacks = 0
+		end		
+						--------unbound--------
+		if not context.blueprint and context.cardarea == G.jokers
+		and (context.setting_blind or context.ending_shop or context.end_of_round) then
+			local rsgc = card.ability.extra
+			if rsgc.jacks >= card.ability.unbound.jackstotal then
+				return RSGC.unbound(card)
+			end
 		end
 	end
 })

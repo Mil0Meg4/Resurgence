@@ -183,6 +183,7 @@ RSGC.Joker({
 })
 
 RSGC.Joker({
+	dependency = 1 == 2,
 	key = "oldtree",
 	atlas = "joke",
 	pos = { x = 0, y = 0 },
@@ -235,6 +236,7 @@ RSGC.Joker({
 })
 
 RSGC.Joker({
+	dependency = 1 == 2,
 	key = "oldtree3",
 	atlas = "joke",
 	pos = { x = 0, y = 8 },
@@ -1632,19 +1634,19 @@ RSGC.Joker({
 		return {vars = { rsgc.increase, rsgc.jacks}}
 	end,
 	calculate = function(self, card, context)
-		if  context.individual and context.other_card and context.other_card:get_id() == 11 and not context.blueprint then
+		if  context.individual and context.cardarea == G.play and context.other_card and context.other_card:get_id() == 11 and not context.blueprint then
 			local rsgc = card.ability.extra
-				rsgc.jacks = rsgc.jacks + 1
+			rsgc.jacks = rsgc.jacks + 1
 		end		
 		if context.joker_main then
 		local rsgc = card.ability.extra
 			return {
-				xmult= rsgc.increase * rsgc.jacks
+				xmult = 1 + rsgc.increase * rsgc.jacks
 			}
 		end
 		if context.end_of_round then
-		local rsgc = card.ability.extra
-		rsgc.jacks = 0
+			local rsgc = card.ability.extra
+			rsgc.jacks = 0
 		end		
 						--------unbound--------
 		if not context.blueprint and context.cardarea == G.jokers
@@ -1667,7 +1669,7 @@ RSGC.Joker({
 		extra = {
 			jacks = 0,
 			wilds = 0,
-			increase = 0.25
+			increase = 0.3
 		},
 	},
 	unlocked = true,
@@ -1680,27 +1682,48 @@ RSGC.Joker({
 		return {vars = { rsgc.wilds, rsgc.jacks, rsgc.increase}}
 	end,
 	calculate = function(self, card, context)
-		if  context.individual and context.other_card and not context.blueprint then
+		if context.individual and context.cardarea == G.play and context.other_card and not context.blueprint  then
 			local rsgc = card.ability.extra
-				if context.other_card:get_id() == 11  then
+			local c = context.other_card
+			local jack = false
+			local wild = false
+			if c:get_id() == 11 then
 				rsgc.jacks = rsgc.jacks + 1
-				context.other_card:set_ability(G.P_CENTERS["m_wild"])
-				end
-					if SMODS.has_enhancement(context.other_card, "m_wild") then
-						rsgc.wilds = rsgc.wilds + 1
-						SMODS.change_base(context.other_card,nil,'Jack')
+				jack = true
+			end
+			if SMODS.has_enhancement(c, "m_wild") then
+				rsgc.wilds = rsgc.wilds + 1
+				wild = true
+			end
+			if jack and not wild then
+				G.E_MANAGER:add_event(Event({
+					func = function()
+						c:set_ability(G.P_CENTERS.m_wild)
+						c:juice_up(0.3, 0.5)
+						return true
 					end
-		end	
+				}))
+				
+			elseif wild and not jack then
+				G.E_MANAGER:add_event(Event({
+					func = function()
+						SMODS.change_base(c,nil,'Jack')
+						c:juice_up(0.3, 0.5)
+						return true
+					end
+				}))
+			end
+		end
 		if context.joker_main then
-		local rsgc = card.ability.extra
+			local rsgc = card.ability.extra
 			return {
 				xmult= 1 + rsgc.increase * (rsgc.jacks + rsgc.wilds)
 			}
 		end
 		if context.end_of_round then
-		local rsgc = card.ability.extra
-		rsgc.jacks = 0
-		rsgc.wilds = 0
+			local rsgc = card.ability.extra
+			rsgc.jacks = 0
+			rsgc.wilds = 0
 		end		
 	end
 })

@@ -183,7 +183,7 @@ RSGC.Joker({
 })
 
 RSGC.Joker({
-	key = "tree",
+	key = "oldtree",
 	atlas = "joke",
 	pos = { x = 0, y = 0 },
 	rarity = 1,
@@ -194,7 +194,7 @@ RSGC.Joker({
 	perishable_compat = false,
 	eternal_compat = true,
 	blueprint_compat = true,
-	unbound = {evo = "tree3",tarots = 0,cards=0,discards=0},
+	unbound = {evo = "oldtree3",tarots = 0,cards=0,discards=0},
 	loc_vars = function(self, info_queue, card)
 		local rsgc = card.ability.extra
 		return {
@@ -235,7 +235,7 @@ RSGC.Joker({
 })
 
 RSGC.Joker({
-	key = "tree3",
+	key = "oldtree3",
 	atlas = "joke",
 	pos = { x = 0, y = 8 },
 	rarity = "rsgc_unb",
@@ -1514,7 +1514,7 @@ RSGC.Joker({
 		end
 	end
 })
-
+	
 RSGC.Joker({
 	key = "newtree",
 	atlas = "joke",
@@ -1525,6 +1525,49 @@ RSGC.Joker({
 		extra = {
 			mult = 1,
 			multiplier = 2
+		},
+	},
+	unbound = {evo = "tree3",goalpost = 3},
+	unlocked = true,
+	discovered = true,
+	perishable_compat = false,
+	eternal_compat = true,
+	blueprint_compat = true,
+	loc_vars = function(self, info_queue, card)
+		local rsgc = card.ability.extra
+		return {vars = { rsgc.mult, rsgc.multiplier}}
+	end,
+	calculate = function(self, card, context)
+		local rsgc = card.ability.extra
+        if (context.end_of_round and context.cardarea == G.jokers) and not context.blueprint then
+			rsgc.mult = rsgc.mult * rsgc.multiplier
+		end
+		if context.joker_main then
+			return {
+				mult=rsgc.mult,
+			}
+		end
+						--------unbound--------
+		if not context.blueprint and context.cardarea == G.jokers
+		and (context.setting_blind or context.ending_shop or context.end_of_round) then
+			local rsgc = card.ability.extra
+			if rsgc.multiplier >= card.ability.unbound.goalpost then
+				return RSGC.unbound(card)
+			end
+		end
+	end
+})
+
+RSGC.Joker({
+	key = "newtree3",
+	atlas = "joke",
+	pos = { x = 1, y = 1 },
+	rarity = "rsgc_unb",
+	cost = 30,
+	config = {
+		extra = {
+			mult = 1,
+			multiplier = 3
 		},
 	},
 	unlocked = true,
@@ -1539,7 +1582,7 @@ RSGC.Joker({
 	calculate = function(self, card, context)
 		local rsgc = card.ability.extra
         if (context.end_of_round and context.cardarea == G.jokers) and not context.blueprint then
-			rsgc.mult = rsgc.mult * rsgc.multiplier
+			rsgc.mult = rsgc.mult ^ rsgc.multiplier
 		end
 		if context.joker_main then
 			return {

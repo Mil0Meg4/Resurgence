@@ -1525,7 +1525,7 @@ RSGC.Joker({
 RSGC.Joker({
 	key = "newtree",
 	atlas = "joke",
-	pos = { x = 1, y = 1 },
+	pos = { x = 0, y = 0 },
 	rarity = "rsgc_super_rare",
 	cost = 15,
 	config = {
@@ -1574,12 +1574,12 @@ RSGC.Joker({
 RSGC.Joker({
 	key = "newtree3",
 	atlas = "joke",
-	pos = { x = 1, y = 1 },
+	pos = { x = 0, y = 8 },
 	rarity = "rsgc_unb",
 	cost = 30,
 	config = {
 		extra = {
-			mult = 1,
+			mult = 2,
 			multiplier = 3
 		},
 	},
@@ -1608,7 +1608,10 @@ RSGC.Joker({
 				mult=rsgc.mult,
 			}
 		end
-	end
+	end,
+	draw = function(self, card, layer)
+		card.children.center:draw_shader("rsgc_tree", nil, card.ARGS.send_to_shader)
+	end,
 })
 
 RSGC.Joker({

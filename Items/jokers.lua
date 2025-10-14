@@ -1508,8 +1508,8 @@ RSGC.Joker({
 			end
 			rsgc.chips = rsgc.chips + highest_rank
 			return{
-				message = localize('k_upgrade'),
-				colour = G.C.BLUE,
+				message = localize('k_upgrade_ex'),
+				colour = G.C.CHIPS,
 				card = card
 			}
 		end
@@ -1597,7 +1597,7 @@ RSGC.Joker({
 			local rsgc = card.ability.extra
 			rsgc.mult = rsgc.mult ^ rsgc.multiplier
 			return{
-				message = localize('k_tree_grow3'),
+				message = localize('k_tree3_grow'),
 				colour = G.C.RED,
 				card = card
 			}

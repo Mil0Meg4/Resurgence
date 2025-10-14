@@ -1479,7 +1479,7 @@ RSGC.Joker({
 	},
 	unlocked = true,
 	discovered = true,
-	perishable_compat = false,
+	perishable_compat = true,
 	eternal_compat = true,
 	blueprint_compat = true,
 	pos = {
@@ -1510,6 +1510,40 @@ RSGC.Joker({
 			local rsgc = card.ability.extra
 			return {
 				chips=rsgc.chips
+			}
+		end
+	end
+})
+
+RSGC.Joker({
+	key = "newtree",
+	atlas = "joke",
+	pos = { x = 1, y = 1 },
+	rarity = "rsgc_super_rare",
+	cost = 15,
+	config = {
+		extra = {
+			mult = 1,
+			multiplier = 2
+		},
+	},
+	unlocked = true,
+	discovered = true,
+	perishable_compat = true,
+	eternal_compat = true,
+	blueprint_compat = true,
+	loc_vars = function(self, info_queue, card)
+		local rsgc = card.ability.extra
+		return {vars = { rsgc.mult, rsgc.multiplier}}
+	end,
+	calculate = function(self, card, context)
+		local rsgc = card.ability.extra
+        if (context.end_of_round and context.cardarea == G.jokers) and not context.blueprint then
+			rsgc.mult = rsgc.mult * rsgc.multiplier
+		end
+		if context.joker_main then
+			return {
+				mult=rsgc.mult,
 			}
 		end
 	end

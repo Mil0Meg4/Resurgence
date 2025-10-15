@@ -1870,6 +1870,66 @@ RSGC.Joker({
 	end
 })
 
+RSGC.Joker({
+	key = "niko",
+	atlas = "joke",
+	rarity = 4,
+	cost = 7,
+	unlocked = true,
+	discovered = true,
+	perishable_compat = false,
+	eternal_compat = true,
+	blueprint_compat = true,
+	pos = {
+		x = 1,
+		y = 1,
+	},
+	calculate = function(self, card, context)
+		if context.before and context.poker_hands['Pair'] and not context.blueprint then
+			local rsgc = card.ability.extra
+			local c = context.other_card
+			if RSGC.suit_type(c, "dark") then
+
+			end
+		end
+	end
+})
+
+RSGC.Joker({
+	key = "8button",
+	atlas = "joke",
+	rarity = 2,
+	cost = 1,
+	config = { extra = { chips = 4, eights = 0 } },
+	unlocked = true,
+	discovered = true,
+	perishable_compat = false,
+	eternal_compat = true,
+	blueprint_compat = true,
+	pos = {
+		x = 1,
+		y = 1,
+	},
+	calculate = function(self, card, context)
+		if  context.individual and context.cardarea == G.play and context.other_card and context.other_card:get_id() == 8 and not context.blueprint then
+		local rsgc = card.ability.extra
+		rsgc.eights = rsgc.eights + 1
+		return{
+			message = localize('k_upgrade_ex'),
+			colour = G.C.CHIPS,
+			card = card
+			}
+		end
+		if context.joker_main then
+			local rsgc = card.ability.extra
+			return {
+				chips = rsgc.chips * rsgc.eights 
+			}
+			
+		end
+	end
+})
+
 --Boosters
 SMODS.Booster({
     key = 'gay',

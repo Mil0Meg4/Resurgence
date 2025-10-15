@@ -1499,14 +1499,16 @@ RSGC.Joker({
 		if context.before and context.poker_hands and #context.poker_hands['Pair'] > 0 and not context.blueprint then
 			local rsgc = card.ability.extra
 			local highest_rank = 0
+			local h_chips = 0
 			for _,v in ipairs(context.scoring_hand) do
 				if v.base.id > highest_rank then
 					if not SMODS.has_no_rank(v) then
 						highest_rank = v.base.id
+						h_chips = v.base.nominal
 					end
 				end
 			end
-			rsgc.chips = rsgc.chips + highest_rank
+			rsgc.chips = rsgc.chips + h_chips
 			return{
 				message = localize('k_upgrade_ex'),
 				colour = G.C.CHIPS,

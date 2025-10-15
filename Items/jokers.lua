@@ -1496,7 +1496,7 @@ RSGC.Joker({
 		}
 	end,
 	calculate = function(self, card, context)
-		if context.before and context.poker_hands['Pair'] and not context.blueprint then
+		if context.before and context.poker_hands and #context.poker_hands['Pair'] > 0 and not context.blueprint then
 			local rsgc = card.ability.extra
 			local highest_rank = 0
 			for _,v in ipairs(context.scoring_hand) do

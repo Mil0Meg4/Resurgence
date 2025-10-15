@@ -599,3 +599,13 @@ function Card:init(X, Y, W, H, card, center, params)
     end
     return orig_init(self,X, Y, W, H, card, center, params)
 end
+-- light and dark suits 
+RSGC.light_suits = { 'Diamonds', 'Hearts' }
+RSGC.dark_suits = { 'Spades', 'Clubs' }
+
+function RSGC.suit_type(card, type)
+  for _, v in ipairs(type == 'light' and RSGC.light_suits or RSGC.dark_suits) do
+	if card:suit_type(v) then return true end
+  end
+  return false
+end

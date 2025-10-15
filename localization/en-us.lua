@@ -579,6 +579,20 @@ return {
                     "{X:chips,C:white}X#3#{} Chips {X:mult,C:white}X#4#{} Mult",
                 },
             },
+            j_rsgc_newtree={
+                name="Tree",
+                text={
+                    "{C:mult}+#1#{} Mult",
+                    "{C:attention}X#2# {C:mult}Mult{} at end of round",
+                },
+            },
+            j_rsgc_newtree3={
+                name="Tree(3)",
+                text={
+                    "{C:mult}+#1#{} Mult",
+                    "{C:attention}^#2# {C:mult}Mult{} at end of round",
+                },
+            },
         },
         Augment={
             c_rsgc_aug_mother = {

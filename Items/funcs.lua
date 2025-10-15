@@ -541,7 +541,7 @@ function RSGC.use_consumable(card, cards, func)
 end
 
 --Choosing cards
-function G.PRISM.choose_card(source,chosen_card)
+function RSGC.choose_card(source,chosen_card)
     if source == "fissure" then
         local card = create_card("Joker", G.jokers, nil, nil, nil, nil,chosen_card)
         card:add_to_deck()
@@ -556,7 +556,7 @@ function Card:click()
         if not self.debuff then
             local source = G.GAME.rsgc_choosing_card
             G.FUNCS:exit_overlay_menu()
-            G.PRISM.choose_card(source,self.config.center.key)
+            RSGC.choose_card(source,self.config.center.key)
         end
     end
     orig_click(self)

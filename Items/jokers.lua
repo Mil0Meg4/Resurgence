@@ -1726,6 +1726,149 @@ RSGC.Joker({
 		end		
 	end
 })
+RSGC.Joker({
+	key = "weatherchannel",
+	atlas = "joke",
+	pos = { x = 1, y = 1 },
+	rarity = 1,
+	cost = 4,
+	config = {
+		extra = {
+			mincrease = 1,
+			cincrease = 5,
+			mult = 0,
+			chips = 0
+		},
+	},
+	unbound = {evo = "miinewschannel"},
+	unlocked = true,
+	discovered = true,
+	perishable_compat = false,
+	eternal_compat = true,
+	blueprint_compat = true,
+	loc_vars = function(self, info_queue, card)
+		local rsgc = card.ability.extra
+		return {vars = {rsgc.bincrease, rsgc.mincrease, rsgc.mult, rsgc.bonus}}
+	end,
+	in_pool = function(self, wawa, wawa2)
+		for k, v in pairs(G.playing_cards) do
+			if SMODS.has_enhancement(v, "m_bonus") or SMODS.has_enhancement(v, "m_mult") then return true end
+		end
+		return false
+	end,
+	calculate = function(self, card, context)
+		if context.individual and context.cardarea == G.play and context.other_card and not context.blueprint then
+			local rsgc = card.ability.extra
+			local c = context.other_card
+			if SMODS.has_enhancement(c, "m_bonus") then
+				rsgc.chips = rsgc.chips + rsgc.cincrease
+			return{
+				message = localize('k_upgrade_ex'),
+				colour = G.C.CHIPS,
+				card = card
+			}
+			end
+			if SMODS.has_enhancement(c, "m_mult") then
+				rsgc.mult = rsgc.mult + rsgc.mincrease
+			return{
+				message = localize('k_upgrade_ex'),
+				colour = G.C.CHIPS,
+				card = card
+			}
+			end
+		end
+		if context.joker_main then
+			local rsgc = card.ability.extra
+			return {
+				chips = rsgc.chips,
+				mult = rsgc.mult
+			}
+		end
+	end
+})
+
+
+RSGC.Joker({
+	key = "hamis",
+	atlas = "joke",
+	pos = { x = 5, y = 3 },
+	rarity = 1,
+	cost = 4,
+	config = { extra = { chips = 250, con_slot = 1 } },
+	unlocked = true,
+	discovered = true,
+	perishable_compat = true,
+	eternal_compat = true,
+	blueprint_compat = true,
+	loc_vars = function(self, info_queue, card)
+		local rsgc = card.ability.extra
+		return {
+			vars = { rsgc.chips, rsgc.con_slot},
+		}
+	end,
+	calculate = function(self, card, context)
+		if context.joker_main then
+			local rsgc = card.ability.extra
+			return {
+				chips = rsgc.chips
+			}
+		end
+	end,
+
+	add_to_deck = function(self, card, from_debuff)
+		local rsgc = card.ability.extra
+		G.consumeables.config.card_limit = G.consumeables.config.card_limit - rsgc.con_slot
+	end,
+
+	remove_from_deck = function(self, card, from_debuff)
+		local rsgc = card.ability.extra
+		G.consumeables.config.card_limit = G.consumeables.config.card_limit + rsgc.con_slot
+	end,
+})
+
+RSGC.Joker({
+	key = "plus2",
+	atlas = "joke",
+	pos = { x = 1, y = 1 },
+	rarity = 1,
+	cost = 5,
+	unlocked = true,
+	discovered = true,
+	perishable_compat = false,
+	eternal_compat = true,
+	blueprint_compat = true,
+	calculate = function(self, card, context)
+		if context.individual and context.cardarea == G.play and context.other_card and not context.blueprint  then
+			local rsgc = card.ability.extra
+			local c = context.other_card
+			if c:get_id() == 2 then
+				G.E_MANAGER:add_event(Event({
+					func = function()
+						SMODS.change_base(c,nil,"4")
+						c:juice_up(0.3, 0.5)
+						return true
+					end
+				}))
+			elseif c:get_id() == 4 then
+				G.E_MANAGER:add_event(Event({
+					func = function()
+						SMODS.change_base(c,nil,"6")
+						c:juice_up(0.3, 0.5)
+						return true
+					end
+				}))
+			elseif c:get_id() == 6 then
+				G.E_MANAGER:add_event(Event({
+					func = function()
+						SMODS.change_base(c,nil,"8")
+						c:juice_up(0.3, 0.5)
+						return true
+					end
+				}))
+			end
+		end
+	end
+})
 
 --Boosters
 SMODS.Booster({

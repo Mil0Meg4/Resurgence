@@ -276,7 +276,7 @@ return {
                 text = { "{X:red,C:white}X#1#{} Mult per {C:attention}Jack{} or",
                     "{C:attention}Wild Card{} scored this round",
                     "{C:attention}Jacks{} become {C:attention}Wild Cards{} after",
-                    "being scored and viceversa",
+                    "being scored and vice versa",
                     "{C:inactive}(Currently {X:red,C:white}X#2#{C:inactive} Mult)"
                 }
             },

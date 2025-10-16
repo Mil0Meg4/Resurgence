@@ -35,8 +35,11 @@ SMODS.Rank {
 }
 
 table.insert(SMODS.Ranks['10'].next, 'rsgc_11')--add 11 after 10
+table.insert(SMODS.Ranks['Ace'].prev, 'King')
 table.insert(SMODS.Ranks['Ace'].prev, 'rsgc_0.9')--add 0.9 before Ace
+table.insert(SMODS.Ranks['2'].prev, 'Ace')--add 1 before 2
 table.insert(SMODS.Ranks['2'].prev, 'rsgc_1')--add 1 before 2
+
 --11
 SMODS.Rank {
 

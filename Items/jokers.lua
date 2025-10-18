@@ -1096,7 +1096,10 @@ RSGC.Joker({
 RSGC.Joker({
 	key = "kate",
 	atlas = "joke",
-	pos = { x = 1, y = 1 },
+	pos = {
+		x = 5,
+		y = 7,
+	},
 	rarity = 1,
 	cost = 4,
 	config = {
